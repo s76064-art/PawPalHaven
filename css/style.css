@@ -1,0 +1,37 @@
+#nav-bar{ 
+    background-color: rgba(0, 0, 0, 0.421) !important; 
+}
+
+.active {
+    color: white !important;
+}
+
+.masthead{
+    background-image: url("../assets/img/header-bg.png") !important;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    height: 500px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.message {
+    background-color: rgba(255, 246, 246, 0.544) !important;
+    border-radius: .5em;
+    padding: 1em;
+    text-align: center;
+}
+
+.message h2{
+    font-size: 10vh !important;
+}
+
+.message p{
+    font-size: 5vh !important;
+}
+
+.nav-link:hover{
+    color: white !important;
+}
