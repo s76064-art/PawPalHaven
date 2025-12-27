@@ -1,12 +1,12 @@
-#nav-bar{ 
-    background-color: rgba(0, 0, 0, 0.421) !important; 
+#nav-bar {
+    background-color: rgba(0, 0, 0, 0.421) !important;
 }
 
 .active {
     color: white !important;
 }
 
-.masthead{
+.masthead {
     background-image: url("../assets/img/header-bg.png") !important;
     background-repeat: no-repeat;
     background-size: cover;
@@ -24,14 +24,100 @@
     text-align: center;
 }
 
-.message h2{
+.message h2 {
     font-size: 10vh !important;
 }
 
-.message p{
+.message p {
     font-size: 5vh !important;
 }
 
-.nav-link:hover{
+.nav-link:hover {
     color: white !important;
+}
+
+
+.sub-header h1 {
+    background-color: rgb(4, 151, 19);
+    color: white;
+    display: inline-block;
+    padding: 1vh 1vh;
+    padding-right: 10vh;
+    border-bottom-right-radius: 10vh;
+    margin: 0;
+}
+
+.event-container {
+    background-color: rgb(4, 151, 19);
+    border-radius: 1vh;
+    box-shadow: 1vh 1vh 30px rgba(0, 0, 0, 0.222);
+}
+
+.slide-event-container {
+    height: 50vh !important;
+}
+
+.social-container {
+    background-color: rgb(162, 248, 162) !important;
+    padding: 3vh;
+    margin-left: 5vh;
+    border-radius: 1vh;
+    color: rgb(0, 66, 43);
+}
+
+.text-justify {
+    text-align: justify;
+}
+
+.fa-facebook:hover {
+    color: rgb(0, 160, 253);
+}
+
+.fa-twitter:hover {
+    color: rgb(81, 113, 255);
+}
+
+
+.fa-youtube:hover {
+    color: rgb(216, 15, 15);
+}
+
+.fa-instagram:hover {
+    color: rgb(225, 48, 108);
+}
+
+.fa-tiktok:hover {
+    color: rgb(0, 0, 0);
+}
+
+.fa-map:hover {
+    color: white;
+}
+
+
+
+@media (max-width: 992px) {
+    .sub-header h1 {
+        display: block;
+        border-radius: 0;
+        text-align: center;
+    }
+
+    .event-container {
+        border-radius: 0;
+    }
+
+    .slide-event-container {
+        height: 200vh !important;
+    }
+
+    .social-container {
+        margin-left: 0;
+    }
+}
+
+@media (max-width: 768px) {
+    .slide-event-container {
+        height: 150vh !important;
+    }
 }
