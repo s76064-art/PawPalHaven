@@ -57,12 +57,14 @@
     height: 50vh !important;
 }
 
-.text-event-info p{
+.text-event-info p {
     margin-bottom: 0 !important;
 }
 
-.text-event-info .datetime p{
+.datetime p {
     display: inline-block !important;
+    margin-right: 2vh;
+    margin-bottom: .5vh;
 }
 
 .social-container {
@@ -102,7 +104,11 @@
     color: white;
 }
 
-
+@media (max-width: 1000px) {
+    .slide-event-container {
+        min-height: 10vh !important;
+    }
+}
 
 @media (max-width: 992px) {
     .sub-header h1 {
@@ -110,13 +116,13 @@
         border-radius: 0;
         text-align: center;
     }
-
+ 
     .event-container {
         border-radius: 0;
     }
 
     .slide-event-container {
-        height: 200vh !important;
+        min-height: 200vh !important;
     }
 
     .social-container {
@@ -124,8 +130,9 @@
     }
 }
 
+
 @media (max-width: 768px) {
     .slide-event-container {
-        height: 150vh !important;
+        min-height: 150vh !important;
     }
 }

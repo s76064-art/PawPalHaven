@@ -40,7 +40,6 @@ function showUpcomingPetEvent() {
     let carousel = document.getElementById("upcoming-event");
     let indicator = document.getElementById("event-carousel-indicator")
 
-
     let text = "";
     let indicatorText = "";
     let index = 0;
@@ -59,21 +58,25 @@ function showUpcomingPetEvent() {
 
                                 <!-- Info Column -->
                                 <div class="col-lg-5 col-12">
-
-
-                                    <h2 class="text-center text-lg-start">${event.eventName}</h2>
-                                    <div class = "text-event-info">
-                                        <div class="datetime my-3">
-                                            <p class="text-center text-lg-start">Date: ${event.date}</p>
-                                            <p class="text-center text-lg-start">Time: ${event.time}</p>
+                                    <div class="container">
+                                        <div class="row">
+                                            <h2 class="text-center text-lg-start">${event.eventName}</h2>
                                         </div>
-                                        <p class="text-center text-lg-start">Location: ${event.location}</p>
-                                        <p class="text-justify">${event.description}</p>
+                                        <div class="row">
+                                            <div class="datetime">
+                                                <p class="text-center text-lg-start">Date: ${event.date}</p>
+                                                <p class="text-center text-lg-start">Time: ${event.time}</p>
+                                            </div>
+                                             <p class="text-center text-lg-start">Location: ${event.location}</p>
+                                        </div>
+                                        <div class="row">
+                                            <p class="text-justify">${event.description}</p>
+                                        </div>
                                     </div>
                                 </div>
 
                                 <!-- Social Column -->
-                                <div class="col-lg-3 col-12 social-container">
+                                <div class="col-lg-3 col-12 m-3 social-container">
                                     <h3 class="text-center">Follow Us</h3>
                                     <div class="p-3 text-center">
                                         <i class="fa-brands fa-facebook fa-xl"></i>
