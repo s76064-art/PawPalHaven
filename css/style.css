@@ -1,3 +1,18 @@
+/*Color*/
+.bg-green-1 {
+    background-color: rgb(0, 146, 0);
+}
+
+.bg-green-2 {
+    background-color: rgb(2, 175, 2);
+}
+
+.bg-green-3 {
+    background-color: rgb(77, 242, 77);
+}
+
+
+
 #nav-bar {
     background-color: rgba(0, 0, 0, 0.421) !important;
 }
@@ -36,47 +51,85 @@
     color: white !important;
 }
 
+.custom-slider {
+    position: relative;
+    overflow: hidden;
+    box-sizing: border-box;
+    border-radius: 2vh;
+    width: 100%;
+}
 
-.sub-header h1 {
-    background-color: rgb(4, 151, 19);
+.slides {
+    display: flex;
+    transition: transform 0.4s ease-in-out;
+}
+
+.slide {
+    min-width: 100%;
+    padding: 2vh;
+}
+
+.bevel-border-br {
     color: white;
+    border-bottom-right-radius: 50vh;
     display: inline-block;
-    padding: 1vh 1vh;
-    padding-right: 10vh;
-    border-bottom-right-radius: 10vh;
-    margin: 0;
+    padding: 1vh;
+    padding-right: 5vh;
 }
 
-.event-container {
-    background-color: rgb(4, 151, 19);
-    border-radius: 1vh;
-    box-shadow: 1vh 1vh 30px rgba(0, 0, 0, 0.222);
+.bevel-border {
+    border-radius: 5vh;
 }
 
-.slide-event-container {
-    height: 50vh !important;
+.date-time-event p{
+    display: inline-block;
+    margin-right: 3vh;
+    margin-bottom: 1vh;
 }
 
-.text-event-info p {
-    margin-bottom: 0 !important;
+/* Arrows */
+.prev-btn,
+.next-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: #00000055;
+    border: none;
+    color: white;
+    font-size: 2rem;
+    padding: 0.3em 0.5em;
+    cursor: pointer;
+    z-index: 10;
+    border-radius: 10px;
 }
 
-.datetime p {
-    display: inline-block !important;
-    margin-right: 2vh;
-    margin-bottom: .5vh;
+.prev-btn {
+    left: 10px;
 }
 
-.social-container {
-    background-color: rgb(162, 248, 162) !important;
-    padding: 3vh;
-    margin-left: 5vh;
-    border-radius: 1vh;
-    color: rgb(0, 66, 43);
+.next-btn {
+    right: 10px;
 }
 
-.text-justify {
-    text-align: justify;
+/* Dots */
+.dots {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 3vh;
+}
+
+.dots span {
+    height: 12px;
+    width: 12px;
+    background: rgba(253, 253, 253, 0.568);
+    border-radius: 50%;
+    margin: 0 5px;
+    cursor: pointer;
+    display: inline-block;
+}
+
+.dots .active {
+    background: #ffffff;
 }
 
 .fa-facebook:hover {
@@ -104,35 +157,21 @@
     color: white;
 }
 
-@media (max-width: 1000px) {
-    .slide-event-container {
-        min-height: 10vh !important;
-    }
+@media (min-width: 1000px) {
 }
 
 @media (max-width: 992px) {
-    .sub-header h1 {
-        display: block;
-        border-radius: 0;
-        text-align: center;
-    }
- 
-    .event-container {
-        border-radius: 0;
+    .bevel-border-br {
+        border-bottom-right-radius: 0px;
+        display: block !important;
     }
 
-    .slide-event-container {
-        min-height: 200vh !important;
-    }
-
-    .social-container {
-        margin-left: 0;
+    .custom-slider {
+        border-radius: 0px;
     }
 }
 
 
 @media (max-width: 768px) {
-    .slide-event-container {
-        min-height: 150vh !important;
-    }
+   
 }

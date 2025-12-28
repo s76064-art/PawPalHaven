@@ -84,62 +84,95 @@
     <main>
         <!--Events -->
         <section class="container-fluid bg-light px-0">
-            <div class="sub-header bg-light">
+            <div class="sub-header text-center text-lg-start bevel-border-br bg-green-1">
                 <h1>Upcoming Events</h1>
             </div>
 
-            <div class="container-lg my-lg-3 p-lg-2 p-sm-0 event-container">
-                <div id="eventCarousel" class="carousel slide" data-bs-ride="carousel">
+            <div class="container-lg my-lg-4 my-0 px-0">
 
-                    <!-- Indicators -->
-                    <div class="carousel-indicators" id="event-carousel-indicator">
-                        <button type="button" data-bs-target="#eventCarousel" data-bs-slide-to="0"
-                            class="active"></button>
-                    </div>
+                <!-- Slider Wrapper -->
+                <div class="custom-slider bg-green-2">
 
-                    <!-- Slides -->
-                    <div class="carousel-inner" id="upcoming-event">
+                    <!-- All slides -->
+                    <div class="slides">
 
                         <!-- Slide 1 -->
-                        <div class="carousel-item active">
-                            <div class="row align-items-center slide-event-container">
+                        <div class="slide">
+                            <div class="row g-4 align-items-center">
 
-                                <!-- Image Column -->
-                                <div class="col-lg-3 col-12">
-                                    <img src="assets/img/Poster1.png" alt="Poster" class="img-fluid">
+                                <div class="col-lg-4 col-12 text-center">
+                                    <img src="assets/img/Poster1.png" class="img-fluid w-100 h-auto" />
                                 </div>
 
-                                <!-- Info Column -->
-                                <div class="col-lg-5 col-12">
-                                    <h2 class="text-center text-lg-start">Event Name</h2>
-                                    <div class="text-event-info">
-                                        <p class="text-center text-lg-start">Location: [locations]</p>
-                                        <p class="text-center text-lg-start">Date: [Date]</p>
-                                        <p class="text-center text-lg-start">Time: [Time]</p>
-                                    </div>
+                                <div class="col-lg-4 col-12 text-white">
+                                    <h2>Event Name</h2>
+                                    <p>Location: [locations]</p>
+                                    <p>Date: [Date]</p>
+                                    <p>Time: [Time]</p>
                                     <p class="text-justify">
                                         Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusamus soluta
-                                        beatae dolore et qui excepturi reiciendis nulla. Laudantium odio
-                                        repellat eum iste quas? Enim cupiditate earum, in a accusamus facere.
+                                        beatae dolore et qui excepturi reiciendis nulla.
                                     </p>
                                 </div>
 
-                                <!-- Social Column -->
-                                <div class="col-lg-3 col-12 social-container">
-                                    <h3 class="text-center">Follow Us</h3>
-                                    <div class="p-3 text-center">
-                                        <i class="fa-brands fa-facebook fa-xl"></i>
-                                        <i class="fa-brands fa-youtube fa-xl"></i>
-                                        <i class="fa-brands fa-instagram fa-xl"></i>
-                                        <i class="fa-brands fa-tiktok fa-xl"></i>
-                                        <i class="fa-brands fa-twitter fa-xl"></i>
-                                        <i class="fa-regular fa-map fa-xl"></i>
+                                <div class="col-lg-4 col-12 text-center">
+                                    <div class="jumbotron bg-green-3 bevel-border">
+                                        <h3>Follow Us</h3>
+                                        <div class="p-3">
+                                            <i class="fa-brands fa-facebook fa-xl mx-2"></i>
+                                            <i class="fa-brands fa-youtube fa-xl mx-2"></i>
+                                            <i class="fa-brands fa-instagram fa-xl mx-2"></i>
+                                            <i class="fa-brands fa-tiktok fa-xl mx-2"></i>
+                                            <i class="fa-brands fa-twitter fa-xl mx-2"></i>
+                                            <i class="fa-regular fa-map fa-xl mx-2"></i>
+                                        </div>
+
                                     </div>
                                 </div>
 
                             </div>
                         </div>
+
+                        <div class="slide">
+                            <div class="row g-4 align-items-center">
+
+                                <div class="col-lg-4 col-12 text-center">
+                                    <img src="assets/img/Poster1.png" class="img-fluid w-100 h-auto" />
+                                </div>
+
+                                <div class="col-lg-6 col-12 text-white">
+                                    <h2>Event Name</h2>
+                                    <div class="date-time-event">
+                                        <p>Date: [Date]</p>
+                                        <p>Time: [Time]</p>
+                                    </div>
+                                    <p>Location: [locations]</p>
+                                    <p class="text-justify">
+                                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusamus soluta
+                                        beatae dolore et qui excepturi reiciendis nulla.
+                                    </p>
+
+                                    <div class="jumbotron bg-green-3 bevel-border text-center text-black">
+                                        <h6>Follow Us</h6>
+                                        <div class="p-3" style="font-size: .8em;">
+                                            <i class="fa-brands fa-facebook fa-xl mx-2"></i>
+                                            <i class="fa-brands fa-youtube fa-xl mx-2"></i>
+                                            <i class="fa-brands fa-instagram fa-xl mx-2"></i>
+                                            <i class="fa-brands fa-tiktok fa-xl mx-2"></i>
+                                            <i class="fa-brands fa-twitter fa-xl mx-2"></i>
+                                            <i class="fa-regular fa-map fa-xl mx-2"></i>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                            </div>
+                        </div>
+
                     </div>
+
+                    <!-- Dots -->
+                    <div class="dots"></div>
 
                 </div>
             </div>
