@@ -57,6 +57,14 @@
     height: 50vh !important;
 }
 
+.text-event-info p{
+    margin-bottom: 0 !important;
+}
+
+.text-event-info .datetime p{
+    display: inline-block !important;
+}
+
 .social-container {
     background-color: rgb(162, 248, 162) !important;
     padding: 3vh;
