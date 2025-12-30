@@ -1,6 +1,79 @@
+class SlideShow {
+    constructor(selector, interval) {
+        this.container = document.querySelector(selector);
+        this.slides = this.container.querySelector(".slides");
+        this.itemSlides = this.slides.querySelectorAll(".slide");
+        this.dotContainer = this.container.querySelector(".dots")
+        this.interval = interval || 5000; //Default 5 seconds
+
+        this.index = 0;
+
+        this.makeDots();
+        this.addSwipeSupport();
+        this.startAutoSlide();
+    }
+
+    makeDots() {
+        this.itemSlides.forEach((_, i) => {
+            const dot = document.createElement("span");
+            if (i === 0) { dot.classList.add("active"); }
+            dot.addEventListener("click", () => this.goToSlide(i));
+            this.dotContainer.appendChild(dot);
+        });
+    }
+
+    updateDots() {
+        this.dotContainer.querySelectorAll("span").forEach((dot, i) => {
+            dot.classList.toggle("active", i === this.index);
+        });
+    }
+
+    goToSlide(i) {
+        this.index = i;
+        this.slides.style.transform = `translateX(${-i * 100}%)`;
+        this.updateDots();
+    }
+
+    startAutoSlide() {
+        setInterval(() => {
+            this.index = (this.index + 1) % this.itemSlides.length;
+            this.goToSlide(this.index);
+        }, this.interval);
+    }
+
+    addSwipeSupport() {
+        let startX = 0;
+
+        this.slides.addEventListener('touchstart', e => {
+            startX = e.touches[0].clientX;
+        });
+
+        this.slides.addEventListener('touchend', e => {
+            let endX = e.changedTouches[0].clientX;
+
+            if (endX < startX - 50) this.next();
+            if (endX > startX + 50) this.prev();
+        });
+    }
+
+    next() {
+        this.index = (this.index + 1) % this.slideItems.length;
+        this.goToSlide(this.index);
+    }
+
+    prev() {
+        this.index = (this.index - 1 + this.slideItems.length) % this.slideItems.length;
+        this.goToSlide(this.index);
+    }
+}
+
+
 document.addEventListener("DOMContentLoaded", function () {
     //showUpcomingPetEvent();
     messageCycle();
+
+    //Start slide show
+    new SlideShow(".event-slider", 10000);
 });
 
 
@@ -112,54 +185,4 @@ function PetEvent(eventName, location, date, time, description, social, poster) 
     this.social = social;
     this.poster = poster;
 }
-
-
-const slides = document.querySelector('.slides');
-const slideItems = document.querySelectorAll('.slide');
-const dotsContainer = document.querySelector('.dots');
-
-let index = 0;
-
-// Create dots
-slideItems.forEach((_, i) => {
-    const dot = document.createElement('span');
-    if (i === 0) dot.classList.add('active');
-    dot.addEventListener('click', () => goToSlide(i));
-    dotsContainer.appendChild(dot);
-});
-
-function updateDots() {
-    document.querySelectorAll('.dots span').forEach((dot, i) => {
-        dot.classList.toggle('active', i === index);
-    });
-}
-
-function goToSlide(i) {
-    index = i;
-    slides.style.transform = `translateX(${-i * 100}%)`;
-    updateDots();
-}
-
-
-// Auto-slide
-setInterval(() => {
-    index = (index + 1) % slideItems.length;
-    goToSlide(index);
-}, 5000);
-
-// Touch swipe support
-let startX = 0;
-
-slides.addEventListener('touchstart', e => {
-    startX = e.touches[0].clientX;
-});
-
-slides.addEventListener('touchend', e => {
-    let endX = e.changedTouches[0].clientX;
-
-    if (endX < startX - 50) nextBtn.click();     // Swipe left → next
-    if (endX > startX + 50) prevBtn.click();     // Swipe right → prev
-});
-
-
 
