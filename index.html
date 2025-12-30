@@ -4,20 +4,186 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="stylesheet/style.css">
-    
-    <title>PawPalHaven</title>
+
+    <!--Custom CSS-->
+    <link rel="stylesheet" href="css/style.css">
+    <!--Boostrap CSS-->
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <!--Font awesome-->
+    <script src="https://kit.fontawesome.com/b1605aa887.js" crossorigin="anonymous"></script>
+
+    <link rel="icon" type="image/png" href="assets/img/pet-brand.png">
+    <title>PawPal Haven</title>
 </head>
 
 <body>
-    <h1>Hello World</h1>
-    <h2>WOOOOOOOOOOOW</h2>
-    <A href="test.html">Go to test page</A>
+    <!--Navigation bar-->
+    <nav class="navbar navbar-expand-lg fixed-top" id="nav-bar">
+        <div class="container-fluid mx-3">
 
+            <a class="navbar-brand text-white" href="#">
+                <img src="assets/img/pet-brand.png" alt="Brand Icon" width="60">
+                PawPal Haven
+            </a>
+
+            <!-- Mobile toggle -->
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <!-- Navbar items -->
+            <div class="collapse navbar-collapse" id="navbarNavDropdown">
+                <ul class="navbar-nav ms-auto">
+
+                    <li class="nav-item">
+                        <a class="nav-link active" href="#">Home</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link " href="#">Adopt Pets</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link " href="#">Pet Finder</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link " href="#">Events</a>
+                    </li>
+
+                    <!-- Dropdown -->
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button"
+                            data-bs-toggle="dropdown">
+                            Tips
+                        </a>
+
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                            <li><a class="dropdown-item" href="#">Cats</a></li>
+                            <li><a class="dropdown-item" href="#">Dogs</a></li>
+                            <li><a class="dropdown-item" href="#">Birds</a></li>
+                        </ul>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Profile</a>
+                    </li>
+
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!--Message-->
+    <div class="container-fluid px-0 masthead">
+        <diV class="message" id="message">
+            <h2>Pets bring joy to the world</h2>
+            <p>Adopt one now</p>
+        </diV>
+    </div>
+
+    <main>
+        <!--Events -->
+        <section class="container-fluid bg-light px-0">
+            <div class="sub-header text-center text-lg-start bevel-border-br bg-green-1">
+                <h1>Upcoming Events</h1>
+            </div>
+
+            <div class="container-lg my-lg-4 my-0 px-0">
+
+                <!-- Slider Wrapper -->
+                <div class="custom-slider bg-green-2">
+
+                    <!-- All slides -->
+                    <div class="slides">
+
+                        <!-- Slide 1 -->
+                        <div class="slide">
+                            <div class="row g-4 align-items-center">
+
+                                <div class="col-lg-4 col-12 text-center">
+                                    <img src="assets/img/Poster1.png" class="img-fluid w-100 h-auto" />
+                                </div>
+
+                                <div class="col-lg-4 col-12 text-white">
+                                    <h2>Event Name</h2>
+                                    <p>Location: [locations]</p>
+                                    <p>Date: [Date]</p>
+                                    <p>Time: [Time]</p>
+                                    <p class="text-justify">
+                                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusamus soluta
+                                        beatae dolore et qui excepturi reiciendis nulla.
+                                    </p>
+                                </div>
+
+                                <div class="col-lg-4 col-12 text-center">
+                                    <div class="jumbotron bg-green-3 bevel-border">
+                                        <h3>Follow Us</h3>
+                                        <div class="p-3">
+                                            <i class="fa-brands fa-facebook fa-xl mx-2"></i>
+                                            <i class="fa-brands fa-youtube fa-xl mx-2"></i>
+                                            <i class="fa-brands fa-instagram fa-xl mx-2"></i>
+                                            <i class="fa-brands fa-tiktok fa-xl mx-2"></i>
+                                            <i class="fa-brands fa-twitter fa-xl mx-2"></i>
+                                            <i class="fa-regular fa-map fa-xl mx-2"></i>
+                                        </div>
+
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+
+                        <div class="slide">
+                            <div class="row g-4 align-items-center">
+
+                                <div class="col-lg-4 col-12 text-center">
+                                    <img src="assets/img/Poster1.png" class="img-fluid w-100 h-auto" />
+                                </div>
+
+                                <div class="col-lg-6 col-12 text-white">
+                                    <h2>Event Name</h2>
+                                    <div class="date-time-event">
+                                        <p>Date: [Date]</p>
+                                        <p>Time: [Time]</p>
+                                    </div>
+                                    <p>Location: [locations]</p>
+                                    <p class="text-justify">
+                                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusamus soluta
+                                        beatae dolore et qui excepturi reiciendis nulla.
+                                    </p>
+
+                                    <div class="jumbotron bg-green-3 bevel-border text-center text-black">
+                                        <h6>Follow Us</h6>
+                                        <div class="p-3" style="font-size: .8em;">
+                                            <i class="fa-brands fa-facebook fa-xl mx-2"></i>
+                                            <i class="fa-brands fa-youtube fa-xl mx-2"></i>
+                                            <i class="fa-brands fa-instagram fa-xl mx-2"></i>
+                                            <i class="fa-brands fa-tiktok fa-xl mx-2"></i>
+                                            <i class="fa-brands fa-twitter fa-xl mx-2"></i>
+                                            <i class="fa-regular fa-map fa-xl mx-2"></i>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <!-- Dots -->
+                    <div class="dots"></div>
+
+                </div>
+            </div>
+        </section>
+
+
+    </main>
+    <!--Boostrap JS-->
+    <script src="js/bootstrap.bundle.min.js"></script>
+    <script src="js/javascript.js"></script>
 </body>
-
-<footer>
-    <i>THis is a footer</i>
-</footer>
 
 </html>
