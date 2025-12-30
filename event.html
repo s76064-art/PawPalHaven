@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PawPal Haven - Events</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="styles.css">
+    <!-- Bootstrap Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" rel="stylesheet">
+</head>
+<body class="bg-light">
+
+<!-- Upcoming Events Section -->
+<section class="container py-5">
+    <!-- Section Title -->
+    <div class="text-center mb-5">
+        <h2 class="section-title px-4 py-2 d-inline-block text-white bg-success rounded-pill shadow-sm">
+            Upcoming Events
+        </h2>
+    </div>
+
+    <!-- Events Grid -->
+    <div class="row g-4">
+        <!-- Event Card Example (Repeat for each event) -->
+        <div class="col-md-4">
+            <div class="card shadow-sm h-100 event-card" data-event='{"name":"Puppy Parade","date":"2026-01-15 10:00 AM","image":"https://via.placeholder.com/600x400","description":"Join us for a fun-filled parade for all puppies in the community!","map":"https://maps.google.com?q=New+York"}'>
+                <img src="poster1.png" class="card-img-top event-image" alt="Puppy Parade">
+                <div class="card-body">
+                    <h5 class="card-title">Puppy Parade</h5>
+                    <p class="card-text text-muted small">Jan 15, 2026 | 10:00 AM</p>
+                    <button class="btn btn-success btn-sm view-details">View Details</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="card shadow-sm h-100 event-card" data-event='{"name":"Kitty Yoga","date":"2026-02-01 2:00 PM","image":"https://via.placeholder.com/600x400","description":"Relax and stretch with your feline friends in this unique yoga event.","map":"https://maps.google.com?q=Los+Angeles"}'>
+                <img src="https://via.placeholder.com/600x400" class="card-img-top event-image" alt="Kitty Yoga">
+                <div class="card-body">
+                    <h5 class="card-title">Kitty Yoga</h5>
+                    <p class="card-text text-muted small">Feb 1, 2026 | 2:00 PM</p>
+                    <button class="btn btn-success btn-sm view-details">View Details</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="card shadow-sm h-100 event-card" data-event='{"name":"Pet Adoption Fair","date":"2026-03-12 11:00 AM","image":"https://via.placeholder.com/600x400","description":"Find your new furry friend and support local shelters.","map":"https://maps.google.com?q=Chicago"}'>
+                <img src="https://via.placeholder.com/600x400" class="card-img-top event-image" alt="Pet Adoption Fair">
+                <div class="card-body">
+                    <h5 class="card-title">Pet Adoption Fair</h5>
+                    <p class="card-text text-muted small">Mar 12, 2026 | 11:00 AM</p>
+                    <button class="btn btn-success btn-sm view-details">View Details</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Event Modal (Single Dynamic Modal) -->
+<div class="modal fade" id="eventModal" tabindex="-1" aria-labelledby="eventModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-xl modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-body p-0">
+        <div class="row g-0">
+            <!-- Left Column: Image + Social Icons -->
+            <div class="col-md-6 position-relative">
+                <img id="modalImage" src="" alt="Event Image" class="img-fluid w-100 h-100 object-fit-cover">
+                <div class="social-icons position-absolute bottom-0 start-0 p-3">
+                    <a href="#" class="text-white me-3 fs-4"><i class="bi bi-facebook"></i></a>
+                    <a href="#" class="text-white me-3 fs-4"><i class="bi bi-instagram"></i></a>
+                    <a href="#" class="text-white fs-4"><i class="bi bi-twitter"></i></a>
+                </div>
+            </div>
+            <!-- Right Column: Details -->
+            <div class="col-md-6 p-4 d-flex flex-column">
+                <h3 id="modalTitle"></h3>
+                <p id="modalDescription" class="flex-grow-1"></p>
+                <div id="modalMap" class="border rounded p-2 mt-3 flex-shrink-0">
+                    <iframe id="modalMapFrame" src="" width="100%" height="200" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+                </div>
+                <button type="button" class="btn btn-success mt-3 align-self-end" data-bs-dismiss="modal">Close</button>
+            </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Bootstrap JS & Popper -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<!-- Custom JS -->
+<script src="scripts.js"></script>
+</body>
+</html>
