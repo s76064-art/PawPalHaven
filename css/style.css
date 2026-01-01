@@ -1,4 +1,5 @@
 /*Color*/
+
 .bg-green-1 {
     background-color: rgb(0, 146, 0);
 }
@@ -116,8 +117,8 @@
 }
 
 .img-container {
-    height: 40vh;
-    width: 40vh;
+    height: 30vh;
+    width: 30vh;
     background-color: gray;
     margin: auto;
     overflow: hidden;
@@ -202,20 +203,6 @@
 
 
 @media (max-width: 768px) {}
-
-/* event.html */
-/* --- PAGE LAYOUT --- */
-body {
-    /* Pushes content down so it doesn't hide under the fixed navbar */
-    padding-top: 130px !important;
-    background-color: #fcfcfc;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-}
-
-#nav-bar {
-    /* Makes the navbar solid so you can't see text through it while scrolling */
-    background-color: #343a40 !important; 
-}
 
 /* --- EVENT CARD (Sketch 1 Styling) --- */
 .event-card {
