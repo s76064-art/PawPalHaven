@@ -44,7 +44,7 @@
                     </li>
 
                     <li class="nav-item">
-                        <a class="nav-link " href="#">Pet Finder</a>
+                        <a class="nav-link " href="#pet-finder.html">Pet Finder</a>
                     </li>
 
                     <li class="nav-item">
@@ -53,7 +53,7 @@
 
                     <!-- Dropdown -->
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button"
+                        <a class="nav-link dropdown-toggle" href="tips.html" id="navbarDropdownMenuLink" role="button"
                             data-bs-toggle="dropdown">
                             Tips
                         </a>
@@ -66,7 +66,7 @@
                     </li>
 
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Profile</a>
+                        <a class="nav-link" href="#profile.html">Profile</a>
                     </li>
 
                 </ul>
@@ -74,96 +74,189 @@
         </div>
     </nav>
 
-    <!-- HEADER -->
-    <section class="text-center py-5 header-section">
-        <h1 class="fw-bold">Pet Care Tips</h1>
-        <p class="text-muted">Tips for keeping your cats, dogs, and birds happy</p>
-    </section>
+   <!-- Header -->
+<!-- Header -->
+<section class="header-section text-center py-5">
+    <div class="container">
+        <h1 class="display-4 fw-bold section-title">Pet Care Tips</h1>
+        <p class="text-muted fs-5">Click each pet section to view useful care tips, videos, and images.</p>
+    </div>
+</section>
 
-    <!-- MAIN IMAGE -->
-    <section class="container mb-5">
-        <div class="main-image text-center">
-            <p class="text-muted"></p>
-        </div>
-    </section>
 
-    <!-- CAT CARE TIPS -->
-    <section class="container mb-4">
-        <div class="tip-card">
-            <div class="row align-items-center">
-                <div class="col-md-7">
-                    <h3>🐱 Cat Care Tips</h3>
-                    <ul>
-                        <li>Provide balanced nutrition</li>
-                        <li>Clean litter box daily</li>
-                        <li>Regular grooming</li>
-                        <li>Playtime and exercise</li>
-                    </ul>
-                </div>
-                <div class="col-md-5 text-center">
-                    <iframe width="100%" height="150" src="https://www.youtube.com/embed/VIDEO_ID"
-                        title="Pet Tips Video" allowfullscreen>
-                    </iframe>
-                </div>
-            </div>
-        </div>
-    </section>
+    <!-- ACCORDION -->
+    <div class="container my-5">
+        <div class="accordion" id="petTipsAccordion">
 
-    <!-- DOG CARE TIPS -->
-    <section class="container mb-4">
-        <div class="tip-card">
-            <div class="row align-items-center">
-                <div class="col-md-7">
-                    <h3>🐶 Dog Care Tips</h3>
-                    <ul>
-                        <li>Daily exercise</li>
-                        <li>Basic training</li>
-                        <li>Healthy diet</li>
-                        <li>Regular vet visits</li>
-                    </ul>
-                </div>
-                <div class="col-md-5 text-center">
-                    <iframe width="100%" height="150" src="https://www.youtube.com/embed/VIDEO_ID"
-                        title="Pet Tips Video" allowfullscreen>
-                    </iframe>
-                </div>
-            </div>
-        </div>
-    </section>
+            <!-- CAT -->
+            <div class="accordion-item mb-3 shadow rounded-4 overflow-hidden">
+                <h2 class="accordion-header">
+                    <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#catTips">
+                        &#128049; Cat Care Tips
+                    </button>
+                </h2>
+                <div id="catTips" class="accordion-collapse collapse show" data-bs-parent="#petTipsAccordion">
+                    <div class="accordion-body">
+                        <div class="row align-items-stretch">
+                            <!-- TEXT + IMAGE -->
+                            <div class="col-md-6">
+                                <img src="assets/img/cat-care.jpg" class="img-fluid rounded-4 shadow mb-4 pet-image"
+                                    alt="Cat Care">
+                                <h3 class="fw-bold mb-2">🍽️ Balanced Diet</h3>
+                                <p>Cats need a protein-rich diet to stay active and healthy.</p>
+                                <ul>
+                                    <li>Feed high-quality cat food based on age</li>
+                                    <li>Avoid milk — most cats are lactose intolerant</li>
+                                    <li>Provide fresh water at all times</li>
+                                </ul>
 
-    <!-- BIRD CARE TIPS -->
-    <section class="container mb-5">
-        <div class="tip-card">
-            <div class="row align-items-center">
-                <div class="col-md-7">
-                    <h3>🐦 Bird Care Tips</h3>
-                    <ul>
-                        <li>Clean cage regularly</li>
-                        <li>Provide fresh water</li>
-                        <li>Balanced diet</li>
-                        <li>Mental stimulation</li>
-                    </ul>
-                </div>
-                <div class="col-md-5 text-center">
-                    <iframe width="100%" height="150" src="https://www.youtube.com/embed/VIDEO_ID"
-                        title="Pet Tips Video" allowfullscreen>
-                    </iframe>
+                                <h3 class="fw-bold mt-4 mb-2">🧹 Litter Box Hygiene</h3>
+                                <p>A clean litter box keeps cats comfortable.</p>
+                                <ul>
+                                    <li>Clean daily</li>
+                                    <li>Place in a quiet area</li>
+                                    <li>Use litter that your cat prefers</li>
+                                </ul>
+
+                                <h3 class="fw-bold mt-4 mb-2">🧸 Mental Stimulation & Health</h3>
+                                <ul>
+                                    <li>Provide toys, scratching posts, and climbing areas</li>
+                                    <li>Play with your cat daily</li>
+                                    <li>Annual vet check-ups</li>
+                                    <li>Watch for changes in appetite or behavior</li>
+                                </ul>
+                            </div>
+
+                            <!-- VIDEO -->
+                            <div class="col-md-6 d-flex flex-column justify-content-center">
+                                <div class="ratio ratio-16x9 shadow-lg rounded-4 overflow-hidden">
+                                    <iframe src="https://www.youtube.com/embed/zPOAaDUzVDY?autoplay=1&mute=1"
+                                        title="Cat Care Tips Video" allowfullscreen></iframe>
+                                </div>
+                                <p class="mt-2">
+                                    <i class="fa-solid fa-circle-play me-2"></i>First Time Cat Owners? Watch This Video
+                                </p>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
+
+            <!-- DOG -->
+            <div class="accordion-item mb-3 shadow rounded-4 overflow-hidden">
+                <h2 class="accordion-header">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#dogTips">
+                        &#128054; Dog Care Tips
+                    </button>
+                </h2>
+                <div id="dogTips" class="accordion-collapse collapse" data-bs-parent="#petTipsAccordion">
+                    <div class="accordion-body">
+                        <div class="row align-items-stretch">
+                            <!-- TEXT + IMAGE -->
+                            <div class="col-md-6">
+                                <img src="assets/img/dog-care.jpg" class="img-fluid rounded-4 shadow mb-4 pet-image"
+                                    alt="Dog Care">
+                                <h3 class="fw-bold mb-2">🥣 Proper Nutrition</h3>
+                                <p>Feeding your dog the right food keeps them healthy.</p>
+                                <ul>
+                                    <li>Choose food based on age and size</li>
+                                    <li>Avoid chocolate, onions, grapes, and salty food</li>
+                                    <li>Always provide clean, fresh water</li>
+                                </ul>
+
+                                <h3 class="fw-bold mt-4 mb-2">🚶 Daily Exercise</h3>
+                                <p>Regular exercise keeps dogs fit and happy.</p>
+                                <ul>
+                                    <li>Walk once or twice a day</li>
+                                    <li>Play fetch or tug-of-war</li>
+                                    <li>Reduces stress and obesity</li>
+                                </ul>
+
+                                <h3 class="fw-bold mt-4 mb-2">🩺 Health & Grooming</h3>
+                                <ul>
+                                    <li>Schedule vet check-ups</li>
+                                    <li>Keep vaccinations up to date</li>
+                                    <li>Bathe using pet-safe shampoo</li>
+                                    <li>Brush fur, trim nails, clean ears</li>
+                                </ul>
+                            </div>
+
+                            <!-- VIDEO -->
+                            <div class="col-md-6 d-flex flex-column justify-content-center">
+                                <div class="ratio ratio-16x9 shadow-lg rounded-4 overflow-hidden">
+                                    <iframe src="https://www.youtube.com/embed/xpzjtHPQpOk?autoplay=1&mute=1"
+                                        title="Dog Training Tips" allowfullscreen></iframe>
+                                </div>
+                                <p class="mt-2">
+                                    <i class="fa-solid fa-circle-play me-2"></i>Watch Basic Dog Training Tips
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- BIRD -->
+            <div class="accordion-item mb-3 shadow rounded-4 overflow-hidden">
+                <h2 class="accordion-header">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#birdTips">
+                        &#128038; Bird Care Tips
+                    </button>
+                </h2>
+                <div id="birdTips" class="accordion-collapse collapse" data-bs-parent="#petTipsAccordion">
+                    <div class="accordion-body">
+                        <div class="row align-items-stretch">
+                            <!-- TEXT + IMAGE -->
+                            <div class="col-md-6">
+                                <img src="assets/img/bird-care.jpg" class="img-fluid rounded-4 shadow mb-4 pet-image"
+                                    alt="Bird Care">
+                         <h3 class="fw-bold mb-2"> Birds – Complete Care Guide</h3>
+
+                                <p class="fw-bold">1. Cage & Environment:</p>
+                                Birds need space to stretch wings and fly short distances. Choose a cage that is at
+                                least twice the wingspan of your bird in every direction. Place perches of varying
+                                diameters to exercise their feet and prevent arthritis. Avoid placing cages in direct
+                                sunlight or drafty areas.<br>
+
+                                <p class="fw-bold">2. Diet & Nutrition:</p>
+                                A varied diet keeps birds healthy. Include high-quality pellets, fresh fruits (apple,
+                                berries, kiwi), vegetables (carrots, spinach, broccoli), and seeds in moderation. Avoid
+                                avocado, chocolate, caffeine, alcohol, and salty foods—they are toxic. Provide fresh
+                                water daily.<br>
+
+                                <p class="fw-bold">3. Mental Stimulation & Socialization:</p>
+                                Birds are intelligent and can get bored. Offer toys, mirrors, bells, swings, and puzzle
+                                feeders. Spend at least 30 minutes daily interacting for social species like parrots.
+                                Rotate toys to keep them interesting.
+
+                                <p class="fw-bold">4. Hygiene & Health:</p>
+                                Clean the cage weekly, and sanitize food and water dishes daily. Watch for changes in
+                                droppings, feather condition, appetite, or behavior, as birds often hide illness until
+                                it becomes serious. Schedule regular vet checkups with an avian vet.
+
+                                <p class="fw-bold">5. Exercise:</p>
+                                Allow supervised out-of-cage time in a safe area to fly, stretch, and explore. This
+                                prevents obesity and supports mental well-being.
+
+                            <!-- VIDEO -->
+                            <div class="col-md-6 d-flex flex-column justify-content-center">
+                                <div class="ratio ratio-16x9 shadow-lg rounded-4 overflow-hidden">
+                                    <iframe src="https://www.youtube.com/embed/f9dsQHbgaa4?autoplay=1&mute=1"
+                                        title="Bird Care Tips" allowfullscreen></iframe>
+                                </div>
+                                <p class="mt-2">
+                                    <i class="fa-solid fa-circle-play me-2"></i>Watch How to Care for Your Bird
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
         </div>
-    </section>
-
-
-
-
-
-
-
-
-
-
-
-
+    </div>
 
 
     <!--Boostrap JS-->

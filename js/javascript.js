@@ -187,37 +187,33 @@ function PetEvent(eventName, location, date, time, description, social, poster) 
 }
 
 // event.html
-/**
- * PART 1: THE DATA OBJECT
- * This array acts as your "database". 
- * It stores the details for all 12 events in one place.
- */
+// data object(stores event details)
 const allEvents = [
-    { 
-        id: "e1", 
-        title: "Golden Meetup", 
-        img: "images/poster7.png", 
+    {
+        id: "e1",
+        title: "Golden Meetup",
+        img: "images/poster7.png",
         date: "Oct 25, 2026",
         location: "Central Park",
         description: "A wonderful gathering for Golden Retrievers and their owners. Activities include a fetch competition and professional pet photography."
     },
-    { 
-        id: "e2", 
-        title: "Cat Expo", 
-        img: "images/poster2.png", 
+    {
+        id: "e2",
+        title: "Cat Expo",
+        img: "images/poster2.png",
         date: "Nov 05, 2026",
         location: "Convention Center",
         description: "Explore the latest in feline care, from organic treats to high-tech toys. Featuring a guest lecture on cat behavior."
     },
-    { 
-        id: "e3", 
-        title: "Rabbit Hop", 
-        img: "images/poster3.png", 
+    {
+        id: "e3",
+        title: "Rabbit Hop",
+        img: "images/poster3.png",
         date: "Nov 12, 2026",
         location: "Community Garden",
         description: "Bring your bunnies for a fun hopping course! Experts will be on site to discuss rabbit nutrition and dental health."
     },
-    // Repeat this pattern to create a total of 12 events (e4, e5... e12)
+
     { id: "e4", title: "Puppy Yoga", img: "images/poster4.png", date: "Dec 01, 2026", location: "Yoga Studio", description: "Relax with your puppy in this beginner-friendly yoga session." },
     { id: "e5", title: "Bird Workshop", img: "images/poster5.jpg", date: "Dec 05, 2026", location: "Avian Center", description: "Learn about the social needs of parrots and cockatiels." },
     { id: "e6", title: "Hamster Race", img: "images/poster6.jpg", date: "Dec 10, 2026", location: "Pet Store", description: "The fastest hamsters in the city compete for prizes!" },
@@ -229,8 +225,7 @@ const allEvents = [
     { id: "e12", title: "Vet Q&A", img: "images/poster12.png", date: "Feb 10, 2026", location: "Online", description: "Ask our resident veterinarian anything about pet health." }
 ];
 
-/**
- * PART 2: DISPLAYING THE GALLERY (Sketch 1)
+/*
  * This function loops through the array and builds the 12 cards in HTML.
  */
 function displayEvents() {
@@ -256,15 +251,14 @@ function displayEvents() {
     container.innerHTML = htmlContent;
 }
 
-/**
- * PART 3: THE POPUP MODAL (Sketch 2)
- * This function triggers when a card is clicked.
- * It finds the right description and "injects" it into the Modal.
- */
+// tips
+//This function triggers when a card is clicked.
+//It finds the right description and "injects" it into the Modal.
+
 function openEvent(eventId) {
     // 1. Find the specific event data using the unique ID
     const event = allEvents.find(e => e.id === eventId);
-    
+
     // 2. Reference the modal area from your HTML
     const modalArea = document.getElementById('modal-content-area');
 
@@ -310,8 +304,66 @@ function openEvent(eventId) {
     }
 }
 
-/**
- * PART 4: STARTUP
- * Tells the browser to run 'displayEvents' as soon as the page is ready.
- */
+//Tells the browser to run 'displayEvents' as soon as the page is ready.
 document.addEventListener("DOMContentLoaded", displayEvents);
+
+
+function playBirdSound(mood) {
+    const feedback = document.getElementById('audio-feedback');
+    let audioFile = "";
+
+    if (mood === 'happy') {
+        feedback.innerHTML = "🎶 Playing: Soft whistling. This means your bird is relaxed!";
+        feedback.style.color = "#198754"; // Green
+        audioFile = "https://www.soundjay.com/nature/sounds/canary-chirping-01.mp3"; // Path to your sound file
+    } else {
+        feedback.innerHTML = "⚠️ Playing: Sharp screeching. This means the bird is stressed!";
+        feedback.style.color = "#dc3545"; // Red
+        audioFile = "https://www.soundjay.com/nature/sounds/bird-pigeon-01.mp3"; // Path to your sound file
+    }
+
+    // This is the part that actually plays the sound
+    if (audioFile) {
+        const sound = new Audio(audioFile);
+        sound.play().catch(error => {
+            console.log("Playback failed. Make sure the file exists in assets/audio/ folder.");
+        });
+    }
+}
+
+// profile
+const editBtn = document.getElementById('edit-btn');
+const cancelBtn = document.getElementById('cancel-btn');
+const saveSection = document.getElementById('save-section');
+const inputs = document.querySelectorAll('.profile-input');
+const form = document.getElementById('profile-form');
+
+// Function to enable editing
+editBtn.addEventListener('click', () => {
+    inputs.forEach(input => input.disabled = false); // Enable inputs
+    saveSection.classList.remove('d-none'); // Show Save/Cancel buttons
+    editBtn.classList.add('d-none'); // Hide Edit button
+    inputs[0].focus(); // Put cursor in the first box
+});
+
+// Function to cancel editing (Reset)
+cancelBtn.addEventListener('click', () => {
+    inputs.forEach(input => input.disabled = true); // Lock inputs
+    saveSection.classList.add('d-none'); // Hide Save/Cancel buttons
+    editBtn.classList.remove('d-none'); // Show Edit button
+});
+
+// Function to handle the "Submit"
+form.addEventListener('submit', (e) => {
+    e.preventDefault(); // Prevent page refresh
+    
+    // In a real project, you would send this data to your database (SQL) here.
+    const newName = document.getElementById('userName').value;
+    
+    alert("Profile updated successfully for: " + newName);
+    
+    // Lock the form again
+    inputs.forEach(input => input.disabled = true);
+    saveSection.classList.add('d-none');
+    editBtn.classList.remove('d-none');
+});
