@@ -329,3 +329,23 @@ body {
 .tip-card li {
     margin-bottom: 8px;
 }
+
+
+/*PET FINDER CSS*/
+
+/* Ensure the card body handles the flex spacing well */
+.card-body p {
+    margin-bottom: 0.5rem;
+}
+
+.missing-header-dark {
+    background: linear-gradient(180deg, #b30000 0%, #7a0000 100%);
+    border-bottom: 3px solid #4d0000;
+    box-shadow: inset 0px -10px 20px rgba(0,0,0,0.2);
+}
+
+.massive-text {
+    font-size: 3rem; /* Adjust this to fit your screen */
+    font-weight: 900;
+    text-shadow: 2px 2px 5px rgba(0,0,0,0.7);
+}

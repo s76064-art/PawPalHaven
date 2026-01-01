@@ -310,6 +310,14 @@ function openEvent(eventId) {
     }
 }
 
+//PET FINDER PART 
+function openMap(location) {
+    const encodedLocation = encodeURIComponent(location);
+    window.open(`https://www.google.com/maps/search/?api=1&query=${encodedLocation}`, '_blank');
+}
+
+
+
 /**
  * PART 4: STARTUP
  * Tells the browser to run 'displayEvents' as soon as the page is ready.
