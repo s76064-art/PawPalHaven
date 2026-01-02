@@ -165,81 +165,103 @@
         </section>
 
         <!--Adoption-->
-        <section class="container-fluid bg-light-2 px-0 py-1">
-            <div class="d-flex  justify-content-center justify-content-lg-end">
-                <h1 class="bg-green-1 bevel-border-bl">Adopt A Pet</h1>
+        <section class="container-fluid bg-light-2 px-0 py-1 pt-0">
+            <div class="d-flex justify-content-center justify-content-lg-end bevel-border-bl p-0 sub-header-left">
+                <h1 class="bg-green-1 bevel-border-bl mb-0 text-center">Adopt A Pet</h1>
             </div>
 
             <div class="container-lg my-lg-4 my-0 px-0">
 
                 <!-- Slider Wrapper -->
-                <div class="custom-slider event-slider bg-green-2">
+                <div class="custom-slider pet-slider">
 
                     <!-- All slides -->
                     <div class="slides">
-                        <!-- Slide -->
-                        <div class="row g-3 d-flex align-items-center justify-content-center">
+                        <div class="slide">
+                            <div class="row g-5 justify-content-center p-3">
+                                <div class="col-md-4 col-sm-6">
+                                    <div class="pet-card bg-light bevel-border-1 overflow-hidden">
+                                        <!--Pet Name-->
+                                        <h3 class="pet-name text-center bg-green-1 p-2 text-white">Snowy</h3>
 
-                            <!-- Card 1 -->
-                            <div class="col-md-4 col-sm-6 col-auto ">
-                                <div class="jumbotron bg-light p-3">
-                                    <h3 class="mb-2">Snowy</h3>
+                                        <div class="jumbotron p-2 w-100">
 
-                                    <div class="img-container h-100 mb-2">
-                                        <img src="assets/img/cat.png" alt="Pet Cat" class="img-fluid w-100">
+                                            <!--Pet Image-->
+                                            <div class="container-fluid d-flex justify-content-center mb-4">
+                                                <div class="pet-img">
+                                                    <img src="assets/img/cat.png" class="img-fluid" alt="Snowy">
+                                                </div>
+                                            </div>
+
+                                            <!--Pet info-->
+                                            <div class="container-fluid text-start text-lg-center">
+                                                <div class="row mb-1">
+                                                    <div class="col-xl-6 col-md-12 pet-label"><strong>Species:</strong>
+                                                        [Species]</div>
+                                                    <div class="col-xl-6  col-sm-12 pet-label"><strong>Age:</strong>
+                                                        [Age]
+                                                    </div>
+                                                    <div class="col-xl-6  col-md-12 pet-label"><strong>Gender:</strong>
+                                                        [Gender]</div>
+                                                    <div class="col-xl-6  col-md-12 pet-label"><strong>Color:</strong>
+                                                        [Color]</div>
+                                                </div>
+                                            </div>
+
+                                        </div>
+
+                                        <!--Contact-->
+                                        <div class="container-fluid mt-3 bg-green-3 p-0">
+                                            <h5 class="p-2 bg-green-1 text-white text-center">Contact</h5>
+
+                                            <div class="text-center mb-1"><i class="fa-solid fa-phone"></i>: 000-0000000
+                                            </div>
+
+                                            <div
+                                                class="d-flex justify-content-center align-items-center p-3 social-font">
+                                                <i class="fa-brands fa-facebook fa-xl mx-2"></i>
+                                                <i class="fa-brands fa-youtube fa-xl mx-2"></i>
+                                                <i class="fa-brands fa-instagram fa-xl mx-2"></i>
+                                                <i class="fa-brands fa-tiktok fa-xl mx-2"></i>
+                                                <i class="fa-brands fa-twitter fa-xl mx-2"></i>
+                                                <i class="fa-regular fa-map fa-xl mx-2"
+                                                    onclick="openMapModal('5.352468, 103.099591')"></i>
+                                            </div>
+                                        </div>
+
                                     </div>
-
-                                    <ul class="list-unstyled mb-0">
-                                        <li><strong>Species:</strong> Cat</li>
-                                        <li><strong>Color:</strong> White</li>
-                                        <li><strong>Gender:</strong> Female</li>
-                                    </ul>
                                 </div>
-                            </div>
 
-                            <!-- Card 2 -->
-                            <div class="col-md-4 col-sm-6 col-auto">
-                                <div class="jumbotron bg-light p-3">
-                                    <h3 class="mb-2">Buddy</h3>
-
-                                    <div class="img-container h-100 mb-2">
-                                        <img src="assets/img/dog.png" alt="Pet Dog" class="img-fluid w-100">
-                                    </div>
-
-                                    <ul class="list-unstyled mb-0">
-                                        <li><strong>Species:</strong> Dog</li>
-                                        <li><strong>Color:</strong> Brown</li>
-                                        <li><strong>Gender:</strong> Male</li>
-                                    </ul>
-                                </div>
-                            </div>
-
-                            <!-- Card 3 -->
-                            <div class="col-md-4 col-sm-6 col-auto">
-                                <div class="jumbotron bg-light p-3">
-                                    <h3 class="mb-2">Sunny</h3>
-
-                                    <div class="img-container h-100 mb-2">
-                                        <img src="assets/img/bird.png" alt="Pet Bird" class="img-fluid w-100">
-                                    </div>
-
-                                    <ul class="list-unstyled mb-0">
-                                        <li><strong>Species:</strong> Bird</li>
-                                        <li><strong>Color:</strong> Yellow</li>
-                                        <li><strong>Gender:</strong> Female</li>
-                                    </ul>
-                                </div>
                             </div>
 
                         </div>
                     </div>
+
+
+                    <!-- Dots -->
+                    <div class="dots"></div>
                 </div>
 
-                <!-- Dots -->
-                <div class="dots"></div>
+                <!-- Bootstrap Modal -->
+                <div class="modal fade" id="mapModal" tabindex="-1" aria-labelledby="mapModalLabel" aria-hidden="true">
+                    <div class="modal-dialog modal-lg modal-dialog-centered">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="mapModalLabel">Pet Location</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                    aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body p-0">
+                                <iframe id="mapFrame"
+                                    src="https://www.google.com/maps?q=Pet+Adoption+Center+Kuala+Lumpur&output=embed"
+                                    width="100%" height="400" style="border:0;" allowfullscreen="" loading="lazy">
+                                </iframe>
+                            </div>
+                        </div>
+                    </div>
+                </div>
 
-            </div>
-            </div>
+
         </section>
 
 
