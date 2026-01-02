@@ -67,13 +67,33 @@ class SlideShow {
     }
 }
 
+//Functions that should be run on homepage
+function homepageEvent(page) {
+    if (page === "index.html") {
+        //showUpcomingPetEvent();
+        messageCycle(page);
+
+        //Start slide show
+        new SlideShow(".event-slider", 10000);
+
+        new SlideShow(".pet-slider", 5000);
+
+    }
+}
+
+//Functions that should be run on event page
+function eventPage(page) {
+    if (page === "event.html") {
+        displayEvents();
+    }
+}
+
 
 document.addEventListener("DOMContentLoaded", function () {
-    //showUpcomingPetEvent();
-    messageCycle();
+    const page = window.location.pathname.split("/").pop();
 
-    //Start slide show
-    new SlideShow(".event-slider", 10000);
+    homepageEvent(page);
+    eventPage(page);
 });
 
 
@@ -186,6 +206,20 @@ function PetEvent(eventName, location, date, time, description, social, poster) 
     this.poster = poster;
 }
 
+//Open map
+function openMapModal(location) {
+    const mapUrl = `https://www.google.com/maps?q=${encodeURIComponent(location)}&output=embed`;
+    document.getElementById("mapFrame").src = mapUrl;
+    const mapModal = new bootstrap.Modal(document.getElementById('mapModal'));
+    mapModal.show();
+}
+
+//Close map when not use
+document.getElementById('mapModal').addEventListener('hidden.bs.modal', function () {
+    document.getElementById('mapFrame').src = "";
+})
+
+
 // event.html
 /**
  * PART 1: THE DATA OBJECT
@@ -193,26 +227,26 @@ function PetEvent(eventName, location, date, time, description, social, poster) 
  * It stores the details for all 12 events in one place.
  */
 const allEvents = [
-    { 
-        id: "e1", 
-        title: "Golden Meetup", 
-        img: "images/poster7.png", 
+    {
+        id: "e1",
+        title: "Golden Meetup",
+        img: "images/poster7.png",
         date: "Oct 25, 2026",
         location: "Central Park",
         description: "A wonderful gathering for Golden Retrievers and their owners. Activities include a fetch competition and professional pet photography."
     },
-    { 
-        id: "e2", 
-        title: "Cat Expo", 
-        img: "images/poster2.png", 
+    {
+        id: "e2",
+        title: "Cat Expo",
+        img: "images/poster2.png",
         date: "Nov 05, 2026",
         location: "Convention Center",
         description: "Explore the latest in feline care, from organic treats to high-tech toys. Featuring a guest lecture on cat behavior."
     },
-    { 
-        id: "e3", 
-        title: "Rabbit Hop", 
-        img: "images/poster3.png", 
+    {
+        id: "e3",
+        title: "Rabbit Hop",
+        img: "images/poster3.png",
         date: "Nov 12, 2026",
         location: "Community Garden",
         description: "Bring your bunnies for a fun hopping course! Experts will be on site to discuss rabbit nutrition and dental health."
@@ -264,7 +298,7 @@ function displayEvents() {
 function openEvent(eventId) {
     // 1. Find the specific event data using the unique ID
     const event = allEvents.find(e => e.id === eventId);
-    
+
     // 2. Reference the modal area from your HTML
     const modalArea = document.getElementById('modal-content-area');
 
@@ -316,34 +350,4 @@ function openMap(location) {
     window.open(`https://www.google.com/maps/search/?api=1&query=${encodedLocation}`, '_blank');
 }
 
-/*CONTOH PET ADOPT*/
-function showDetails(name, species, age, gender, desc, imgUrl) {
-        const detailView = document.getElementById('detail-view');
-        const detailInfoSection = document.querySelector('.detail-info');
 
-        // 1. Set the content
-        document.getElementById('detail-name').innerText = name;
-        document.getElementById('detail-species').innerText = species;
-        document.getElementById('detail-age').innerText = age;
-        document.getElementById('detail-gender').innerText = gender;
-        document.getElementById('detail-desc').innerText = desc;
-        document.getElementById('detail-img').src = imgUrl;
-
-        // 2. Display the container
-        detailView.style.display = 'block';
-
-        // 3. Trigger Animation (Reset it first if already running)
-        detailInfoSection.classList.remove('fade-in-left');
-        void detailInfoSection.offsetWidth; // Magic line to restart CSS animation
-        detailInfoSection.classList.add('fade-in-left');
-
-        // 4. Smooth scroll to the detail view
-        window.scrollTo({ top: 0, behavior: 'smooth' });
-    }
-
-
-/**
- * PART 4: STARTUP
- * Tells the browser to run 'displayEvents' as soon as the page is ready.
- */
-document.addEventListener("DOMContentLoaded", displayEvents);
