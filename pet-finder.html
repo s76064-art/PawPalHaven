@@ -17,23 +17,24 @@
 
 <body>
     <!-- Navbar items -->
+     <nav class="navbar navbar-expand-lg fixed-top" id="nav-bar">
     <div class="collapse navbar-collapse" id="navbarNavDropdown">
         <ul class="navbar-nav ms-auto">
 
             <li class="nav-item">
-                <a class="nav-link active" href="#">Home</a>
+                <a class="nav-link active" href="index.html">Home</a>
             </li>
 
             <li class="nav-item">
-                <a class="nav-link " href="#">Adopt Pets</a>
+                <a class="nav-link " href="adpot-pet.html">Adopt Pets</a>
             </li>
 
             <li class="nav-item">
-                <a class="nav-link " href="#">Pet Finder</a>
+                <a class="nav-link " href="pet-finder.html">Pet Finder</a>
             </li>
 
             <li class="nav-item">
-                <a class="nav-link " href="#">Events</a>
+                <a class="nav-link " href="event.html">Events</a>
             </li>
             <!-- Dropdown -->
             <li class="nav-item dropdown">
@@ -55,125 +56,269 @@
 
         </ul>
     </div>
-    </div>
     </nav>
 
     <section class="container-fluid py-5" id="pet-finder">
-    <div class="sub-header">
-        <h1>Pet Finder</h1>
-    </div>
+        <div class="sub-header">
+            <h1>Pet Finder</h1>
+        </div>
 
-    <div class="container mt-4">
-        <div class="row g-3 mb-5 p-4 shadow-sm rounded border bg-white align-items-center">
-            <div class="col-md-6">
-                <div class="input-group">
-                    <span class="input-group-text bg-white border-end-0"><i class="fa-solid fa-magnifying-glass"></i></span>
-                    <input type="text" class="form-control border-start-0" placeholder="Search by name, breed or location...">
+        <div class="container mt-4">
+            <div class="row g-3 mb-5 p-4 shadow-sm rounded border bg-white align-items-center">
+                <div class="col-md-6">
+                    <div class="input-group">
+                        <span class="input-group-text bg-white border-end-0"><i
+                                class="fa-solid fa-magnifying-glass"></i></span>
+                        <input type="text" class="form-control border-start-0"
+                            placeholder="Search by name, breed or location...">
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <select class="form-select">
+                        <option selected>Sort by Date</option>
+                        <option>Newest First</option>
+                        <option>Oldest First</option>
+                    </select>
+                </div>
+                <!--Button report lost pet-->
+                <div class="col-md-3">
+                    <button class="btn btn-danger w-100" data-bs-toggle="modal" data-bs-target="#reportLostModal">
+                        <i class="fa-solid fa-bullhorn"></i> Report Lost Pet
+                    </button>
                 </div>
             </div>
-            <div class="col-md-3">
-                <select class="form-select">
-                    <option selected>Sort by Date</option>
-                    <option>Newest First</option>
-                    <option>Oldest First</option>
-                </select>
-            </div>
-            <div class="col-md-3">
-                <button class="btn btn-danger w-100" data-bs-toggle="modal" data-bs-target="#reportLostModal">
-                    <i class="fa-solid fa-bullhorn"></i> Report Lost Pet
+            <!--End Of Navigation-->
+
+            <div class="row row-cols-1 row-cols-md-3 g-4">
+                <!------------------------------------------------------------------------------------------------------------------------------------>
+
+                <div class="col">
+                    <div class="card h-100 border-0 shadow-sm overflow-hidden">
+
+                        <div class="missing-header-dark text-white text-center">
+                            <h1 class="massive-text mb-0">MISSING</h1>
+                        </div>
+
+                        <div class="position-relative">
+                            <img src="https://images.unsplash.com/photo-1543466835-00a7907e9de1?auto=format&fit=crop&w=500&q=80"
+                                class="card-img-top" alt="Lost Pet"
+                                style="height: 250px; width: 100%; object-fit: cover;">
+
+                            <!-- <span class="badge bg-warning text-dark position-absolute bottom-0 start-0 m-3 p-2 shadow-sm fw-bold">
+                <i class="fa-solid fa-hand-holding-dollar"></i> REWARD OFFERED
+            </span> -->
+                        </div>
+
+                        <div class="card-body">
+                            <h4 class="card-title fw-bold text-dark mb-1">Buddy</h4>
+                            <p class="mb-2 text-secondary"><strong>Species:</strong> Beagel</p>
+
+                            <div class="d-flex align-items-center justify-content-between">
+                                <span>
+                                    <i class="fa-solid fa-location-dot text-danger"></i>
+                                    <a href="javascript:void(0)" onclick="openMap('Bukit Bintang')"
+                                        class="text-decoration-none text-muted fw-semibold">
+                                        Bukit Bintang, KL
+                                    </a>
+                                </span>
+                            </div>
+
+                            <p class="text-muted small mt-1">
+                                <i class="fa-regular fa-calendar-check"></i> <strong>Last Seen:</strong> Oct 24th, 2024
+                            </p>
+
+                            <button class="btn btn-success w-100 py-2 fw-bold mt-3">
+                                Contact Owner
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <!------------------------------------------------------------------------------------------------------------------------------------>
+                <!----------------------------------------------- CAT ------------------------------------------------------------------------------------->
+
+                <div class="col">
+                    <div class="card h-100 border-0 shadow-sm overflow-hidden">
+
+                        <div class="missing-header-dark text-white text-center">
+                            <h1 class="massive-text mb-0">MISSING</h1>
+                        </div>
+
+                        <div class="position-relative">
+                            <img src="https://images.unsplash.com/photo-1514888286974-6c03e2ca1dba?auto=format&fit=crop&w=500&q=80"
+                                class="card-img-top" alt="Lost Pet"
+                                style="height: 250px; width: 100%; object-fit: cover;">
+                        </div>
+
+                        <div class="card-body">
+                            <h4 class="card-title fw-bold text-dark mb-1">Mochi</h4>
+                            <p class="mb-2 text-secondary"><strong>Species:</strong> Calico Cat</p>
+
+                            <div class="d-flex align-items-center justify-content-between">
+                                <span>
+                                    <i class="fa-solid fa-location-dot text-danger"></i>
+                                    <a href="javascript:void(0)" onclick="openMap('Bukit Bintang')"
+                                        class="text-decoration-none text-muted fw-semibold">
+                                        Subang Jaya, Selangor
+                                    </a>
+                                </span>
+                            </div>
+
+                            <p class="text-muted small mt-1">
+                                <i class="fa-regular fa-calendar-check"></i> <strong>Last Seen:</strong> Jun 2nd, 2024
+                            </p>
+
+                            <button class="btn btn-success w-100 py-2 fw-bold mt-3">
+                                Contact Owner
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <!------------------------------------------------------------------------------------------------------------------------------------>
+
+
+                <div class="col">
+                    <div class="card h-100 border-0 shadow-sm overflow-hidden">
+
+                        <div class="missing-header-dark text-white text-center">
+                            <h1 class="massive-text mb-0">MISSING</h1>
+                        </div>
+
+                        <div class="position-relative">
+                            <img src="https://images.unsplash.com/photo-1514888286974-6c03e2ca1dba?auto=format&fit=crop&w=500&q=80"
+                                class="card-img-top" alt="Lost Pet" style="height: 250px; object-fit: cover;">
+
+                            <span
+                                class="badge bg-warning text-dark position-absolute bottom-0 start-0 m-3 shadow-sm fw-bold">
+                                REWARD OFFERED
+                            </span>
+                        </div>
+
+                        <div class="card-body">
+                            <h4 class="fw-bold text-dark mb-1">Mochi</h4>
+                            <p class="text-secondary mb-3"><strong>Species:</strong> Calico Cat</p>
+
+                            <div class="d-flex justify-content-between align-items-center mb-1">
+                                <small>
+                                    <i class="fa-solid fa-location-dot text-danger me-1"></i>
+                                    <a href="javascript:void(0)" onclick="openMap('Subang Jaya')"
+                                        class="text-decoration-none text-muted fw-semibold">
+                                        Subang Jaya, Selangor
+                                    </a>
+                                </small>
+                                <button class="btn btn-sm btn-outline-success border-0"
+                                    onclick="openMap('Subang Jaya')">
+                                    <i class="fa-solid fa-map-location-dot fa-lg"></i>
+                                </button>
+                            </div>
+
+                            <p class="text-muted small">
+                                <i class="fa-regular fa-calendar-check me-1"></i> <strong>Last Seen:</strong> Jun 2nd,
+                                2024
+                            </p>
+
+                            <button class="btn btn-primary w-100 py-2 fw-bold mt-2">Contact Owner</button>
+                        </div>
+                    </div>
+                </div>
+<!--oooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo-->
+
+         <div class="col">
+    <div class="card h-100 border-0 shadow-sm overflow-hidden">
+        
+        <div class="missing-header-dark text-white text-center py-2">
+            <h1 class="massive-text mb-0">LOST PET</h1>
+        </div>
+
+        <div class="position-relative">
+            <img src="https://images.unsplash.com/photo-1583511655857-d19b40a7a54e?auto=format&fit=crop&w=500&q=80"
+                 class="card-img-top" alt="Lost Pet" style="height: 250px; object-fit: cover;">
+            
+            <span class="badge bg-warning text-dark position-absolute bottom-0 start-0 m-3 shadow-sm fw-bold">
+                REWARD OFFERED
+            </span>
+        </div>
+
+        <div class="card-body">
+            <h4 class="fw-bold text-dark mb-1">Max</h4>
+            <p class="text-secondary mb-3"><strong>Species:</strong>Poodle Mix</p>
+
+            <div class="d-flex justify-content-between align-items-center mb-1">
+                <small>
+                    <i class="fa-solid fa-location-dot text-danger me-1"></i>
+                    <a href="javascript:void(0)" onclick="openMap('Subang Jaya')" class="text-decoration-none text-muted fw-semibold">
+                        George Town, Penang
+                    </a>
+                </small>
+                <button class="btn btn-sm btn-outline-success border-0" onclick="openMap('Subang Jaya')">
+                    <i class="fa-solid fa-map-location-dot fa-lg"></i>
                 </button>
             </div>
-        </div>
 
-        <div class="row row-cols-1 row-cols-md-3 g-4">
-            
-            <div class="col">
-                <div class="card h-100 border-0 shadow-sm overflow-hidden">
-                    <div class="position-relative">
-                        <img src="https://images.unsplash.com/photo-1543466835-00a7907e9de1?auto=format&fit=crop&w=500&q=80" class="card-img-top" alt="Dog" style="height: 250px; object-fit: cover;">
-                        <span class="badge bg-danger position-absolute top-0 end-0 m-3">LOST</span>
-                    </div>
-                    <div class="card-body">
-                        <h4 class="card-title fw-bold">Buddy</h4>
-                        <p class="text-muted mb-2"><i class="fa-solid fa-location-dot"></i> Bukit Bintang, KL</p>
-                        <p class="mb-1"><strong>Species:</strong> Golden Retriever</p>
-                        <p class="mb-3 text-secondary small">Last seen: 2 days ago</p>
-                        <button class="btn btn-primary w-100 py-2">Contact Owner</button>
-                    </div>
-                </div>
-            </div>
+            <p class="text-muted small">
+                <i class="fa-regular fa-calendar-check me-1"></i> <strong>Last Seen:</strong> Jun 2nd, 2024
+            </p>
 
-            <div class="col">
-                <div class="card h-100 border-0 shadow-sm overflow-hidden">
-                    <div class="position-relative">
-                        <img src="https://images.unsplash.com/photo-1514888286974-6c03e2ca1dba?auto=format&fit=crop&w=500&q=80" class="card-img-top" alt="Cat" style="height: 250px; object-fit: cover;">
-                        <span class="badge bg-danger position-absolute top-0 end-0 m-3">LOST</span>
-                    </div>
-                    <div class="card-body">
-                        <h4 class="card-title fw-bold">Mochi</h4>
-                        <p class="text-muted mb-2"><i class="fa-solid fa-location-dot"></i> Subang Jaya, Selangor</p>
-                        <p class="mb-1"><strong>Species:</strong> Calico Cat</p>
-                        <p class="mb-3 text-secondary small">Last seen: 5 hours ago</p>
-                        <button class="btn btn-primary w-100 py-2">Contact Owner</button>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col">
-                <div class="card h-100 border-0 shadow-sm overflow-hidden">
-                    <div class="position-relative">
-                        <img src="https://images.unsplash.com/photo-1583511655857-d19b40a7a54e?auto=format&fit=crop&w=500&q=80" class="card-img-top" alt="Dog" style="height: 250px; object-fit: cover;">
-                        <span class="badge bg-danger position-absolute top-0 end-0 m-3">LOST</span>
-                    </div>
-                    <div class="card-body">
-                        <h4 class="card-title fw-bold">Max</h4>
-                        <p class="text-muted mb-2"><i class="fa-solid fa-location-dot"></i> George Town, Penang</p>
-                        <p class="mb-1"><strong>Species:</strong> Poodle Mix</p>
-                        <p class="mb-3 text-secondary small">Last seen: 1 week ago</p>
-                        <button class="btn btn-primary w-100 py-2">Contact Owner</button>
-                    </div>
-                </div>
-            </div>
-
-        </div>
-    </div>
-</section>
-
-<div class="modal fade" id="reportLostModal" tabindex="-1" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title fw-bold">Report a Lost Pet</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-            </div>
-            <div class="modal-body">
-                <form id="lostPetForm">
-                    <div class="mb-3">
-                        <label class="form-label">Pet Name</label>
-                        <input type="text" class="form-control" required>
-                    </div>
-                    <div class="mb-3">
-                        <label class="form-label">Species / Breed</label>
-                        <input type="text" class="form-control" placeholder="e.g. Orange Cat">
-                    </div>
-                    <div class="mb-3">
-                        <label class="form-label">Last Seen Location</label>
-                        <input type="text" class="form-control">
-                    </div>
-                    <div class="mb-3">
-                        <label class="form-label">Upload Picture</label>
-                        <input type="file" class="form-control">
-                    </div>
-                    <div class="mb-3">
-                        <label class="form-label">Your Phone Number</label>
-                        <input type="tel" class="form-control" placeholder="01x-xxxxxxx">
-                    </div>
-                    <button type="submit" class="btn btn-primary w-100">Submit Report</button>
-                </form>
-            </div>
+            <button class="btn btn-success w-100 py-2 fw-bold mt-2">Contact Owner</button>
         </div>
     </div>
 </div>
+<!--oooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo-->
+                <div class="col">
+                    <div class="card h-100 border-0 shadow-sm overflow-hidden">
+                        <div class="position-relative">
+                            <img src="https://images.unsplash.com/photo-1583511655857-d19b40a7a54e?auto=format&fit=crop&w=500&q=80"
+                                class="card-img-top" alt="Dog" style="height: 250px; object-fit: cover;">
+                            <span class="badge bg-danger position-absolute top-0 end-0 m-3">LOST</span>
+                        </div>
+                        <div class="card-body">
+                            <h4 class="card-title fw-bold"></h4>
+                            <p class="text-muted mb-2"><i class="fa-solid fa-location-dot"></i> </p>
+                            <p class="mb-1"><strong>Species:</strong> </p>
+                            <p class="mb-3 text-secondary small">Last seen: 1 week ago</p>
+                            <button class="btn btn-primary w-100 py-2">Contact Owner</button>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <div class="modal fade" id="reportLostModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title fw-bold">Report a Lost Pet</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="lostPetForm">
+                        <div class="mb-3">
+                            <label class="form-label">Pet Name</label>
+                            <input type="text" class="form-control" required>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Species / Breed</label>
+                            <input type="text" class="form-control" placeholder="e.g. Orange Cat">
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Last Seen Location</label>
+                            <input type="text" class="form-control">
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Upload Picture</label>
+                            <input type="file" class="form-control">
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Your Phone Number</label>
+                            <input type="tel" class="form-control" placeholder="01x-xxxxxxx">
+                        </div>
+                        <button type="submit" class="btn btn-primary w-100">Submit Report</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <footer class="footer border-top">
         <div class="container text-center">
@@ -181,9 +326,10 @@
         </div>
     </footer>
 
-  <!--Boostrap JS-->
+    <!--Boostrap JS-->
     <script src="js/bootstrap.bundle.min.js"></script>
     <script src="js/javascript.js"></script>
+
 </body>
 
 </html>

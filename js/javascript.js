@@ -304,66 +304,19 @@ function openEvent(eventId) {
     }
 }
 
+
 //Tells the browser to run 'displayEvents' as soon as the page is ready.
-document.addEventListener("DOMContentLoaded", displayEvents);
 
-
-function playBirdSound(mood) {
-    const feedback = document.getElementById('audio-feedback');
-    let audioFile = "";
-
-    if (mood === 'happy') {
-        feedback.innerHTML = "🎶 Playing: Soft whistling. This means your bird is relaxed!";
-        feedback.style.color = "#198754"; // Green
-        audioFile = "https://www.soundjay.com/nature/sounds/canary-chirping-01.mp3"; // Path to your sound file
-    } else {
-        feedback.innerHTML = "⚠️ Playing: Sharp screeching. This means the bird is stressed!";
-        feedback.style.color = "#dc3545"; // Red
-        audioFile = "https://www.soundjay.com/nature/sounds/bird-pigeon-01.mp3"; // Path to your sound file
-    }
-
-    // This is the part that actually plays the sound
-    if (audioFile) {
-        const sound = new Audio(audioFile);
-        sound.play().catch(error => {
-            console.log("Playback failed. Make sure the file exists in assets/audio/ folder.");
-        });
-    }
+//PET FINDER PART 
+function openMap(location) {
+    const encodedLocation = encodeURIComponent(location);
+    window.open(`https://www.google.com/maps/search/?api=1&query=${encodedLocation}`, '_blank');
 }
 
-// profile
-const editBtn = document.getElementById('edit-btn');
-const cancelBtn = document.getElementById('cancel-btn');
-const saveSection = document.getElementById('save-section');
-const inputs = document.querySelectorAll('.profile-input');
-const form = document.getElementById('profile-form');
 
-// Function to enable editing
-editBtn.addEventListener('click', () => {
-    inputs.forEach(input => input.disabled = false); // Enable inputs
-    saveSection.classList.remove('d-none'); // Show Save/Cancel buttons
-    editBtn.classList.add('d-none'); // Hide Edit button
-    inputs[0].focus(); // Put cursor in the first box
-});
 
-// Function to cancel editing (Reset)
-cancelBtn.addEventListener('click', () => {
-    inputs.forEach(input => input.disabled = true); // Lock inputs
-    saveSection.classList.add('d-none'); // Hide Save/Cancel buttons
-    editBtn.classList.remove('d-none'); // Show Edit button
-});
+/**
+ * PART 4: STARTUP
+ * Tells the browser to run 'displayEvents' as soon as the page is ready.
+ */
 
-// Function to handle the "Submit"
-form.addEventListener('submit', (e) => {
-    e.preventDefault(); // Prevent page refresh
-    
-    // In a real project, you would send this data to your database (SQL) here.
-    const newName = document.getElementById('userName').value;
-    
-    alert("Profile updated successfully for: " + newName);
-    
-    // Lock the form again
-    inputs.forEach(input => input.disabled = true);
-    saveSection.classList.add('d-none');
-    editBtn.classList.remove('d-none');
-});

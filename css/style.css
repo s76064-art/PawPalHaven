@@ -1,4 +1,5 @@
 /*Color*/
+
 .bg-green-1 {
     background-color: rgb(0, 146, 0);
 }
@@ -116,8 +117,8 @@
 }
 
 .img-container {
-    height: 40vh;
-    width: 40vh;
+    height: 30vh;
+    width: 30vh;
     background-color: gray;
     margin: auto;
     overflow: hidden;
@@ -202,20 +203,6 @@
 
 
 @media (max-width: 768px) {}
-
-/* event.html */
-/* --- PAGE LAYOUT --- */
-body {
-    /* Pushes content down so it doesn't hide under the fixed navbar */
-    padding-top: 130px !important;
-    background-color: #fcfcfc;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-}
-
-#nav-bar {
-    /* Makes the navbar solid so you can't see text through it while scrolling */
-    background-color: #343a40 !important;
-}
 
 /* --- EVENT CARD (Sketch 1 Styling) --- */
 .event-card {
@@ -420,41 +407,6 @@ body {
     cursor: pointer;
 }
 
-.pet-image:hover {
-    transform: scale(1.05);
-    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.2);
-}
 
-/* ===== RESPONSIVE ===== */
-@media (max-width: 768px) {
-    .accordion-body {
-        padding: 20px 30px !important;
-        font-size: 18px;
-    }
 
-    .accordion-button {
-        font-size: 22px !important;
-        padding: 25px 30px !important;
-    }
 
-    .video-box {
-        height: 220px;
-        font-size: 20px;
-    }
-}
-
-/* profile */
-/* When disabled, remove the border so it looks like plain text */
-.profile-input:disabled {
-    background-color: transparent;
-    border: none;
-    padding-left: 0;
-    color: #212529;
-    font-weight: 500;
-}
-
-/* When enabled, show the standard Bootstrap input box */
-.profile-input:not(:disabled) {
-    background-color: #fff;
-    border: 1px solid #ced4da;
-}
