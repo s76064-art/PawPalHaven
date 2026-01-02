@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--Custom CSS-->
+    <link rel="stylesheet" href="css/style.css">
+    <!--Boostrap CSS-->
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <!--Font awesome-->
+    <script src="https://kit.fontawesome.com/b1605aa887.js" crossorigin="anonymous"></script>
+
+    <link rel="icon" type="image/png" href="assets/img/pet-brand.png">
+    <title>PawPal Haven</title>
+</head>
+
+<body>
+    <!-- Navbar items -->
+    <nav class="navbar navbar-expand-lg fixed-top" id="nav-bar">
+        <div class="collapse navbar-collapse" id="navbarNavDropdown">
+            <ul class="navbar-nav ms-auto">
+
+                <li class="nav-item">
+                    <a class="nav-link active" href="index.html">Home</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link " href="adpot-pet.html">Adopt Pets</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link " href="pet-finder.html">Pet Finder</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link " href="event.html">Events</a>
+                </li>
+                <!-- Dropdown -->
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button"
+                        data-bs-toggle="dropdown">
+                        Tips
+                    </a>
+
+                    <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                        <li><a class="dropdown-item" href="#">Cats</a></li>
+                        <li><a class="dropdown-item" href="#">Dogs</a></li>
+                        <li><a class="dropdown-item" href="#">Birds</a></li>
+                    </ul>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Profile</a>
+                </li>
+
+            </ul>
+        </div>
+    </nav>
+    <!--End Of Navigation-->
+
+<div class="container py-5">
+    <h1 class="fw-bold mb-2">Available Pets</h1>
+    <p class="text-muted mb-5">Click a pet to see their full story!</p>
+
+    <div id="detail-view" class="mb-5">
+        <div class="row g-0">
+            <div class="col-md-4">
+                <img id="detail-img" src="" class="detail-img" alt="Pet">
+            </div>
+            <div class="col-md-8 detail-info fade-in-left">
+                <h2 id="detail-name" class="fw-bold text-primary"></h2>
+                <p id="detail-desc" class="text-muted my-3"></p>
+                
+                <div class="row mb-4">
+                    <div class="col-4"><strong>Species:</strong> <br><span id="detail-species"></span></div>
+                    <div class="col-4"><strong>Age:</strong> <br><span id="detail-age"></span></div>
+                    <div class="col-4"><strong>Gender:</strong> <br><span id="detail-gender"></span></div>
+                </div>
+
+                <div class="d-flex align-items-center justify-content-between border-top pt-4">
+                    <div class="social-links">
+                        <a href="#" class="social-btn"><i class="bi bi-facebook"></i></a>
+                        <a href="#" class="social-btn"><i class="bi bi-instagram"></i></a>
+                        <a href="#" class="social-btn"><i class="bi bi-whatsapp"></i></a>
+                    </div>
+                    <button class="btn btn-primary btn-lg px-5 shadow rounded-pill">Adopt Now</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row g-4">
+        <div class="col-md-3">
+            <div class="card pet-card" onclick="showDetails('Buddy', 'Golden Retriever', '2 Years', 'Male', 'Buddy is a high-energy dog who loves swimming and playing fetch. He is looking for an active family.', 'https://images.unsplash.com/photo-1552053831-71594a27632d?auto=format&fit=crop&w=500')">
+                <img src="https://images.unsplash.com/photo-1552053831-71594a27632d?auto=format&fit=crop&w=500" class="card-img-top">
+                <div class="card-body">
+                    <h5 class="fw-bold mb-0">Buddy</h5>
+                    <small class="text-muted">Golden Retriever</small>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-3">
+            <div class="card pet-card" onclick="showDetails('Luna', 'Persian Cat', '1 Year', 'Female', 'Luna is a calm and affectionate cat who enjoys quiet afternoons. She is perfect for apartment living.', 'https://images.unsplash.com/photo-1514888286974-6c03e2ca1dba?auto=format&fit=crop&w=500')">
+                <img src="https://images.unsplash.com/photo-1514888286974-6c03e2ca1dba?auto=format&fit=crop&w=500" class="card-img-top">
+                <div class="card-body">
+                    <h5 class="fw-bold mb-0">Luna</h5>
+                    <small class="text-muted">Persian Cat</small>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-3">
+            <div class="card pet-card" onclick="showDetails('Charlie', 'Rabbit', '6 Months', 'Male', 'Charlie is a curious little bunny who loves carrots and exploring garden patches.', 'https://images.unsplash.com/photo-1585110396000-c9ffd4e4b308?auto=format&fit=crop&w=500')">
+                <img src="https://images.unsplash.com/photo-1585110396000-c9ffd4e4b308?auto=format&fit=crop&w=500" class="card-img-top">
+                <div class="card-body">
+                    <h5 class="fw-bold mb-0">Charlie</h5>
+                    <small class="text-muted">Rabbit</small>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
