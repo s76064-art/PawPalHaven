@@ -316,6 +316,30 @@ function openMap(location) {
     window.open(`https://www.google.com/maps/search/?api=1&query=${encodedLocation}`, '_blank');
 }
 
+/*CONTOH PET ADOPT*/
+function showDetails(name, species, age, gender, desc, imgUrl) {
+        const detailView = document.getElementById('detail-view');
+        const detailInfoSection = document.querySelector('.detail-info');
+
+        // 1. Set the content
+        document.getElementById('detail-name').innerText = name;
+        document.getElementById('detail-species').innerText = species;
+        document.getElementById('detail-age').innerText = age;
+        document.getElementById('detail-gender').innerText = gender;
+        document.getElementById('detail-desc').innerText = desc;
+        document.getElementById('detail-img').src = imgUrl;
+
+        // 2. Display the container
+        detailView.style.display = 'block';
+
+        // 3. Trigger Animation (Reset it first if already running)
+        detailInfoSection.classList.remove('fade-in-left');
+        void detailInfoSection.offsetWidth; // Magic line to restart CSS animation
+        detailInfoSection.classList.add('fade-in-left');
+
+        // 4. Smooth scroll to the detail view
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
 
 
 /**
