@@ -67,13 +67,33 @@ class SlideShow {
     }
 }
 
+//Functions that should be run on homepage
+function homepageEvent(page) {
+    if (page === "index.html") {
+        //showUpcomingPetEvent();
+        messageCycle(page);
+
+        //Start slide show
+        new SlideShow(".event-slider", 10000);
+
+        new SlideShow(".pet-slider", 5000);
+
+    }
+}
+
+//Functions that should be run on event page
+function eventPage(page) {
+    if (page === "event.html") {
+        displayEvents();
+    }
+}
+
 
 document.addEventListener("DOMContentLoaded", function () {
-    //showUpcomingPetEvent();
-    messageCycle();
+    const page = window.location.pathname.split("/").pop();
 
-    //Start slide show
-    new SlideShow(".event-slider", 10000);
+    homepageEvent(page);
+    eventPage(page);
 });
 
 
@@ -185,6 +205,20 @@ function PetEvent(eventName, location, date, time, description, social, poster) 
     this.social = social;
     this.poster = poster;
 }
+
+//Open map
+function openMapModal(location) {
+    const mapUrl = `https://www.google.com/maps?q=${encodeURIComponent(location)}&output=embed`;
+    document.getElementById("mapFrame").src = mapUrl;
+    const mapModal = new bootstrap.Modal(document.getElementById('mapModal'));
+    mapModal.show();
+}
+
+//Close map when not use
+document.getElementById('mapModal').addEventListener('hidden.bs.modal', function () {
+    document.getElementById('mapFrame').src = "";
+})
+
 
 // event.html
 // data object(stores event details)
@@ -313,10 +347,4 @@ function openMap(location) {
     window.open(`https://www.google.com/maps/search/?api=1&query=${encodedLocation}`, '_blank');
 }
 
-
-
-/**
- * PART 4: STARTUP
- * Tells the browser to run 'displayEvents' as soon as the page is ready.
- */
 
