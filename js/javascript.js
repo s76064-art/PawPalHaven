@@ -366,7 +366,7 @@ const allEvents =
         {
             id: "e1",
             title: "Golden Paws Meetup",
-            img: "images/golden_meetup.png",
+            img: "images/poster7.png",
             date: "Jan 25, 2026",
             location: "Pavilion Bukit Jalil",
             description: "A wonderful gathering for Golden Retrievers and their owners. Activities include a fetch competition and professional pet photography."
@@ -374,7 +374,7 @@ const allEvents =
         {
             id: "e2",
             title: "Puppy Yoga",
-            img: "images/puppy_yoga.png",
+            img: "images/poster13.jpg",
             date: "Jan 20, 2026",
             location: "Sunny Meadows Park, 456 Bark Blvd",
             description: "Stretch, Snuggle & Smile! A beginner-friendly yoga flow with adorable pups. This is a local shelter fundraiser; please bring your own mat and water."
@@ -383,7 +383,7 @@ const allEvents =
             id: "e3",
             title: "Paws & Whiskers Pet Fest",
             img: "images/poster2.png",
-             date: "Oct 14, 2026",
+            date: "Oct 14, 2026",
             location: "Green Meadows Park, 1234 Barkside Lane",
             description: "Join us for a day of pet games, adoption meets, and tasty treats! A perfect social event for pets and their people."
         },
@@ -414,7 +414,7 @@ const allEvents =
         {
             id: "e7",
             title: "Dog Health Tips",
-            img: "images/dog_health.png",
+            img: "images/poster4.jpg",
             date: "Feb 25, 2026",
             location: "Larana Pet Shop, Jalan Abdul Malik",
             description: "Learn essential tips for your dog's wellbeing, including how to make a pet first aid kit, the importance of play, and pet insurance."
@@ -422,7 +422,7 @@ const allEvents =
         {
             id: "e8",
             title: "Paw-Some Pet Festival!",
-            img: "images/pawsome_fest.png",
+            img: "images/poster6.jpg",
             date: "Oct 26, 2024",
             location: "Sunny Meadows Park",
             description: "A day of fun for furry friends and their humans! Featuring bunny parades, agility courses, free vet checks, and live music."
@@ -430,7 +430,7 @@ const allEvents =
         {
             id: "e9",
             title: "Celebrate Our Feathered Friends!",
-            img: "images/feathered_friends.png",
+            img: "images/poster8.png",
             date: "May 18, 2024",
             location: "Riverside Park Aviary",
             description: "The 20th annual celebration of birds! Join us at the aviary to learn about different species and enjoy the natural surroundings."
@@ -438,7 +438,7 @@ const allEvents =
         {
             id: "e10",
             title: "Find Your New Best Friend!",
-            img: "images/adopt_poster.png",
+            img: "images/poster9.jpg",
             date: "Oct 26, 2026",
             location: "Paw Prints Animal Shelter, 51 Jalan Bukit Bintang",
             description: "Come meet adorable, adoptable dogs, cats, and small animals. Features food trucks and fun for all ages!"
@@ -446,7 +446,7 @@ const allEvents =
         {
             id: "e11",
             title: "Dog Show",
-            img: "images/dog_show.png",
+            img: "images/poster10.png",
             date: "Aug 27, 2030",
             location: "MidValley Mall, Johor Bahru",
             description: "Compete in photo competitions, obedience trials, and costume parades. Amazing prizes for 1st, 2nd, and 3rd place winners!"
@@ -454,7 +454,7 @@ const allEvents =
         {
             id: "e12",
             title: "Pet Model Competition",
-            img: "images/pet_model.png",
+            img: "images/poster11.png",
             date: "Jun 21, 2029",
             location: "Kuantan City Hall",
             description: "Does your pet have what it takes to shine? Open to dogs, cats, birds, and bunnies. Cash prizes and trophies for winners."
@@ -462,7 +462,7 @@ const allEvents =
         {
             id: "e13",
             title: "Vet Q&A Session",
-            img: "images/vet_qa.png",
+            img: "images/poster12.jpg",
             date: "Dec 10, 2026",
             location: "Happy Paws Clinic, 123 Animal Ave",
             description: "Ask the experts! Topics include pet health, behavior, diet tips, and vaccination prevention with a live Q&A with Dr. Lee."
