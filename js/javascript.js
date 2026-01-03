@@ -7,13 +7,21 @@ class SlideShow {
         this.interval = interval || 5000; //Default 5 seconds
 
         this.index = 0;
-
         this.makeDots();
         this.addSwipeSupport();
         this.startAutoSlide();
     }
 
+    updateSlide() {
+        this.slides = this.container.querySelector(".slides");
+        this.itemSlides = this.slides.querySelectorAll(".slide");
+        this.dotContainer = this.container.querySelector(".dots")
+        this.makeDots();
+    }
+
     makeDots() {
+        this.dotContainer.innerHTML = "";
+        console.log(this.itemSlides.length);
         this.itemSlides.forEach((_, i) => {
             const dot = document.createElement("span");
             if (i === 0) { dot.classList.add("active"); }
@@ -57,28 +65,26 @@ class SlideShow {
     }
 
     next() {
-        this.index = (this.index + 1) % this.slideItems.length;
+        this.index = (this.index + 1) % this.itemSlides.length;
         this.goToSlide(this.index);
     }
 
     prev() {
-        this.index = (this.index - 1 + this.slideItems.length) % this.slideItems.length;
+        this.index = (this.index - 1 + this.itemSlides.length) % this.itemSlides.length;
         this.goToSlide(this.index);
     }
 }
 
 
 class PetCard {
-    constructor(petInfo, element) {
-        this.petInfo;
-        this.element;
-
+    constructor(petInfo) {
+        this.petInfo = petInfo;
         this.createElement();
     }
 
     createElement() {
         const divElement = document.createElement("div");
-        divElement.classList.add("pet-card bg-light bevel-border-1 overflow-hidden")
+        divElement.className = "pet-card bg-light bevel-border-1 overflow-hidden";
         divElement.innerHTML = `
          <!--Pet Name-->
         <h3 class="pet-name text-center bg-green-1 p-2 text-white">${this.petInfo.name}</h3>
@@ -101,7 +107,7 @@ class PetCard {
                         ${this.petInfo.age}
                     </div>
                     <div class="col-xl-6  col-md-12 pet-label"><strong>Gender:</strong>
-                        ${this.PetInfo.gender}</div>
+                        ${this.petInfo.gender}</div>
                     <div class="col-xl-6  col-md-12 pet-label"><strong>Color:</strong>
                         ${this.petInfo.color}</div>
                 </div>
@@ -129,7 +135,7 @@ class PetCard {
         </div>
         `
 
-        this.element.appendChild(divElement);
+        return divElement;
     }
 }
 
@@ -155,7 +161,13 @@ function homepageEvent(page) {
         //Start slide show
         new SlideShow(".event-slider", 10000);
 
-        new SlideShow(".pet-slider", 5000);
+        let slideshowPet =  new SlideShow(".pet-slider", 5000)
+        showSlideShowPet(slideshowPet);
+       
+        //Change the size of partion of pets when screen changes
+        window.addEventListener("resize", () =>{
+            showSlideShowPet(slideshowPet);
+        });
 
     }
 }
@@ -193,9 +205,51 @@ function messageCycle() {
     }, 3000);
 }
 
-function showSlideShowPet(page) {
-    if (page === "index.html") {
-        
+function showSlideShowPet(slideshow) {
+    const petSlider = document.querySelector(".pet-slider")
+    const slides = petSlider.querySelector(".slides")
+
+    let pets = [new PetInfo("Sunny", "Cat", "3 years old", "Male", "Brown", "assets/img/petAdoptionImages/cat.png"), new PetInfo("Good Boy", "Husky", "2 years old", "Male", "Brown", "assets/img/petAdoptionImages/husky.png"), new PetInfo("Rainbow", "Parrot", "2 years old", "Female", "Colorful", "assets/img/petAdoptionImages/parot.png"), new PetInfo("Sunny", "Cat", "3 years old", "Male", "Brown", "assets/img/petAdoptionImages/cat.png"), new PetInfo("Good Boy", "Husky", "2 years old", "Male", "Brown", "assets/img/petAdoptionImages/husky.png"), new PetInfo("Rainbow", "Parrot", "2 years old", "Female", "Colorful", "assets/img/petAdoptionImages/parot.png")];
+
+    const width = window.innerWidth;
+    let partition = 3;
+    if (width < 768) {
+        partition = 1;
+    } else if (width < 992) {
+        partition = 2;
+    }
+
+    updateSlideShowPet(pets, partition, slides);
+    slideshow.updateSlide();
+}
+
+function updateSlideShowPet(pets, partition, slides) {
+    const pages = Math.floor(pets.length / partition);
+    slides.innerHTML = "";
+
+    for (let i = 0; i < pages; i++) {
+        // Row or Slide
+        let slide = document.createElement("div");
+        slide.className = "slide";
+
+        let row = document.createElement("div")
+        row.className = "row g-5 justify-content-center p-lg-3 p-0";
+        slide.appendChild(row);
+
+        for (let j = 0; j < partition; j++) {
+            //Column inside slide or row
+            let column = document.createElement("div");
+            column.className = "col-md-5 col-sm-6 col-lg-3";
+
+            let index = (i * partition) + j;
+            let pet = pets[index];
+            let petCard = new PetCard(pet, column);
+            column.appendChild(petCard.createElement());
+
+            row.appendChild(column);
+        }
+
+        slides.appendChild(slide);
     }
 }
 
@@ -297,13 +351,12 @@ function addCloseMapEvent(page) {
     })
 }
 
-
-
 document.addEventListener("DOMContentLoaded", function () {
     const page = window.location.pathname.split("/").pop();
     homepageEvent(page);
     eventPage(page);
 });
+
 
 
 // event.html
