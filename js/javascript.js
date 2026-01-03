@@ -508,39 +508,42 @@ function openEvent(eventId) {
 
     if (event) {
         // 3. Build the layout inside the modal (matches Sketch 2)
-        modalArea.innerHTML = `
-            <div class="modal-header border-0">
-                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+modalArea.innerHTML = `
+    <div class="modal-header border-0 pb-0">
+        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+    </div>
+    <div class="modal-body p-4 pt-0">
+        <div class="row align-items-center justify-content-center">
+            
+            <div class="col-md-6 text-center">
+                <img src="${event.img}" class="img-fluid rounded border shadow-sm mb-3" 
+                     style="max-height: 400px; width: auto; object-fit: contain;">
             </div>
-            <div class="modal-body p-4">
-                <div class="row">
-                    <div class="col-md-6 text-center">
-                        <img src="${event.img}" class="img-fluid rounded border shadow-sm mb-3">
-                        <div class="text-start ms-2">
-                            <h6>Social</h6>
-                            <div class="d-flex gap-3 social-icons">
-                                <i class="fa-brands fa-facebook"></i>
-                                <i class="fa-brands fa-instagram"></i>
-                                <i class="fa-brands fa-twitter"></i>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-6">
-                        <h2 class="fw-bold">${event.title}</h2>
-                        <p class="text-primary mb-1"><strong>Date:</strong> ${event.date}</p>
-                        <p class="text-muted"><strong>Location:</strong> ${event.location}</p>
-                        <hr>
-                        <h5 class="fw-bold">Description</h5>
-                        <p class="text-secondary">${event.description}</p>
-                        
-                        <div class="mt-5 p-3 bg-light border rounded">
-                            <small class="fw-bold text-uppercase">Registration</small>
-                            <p class="mb-0 small">Visit the links on the left to sign up.</p>
-                        </div>
+
+            <div class="col-md-6 text-start">
+                <h2 class="fw-bold mb-3">${event.title}</h2>
+                <p class="text-primary mb-1">
+                    <i class="fa-regular fa-calendar-check me-2"></i><strong>Date:</strong> ${event.date}
+                </p>
+                <p class="text-muted">
+                    <i class="fa-solid fa-location-dot me-2"></i><strong>Location:</strong> ${event.location}
+                </p>
+                <hr>
+                <h5 class="fw-bold">Description</h5>
+                <p class="text-secondary mb-4">${event.description}</p>
+                
+                <div class="social-section pt-2">
+                    <h6 class="fw-bold text-uppercase small text-muted mb-3">Share or Follow Us</h6>
+                    <div class="d-flex gap-4 social-icons">
+                        <a href="#" target="_blank"><i class="fa-brands fa-facebook fa-2x" style="color: #3b5998;"></i></a>
+                        <a href="#" target="_blank"><i class="fa-brands fa-instagram fa-2x" style="color: #C13584;"></i></a>
+                        <a href="#" target="_blank"><i class="fa-brands fa-twitter fa-2x" style="color: #1DA1F2;"></i></a>
                     </div>
                 </div>
             </div>
-        `;
+        </div>
+    </div>
+`;
 
         // 4. Use Bootstrap's Modal command to show the popup
         const myModal = new bootstrap.Modal(document.getElementById('eventModal'));
