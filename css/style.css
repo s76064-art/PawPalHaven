@@ -317,11 +317,14 @@
     transition: 0.3s;
 }
 
+
+
 /* Push content down so it doesn't hide under your fixed navbar */
+/*
 body {
     padding-top: 100px;
     background-color: #f8f9fa;
 }
-
+*/
 
 

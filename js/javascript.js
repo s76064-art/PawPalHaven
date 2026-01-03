@@ -67,6 +67,84 @@ class SlideShow {
     }
 }
 
+
+class PetCard {
+    constructor(petInfo, element) {
+        this.petInfo;
+        this.element;
+
+        this.createElement();
+    }
+
+    createElement() {
+        const divElement = document.createElement("div");
+        divElement.classList.add("pet-card bg-light bevel-border-1 overflow-hidden")
+        divElement.innerHTML = `
+         <!--Pet Name-->
+        <h3 class="pet-name text-center bg-green-1 p-2 text-white">${this.petInfo.name}</h3>
+
+        <div class="jumbotron p-2 w-100">
+
+            <!--Pet Image-->
+            <div class="container-fluid d-flex justify-content-center mb-4">
+                <div class="pet-img">
+                    <img src="${this.petInfo.img}" class="img-fluid" alt="Snowy">
+                </div>
+            </div>
+
+            <!--Pet info-->
+            <div class="container-fluid text-start text-lg-center">
+                <div class="row mb-1">
+                    <div class="col-xl-6 col-md-12 pet-label"><strong>Species:</strong>
+                        ${this.petInfo.species}</div>
+                    <div class="col-xl-6  col-sm-12 pet-label"><strong>Age:</strong>
+                        ${this.petInfo.age}
+                    </div>
+                    <div class="col-xl-6  col-md-12 pet-label"><strong>Gender:</strong>
+                        ${this.PetInfo.gender}</div>
+                    <div class="col-xl-6  col-md-12 pet-label"><strong>Color:</strong>
+                        ${this.petInfo.color}</div>
+                </div>
+            </div>
+
+        </div>
+
+        <!--Contact-->
+        <div class="container-fluid mt-3 bg-green-3 p-0">
+            <h5 class="p-2 bg-green-1 text-white text-center">Contact</h5>
+
+            <div class="text-center mb-1"><i class="fa-solid fa-phone"></i>: 000-0000000
+            </div>
+
+            <div
+                class="d-flex justify-content-center align-items-center p-3 social-font">
+                <i class="fa-brands fa-facebook fa-xl mx-2"></i>
+                <i class="fa-brands fa-youtube fa-xl mx-2"></i>
+                <i class="fa-brands fa-instagram fa-xl mx-2"></i>
+                <i class="fa-brands fa-tiktok fa-xl mx-2"></i>
+                <i class="fa-brands fa-twitter fa-xl mx-2"></i>
+                <i class="fa-regular fa-map fa-xl mx-2"
+                    onclick="openMapModal('5.352468, 103.099591')"></i>
+            </div>
+        </div>
+        `
+
+        this.element.appendChild(divElement);
+    }
+}
+
+
+class PetInfo {
+    constructor(name, species, age, gender, color, img) {
+        this.name = name;
+        this.species = species;
+        this.age = age;
+        this.gender = gender;
+        this.color = color;
+        this.img = img;
+    }
+}
+
 //Functions that should be run on homepage
 function homepageEvent(page) {
     if (page === "index.html") {
@@ -87,14 +165,6 @@ function eventPage(page) {
         displayEvents();
     }
 }
-
-
-document.addEventListener("DOMContentLoaded", function () {
-    const page = window.location.pathname.split("/").pop();
-
-    homepageEvent(page);
-    eventPage(page);
-});
 
 
 function messageCycle() {
@@ -120,6 +190,10 @@ function messageCycle() {
             <p>${messages[currentIndex][1]}</p>
         `;
     }, 3000);
+}
+
+function showSlideShowPet(page){
+    if (page === "index.html"){}
 }
 
 function showUpcomingPetEvent() {
@@ -195,7 +269,6 @@ function showUpcomingPetEvent() {
     indicator.innerHTML = indicatorText;
 }
 
-
 function PetEvent(eventName, location, date, time, description, social, poster) {
     this.eventName = eventName;
     this.location = location;
@@ -214,10 +287,13 @@ function openMapModal(location) {
     mapModal.show();
 }
 
-//Close map when not use
-document.getElementById('mapModal').addEventListener('hidden.bs.modal', function () {
-    document.getElementById('mapFrame').src = "";
-})
+
+
+document.addEventListener("DOMContentLoaded", function () {
+    const page = window.location.pathname.split("/").pop();
+    homepageEvent(page);
+    eventPage(page);
+});
 
 
 // event.html
@@ -337,14 +413,4 @@ function openEvent(eventId) {
         myModal.show();
     }
 }
-
-
-//Tells the browser to run 'displayEvents' as soon as the page is ready.
-
-//PET FINDER PART 
-function openMap(location) {
-    const encodedLocation = encodeURIComponent(location);
-    window.open(`https://www.google.com/maps/search/?api=1&query=${encodedLocation}`, '_blank');
-}
-
 
