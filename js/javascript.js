@@ -545,6 +545,43 @@ modalArea.innerHTML = `
     </div>
 `;
 
+// search bar for event
+function searchEvents() {
+    // 1. Get the search input value and convert to lowercase
+    const input = document.getElementById('eventSearch').value.toLowerCase();
+    
+    // 2. Filter the events array
+    const filteredEvents = allEvents.filter(event => 
+        event.title.toLowerCase().includes(input) || 
+        event.description.toLowerCase().includes(input)
+    );
+
+    // 3. Re-render the cards with the filtered list
+    displayFilteredEvents(filteredEvents);
+}
+
+// Helper function to show only searched results
+function displayFilteredEvents(eventsList) {
+    const container = document.getElementById('event-container');
+    let htmlContent = "";
+
+    eventsList.forEach(event => {
+        htmlContent += `
+            <div class="col-md-4 mb-4">
+                <div class="event-card text-center" onclick="openEvent('${event.id}')">
+                    <div class="event-img-container border">
+                        <img src="${event.img}" alt="${event.title}" style="object-fit: contain;">
+                    </div>
+                    <h4 class="mt-3 fw-bold">${event.title}</h4>
+                    <div class="title-underline"></div>
+                </div>
+            </div>
+        `;
+    });
+
+    container.innerHTML = htmlContent || `<div class="col-12 text-center mt-5"><h3>No events found...</h3></div>`;
+}
+
         // 4. Use Bootstrap's Modal command to show the popup
         const myModal = new bootstrap.Modal(document.getElementById('eventModal'));
         myModal.show();
