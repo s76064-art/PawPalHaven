@@ -476,4 +476,3 @@ function openEvent(eventId) {
         myModal.show();
     }
 }
-

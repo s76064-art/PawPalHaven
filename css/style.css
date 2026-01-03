@@ -265,7 +265,7 @@
 
 .event-img-container {
     width: 100%;
-    height: 100%;
+    height: 300px;
     /* Forces all 12 images to be the same height */
     overflow: hidden;
     border-radius: 8px;
@@ -274,7 +274,7 @@
 .event-img-container img {
     width: 100%;
     height: 100%;
-    object-fit: contain;
+    object-fit: cover;
     /* Crops the image to fit the box without stretching */
 }
 
@@ -328,7 +328,7 @@
 body {
     padding-top: 100px;
     background-color: #f8f9fa;
-}
+} 
 */
 
 
