@@ -545,27 +545,21 @@ modalArea.innerHTML = `
     </div>
 `;
 
-// search bar for event
 function searchEvents() {
-    // 1. Get the search input value and convert to lowercase
-    const input = document.getElementById('eventSearch').value.toLowerCase();
+    // 1. Get what the user typed in the search bar
+    const searchTerm = document.getElementById('eventSearch').value.toLowerCase();
     
-    // 2. Filter the events array
-    const filteredEvents = allEvents.filter(event => 
-        event.title.toLowerCase().includes(input) || 
-        event.description.toLowerCase().includes(input)
-    );
+    // 2. Filter the allEvents array
+    const matchedEvents = allEvents.filter(event => {
+        return event.title.toLowerCase().includes(searchTerm) || 
+               event.description.toLowerCase().includes(searchTerm);
+    });
 
-    // 3. Re-render the cards with the filtered list
-    displayFilteredEvents(filteredEvents);
-}
-
-// Helper function to show only searched results
-function displayFilteredEvents(eventsList) {
+    // 3. Clear the current cards and show only matched ones
     const container = document.getElementById('event-container');
     let htmlContent = "";
 
-    eventsList.forEach(event => {
+    matchedEvents.forEach(event => {
         htmlContent += `
             <div class="col-md-4 mb-4">
                 <div class="event-card text-center" onclick="openEvent('${event.id}')">
@@ -575,11 +569,15 @@ function displayFilteredEvents(eventsList) {
                     <h4 class="mt-3 fw-bold">${event.title}</h4>
                     <div class="title-underline"></div>
                 </div>
-            </div>
-        `;
+            </div>`;
     });
 
-    container.innerHTML = htmlContent || `<div class="col-12 text-center mt-5"><h3>No events found...</h3></div>`;
+    // 4. Update the page with results or a "Not Found" message
+    if (matchedEvents.length === 0) {
+        container.innerHTML = '<div class="col-12 text-center mt-5"><h3>No results found.</h3></div>';
+    } else {
+        container.innerHTML = htmlContent;
+    }
 }
 
         // 4. Use Bootstrap's Modal command to show the popup
