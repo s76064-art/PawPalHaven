@@ -73,6 +73,7 @@ function homepageEvent(page) {
     if (page === "index.html") {
         //showUpcomingPetEvent();
         messageCycle(page);
+        addCloseMapEvent();
 
         //Start slide show
         new SlideShow(".event-slider", 10000);
@@ -121,6 +122,12 @@ function messageCycle() {
             <p>${messages[currentIndex][1]}</p>
         `;
     }, 3000);
+}
+
+function showSlideShowPet(page) {
+    if (page === "index.html") {
+        
+    }
 }
 
 function showUpcomingPetEvent() {
@@ -215,10 +222,12 @@ function openMapModal(location) {
     mapModal.show();
 }
 
-//Close map when not use
-document.getElementById('mapModal').addEventListener('hidden.bs.modal', function () {
-    document.getElementById('mapFrame').src = "";
-})
+function addCloseMapEvent(page) {
+    document.getElementById('mapModal').addEventListener('hidden.bs.modal', function () {
+        document.getElementById('mapFrame').src = "";
+    })
+}
+
 
 //PET FINDER PART 
 function openMap(location) {
