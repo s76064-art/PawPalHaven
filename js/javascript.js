@@ -150,6 +150,7 @@ function homepageEvent(page) {
     if (page === "index.html") {
         //showUpcomingPetEvent();
         messageCycle(page);
+        addCloseMapEvent();
 
         //Start slide show
         new SlideShow(".event-slider", 10000);
@@ -192,8 +193,10 @@ function messageCycle() {
     }, 3000);
 }
 
-function showSlideShowPet(page){
-    if (page === "index.html"){}
+function showSlideShowPet(page) {
+    if (page === "index.html") {
+        
+    }
 }
 
 function showUpcomingPetEvent() {
@@ -285,6 +288,13 @@ function openMapModal(location) {
     document.getElementById("mapFrame").src = mapUrl;
     const mapModal = new bootstrap.Modal(document.getElementById('mapModal'));
     mapModal.show();
+}
+
+//Close map when not use
+function addCloseMapEvent(page) {
+    document.getElementById('mapModal').addEventListener('hidden.bs.modal', function () {
+        document.getElementById('mapFrame').src = "";
+    })
 }
 
 
