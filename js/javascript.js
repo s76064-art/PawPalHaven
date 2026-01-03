@@ -161,11 +161,11 @@ function homepageEvent(page) {
         //Start slide show
         new SlideShow(".event-slider", 10000);
 
-        let slideshowPet =  new SlideShow(".pet-slider", 5000)
+        let slideshowPet = new SlideShow(".pet-slider", 5000)
         showSlideShowPet(slideshowPet);
-       
+
         //Change the size of partion of pets when screen changes
-        window.addEventListener("resize", () =>{
+        window.addEventListener("resize", () => {
             showSlideShowPet(slideshowPet);
         });
 
@@ -361,42 +361,113 @@ document.addEventListener("DOMContentLoaded", function () {
 
 // event.html
 // data object(stores event details)
-const allEvents = [
-    {
-        id: "e1",
-        title: "Golden Meetup",
-        img: "images/poster7.png",
-        date: "Oct 25, 2026",
-        location: "Central Park",
-        description: "A wonderful gathering for Golden Retrievers and their owners. Activities include a fetch competition and professional pet photography."
-    },
-    {
-        id: "e2",
-        title: "Cat Expo",
-        img: "images/poster2.png",
-        date: "Nov 05, 2026",
-        location: "Convention Center",
-        description: "Explore the latest in feline care, from organic treats to high-tech toys. Featuring a guest lecture on cat behavior."
-    },
-    {
-        id: "e3",
-        title: "Rabbit Hop",
-        img: "images/poster3.png",
-        date: "Nov 12, 2026",
-        location: "Community Garden",
-        description: "Bring your bunnies for a fun hopping course! Experts will be on site to discuss rabbit nutrition and dental health."
-    },
-
-    { id: "e4", title: "Puppy Yoga", img: "images/poster4.png", date: "Dec 01, 2026", location: "Yoga Studio", description: "Relax with your puppy in this beginner-friendly yoga session." },
-    { id: "e5", title: "Bird Workshop", img: "images/poster5.jpg", date: "Dec 05, 2026", location: "Avian Center", description: "Learn about the social needs of parrots and cockatiels." },
-    { id: "e6", title: "Hamster Race", img: "images/poster6.jpg", date: "Dec 10, 2026", location: "Pet Store", description: "The fastest hamsters in the city compete for prizes!" },
-    { id: "e7", title: "Kitten Care", img: "images/poster1.png", date: "Dec 15, 2026", location: "Rescue Shelter", description: "A workshop for new kitten owners covering vaccines and weaning." },
-    { id: "e8", title: "Dog Hike", img: "images/poster8.png", date: "Jan 05, 2026", location: "Blue Hills", description: "A group hiking event for energetic dogs and their humans." },
-    { id: "e9", title: "Snake Safety", img: "images/poster9.png", date: "Jan 10, 2026", location: "Zoo Hall", description: "Learn how to safely handle and house exotic pet snakes." },
-    { id: "e10", title: "Fish Breeding", img: "images/poster10.png", date: "Jan 15, 2026", location: "Aquarium", description: "Technical tips for breeding freshwater tropical fish." },
-    { id: "e11", title: "Pet Adoption", img: "images/poster11.png", date: "Feb 01, 2026", location: "Main Square", description: "Find your new best friend at our monthly adoption fair." },
-    { id: "e12", title: "Vet Q&A", img: "images/poster12.png", date: "Feb 10, 2026", location: "Online", description: "Ask our resident veterinarian anything about pet health." }
-];
+const allEvents =
+    [
+        {
+            id: "e1",
+            title: "Golden Paws Meetup",
+            img: "images/golden_meetup.png",
+            date: "Jan 25, 2026",
+            location: "Pavilion Bukit Jalil",
+            description: "A wonderful gathering for Golden Retrievers and their owners. Activities include a fetch competition and professional pet photography."
+        },
+        {
+            id: "e2",
+            title: "Puppy Yoga",
+            img: "images/puppy_yoga.png",
+            date: "Jan 20, 2026",
+            location: "Sunny Meadows Park, 456 Bark Blvd",
+            description: "Stretch, Snuggle & Smile! A beginner-friendly yoga flow with adorable pups. This is a local shelter fundraiser; please bring your own mat and water."
+        },
+        {
+            id: "e3",
+            title: "Paws & Whiskers Pet Fest",
+            img: "images/poster2.png",
+             date: "Oct 14, 2026",
+            location: "Green Meadows Park, 1234 Barkside Lane",
+            description: "Join us for a day of pet games, adoption meets, and tasty treats! A perfect social event for pets and their people."
+        },
+        {
+            id: "e4",
+            title: "Paws & Friends Pet Fest",
+            img: "images/poster3.png",
+            date: "Aug 12, 2026",
+            location: "Sunny Meadow Park, 123 Greenway Drive",
+            description: "A fun-filled day of treats and games for pets and their human companions in a beautiful park setting."
+        },
+        {
+            id: "e5",
+            title: "Pet Extravaganza",
+            img: "images/poster1.png",
+            date: "Jan 20, 2025",
+            location: "Paws and Claws, Penang, Malaysia",
+            description: "A fun-filled day celebrating pets and their people! This event is suitable for all ages and features a variety of pet-centric activities."
+        },
+        {
+            id: "e6",
+            title: "Pet Adoption Event",
+            img: "images/poster14.png",
+            date: "Jun 25, 2023",
+            location: "Larana Pet Shop, KTCC Mall, Kuala Terengganu",
+            description: "Find your perfect match at our pet adoption event! Meet adorable animals looking for their forever homes."
+        },
+        {
+            id: "e7",
+            title: "Dog Health Tips",
+            img: "images/dog_health.png",
+            date: "Feb 25, 2026",
+            location: "Larana Pet Shop, Jalan Abdul Malik",
+            description: "Learn essential tips for your dog's wellbeing, including how to make a pet first aid kit, the importance of play, and pet insurance."
+        },
+        {
+            id: "e8",
+            title: "Paw-Some Pet Festival!",
+            img: "images/pawsome_fest.png",
+            date: "Oct 26, 2024",
+            location: "Sunny Meadows Park",
+            description: "A day of fun for furry friends and their humans! Featuring bunny parades, agility courses, free vet checks, and live music."
+        },
+        {
+            id: "e9",
+            title: "Celebrate Our Feathered Friends!",
+            img: "images/feathered_friends.png",
+            date: "May 18, 2024",
+            location: "Riverside Park Aviary",
+            description: "The 20th annual celebration of birds! Join us at the aviary to learn about different species and enjoy the natural surroundings."
+        },
+        {
+            id: "e10",
+            title: "Find Your New Best Friend!",
+            img: "images/adopt_poster.png",
+            date: "Oct 26, 2026",
+            location: "Paw Prints Animal Shelter, 51 Jalan Bukit Bintang",
+            description: "Come meet adorable, adoptable dogs, cats, and small animals. Features food trucks and fun for all ages!"
+        },
+        {
+            id: "e11",
+            title: "Dog Show",
+            img: "images/dog_show.png",
+            date: "Aug 27, 2030",
+            location: "MidValley Mall, Johor Bahru",
+            description: "Compete in photo competitions, obedience trials, and costume parades. Amazing prizes for 1st, 2nd, and 3rd place winners!"
+        },
+        {
+            id: "e12",
+            title: "Pet Model Competition",
+            img: "images/pet_model.png",
+            date: "Jun 21, 2029",
+            location: "Kuantan City Hall",
+            description: "Does your pet have what it takes to shine? Open to dogs, cats, birds, and bunnies. Cash prizes and trophies for winners."
+        },
+        {
+            id: "e13",
+            title: "Vet Q&A Session",
+            img: "images/vet_qa.png",
+            date: "Dec 10, 2026",
+            location: "Happy Paws Clinic, 123 Animal Ave",
+            description: "Ask the experts! Topics include pet health, behavior, diet tips, and vaccination prevention with a live Q&A with Dr. Lee."
+        }
+    ]
 
 /*
  * This function loops through the array and builds the 12 cards in HTML.
