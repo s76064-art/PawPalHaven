@@ -649,3 +649,56 @@ function openEvent(eventId) {
         myModal.show();
     }
 }
+
+// Function to handle the image upload click
+function triggerFileInput() {
+    document.getElementById('imageInput').click();
+}
+
+// Function to preview the image immediately
+function previewImage(event) {
+    const reader = new FileReader();
+    const imageField = document.getElementById('profilePic');
+    reader.onload = function() {
+        if (reader.readyState === 2) {
+            imageField.src = reader.result;
+        }
+    }
+    if (event.target.files[0]) {
+        reader.readAsDataURL(event.target.files[0]);
+    }
+}
+
+// Function to toggle Edit Mode
+function toggleEdit() {
+    // We only want to edit text and email inputs
+    const inputs = document.querySelectorAll('.profile-card input[type="text"], .profile-card input[type="email"]');
+    const editBtn = document.getElementById('editBtn');
+    const nameDisplay = document.getElementById('displayUserName');
+
+    if (inputs[0].hasAttribute('readonly')) {
+        // --- SWITCH TO EDIT MODE ---
+        inputs.forEach(input => {
+            input.removeAttribute('readonly');
+            input.style.backgroundColor = "#ffffff"; // Force white background
+            input.style.border = "1px solid #009200"; // Add green border
+        });
+        editBtn.innerText = "Save Changes";
+        editBtn.className = "btn btn-primary fw-bold rounded-pill py-2 w-100";
+    } else {
+        // --- SAVE AND LOCK ---
+        inputs.forEach(input => {
+            input.setAttribute('readonly', true);
+            input.style.backgroundColor = ""; // Return to CSS default
+            input.style.border = ""; 
+        });
+
+        // Update the big name at the top
+        nameDisplay.innerText = inputs[0].value;
+
+        editBtn.innerText = "Edit Profile";
+        editBtn.className = "btn btn-success fw-bold rounded-pill py-2 w-100";
+        
+        alert("Profile saved!");
+    }
+}
