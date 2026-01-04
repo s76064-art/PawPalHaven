@@ -258,7 +258,9 @@
     /* Smooth hover effect */
 }
 
-.event-card:hover {
+.event-card:hover .title-underline {
+    width:40px;
+    transition: width 0.3s ease;;
     /* Lift the card up slightly and add a shadow when hovered */
     transform: translateY(-8px);
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);

@@ -422,7 +422,7 @@ const allEvents =
             date: "Jan 20, 2025",
             location: "Paws and Claws, Penang, Malaysia",
             description: "A fun-filled day celebrating pets and their people! This event is suitable for all ages and features a variety of pet-centric activities.",
-                    socials: {
+            socials: {
                 facebook: "https://www.facebook.com/pawwowmalaysia/",
                 instagram: "https://www.instagram.com/p/DRbQXDyD8F-/?hl=en",
                 twitter: "https://x.com/murniekspo"
@@ -552,6 +552,7 @@ function displayEvents() {
                     </div>
                     <h4 class="mt-3 fw-bold">${event.title}</h4>
                     <div class="title-underline"></div> </div>
+                    </div>
             </div>
         `;
     });
@@ -559,6 +560,7 @@ function displayEvents() {
     // Put the generated cards into the HTML container
     container.innerHTML = htmlContent;
 }
+
 
 function openEvent(eventId) {
     // 1. Find the specific event data using the unique ID
@@ -605,6 +607,7 @@ function openEvent(eventId) {
         </div>
     </div>
 `;
+
 
         function searchEvents() {
             // 1. Get what the user typed in the search bar
