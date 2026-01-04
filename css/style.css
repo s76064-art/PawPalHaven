@@ -394,8 +394,8 @@
 
 /* Styling for the circular profile picture */
 #profilePic {
-    width: 100%;
-    height: 100%;
+    width: 130px;
+    height: 130px;
     object-fit: cover;
     /* Prevents image squishing */
     border-radius: 50%;

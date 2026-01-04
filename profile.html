@@ -21,7 +21,8 @@
                 PawPal Haven
             </a>
 
-            <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown">
+            <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarNavDropdown">
                 <span class="navbar-toggler-icon"></span>
             </button>
 
@@ -32,7 +33,8 @@
                     <li class="nav-item"><a class="nav-link" href="#">Pet Finder</a></li>
                     <li class="nav-item"><a class="nav-link" href="event.html">Events</a></li>
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="tips.html" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown">Tips</a>
+                        <a class="nav-link dropdown-toggle" href="tips.html" id="navbarDropdownMenuLink" role="button"
+                            data-bs-toggle="dropdown">Tips</a>
                         <ul class="dropdown-menu border-0 shadow">
                             <li><a class="dropdown-item" href="tips.html#catTips">Cats</a></li>
                             <li><a class="dropdown-item" href="tips.html#dogTips">Dogs</a></li>
@@ -52,15 +54,17 @@
                     <h2 class="fw-bold mb-4">My Profile</h2>
 
                     <div class="profile-img-container mb-3 position-relative d-inline-block">
-                        <img src="assets/img/default-user.png" id="profilePic" alt="Profile Picture" 
-                             class="rounded-circle border shadow-sm" style="width: 130px; height: 130px; object-fit: cover;">
-                        
-                        <div class="edit-badge bg-success text-white rounded-circle position-absolute bottom-0 end-0 border border-3 border-white p-2" 
-                             style="cursor: pointer; width: 40px; height: 40px;" onclick="triggerFileInput()">
+                        <img src="images/profile.png" id="profilePic" alt="Profile Picture"
+                            class="rounded-circle border shadow-sm"
+                            style="width: 130px; height: 130px; object-fit: cover;">
+
+                        <div class="edit-badge bg-success text-white rounded-circle position-absolute bottom-0 end-0 border border-3 border-white p-2"
+                            style="cursor: pointer; width: 40px; height: 40px;" onclick="triggerFileInput()">
                             <i class="fa-solid fa-camera"></i>
                         </div>
 
-                        <input type="file" id="imageInput" accept="image/*" style="display: none;" onchange="previewImage(event)">
+                        <input type="file" id="imageInput" accept="image/*" style="display: none;"
+                            onchange="previewImage(event)">
                     </div>
 
                     <h4 class="fw-bold mb-4" id="displayUserName">John Doe</h4>
@@ -71,41 +75,50 @@
                         <div class="mb-3">
                             <label class="form-label small fw-bold">Full Name</label>
                             <div class="input-group">
-                                <span class="input-group-text bg-light border-end-0"><i class="fa-solid fa-user text-muted"></i></span>
-                                <input type="text" class="form-control border-start-0 bg-light" value="John Doe" readonly>
+                                <span class="input-group-text bg-light border-end-0"><i
+                                        class="fa-solid fa-user text-muted"></i></span>
+                                <input type="text" class="form-control border-start-0 bg-light" value="John Doe"
+                                    readonly>
                             </div>
                         </div>
 
                         <div class="mb-3">
                             <label class="form-label small fw-bold">Phone Number</label>
                             <div class="input-group">
-                                <span class="input-group-text bg-light border-end-0"><i class="fa-solid fa-phone text-muted"></i></span>
-                                <input type="text" class="form-control border-start-0 bg-light" value="012-3456789" readonly>
+                                <span class="input-group-text bg-light border-end-0"><i
+                                        class="fa-solid fa-phone text-muted"></i></span>
+                                <input type="text" class="form-control border-start-0 bg-light" value="012-3456789"
+                                    readonly>
                             </div>
                         </div>
 
                         <div class="mb-4">
                             <label class="form-label small fw-bold">Email Address</label>
                             <div class="input-group">
-                                <span class="input-group-text bg-light border-end-0"><i class="fa-solid fa-envelope text-muted"></i></span>
-                                <input type="email" class="form-control border-start-0 bg-light" value="john@example.com" readonly>
+                                <span class="input-group-text bg-light border-end-0"><i
+                                        class="fa-solid fa-envelope text-muted"></i></span>
+                                <input type="email" class="form-control border-start-0 bg-light"
+                                    value="john@example.com" readonly>
                             </div>
                         </div>
 
                         <hr>
-                        
+
                         <h6 class="text-uppercase fw-bold text-muted small mb-3">Social Media</h6>
-                        <div class="d-flex align-items-center justify-content-between p-3 bg-light rounded-3 border mb-4">
+                        <div
+                            class="d-flex align-items-center justify-content-between p-3 bg-light rounded-3 border mb-4">
                             <div class="d-flex align-items-center">
                                 <i class="fa-solid fa-circle-nodes me-3 fs-4 text-secondary"></i>
                                 <span class="text-muted small" id="socialText">No social media connected</span>
                             </div>
-                            <button class="btn btn-outline-success btn-sm fw-bold px-3" onclick="addSocial()">Add</button>
+                            <button class="btn btn-outline-success btn-sm fw-bold px-3"
+                                onclick="addSocial()">Add</button>
                         </div>
                     </div>
 
                     <div class="d-grid">
-                        <button id="editBtn" class="btn btn-success fw-bold rounded-pill py-2 shadow-sm" onclick="toggleEdit()">
+                        <button id="editBtn" class="btn btn-success fw-bold rounded-pill py-2 shadow-sm"
+                            onclick="toggleEdit()">
                             Edit Profile
                         </button>
                     </div>
@@ -117,4 +130,5 @@
     <script src="js/bootstrap.bundle.min.js"></script>
     <script src="js/javascript.js"></script>
 </body>
+
 </html>

@@ -669,6 +669,52 @@ function previewImage(event) {
     }
 }
 
+//add social media 
+function addSocial(){
+    const platform=prompt("Enter platform (Instagram, Facebook, Twitter, TikTok):");
+    const username=prompt("Enter your username:");
+    if(platform && username){
+        document.getElementById('socialText').innerText=platform + ": @" + username;
+
+        // This replaces the "No social media connected" text with an interactive item
+        socialContainer.innerHTML = `
+            <div class="d-flex align-items-center w-100" id="activeSocial">
+                <i class="fa-solid fa-share-nodes me-3 fs-4 text-success"></i>
+                <div class="flex-grow-1">
+                    <span class="fw-bold d-block">${platform}</span>
+                    <span class="text-muted small">@${username}</span>
+                </div>
+                <div class="btn-group shadow-sm">
+                    <button class="btn btn-sm btn-light border" onclick="updateSocial()" title="Edit">
+                        <i class="fa-solid fa-pen p-1"></i>
+                    </button>
+                    <button class="btn btn-sm btn-light border text-danger" onclick="deleteSocial()" title="Delete">
+                        <i class="fa-solid fa-trash p-1"></i>
+                    </button>
+                </div>
+            </div>
+        `;
+    }
+    }
+// Function to update social media
+function updateSocial() {
+    addSocial();
+}
+
+// Function to Delete
+function deleteSocial() {
+    if (confirm("Are you sure you want to remove this social media link?")) {
+        const socialContainer = document.getElementById('activeSocial').parentElement;
+        // Reset it back to the original "Empty" state
+        socialContainer.innerHTML = `
+            <div class="d-flex align-items-center">
+                <i class="fa-solid fa-circle-nodes me-3 fs-4 text-secondary"></i>
+                <span class="text-muted small" id="socialText">No social media connected</span>
+            </div>
+            <button class="btn btn-outline-success btn-sm fw-bold px-3" onclick="addSocial()">Add</button>
+        `;
+    }
+}
 // Function to toggle Edit Mode
 function toggleEdit() {
     // We only want to edit text and email inputs
