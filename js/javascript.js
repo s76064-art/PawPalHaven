@@ -369,7 +369,12 @@ const allEvents =
             img: "images/poster7.png",
             date: "Jan 25, 2026",
             location: "Pavilion Bukit Jalil",
-            description: "A wonderful gathering for Golden Retrievers and their owners. Activities include a fetch competition and professional pet photography."
+            description: "A wonderful gathering for Golden Retrievers and their owners. Activities include a fetch competition and professional pet photography.",
+            socials: {
+                facebook: "https://www.facebook.com/PawsPJ",
+                instagram: "https://www.instagram.com/p/DJ1gdxtiMmN/?hl=en",
+                twitter: "https://x.com/murniekspo"
+            }
         },
         {
             id: "e2",
@@ -377,7 +382,12 @@ const allEvents =
             img: "images/poster13.jpg",
             date: "Jan 20, 2026",
             location: "Sunny Meadows Park, 456 Bark Blvd",
-            description: "Stretch, Snuggle & Smile! A beginner-friendly yoga flow with adorable pups. This is a local shelter fundraiser; please bring your own mat and water."
+            description: "Stretch, Snuggle & Smile! A beginner-friendly yoga flow with adorable pups. This is a local shelter fundraiser; please bring your own mat and water.",
+            socials: {
+                facebook: "https://www.facebook.com/bestfriendsanimalsociety",
+                instagram: "https://www.instagram.com/p/DQstHsvkqOo/",
+                twitter: "https://x.com/murniekspo"
+            }
         },
         {
             id: "e3",
@@ -385,7 +395,12 @@ const allEvents =
             img: "images/poster2.png",
             date: "Oct 14, 2026",
             location: "Green Meadows Park, 1234 Barkside Lane",
-            description: "Join us for a day of pet games, adoption meets, and tasty treats! A perfect social event for pets and their people."
+            description: "Join us for a day of pet games, adoption meets, and tasty treats! A perfect social event for pets and their people.",
+            socials: {
+                facebook: "https://www.facebook.com/petexpomy/",
+                instagram: "https://www.instagram.com/p/DQstHsvkqOo/",
+                twitter: "https://x.com/murniekspo"
+            }
         },
         {
             id: "e4",
@@ -393,7 +408,12 @@ const allEvents =
             img: "images/poster3.png",
             date: "Aug 12, 2026",
             location: "Sunny Meadow Park, 123 Greenway Drive",
-            description: "A fun-filled day of treats and games for pets and their human companions in a beautiful park setting."
+            description: "A fun-filled day of treats and games for pets and their human companions in a beautiful park setting.",
+            socials: {
+                facebook: "https://www.facebook.com/OhMyPetExpo/",
+                instagram: "https://www.instagram.com/ohmypetexpo/?hl=en",
+                twitter: "https://x.com/murniekspo"
+            }
         },
         {
             id: "e5",
@@ -401,7 +421,12 @@ const allEvents =
             img: "images/poster1.png",
             date: "Jan 20, 2025",
             location: "Paws and Claws, Penang, Malaysia",
-            description: "A fun-filled day celebrating pets and their people! This event is suitable for all ages and features a variety of pet-centric activities."
+            description: "A fun-filled day celebrating pets and their people! This event is suitable for all ages and features a variety of pet-centric activities.",
+                    socials: {
+                facebook: "https://www.facebook.com/pawwowmalaysia/",
+                instagram: "https://www.instagram.com/p/DRbQXDyD8F-/?hl=en",
+                twitter: "https://x.com/murniekspo"
+            }
         },
         {
             id: "e6",
@@ -409,7 +434,12 @@ const allEvents =
             img: "images/poster14.png",
             date: "Jun 25, 2023",
             location: "Larana Pet Shop, KTCC Mall, Kuala Terengganu",
-            description: "Find your perfect match at our pet adoption event! Meet adorable animals looking for their forever homes."
+            description: "Find your perfect match at our pet adoption event! Meet adorable animals looking for their forever homes.",
+            socials: {
+                facebook: "https://www.facebook.com/petexpomalaysia/",
+                instagram: "https://www.instagram.com/ohmypetexpo/reels/",
+                twitter: "https://x.com/murniekspo"
+            }
         },
         {
             id: "e7",
@@ -417,7 +447,12 @@ const allEvents =
             img: "images/poster4.jpg",
             date: "Feb 25, 2026",
             location: "Larana Pet Shop, Jalan Abdul Malik",
-            description: "Learn essential tips for your dog's wellbeing, including how to make a pet first aid kit, the importance of play, and pet insurance."
+            description: "Learn essential tips for your dog's wellbeing, including how to make a pet first aid kit, the importance of play, and pet insurance.",
+            socials: {
+                facebook: "https://www.facebook.com/foodiejohor/posts/pet-expo-malaysia-is-finally-coming-to-johor-bahru-2830-nov-with-250-pet-brands-/1305914298230354/",
+                instagram: "https://www.instagram.com/p/DJ1gdxtiMmN/?hl=en",
+                twitter: "https://x.com/murniekspo"
+            }
         },
         {
             id: "e8",
@@ -425,7 +460,12 @@ const allEvents =
             img: "images/poster6.jpg",
             date: "Oct 26, 2024",
             location: "Sunny Meadows Park",
-            description: "A day of fun for furry friends and their humans! Featuring bunny parades, agility courses, free vet checks, and live music."
+            description: "A day of fun for furry friends and their humans! Featuring bunny parades, agility courses, free vet checks, and live music.",
+            socials: {
+                facebook: "https://www.facebook.com/mycatexpo/",
+                instagram: "https://www.instagram.com/p/DQstHsvkqOo/",
+                twitter: "https://x.com/murniekspo"
+            }
         },
         {
             id: "e9",
@@ -433,7 +473,12 @@ const allEvents =
             img: "images/poster8.png",
             date: "May 18, 2024",
             location: "Riverside Park Aviary",
-            description: "The 20th annual celebration of birds! Join us at the aviary to learn about different species and enjoy the natural surroundings."
+            description: "The 20th annual celebration of birds! Join us at the aviary to learn about different species and enjoy the natural surroundings.",
+            socials: {
+                facebook: "https://www.facebook.com/PavilionBukitJalil.Mall/posts/the-international-dog-show-pet-fair-has-landed-at-pavilion-bukit-jalil-from-show/1306947908113634/",
+                instagram: "https://www.instagram.com/pet_expo/reels/",
+                twitter: "https://x.com/murniekspo"
+            }
         },
         {
             id: "e10",
@@ -441,7 +486,12 @@ const allEvents =
             img: "images/poster9.jpg",
             date: "Oct 26, 2026",
             location: "Paw Prints Animal Shelter, 51 Jalan Bukit Bintang",
-            description: "Come meet adorable, adoptable dogs, cats, and small animals. Features food trucks and fun for all ages!"
+            description: "Come meet adorable, adoptable dogs, cats, and small animals. Features food trucks and fun for all ages!",
+            socials: {
+                facebook: "https://www.facebook.com/petexpomy/",
+                instagram: "https://www.instagram.com/pet_expo/reels/",
+                twitter: "https://x.com/murniekspo"
+            }
         },
         {
             id: "e11",
@@ -449,7 +499,12 @@ const allEvents =
             img: "images/poster10.png",
             date: "Aug 27, 2030",
             location: "MidValley Mall, Johor Bahru",
-            description: "Compete in photo competitions, obedience trials, and costume parades. Amazing prizes for 1st, 2nd, and 3rd place winners!"
+            description: "Compete in photo competitions, obedience trials, and costume parades. Amazing prizes for 1st, 2nd, and 3rd place winners!",
+            socials: {
+                facebook: "https://www.facebook.com/petexpomy/",
+                instagram: "https://www.instagram.com/ohmypetexpo/?hl=en",
+                twitter: "https://x.com/murniekspo"
+            }
         },
         {
             id: "e12",
@@ -457,7 +512,12 @@ const allEvents =
             img: "images/poster11.png",
             date: "Jun 21, 2029",
             location: "Kuantan City Hall",
-            description: "Does your pet have what it takes to shine? Open to dogs, cats, birds, and bunnies. Cash prizes and trophies for winners."
+            description: "Does your pet have what it takes to shine? Open to dogs, cats, birds, and bunnies. Cash prizes and trophies for winners.",
+            socials: {
+                facebook: "https://www.facebook.com/petexpomy/",
+                instagram: "https://www.instagram.com/petexpomalaysia/?hl=en",
+                twitter: "https://x.com/murniekspo"
+            }
         },
         {
             id: "e13",
@@ -465,7 +525,12 @@ const allEvents =
             img: "images/poster12.jpg",
             date: "Dec 10, 2026",
             location: "Happy Paws Clinic, 123 Animal Ave",
-            description: "Ask the experts! Topics include pet health, behavior, diet tips, and vaccination prevention with a live Q&A with Dr. Lee."
+            description: "Ask the experts! Topics include pet health, behavior, diet tips, and vaccination prevention with a live Q&A with Dr. Lee.",
+            socials: {
+                facebook: "https://www.facebook.com/petexpomy/",
+                instagram: "https://www.instagram.com/petexpomalaysia/?hl=en",
+                twitter: "https://x.com/murniekspo"
+            }
         }
     ]
 
@@ -495,10 +560,6 @@ function displayEvents() {
     container.innerHTML = htmlContent;
 }
 
-// tips
-//This function triggers when a card is clicked.
-//It finds the right description and "injects" it into the Modal.
-
 function openEvent(eventId) {
     // 1. Find the specific event data using the unique ID
     const event = allEvents.find(e => e.id === eventId);
@@ -508,7 +569,7 @@ function openEvent(eventId) {
 
     if (event) {
         // 3. Build the layout inside the modal (matches Sketch 2)
-modalArea.innerHTML = `
+        modalArea.innerHTML = `
     <div class="modal-header border-0 pb-0">
         <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
     </div>
@@ -535,9 +596,9 @@ modalArea.innerHTML = `
                 <div class="social-section pt-2">
                     <h6 class="fw-bold text-uppercase small text-muted mb-3">Share or Follow Us</h6>
                     <div class="d-flex gap-4 social-icons">
-                        <a href="#" target="_blank"><i class="fa-brands fa-facebook fa-2x" style="color: #3b5998;"></i></a>
-                        <a href="#" target="_blank"><i class="fa-brands fa-instagram fa-2x" style="color: #C13584;"></i></a>
-                        <a href="#" target="_blank"><i class="fa-brands fa-twitter fa-2x" style="color: #1DA1F2;"></i></a>
+                        <a href="${event.socials.facebook}" target="_blank"><i class="fa-brands fa-facebook fa-2x" style="color: #3b5998;"></i></a>
+                        <a href="${event.socials.instagram}" target="_blank"><i class="fa-brands fa-instagram fa-2x" style="color: #C13584;"></i></a>
+                        <a href="${event.socials.twitter}" target="_blank"><i class="fa-brands fa-twitter fa-2x" style="color: #1DA1F2;"></i></a>
                     </div>
                 </div>
             </div>
@@ -545,22 +606,22 @@ modalArea.innerHTML = `
     </div>
 `;
 
-function searchEvents() {
-    // 1. Get what the user typed in the search bar
-    const searchTerm = document.getElementById('eventSearch').value.toLowerCase();
-    
-    // 2. Filter the allEvents array
-    const matchedEvents = allEvents.filter(event => {
-        return event.title.toLowerCase().includes(searchTerm) || 
-               event.description.toLowerCase().includes(searchTerm);
-    });
+        function searchEvents() {
+            // 1. Get what the user typed in the search bar
+            const searchTerm = document.getElementById('eventSearch').value.toLowerCase();
 
-    // 3. Clear the current cards and show only matched ones
-    const container = document.getElementById('event-container');
-    let htmlContent = "";
+            // 2. Filter the allEvents array
+            const matchedEvents = allEvents.filter(event => {
+                return event.title.toLowerCase().includes(searchTerm) ||
+                    event.description.toLowerCase().includes(searchTerm);
+            });
 
-    matchedEvents.forEach(event => {
-        htmlContent += `
+            // 3. Clear the current cards and show only matched ones
+            const container = document.getElementById('event-container');
+            let htmlContent = "";
+
+            matchedEvents.forEach(event => {
+                htmlContent += `
             <div class="col-md-4 mb-4">
                 <div class="event-card text-center" onclick="openEvent('${event.id}')">
                     <div class="event-img-container border">
@@ -570,15 +631,15 @@ function searchEvents() {
                     <div class="title-underline"></div>
                 </div>
             </div>`;
-    });
+            });
 
-    // 4. Update the page with results or a "Not Found" message
-    if (matchedEvents.length === 0) {
-        container.innerHTML = '<div class="col-12 text-center mt-5"><h3>No results found.</h3></div>';
-    } else {
-        container.innerHTML = htmlContent;
-    }
-}
+            // 4. Update the page with results or a "Not Found" message
+            if (matchedEvents.length === 0) {
+                container.innerHTML = '<div class="col-12 text-center mt-5"><h3>No results found.</h3></div>';
+            } else {
+                container.innerHTML = htmlContent;
+            }
+        }
 
         // 4. Use Bootstrap's Modal command to show the popup
         const myModal = new bootstrap.Modal(document.getElementById('eventModal'));
