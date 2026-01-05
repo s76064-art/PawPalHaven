@@ -5,112 +5,132 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <!--Custom CSS-->
     <link rel="stylesheet" href="css/style.css">
-    <!--Boostrap CSS-->
     <link rel="stylesheet" href="css/bootstrap.min.css">
-    <!--Font awesome-->
     <script src="https://kit.fontawesome.com/b1605aa887.js" crossorigin="anonymous"></script>
 
     <link rel="icon" type="image/png" href="assets/img/pet-brand.png">
-    <title>PawPal Haven</title>
+    <title>My Profile - PawPal Haven</title>
 </head>
 
-<body>
-    <!--Navigation bar-->
-    <nav class="navbar navbar-expand-lg fixed-top" id="nav-bar">
+<body class="bg-light">
+    <nav class="navbar navbar-expand-lg fixed-top shadow-sm" id="nav-bar">
         <div class="container-fluid mx-3">
-
-            <a class="navbar-brand text-white" href="#">
-                <img src="assets/img/pet-brand.png" alt="Brand Icon" width="60">
+            <a class="navbar-brand text-white fw-bold" href="index.html">
+                <img src="assets/img/pet-brand.png" alt="Brand Icon" width="50" class="me-2">
                 PawPal Haven
             </a>
 
-            <!-- Mobile toggle -->
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown">
+            <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarNavDropdown">
                 <span class="navbar-toggler-icon"></span>
             </button>
 
-            <!-- Navbar items -->
             <div class="collapse navbar-collapse" id="navbarNavDropdown">
                 <ul class="navbar-nav ms-auto">
-
-                    <li class="nav-item">
-                        <a class="nav-link active" href="index.html">Home</a>
-                    </li>
-
-                    <li class="nav-item">
-                        <a class="nav-link " href="#">Adopt Pets</a>
-                    </li>
-
-                    <li class="nav-item">
-                        <a class="nav-link " href="#pet-finder.html">Pet Finder</a>
-                    </li>
-
-                    <li class="nav-item">
-                        <a class="nav-link " href="event.html">Events</a>
-                    </li>
-
-                    <!-- Dropdown -->
+                    <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">Adopt Pets</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">Pet Finder</a></li>
+                    <li class="nav-item"><a class="nav-link" href="event.html">Events</a></li>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="tips.html" id="navbarDropdownMenuLink" role="button"
-                            data-bs-toggle="dropdown">
-                            Tips
-                        </a>
-
-                        <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                            <li><a class="dropdown-item" href="#">Cats</a></li>
-                            <li><a class="dropdown-item" href="#">Dogs</a></li>
-                            <li><a class="dropdown-item" href="#">Birds</a></li>
+                            data-bs-toggle="dropdown">Tips</a>
+                        <ul class="dropdown-menu border-0 shadow">
+                            <li><a class="dropdown-item" href="tips.html#catTips">Cats</a></li>
+                            <li><a class="dropdown-item" href="tips.html#dogTips">Dogs</a></li>
+                            <li><a class="dropdown-item" href="tips.html#birdTips">Birds</a></li>
                         </ul>
                     </li>
-
-                    <li class="nav-item">
-                        <a class="nav-link" href="#profile.html">Profile</a>
-                    </li>
-
+                    <li class="nav-item"><a class="nav-link active" href="profile.html">Profile</a></li>
                 </ul>
             </div>
         </div>
     </nav>
 
-    <div class="container my-5">
-        <div class="card shadow-sm p-4" style="max-width: 600px; margin: auto;">
-            <div class="d-flex justify-content-between align-items-center mb-4">
-                <h4 class="fw-bold">My Profile</h4>
-                <button type="button" class="btn btn-outline-success btn-sm" id="edit-btn">
-                    <i class="bi bi-pencil"></i> Edit Profile
-                </button>
+    <div class="container my-5 pt-5" id="profile-section">
+        <div class="row justify-content-center">
+            <div class="col-md-6 col-lg-5">
+                <div class="profile-card shadow-lg rounded-4 p-5 bg-white text-center">
+                    <h2 class="fw-bold mb-4">My Profile</h2>
+
+                    <div class="profile-img-container mb-3 position-relative d-inline-block">
+                        <img src="images/profile.png" id="profilePic" alt="Profile Picture"
+                            class="rounded-circle border shadow-sm"
+                            style="width: 130px; height: 130px; object-fit: cover;">
+
+                        <div class="edit-badge bg-success text-white rounded-circle position-absolute bottom-0 end-0 border border-3 border-white p-2"
+                            style="cursor: pointer; width: 40px; height: 40px;" onclick="triggerFileInput()">
+                            <i class="fa-solid fa-camera"></i>
+                        </div>
+
+                        <input type="file" id="imageInput" accept="image/*" style="display: none;"
+                            onchange="previewImage(event)">
+                    </div>
+
+                    <h4 class="fw-bold mb-4" id="displayUserName">John Doe</h4>
+
+                    <div class="text-start mb-4">
+                        <h6 class="text-uppercase fw-bold text-muted small mb-3">Contact Information</h6>
+
+                        <div class="mb-3">
+                            <label class="form-label small fw-bold">Full Name</label>
+                            <div class="input-group">
+                                <span class="input-group-text bg-light border-end-0"><i
+                                        class="fa-solid fa-user text-muted"></i></span>
+                                <input type="text" class="form-control border-start-0 bg-light" value="John Doe"
+                                    readonly>
+                            </div>
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label small fw-bold">Phone Number</label>
+                            <div class="input-group">
+                                <span class="input-group-text bg-light border-end-0"><i
+                                        class="fa-solid fa-phone text-muted"></i></span>
+                                <input type="text" class="form-control border-start-0 bg-light" value="012-3456789"
+                                    readonly>
+                            </div>
+                        </div>
+
+                        <div class="mb-4">
+                            <label class="form-label small fw-bold">Email Address</label>
+                            <div class="input-group">
+                                <span class="input-group-text bg-light border-end-0"><i
+                                        class="fa-solid fa-envelope text-muted"></i></span>
+                                <input type="email" class="form-control border-start-0 bg-light"
+                                    value="john@example.com" readonly>
+                            </div>
+                        </div>
+
+                        <hr>
+
+                        <h6 class="text-uppercase fw-bold text-muted small mb-3">Social Media</h6>
+                        <div id="socialBox" class="p-3 bg-light rounded-3 border mb-4">
+
+                            <div class="d-flex align-items-center mb-2">
+                                <i class="fa-solid fa-circle-nodes me-3 fs-4 text-secondary"></i>
+                                <span class="text-muted small" id="socialText">No social media connected</span>
+                            </div>
+
+                            <div class="text-center mt-2">
+                                <button class="btn btn-outline-success btn-sm fw-bold px-3 w-100" onclick="addSocial()">
+                                    + Add Another Social Media
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="d-grid">
+                        <button id="editBtn" class="btn btn-success fw-bold rounded-pill py-2 shadow-sm"
+                            onclick="toggleEdit()">
+                            Edit Profile
+                        </button>
+                    </div>
+                </div>
             </div>
-
-            <form id="profile-form">
-                <div class="mb-3">
-                    <label class="form-label text-muted small">Full Name</label>
-                    <input type="text" class="form-control profile-input" id="userName" value="John Doe" disabled>
-                </div>
-
-                <div class="mb-3">
-                    <label class="form-label text-muted small">Email Address</label>
-                    <input type="email" class="form-control profile-input" id="userEmail" value="john@example.com"
-                        disabled>
-                </div>
-
-                <div class="mb-3">
-                    <label class="form-label text-muted small">Phone Number</label>
-                    <input type="text" class="form-control profile-input" id="userPhone" value="012-3456789" disabled>
-                </div>
-
-                <div id="save-section" class="d-none mt-4">
-                    <button type="submit" class="btn btn-success w-100">Save Changes</button>
-                    <button type="button" class="btn btn-link w-100 text-muted mt-2" id="cancel-btn">Cancel</button>
-                </div>
-            </form>
         </div>
     </div>
 
-
-
-    <!--Boostrap JS-->
     <script src="js/bootstrap.bundle.min.js"></script>
     <script src="js/javascript.js"></script>
 </body>
