@@ -24,7 +24,7 @@
     background-color: rgba(0, 0, 0, 0.421) !important;
 }
 
-#nav-bar-transparent-off{
+#nav-bar-transparent-off {
     background-color: rgb(5, 135, 0) !important;
 }
 
@@ -132,21 +132,21 @@
     overflow: hidden;
 }
 
-.login-registration-container{
-    max-width: 420px; 
-    width: 100%; 
+.login-registration-container {
+    max-width: 420px;
+    width: 100%;
     background: white;
 }
 
 .bg-login-registration-bg {
     min-height: 100vh;
-    position: relative; 
+    position: relative;
     z-index: 1;
 }
 
 .bg-login-registration-bg::after {
-    content: ""; 
-    position: absolute; 
+    content: "";
+    position: absolute;
     top: 0;
     left: 0;
     width: 100%;
@@ -156,10 +156,9 @@
     background-size: cover;
     background-position: center;
 
-    opacity: .5; 
-    z-index: -1; 
+    opacity: .5;
+    z-index: -1;
 }
-
 
 .prev-btn {
     left: 10px;
@@ -183,7 +182,42 @@
     box-shadow: 1px 5px 10px #444;
 }
 
-#register-form{
+/* Dashboard sidebar */
+.sidebar {
+  min-height: 80vh;
+  background-color: #343a40;
+}
+
+.sidebar .nav-link {
+  color: white;
+}
+
+.sidebar .nav-link.active,
+.sidebar .nav-link:hover {
+  background-color: #495057;
+}
+
+.dashboard-page {
+  padding: 20px;
+}
+
+.card img {
+  max-height: 150px;
+  object-fit: cover;
+}
+
+
+.content {
+    margin-left: 220px;
+    padding: 20px;
+}
+
+.card img {
+    max-height: 150px;
+    object-fit: cover;
+}
+
+#register-form {
     display: none;
 }
 
@@ -412,13 +446,14 @@
 .missing-header-dark {
     background: linear-gradient(180deg, #b30000 0%, #7a0000 100%);
     border-bottom: 3px solid #4d0000;
-    box-shadow: inset 0px -10px 20px rgba(0,0,0,0.2);
+    box-shadow: inset 0px -10px 20px rgba(0, 0, 0, 0.2);
 }
 
 .massive-text {
-    font-size: 3.5rem; /* Adjust this to fit your screen */
+    font-size: 3.5rem;
+    /* Adjust this to fit your screen */
     font-weight: 900;
-    text-shadow: 2px 2px 5px rgba(0,0,0,0.7);
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
 }
 
 /* Profile Card Styling */

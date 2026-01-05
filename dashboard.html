@@ -74,9 +74,173 @@
         </div>
     </nav>
 
-    <main>
-        
+    <main class="container-fluid">
+        <div class="row">
+
+            <!-- Sidebar for desktop (hidden on small screens) -->
+            <nav id="dashboardSidebar" class="col-md-3 col-lg-2 d-none d-md-block bg-dark sidebar">
+                <div class="position-sticky pt-3">
+                    <h5 class="text-white text-center mb-4">Dashboard</h5>
+                    <ul class="nav flex-column">
+                        <li class="nav-item">
+                            <a class="nav-link text-white active" href="#" data-target="pets-page">Pets</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-white" href="#" data-target="events-page">Events</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-white" href="#" data-target="lost-pets-page">Lost Pets</a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+
+            <!-- Mobile sidebar toggle button -->
+            <div class="d-md-none mb-3">
+                <button class="btn btn-dark" type="button" data-bs-toggle="offcanvas"
+                    data-bs-target="#offcanvasSidebar">
+                    <i class="fa-solid fa-bars"></i> Menu
+                </button>
+            </div>
+
+            <!-- Offcanvas for mobile -->
+            <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasSidebar">
+                <div class="offcanvas-header bg-dark text-white">
+                    <h5 class="offcanvas-title">Dashboard</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas"></button>
+                </div>
+                <div class="offcanvas-body bg-dark">
+                    <ul class="nav flex-column">
+                        <li class="nav-item">
+                            <a class="nav-link text-white active" href="#" data-target="pets-page">Pets</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-white" href="#" data-target="events-page">Events</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-white" href="#" data-target="lost-pets-page">Lost Pets</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Main Content -->
+            <div class="col-md-9 col-lg-10">
+                <!-- Pets Page -->
+                <div id="pets-page" class="dashboard-page">
+                    <h2>My Pets for Adoption</h2>
+                    <button class="btn btn-success mb-3" data-bs-toggle="modal" data-bs-target="#petModal"
+                        onclick="openAddPetModal()">Add New Pet</button>
+                    <div class="row" id="pets-list"></div>
+                </div>
+
+                <!-- Events Page -->
+                <div id="events-page" class="dashboard-page" style="display:none;">
+                    <h2>My Events</h2>
+                    <button class="btn btn-success mb-3" data-bs-toggle="modal" data-bs-target="#eventModal"
+                        onclick="openAddEventModal()">Add New Event</button>
+                    <div class="row" id="events-list"></div>
+                </div>
+
+                <!-- Lost Pets Page -->
+                <div id="lost-pets-page" class="dashboard-page" style="display:none;">
+                    <h2>My Lost Pets</h2>
+                    <button class="btn btn-success mb-3" data-bs-toggle="modal" data-bs-target="#lostPetModal"
+                        onclick="openAddLostPetModal()">Add Lost Pet</button>
+                    <div class="row" id="lost-pets-list"></div>
+                </div>
+            </div>
+        </div>
     </main>
+
+
+
+    <!-- Pet Modal -->
+    <div class="modal fade" id="petModal" tabindex="-1" aria-labelledby="petModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <form id="petForm">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="petModalLabel">Add/Edit Pet</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="mb-3">
+                            <label class="form-label">Pet Name</label>
+                            <input type="text" class="form-control" id="pet-name" required>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Type</label>
+                            <input type="text" class="form-control" id="pet-type" required>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Age</label>
+                            <input type="text" class="form-control" id="pet-age" required>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="submit" class="btn btn-primary">Save Pet</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Event Modal -->
+    <div class="modal fade" id="eventModal" tabindex="-1" aria-labelledby="eventModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <form id="eventForm">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="eventModalLabel">Add/Edit Event</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="mb-3">
+                            <label class="form-label">Event Name</label>
+                            <input type="text" class="form-control" id="event-name" required>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Date</label>
+                            <input type="date" class="form-control" id="event-date" required>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="submit" class="btn btn-primary">Save Event</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Lost Pet Modal -->
+    <div class="modal fade" id="lostPetModal" tabindex="-1" aria-labelledby="lostPetModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <form id="lostPetForm">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="lostPetModalLabel">Add/Edit Lost Pet</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="mb-3">
+                            <label class="form-label">Pet Name</label>
+                            <input type="text" class="form-control" id="lost-pet-name" required>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Description</label>
+                            <textarea class="form-control" id="lost-pet-desc" required></textarea>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="submit" class="btn btn-primary">Save Lost Pet</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+
 
 
     <footer class="bg-green-1 text-white pt-5 pb-3">

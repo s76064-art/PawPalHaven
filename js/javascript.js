@@ -187,17 +187,32 @@ function eventPage(page) {
 }
 
 //Functions that should be run on login-registraion page
-
 function loginRegister(page) {
     if (page === "login-registration.html") {
         const loginForm = document.getElementById("login-form");
         const registerForm = document.getElementById("register-form");
         const registerBtn = document.getElementById("register-btn");
 
-        registerBtn.addEventListener("click", function(){
+        registerBtn.addEventListener("click", function () {
             document.querySelectorAll(".login-form-input").forEach(input => input.disabled = true);
             loginForm.style.display = "none";
             registerForm.style.display = "block";
+        });
+    }
+}
+
+//Functions that should be run in dashboard
+function dashboard(page) {
+    if (page === "dashboard.html") {
+        document.querySelectorAll('.sidebar .nav-link').forEach(link => {
+            link.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelectorAll('.sidebar .nav-link').forEach(l => l.classList.remove('active'));
+                this.classList.add('active');
+                const target = this.dataset.target;
+                document.querySelectorAll('.dashboard-page').forEach(page => page.style.display = 'none');
+                document.getElementById(target).style.display = 'block';
+            });
         });
     }
 }
@@ -209,6 +224,7 @@ document.addEventListener("DOMContentLoaded", function () {
     homepageEvent(page);
     eventPage(page);
     loginRegister(page);
+    dashboard(page);
 });
 
 
