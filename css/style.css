@@ -1,23 +1,23 @@
 /*Color*/
 
 .bg-green-1 {
-    background-color: rgb(0, 146, 0);
+    background-color: rgb(0, 146, 0) !important;
 }
 
 .bg-green-2 {
-    background-color: rgb(2, 175, 2);
+    background-color: rgb(2, 175, 2) !important;
 }
 
 .bg-green-3 {
-    background-color: rgb(77, 242, 77);
+    background-color: rgb(77, 242, 77) !important;
 }
 
 .bg-green-4 {
-    background-color: rgb(0, 99, 0);
+    background-color: rgb(0, 99, 0) !important;
 }
 
 .bg-light-2 {
-    background-color: rgb(219, 219, 219);
+    background-color: rgb(219, 219, 219) !important;
 }
 
 #nav-bar {
@@ -27,6 +27,7 @@
 #nav-bar-transparent-off{
     background-color: rgb(5, 135, 0) !important;
 }
+
 
 .active {
     color: white !important;
@@ -139,12 +140,12 @@
 
 .bg-login-registration-bg {
     min-height: 100vh;
-    position: relative; /* important */
+    position: relative; 
     z-index: 1;
 }
 
 .bg-login-registration-bg::after {
-    content: ""; /* required */
+    content: ""; 
     position: absolute; 
     top: 0;
     left: 0;
@@ -155,8 +156,8 @@
     background-size: cover;
     background-position: center;
 
-    opacity: .5; /* transparency */
-    z-index: -1; /* behind the content */
+    opacity: .5; 
+    z-index: -1; 
 }
 
 
@@ -180,6 +181,10 @@
 
 .pet-card {
     box-shadow: 1px 5px 10px #444;
+}
+
+#register-form{
+    display: none;
 }
 
 .dots {

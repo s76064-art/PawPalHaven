@@ -178,10 +178,27 @@ function homepageEvent(page) {
     }
 }
 
+
 //Functions that should be run on event page
 function eventPage(page) {
     if (page === "event.html") {
         displayEvents();
+    }
+}
+
+//Functions that should be run on login-registraion page
+
+function loginRegister(page) {
+    if (page === "login-registration.html") {
+        const loginForm = document.getElementById("login-form");
+        const registerForm = document.getElementById("register-form");
+        const registerBtn = document.getElementById("register-btn");
+
+        registerBtn.addEventListener("click", function(){
+            document.querySelectorAll(".login-form-input").forEach(input => input.disabled = true);
+            loginForm.style.display = "none";
+            registerForm.style.display = "block";
+        });
     }
 }
 
@@ -191,8 +208,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     homepageEvent(page);
     eventPage(page);
-
-
+    loginRegister(page);
 });
 
 
