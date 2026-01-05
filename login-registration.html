@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!--Custom CSS-->
+    <link rel="stylesheet" href="css/style.css">
+    <!--Boostrap CSS-->
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <!--Font awesome-->
+    <script src="https://kit.fontawesome.com/b1605aa887.js" crossorigin="anonymous"></script>
+
+    <link rel="icon" type="image/png" href="assets/img/pet-brand.png">
+    <title>PawPal Haven</title>
+</head>
+
+<body>
+    <!--Navigation bar-->
+    <nav class="navbar navbar-expand-lg " id="nav-bar-transparent-off">
+        <div class="container-fluid mx-3">
+
+            <a class="navbar-brand text-white" href="#">
+                <img src="assets/img/pet-brand.png" alt="Brand Icon" width="60">
+                PawPal Haven
+            </a>
+
+            <!-- Mobile toggle -->
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <!-- Navbar items -->
+            <div class="collapse navbar-collapse" id="navbarNavDropdown">
+                <ul class="navbar-nav ms-auto">
+
+                    <li class="nav-item">
+                        <a class="nav-link active" href="#">Home</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link " href="#">Adopt Pets</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link " href="#">Pet Finder</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link " href="event.html">Events</a>
+                    </li>
+
+                    <!-- Dropdown -->
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="tips.html" id="navbarDropdownMenuLink" role="button"
+                            data-bs-toggle="dropdown">
+                            Tips
+                        </a>
+
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                            <li><a class="dropdown-item" href="#">Cats</a></li>
+                            <li><a class="dropdown-item" href="#">Dogs</a></li>
+                            <li><a class="dropdown-item" href="#">Birds</a></li>
+                        </ul>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="#profile.html">Profile</a>
+                    </li>
+
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <main class="bg-login-registration-bg d-flex justify-content-center align-items-center">
+        <div class="jumbotron p-5 shadow rounded login-registration-container bg-green-1" >
+
+            <h1 class="mb-4 text-center">Login</h1>
+            <form novalidate>
+                <div class="form-group mb-3">
+                    <label for="Email">Email</label>
+                    <input type="email" class="form-control" id="email" name="email" placeholder="Enter email" required>
+                </div>
+
+                <div class="form-group mb-4">
+                    <label for="password">Password</label>
+                    <input type="password" class="form-control" id="password" name="password" placeholder="Password" required>
+                </div>
+
+                <button type="submit" class="btn btn-success w-100 mb-4">Login</button>
+                <button type="submit" class="btn btn-primary w-100">Register</button>
+            </form>
+        </div>
+    </main>
+
+
+    <footer class="bg-green-1 text-white pt-5 pb-3">
+        <div class="container">
+
+            <div class="row">
+
+                <!-- About Section -->
+                <div class="col-md-4 mb-md-4 mb-2">
+                    <h5>About</h5>
+                    <p>
+                        A central hub for pet lovers! Adopt or list pets for adoption, get care tips, find and promote
+                        events, and share lost pet posts with the community.
+                    </p>
+                </div>
+
+                <!-- Sitemap Section -->
+                <div class="col-md-4 mb-md-4 mb-0  text-center text-md-start">
+                    <h5>Sitemap</h5>
+                    <ul class="list-unstyled sitemap">
+                        <li><a href="index.html" class="text-white text-decoration-none">Home</a></li>
+                        <li><a href="" class="text-white text-decoration-none">Adopt Pets</a></li>
+                        <li><a href="" class="text-white text-decoration-none">Tips</a></li>
+                        <li><a href="" class="text-white text-decoration-none">Pet Finder</a></li>
+                        <li><a href="" class="text-white text-decoration-none">Tips</a></li>
+                    </ul>
+                </div>
+
+                <!-- Social and Creators Section -->
+                <div class="col-md-4 mb-4 text-center text-md-start">
+                    <h5>Connect With Us</h5>
+                    <div class="mb-3">
+                        <a href="#" class="text-white mx-2"><i class="fab fa-facebook fa-lg"></i></a>
+                        <a href="#" class="text-white mx-2"><i class="fab fa-twitter fa-lg"></i></a>
+                        <a href="#" class="text-white mx-2"><i class="fab fa-instagram fa-lg"></i></a>
+                        <a href="#" class="text-white mx-2"><i class="fab fa-youtube fa-lg"></i></a>
+                    </div>
+                    <ul class="list-unstyled">
+                        <li>
+                            <p class="mb-0"><strong>Auhtors</strong></p>
+                        </li>
+                        <li>
+                            <p class="mb-0"><small>Syamil Bin Md Noor (S76064)</small></p>
+                        </li>
+                        <li>
+                            <p class="mb-0"><small>Izani ()</small></p>
+                        </li>
+                        <li>
+                            <p class="mb-0"><small>Adlyn ()</small></p>
+                        </li>
+                    </ul>
+                </div>
+
+            </div>
+
+            <hr class="bg-light">
+
+            <div class="row">
+                <div class="col text-center">
+                    <small>&copy; 2026 PawPal Haven. All Rights Reserved.</small>
+                </div>
+            </div>
+
+        </div>
+    </footer>
+
+
+    <!--Boostrap JS-->
+    <script src="js/bootstrap.bundle.min.js"></script>
+    <script src="js/javascript.js"></script>
+</body>
+
+</html>

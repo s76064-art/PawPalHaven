@@ -24,6 +24,10 @@
     background-color: rgba(0, 0, 0, 0.421) !important;
 }
 
+#nav-bar-transparent-off{
+    background-color: rgb(5, 135, 0) !important;
+}
+
 .active {
     color: white !important;
 }
@@ -125,9 +129,35 @@
     background-color: gray;
     margin: auto;
     overflow: hidden;
-
 }
 
+.login-registration-container{
+    max-width: 420px; 
+    width: 100%; 
+    background: white;
+}
+
+.bg-login-registration-bg {
+    min-height: 100vh;
+    position: relative; /* important */
+    z-index: 1;
+}
+
+.bg-login-registration-bg::after {
+    content: ""; /* required */
+    position: absolute; 
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+
+    background-image: url('../assets/img/login-registration-bg.png');
+    background-size: cover;
+    background-position: center;
+
+    opacity: .5; /* transparency */
+    z-index: -1; /* behind the content */
+}
 
 
 .prev-btn {
@@ -470,21 +500,8 @@
     background-color: #f1f1f1 !important;
 }
 
-/* Action Buttons */
-.btn-success {
-    background-color: #009200;
-    border: none;
-    padding: 10px 20px;
-}
-
-.btn-success:hover {
-    background-color: #007a00;
-    transform: translateY(-2px);
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
-
 /* Edit Mode styling - visual feedback when inputs are unlocked */
-.form-control:not([readonly]) {
+.profile form .form-control:not([readonly]) {
     background-color: #fff !important;
     border-color: #009200;
     box-shadow: 0 0 0 0.2rem rgba(0, 146, 0, 0.25);
