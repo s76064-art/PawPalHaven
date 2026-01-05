@@ -67,84 +67,6 @@ class SlideShow {
     }
 }
 
-
-class PetCard {
-    constructor(petInfo, element) {
-        this.petInfo;
-        this.element;
-
-        this.createElement();
-    }
-
-    createElement() {
-        const divElement = document.createElement("div");
-        divElement.classList.add("pet-card bg-light bevel-border-1 overflow-hidden")
-        divElement.innerHTML = `
-         <!--Pet Name-->
-        <h3 class="pet-name text-center bg-green-1 p-2 text-white">${this.petInfo.name}</h3>
-
-        <div class="jumbotron p-2 w-100">
-
-            <!--Pet Image-->
-            <div class="container-fluid d-flex justify-content-center mb-4">
-                <div class="pet-img">
-                    <img src="${this.petInfo.img}" class="img-fluid" alt="Snowy">
-                </div>
-            </div>
-
-            <!--Pet info-->
-            <div class="container-fluid text-start text-lg-center">
-                <div class="row mb-1">
-                    <div class="col-xl-6 col-md-12 pet-label"><strong>Species:</strong>
-                        ${this.petInfo.species}</div>
-                    <div class="col-xl-6  col-sm-12 pet-label"><strong>Age:</strong>
-                        ${this.petInfo.age}
-                    </div>
-                    <div class="col-xl-6  col-md-12 pet-label"><strong>Gender:</strong>
-                        ${this.PetInfo.gender}</div>
-                    <div class="col-xl-6  col-md-12 pet-label"><strong>Color:</strong>
-                        ${this.petInfo.color}</div>
-                </div>
-            </div>
-
-        </div>
-
-        <!--Contact-->
-        <div class="container-fluid mt-3 bg-green-3 p-0">
-            <h5 class="p-2 bg-green-1 text-white text-center">Contact</h5>
-
-            <div class="text-center mb-1"><i class="fa-solid fa-phone"></i>: 000-0000000
-            </div>
-
-            <div
-                class="d-flex justify-content-center align-items-center p-3 social-font">
-                <i class="fa-brands fa-facebook fa-xl mx-2"></i>
-                <i class="fa-brands fa-youtube fa-xl mx-2"></i>
-                <i class="fa-brands fa-instagram fa-xl mx-2"></i>
-                <i class="fa-brands fa-tiktok fa-xl mx-2"></i>
-                <i class="fa-brands fa-twitter fa-xl mx-2"></i>
-                <i class="fa-regular fa-map fa-xl mx-2"
-                    onclick="openMapModal('5.352468, 103.099591')"></i>
-            </div>
-        </div>
-        `
-
-        this.element.appendChild(divElement);
-    }
-}
-
-
-class PetInfo {
-    constructor(name, species, age, gender, color, img) {
-        this.name = name;
-        this.species = species;
-        this.age = age;
-        this.gender = gender;
-        this.color = color;
-        this.img = img;
-    }
-}
-
 //Functions that should be run on homepage
 function homepageEvent(page) {
     if (page === "index.html") {
@@ -165,6 +87,14 @@ function eventPage(page) {
         displayEvents();
     }
 }
+
+
+document.addEventListener("DOMContentLoaded", function () {
+    const page = window.location.pathname.split("/").pop();
+
+    homepageEvent(page);
+    eventPage(page);
+});
 
 
 function messageCycle() {
@@ -287,17 +217,18 @@ function openMapModal(location) {
     mapModal.show();
 }
 
-
-
-document.addEventListener("DOMContentLoaded", function () {
-    const page = window.location.pathname.split("/").pop();
-    homepageEvent(page);
-    eventPage(page);
-});
+//Close map when not use
+document.getElementById('mapModal').addEventListener('hidden.bs.modal', function () {
+    document.getElementById('mapFrame').src = "";
+})
 
 
 // event.html
-// data object(stores event details)
+/**
+ * PART 1: THE DATA OBJECT
+ * This array acts as your "database". 
+ * It stores the details for all 12 events in one place.
+ */
 const allEvents = [
     {
         id: "e1",
@@ -323,7 +254,7 @@ const allEvents = [
         location: "Community Garden",
         description: "Bring your bunnies for a fun hopping course! Experts will be on site to discuss rabbit nutrition and dental health."
     },
-
+    // Repeat this pattern to create a total of 12 events (e4, e5... e12)
     { id: "e4", title: "Puppy Yoga", img: "images/poster4.png", date: "Dec 01, 2026", location: "Yoga Studio", description: "Relax with your puppy in this beginner-friendly yoga session." },
     { id: "e5", title: "Bird Workshop", img: "images/poster5.jpg", date: "Dec 05, 2026", location: "Avian Center", description: "Learn about the social needs of parrots and cockatiels." },
     { id: "e6", title: "Hamster Race", img: "images/poster6.jpg", date: "Dec 10, 2026", location: "Pet Store", description: "The fastest hamsters in the city compete for prizes!" },
@@ -335,7 +266,8 @@ const allEvents = [
     { id: "e12", title: "Vet Q&A", img: "images/poster12.png", date: "Feb 10, 2026", location: "Online", description: "Ask our resident veterinarian anything about pet health." }
 ];
 
-/*
+/**
+ * PART 2: DISPLAYING THE GALLERY (Sketch 1)
  * This function loops through the array and builds the 12 cards in HTML.
  */
 function displayEvents() {
@@ -361,10 +293,11 @@ function displayEvents() {
     container.innerHTML = htmlContent;
 }
 
-// tips
-//This function triggers when a card is clicked.
-//It finds the right description and "injects" it into the Modal.
-
+/**
+ * PART 3: THE POPUP MODAL (Sketch 2)
+ * This function triggers when a card is clicked.
+ * It finds the right description and "injects" it into the Modal.
+ */
 function openEvent(eventId) {
     // 1. Find the specific event data using the unique ID
     const event = allEvents.find(e => e.id === eventId);
@@ -414,3 +347,11 @@ function openEvent(eventId) {
     }
 }
 
+
+
+//--------------------------------------------------- PET FINDER PART (Lynn)------------------------------------------------------------
+function openMap(location) {
+    const encodedLocation = encodeURIComponent(location);
+    // Gunakan backtick (`) di awal dan di hujung, dan masukkan pembolehubah dalam ${ }
+    window.open(`https://www.google.com/maps/search/${encodedLocation}`, '_blank');
+}
