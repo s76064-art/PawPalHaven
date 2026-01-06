@@ -370,6 +370,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
 // ------------------------------------------------------------- PET EVENT ------------------------------------------------------------
+// event (izani)
 // data object(stores event details)
 const allEvents=
     [
