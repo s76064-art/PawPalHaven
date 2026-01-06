@@ -375,12 +375,9 @@ document.addEventListener("DOMContentLoaded", function () {
  * It stores the details for all 12 events in one place.
  */
 
-<<<<<<< Updated upstream
 
-=======
 // ------------------------------------------------------------- PET EVENT ------------------------------------------------------------
 // event (izani)
->>>>>>> Stashed changes
 // data object(stores event details)
 const allEvents=
     [
@@ -706,9 +703,8 @@ function previewImage(event) {
         reader.readAsDataURL(event.target.files[0]);
     }
 }
+}
 
-<<<<<<< Updated upstream
-=======
 
     // ----------------------PROFILE----------------------------------
     //add social media 
@@ -716,7 +712,6 @@ function previewImage(event) {
     function addSocial() {
         const platform = prompt("Enter platform (e.g. Instagram, Facebook):");
         const username = prompt("Enter your @username:");
->>>>>>> Stashed changes
 
 //add social media 
 // Function to add multiple social media handles with delete confirmation
@@ -830,6 +825,3 @@ function toggleEdit() {
         alert("Profile saved!");
     }
 }}
-
-
-
