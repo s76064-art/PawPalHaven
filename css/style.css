@@ -396,8 +396,8 @@
 
 /* tips */
 /* Custom styling for the Tips Accordion */
-.header-section {
-    background-image: url("images/backgroundTips.png");
+/* .header-section {
+    background-image: url('images\backgroun tips.jpg');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -405,7 +405,7 @@
     min-height: 60vh;
     display: flex;
     align-items: center;
-}
+} */
 
 .accordion-item {
     border: none !important;

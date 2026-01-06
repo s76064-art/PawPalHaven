@@ -375,7 +375,12 @@ document.addEventListener("DOMContentLoaded", function () {
  * It stores the details for all 12 events in one place.
  */
 
+<<<<<<< Updated upstream
 
+=======
+// ------------------------------------------------------------- PET EVENT ------------------------------------------------------------
+// event (izani)
+>>>>>>> Stashed changes
 // data object(stores event details)
 const allEvents=
     [
@@ -553,7 +558,7 @@ const allEvents=
 
 /**
  * PART 2: DISPLAYING THE GALLERY (Sketch 1)
- * This function loops through the array and builds the 12 cards in HTML.
+ * This function loops through the array and builds the 13 cards in HTML.
  */
 function displayEvents() {
     const container = document.getElementById('event-container');
@@ -581,7 +586,7 @@ function displayEvents() {
 
 
 /**
- * PART 3: THE POPUP MODAL (Sketch 2)
+ * PART 3: THE POPUP MODAL (Sketch 2) (izani)
  * This function triggers when a card is clicked.
  * It finds the right description and "injects" it into the Modal.
  */
@@ -632,7 +637,7 @@ function openEvent(eventId) {
     </div>
 `;
 
-
+// search events (izani)
         function searchEvents() {
             // 1. Get what the user typed in the search bar
             const searchTerm = document.getElementById('eventSearch').value.toLowerCase();
@@ -702,6 +707,16 @@ function previewImage(event) {
     }
 }
 
+<<<<<<< Updated upstream
+=======
+
+    // ----------------------PROFILE----------------------------------
+    //add social media 
+    // Function to add multiple social media handles with delete confirmation
+    function addSocial() {
+        const platform = prompt("Enter platform (e.g. Instagram, Facebook):");
+        const username = prompt("Enter your @username:");
+>>>>>>> Stashed changes
 
 //add social media 
 // Function to add multiple social media handles with delete confirmation
