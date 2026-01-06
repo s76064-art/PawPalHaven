@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <script src="https://kit.fontawesome.com/b1605aa887.js" crossorigin="anonymous"></script>
+
+    <link rel="icon" type="image/png" href="assets/img/pet-brand.png">
+    <title>Adopt Pet - PawPal Haven</title>
+</head>
+
+<body class="bg-light">
+    <nav class="navbar navbar-expand-lg fixed-top shadow-sm" id="nav-bar">
+        <div class="container-fluid mx-3">
+            <a class="navbar-brand text-white fw-bold" href="index.html">
+                <img src="assets/img/pet-brand.png" alt="Brand Icon" width="50" class="me-2">
+                PawPal Haven
+            </a>
+            <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNavDropdown">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="adopt3.html">Adopt Pets</a></li>
+                    <li class="nav-item"><a class="nav-link" href="pet-finder.html">Pet Finder</a></li>
+                    <li class="nav-item"><a class="nav-link" href="event.html">Events</a></li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle active" href="tips.html" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown">Tips</a>
+                        <ul class="dropdown-menu border-0 shadow">
+                            <li><a class="dropdown-item" href="#catTips">Cats</a></li>
+                            <li><a class="dropdown-item" href="#dogTips">Dogs</a></li>
+                            <li><a class="dropdown-item" href="#birdTips">Birds</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item"><a class="nav-link" href="#">Profile</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+
+    
+<section class="header-section text-center py-5">
+        <div class="container">
+            <h1 class="display-4 fw-800">Find your <span style="color: var(--primary-color);">Soulmate</span></h1>
+            <p class="text-muted">Simple, modern adoption for your future best friend.</p>
+        </div>
+    </section>
+
+    <div class="container pb-5">
+        <div class="row g-4">
+            <div class="col-md-4">
+                <div class="card pet-card shadow-sm" onclick="openModal('Luna', '1 Year', 'Cat', 'https://images.unsplash.com/photo-1514888286974-6c03e2ca1dba?w=500', 'Luna is a gentle soul who loves sunny spots.')">
+                    <span class="card-badge text-primary">New Arrival</span>
+                    <img src="https://images.unsplash.com/photo-1514888286974-6c03e2ca1dba?w=500" class="card-img-top">
+                    <div class="card-body p-4 text-center">
+                        <h4 class="fw-bold mb-1">Luna</h4>
+                        <p class="text-muted small mb-0"><i class="bi bi-geo-alt"></i> Kuala Lumpur</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="card pet-card shadow-sm" onclick="openModal('Buddy', '2 Years', 'Dog', 'https://images.unsplash.com/photo-1583511655857-d19b40a7a54e?w=500', 'Buddy is energetic and loves morning walks!')">
+                    <img src="https://images.unsplash.com/photo-1583511655857-d19b40a7a54e?w=500" class="card-img-top">
+                    <div class="card-body p-4 text-center">
+                        <h4 class="fw-bold mb-1">Buddy</h4>
+                        <p class="text-muted small mb-0"><i class="bi bi-geo-alt"></i> Terengganu</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="card pet-card shadow-sm" onclick="openModal('Charlie', '6 Months', 'Rabbit', 'https://images.unsplash.com/photo-1585110396000-c9ffd4e4b308?w=500', 'Charlie is a curious bunny who loves fresh carrots.')">
+                    <img src="https://images.unsplash.com/photo-1585110396000-c9ffd4e4b308?w=500" class="card-img-top">
+                    <div class="card-body p-4 text-center">
+                        <h4 class="fw-bold mb-1">Charlie</h4>
+                        <p class="text-muted small mb-0"><i class="bi bi-geo-alt"></i> Selangor</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="petModal" tabindex="-1">
+        <div class="modal-dialog modal-lg modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="row align-items-center">
+                        <div class="col-md-5 mb-4 mb-md-0">
+                            <img id="m-img" src="" class="img-fluid rounded-4 shadow-sm" alt="Pet">
+                        </div>
+                        <div class="col-md-7 ps-md-4">
+                            <h2 id="m-name" class="fw-bold mb-0"></h2>
+                            <p id="m-type" class="text-primary fw-600 mb-3"></p>
+                            
+                            <div class="d-flex gap-3 mb-4 text-muted small">
+                                <span><i class="bi bi-calendar"></i> Age: <span id="m-age"></span></span>
+                                <span><i class="bi bi-gender-ambiguous"></i> Female</span>
+                            </div>
+                            
+                            <p id="m-desc" class="text-muted"></p>
+                            
+                            <div class="mt-4">
+                                <button class="btn btn-adopt w-100">Adopt Me Now</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+<!-- Bootstrap JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+</html>

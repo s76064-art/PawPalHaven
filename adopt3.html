@@ -1,45 +1,59 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>PawPal Heaven | Adopt a Pet</title>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <!-- Bootstrap CSS -->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <script src="https://kit.fontawesome.com/b1605aa887.js" crossorigin="anonymous"></script>
 
-  <style>
-    body {
-      background-color: #f8f9fa;
-    }
-    .pet-card img {
-      height: 200px;
-      object-fit: cover;
-    }
-  </style>
+    <link rel="icon" type="image/png" href="assets/img/pet-brand.png">
+    <title>Adopt Pet - PawPal Haven</title>
 </head>
-<body>
 
-<!-- NAVBAR -->
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-  <div class="container">
-    <a class="navbar-brand" href="#">PawPal Heaven</a>
-    <button class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#menu">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="menu">
-      <ul class="navbar-nav ms-auto">
-        <li class="nav-item"><a class="nav-link active" href="#">Adopt Pet</a></li>
-        <li class="nav-item"><a class="nav-link" href="#">About</a></li>
-        <li class="nav-item"><a class="nav-link" href="#">Contact</a></li>
-      </ul>
-    </div>
-  </div>
-</nav>
+<body class="bg-light">
+    <nav class="navbar navbar-expand-lg fixed-top shadow-sm" id="nav-bar">
+        <div class="container-fluid mx-3">
+            <a class="navbar-brand text-white fw-bold" href="index.html">
+                <img src="assets/img/pet-brand.png" alt="Brand Icon" width="50" class="me-2">
+                PawPal Haven
+            </a>
+            <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNavDropdown">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="adopt3.html">Adopt Pets</a></li>
+                    <li class="nav-item"><a class="nav-link" href="pet-finder.html">Pet Finder</a></li>
+                    <li class="nav-item"><a class="nav-link" href="event.html">Events</a></li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle active" href="tips.html" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown">Tips</a>
+                        <ul class="dropdown-menu border-0 shadow">
+                            <li><a class="dropdown-item" href="#catTips">Cats</a></li>
+                            <li><a class="dropdown-item" href="#dogTips">Dogs</a></li>
+                            <li><a class="dropdown-item" href="#birdTips">Birds</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item"><a class="nav-link" href="#">Profile</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+
 
 <!-- TITLE -->
-<div class="container my-5">
-  <h2 class="text-center mb-4">Available Pets for Adoption</h2>
-
+ <section class="header-section text-center py-5 mt-5 bg-white shadow-sm mb-5">
+        <div class="container pt-4">
+            <h1 class="display-3 fw-bold text-dark">Adopt Yours<span class="text-success"> Now</span></h1>
+            <p class="lead text-muted mx-auto" style="max-width: 700px;">
+                Simple, modern adoption for your future best friend. Click view me to find the details.
+            </p>
+        </div>
+    </section>
   <!-- PET LIST -->
   <div class="row g-4">
 
