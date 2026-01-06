@@ -408,51 +408,11 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
 
-// event.html
-/**
- * PART 1: THE DATA OBJECT
- * This array acts as your "database". 
- * It stores the details for all 12 events in one place.
- */
-const allEvents = [
-    {
-        id: "e1",
-        title: "Golden Meetup",
-        img: "images/poster7.png",
-        date: "Oct 25, 2026",
-        location: "Central Park",
-        description: "A wonderful gathering for Golden Retrievers and their owners. Activities include a fetch competition and professional pet photography."
-    },
-    {
-        id: "e2",
-        title: "Cat Expo",
-        img: "images/poster2.png",
-        date: "Nov 05, 2026",
-        location: "Convention Center",
-        description: "Explore the latest in feline care, from organic treats to high-tech toys. Featuring a guest lecture on cat behavior."
-    },
-    {
-        id: "e3",
-        title: "Rabbit Hop",
-        img: "images/poster3.png",
-        date: "Nov 12, 2026",
-        location: "Community Garden",
-        description: "Bring your bunnies for a fun hopping course! Experts will be on site to discuss rabbit nutrition and dental health."
-    },
-    // Repeat this pattern to create a total of 12 events (e4, e5... e12)
-    { id: "e4", title: "Puppy Yoga", img: "images/poster4.png", date: "Dec 01, 2026", location: "Yoga Studio", description: "Relax with your puppy in this beginner-friendly yoga session." },
-    { id: "e5", title: "Bird Workshop", img: "images/poster5.jpg", date: "Dec 05, 2026", location: "Avian Center", description: "Learn about the social needs of parrots and cockatiels." },
-    { id: "e6", title: "Hamster Race", img: "images/poster6.jpg", date: "Dec 10, 2026", location: "Pet Store", description: "The fastest hamsters in the city compete for prizes!" },
-    { id: "e7", title: "Kitten Care", img: "images/poster1.png", date: "Dec 15, 2026", location: "Rescue Shelter", description: "A workshop for new kitten owners covering vaccines and weaning." },
-    { id: "e8", title: "Dog Hike", img: "images/poster8.png", date: "Jan 05, 2026", location: "Blue Hills", description: "A group hiking event for energetic dogs and their humans." },
-    { id: "e9", title: "Snake Safety", img: "images/poster9.png", date: "Jan 10, 2026", location: "Zoo Hall", description: "Learn how to safely handle and house exotic pet snakes." },
-    { id: "e10", title: "Fish Breeding", img: "images/poster10.png", date: "Jan 15, 2026", location: "Aquarium", description: "Technical tips for breeding freshwater tropical fish." },
-    { id: "e11", title: "Pet Adoption", img: "images/poster11.png", date: "Feb 01, 2026", location: "Main Square", description: "Find your new best friend at our monthly adoption fair." },
-    { id: "e12", title: "Vet Q&A", img: "images/poster12.png", date: "Feb 10, 2026", location: "Online", description: "Ask our resident veterinarian anything about pet health." }
-];
 
+
+// event
 // data object(stores event details)
-const allEvent =
+const allEvents =
     [
         {
             id: "e1",
