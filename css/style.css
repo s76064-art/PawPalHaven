@@ -394,9 +394,19 @@
     transition: 0.3s;
 }
 
-
-
+/* tips */
 /* Custom styling for the Tips Accordion */
+.header-section {
+    background-image: url("images/backgroundTips.png");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+
+    min-height: 60vh;
+    display: flex;
+    align-items: center;
+}
+
 .accordion-item {
     border: none !important;
     margin-bottom: 25px !important;
