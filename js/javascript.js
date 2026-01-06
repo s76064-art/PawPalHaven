@@ -703,7 +703,6 @@ function previewImage(event) {
 }
 
 
-
 //add social media 
 // Function to add multiple social media handles with delete confirmation
 function addSocial() {
