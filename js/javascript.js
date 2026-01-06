@@ -368,16 +368,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
 
-// event.html
-/**
- * PART 1: THE DATA OBJECT
- * This array acts as your "database". 
- * It stores the details for all 12 events in one place.
- */
-
 
 // ------------------------------------------------------------- PET EVENT ------------------------------------------------------------
-// event (izani)
 // data object(stores event details)
 const allEvents=
     [
