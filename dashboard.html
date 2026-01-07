@@ -129,9 +129,59 @@
                 <!-- Pets Page -->
                 <div id="pets-page" class="dashboard-page">
                     <h2>My Pets for Adoption</h2>
-                    <button class="btn btn-success mb-3" data-bs-toggle="modal" data-bs-target="#petModal"
-                        onclick="openAddPetModal()">Add New Pet</button>
-                    <div class="row" id="pets-list"></div>
+                    <button class="btn btn-success mb-3"  data-bs-toggle="modal" data-bs-target="#petModal"
+                        onclick="">Add New Pet</button>
+
+                    <div id="pets-list" class="row g-4"> <!-- g-4 = spacing between columns -->
+
+                        <!-- Pet Item 1 -->
+                        <div class="col-md-6">
+                            <div class="bg-dark p-3 rounded h-100 d-flex">
+                                <!-- Image -->
+                                <div class="me-3 d-flex align-items-center justify-content-center">
+                                    <img class="img-fluid" src="assets/img/petAdoptionImages/cat.png" alt="Pet Image"
+                                        style="max-height: 100px;">
+                                </div>
+                                <!-- Info -->
+                                <div class="text-white flex-grow-1 d-flex flex-column justify-content-between">
+                                    <div>
+                                        <h3 class="fw-bold mb-1">[Pet Name]</h3>
+                                        <p class="mb-1">Species: </p>
+                                        <p class="mb-1">Gender: </p>
+                                        <p class="mb-3">Age: </p>
+                                    </div>
+                                    <div class="d-flex gap-2">
+                                        <button class="btn btn-primary flex-fill">Edit</button>
+                                        <button class="btn btn-danger flex-fill">Delete</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Pet Item 2 -->
+                        <div class="col-md-6">
+                            <div class="bg-dark p-3 rounded h-100 d-flex">
+                                <div class="me-3 d-flex align-items-center justify-content-center">
+                                    <img class="img-fluid" src="assets/img/petAdoptionImages/husky.png" alt="Pet Image"
+                                        style="max-height: 100px;">
+                                </div>
+                                <div class="text-white flex-grow-1 d-flex flex-column justify-content-between">
+                                    <div>
+                                        <h2 class="fw-bold mb-1">[Pet Name]</h2>
+                                        <p class="mb-1">Species: </p>
+                                        <p class="mb-1">Gender: </p>
+                                        <p class="mb-3">Age: </p>
+                                    </div>
+                                    <div class="d-flex gap-2">
+                                        <button class="btn btn-primary flex-fill">Edit</button>
+                                        <button class="btn btn-danger flex-fill">Delete</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
                 </div>
 
                 <!-- Events Page -->

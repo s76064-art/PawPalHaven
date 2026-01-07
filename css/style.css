@@ -173,7 +173,12 @@
     height: auto;
 }
 
-.pet-img img {
+.pet-img-sm {
+    width: 10vh;
+    height: auto;
+}
+
+.pet-img-sm img,.pet-img img {
     width: 100%;
     margin: auto;
 }
@@ -219,6 +224,10 @@
 
 #register-form {
     display: none;
+}
+
+.control-btns button{
+    margin-right: 5px;
 }
 
 .dots {
