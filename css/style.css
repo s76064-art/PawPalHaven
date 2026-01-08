@@ -206,6 +206,10 @@
   padding: 20px;
 }
 
+.dashboard-pet-event{
+    max-height: 150px;
+}
+
 .card img {
   max-height: 150px;
   object-fit: cover;
@@ -226,9 +230,6 @@
     display: none;
 }
 
-.control-btns button{
-    margin-right: 5px;
-}
 
 .dots {
     display: flex;

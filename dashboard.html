@@ -13,7 +13,7 @@
     <script src="https://kit.fontawesome.com/b1605aa887.js" crossorigin="anonymous"></script>
 
     <link rel="icon" type="image/png" href="assets/img/pet-brand.png">
-    <title>PawPal Haven</title>
+    <title>PawPal Haven-Dashboard</title>
 </head>
 
 <body>
@@ -83,13 +83,13 @@
                     <h5 class="text-white text-center mb-4">Dashboard</h5>
                     <ul class="nav flex-column">
                         <li class="nav-item">
-                            <a class="nav-link text-white active" href="#" data-target="pets-page">Pets</a>
+                            <a class="nav-link text-white active a-link" href="#" data-target="pets-page">Pets</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-white" href="#" data-target="events-page">Events</a>
+                            <a class="nav-link text-white a-link" href="#" data-target="events-page">Events</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-white" href="#" data-target="lost-pets-page">Lost Pets</a>
+                            <a class="nav-link text-white a-link" href="#" data-target="lost-pets-page">Lost Pets</a>
                         </li>
                     </ul>
                 </div>
@@ -129,18 +129,18 @@
                 <!-- Pets Page -->
                 <div id="pets-page" class="dashboard-page">
                     <h2>My Pets for Adoption</h2>
-                    <button class="btn btn-success mb-3"  data-bs-toggle="modal" data-bs-target="#petModal"
+                    <button class="btn btn-success mb-3" data-bs-toggle="modal" data-bs-target="#petModal"
                         onclick="">Add New Pet</button>
 
                     <div id="pets-list" class="row g-4"> <!-- g-4 = spacing between columns -->
 
                         <!-- Pet Item 1 -->
-                        <div class="col-md-6">
+                        <div class="col-md-12 col-lg-6">
                             <div class="bg-dark p-3 rounded h-100 d-flex">
                                 <!-- Image -->
                                 <div class="me-3 d-flex align-items-center justify-content-center">
-                                    <img class="img-fluid" src="assets/img/petAdoptionImages/cat.png" alt="Pet Image"
-                                        style="max-height: 100px;">
+                                    <img class="img-fluid card dashboard-pet-event"
+                                        src="assets/img/petAdoptionImages/cat.png" alt="Pet Image">
                                 </div>
                                 <!-- Info -->
                                 <div class="text-white flex-grow-1 d-flex flex-column justify-content-between">
@@ -159,11 +159,11 @@
                         </div>
 
                         <!-- Pet Item 2 -->
-                        <div class="col-md-6">
+                        <div class="col-md-12 col-lg-6">
                             <div class="bg-dark p-3 rounded h-100 d-flex">
                                 <div class="me-3 d-flex align-items-center justify-content-center">
-                                    <img class="img-fluid" src="assets/img/petAdoptionImages/husky.png" alt="Pet Image"
-                                        style="max-height: 100px;">
+                                    <img class="img-fluid card dashboard-pet-event"
+                                        src="assets/img/petAdoptionImages/husky.png" alt="Pet Image">
                                 </div>
                                 <div class="text-white flex-grow-1 d-flex flex-column justify-content-between">
                                     <div>
@@ -180,6 +180,8 @@
                             </div>
                         </div>
 
+
+
                     </div>
 
                 </div>
@@ -189,7 +191,31 @@
                     <h2>My Events</h2>
                     <button class="btn btn-success mb-3" data-bs-toggle="modal" data-bs-target="#eventModal"
                         onclick="openAddEventModal()">Add New Event</button>
-                    <div class="row" id="events-list"></div>
+                    <div class="row" id="events-list">
+
+                        <!-- Event Item 1 -->
+                        <div class="col-md-12 col-lg-6">
+                            <div class="bg-dark p-3 rounded h-100 d-flex">
+                                <!-- Image -->
+                                <div class="me-3 d-flex align-items-center justify-content-center">
+                                    <img class="img-fluid card dashboard-pet-event" src="assets/img/Poster1.png"
+                                        alt="Pet Image">
+                                </div>
+                                <!-- Info -->
+                                <div class="text-white flex-grow-1 d-flex flex-column justify-content-between">
+                                    <div>
+                                        <h3 class="fw-bold mb-1">[Event Name]</h3>
+                                        <p class="mb-1">Date: </p>
+                                        <p class="mb-1">Location: </p>
+                                    </div>
+                                    <div class="d-flex gap-2">
+                                        <button class="btn btn-primary flex-fill">Edit</button>
+                                        <button class="btn btn-danger flex-fill">Delete</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
 
                 <!-- Lost Pets Page -->
@@ -197,7 +223,31 @@
                     <h2>My Lost Pets</h2>
                     <button class="btn btn-success mb-3" data-bs-toggle="modal" data-bs-target="#lostPetModal"
                         onclick="openAddLostPetModal()">Add Lost Pet</button>
-                    <div class="row" id="lost-pets-list"></div>
+                    <div class="row" id="lost-pets-list">
+                        <!-- Pet Item 1 -->
+                        <div class="col-md-12 col-lg-6">
+                            <div class="bg-dark p-3 rounded h-100 d-flex">
+                                <!-- Image -->
+                                <div class="me-3 d-flex align-items-center justify-content-center">
+                                    <img class="img-fluid card dashboard-pet-event"
+                                        src="assets/img/petAdoptionImages/cat.png" alt="Pet Image">
+                                </div>
+                                <!-- Info -->
+                                <div class="text-white flex-grow-1 d-flex flex-column justify-content-between">
+                                    <div>
+                                        <h3 class="fw-bold mb-1">[Pet Name]</h3>
+                                        <p class="mb-1">Species: </p>
+                                        <p class="mb-1">Location: </p>
+                                        <p class="mb-3">Last Scene: </p>
+                                    </div>
+                                    <div class="d-flex gap-2">
+                                        <button class="btn btn-primary flex-fill">Edit</button>
+                                        <button class="btn btn-danger flex-fill">Delete</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -216,16 +266,32 @@
                     </div>
                     <div class="modal-body">
                         <div class="mb-3">
+                            <img id="pet-image-preview" class="img-fluid mt-2" src="images/profile.png" style="display:block; max-height: 200px; margin: auto;" alt="Preview">
+                            <label class="form-label">Pet Image</label>
+                            <input type="file" class="form-control" id="pet-image" accept="image/*" required>
+                        </div>
+                        <div class="mb-3">
                             <label class="form-label">Pet Name</label>
                             <input type="text" class="form-control" id="pet-name" required>
                         </div>
                         <div class="mb-3">
-                            <label class="form-label">Type</label>
-                            <input type="text" class="form-control" id="pet-type" required>
+                            <label class="form-label">Species</label>
+                            <input type="text" class="form-control" id="pet-species" required>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Gender</label>
+                            <select class="form-control" id="pet-gender">
+                                <option>Male</option>
+                                <option>Female</option>
+                            </select>
                         </div>
                         <div class="mb-3">
                             <label class="form-label">Age</label>
-                            <input type="text" class="form-control" id="pet-age" required>
+                            <input type="number" class="form-control" id="pet-age" required>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Description</label>
+                            <textarea type="text" class="form-control" id="pet-description" required></textarea>
                         </div>
                     </div>
                     <div class="modal-footer">

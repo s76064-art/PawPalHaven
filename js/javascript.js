@@ -180,13 +180,54 @@ function eventPage(page) {
     }
 }
 
+//Functions that should be run on dashboard
+function dashboard(page) {
+    if (page === "dashboard.html") {
+        addChangePageEvent();
+        imagePreviewEvent();
+    }
+}
 
-document.addEventListener("DOMContentLoaded", function () {
-    const page = window.location.pathname.split("/").pop();
+//Give functionality to side-navbar in dashboard
+function addChangePageEvent() {
+    const pageLinks = document.querySelectorAll(".a-link");
 
-    homepageEvent(page);
-    eventPage(page);
-});
+    pageLinks.forEach(element => {
+        const target = element.dataset.target;
+
+        element.addEventListener("click", function () {
+            //Hide every single page
+            document.querySelectorAll(".dashboard-page").forEach(page => {
+                page.style.display = "none";
+            });
+
+            //Show the correct page
+            console.log(target);
+            document.getElementById(target).style.display = "block";
+
+            //Update side-navbar
+            pageLinks.forEach(link => link.classList.remove("active"));
+            element.classList.add("active");
+        });
+
+    });
+}
+
+//Upload image preview
+function imagePreviewEvent() {
+    document.getElementById("pet-image").addEventListener("change", function (event) {
+        const file = event.target.files[0];
+        if (!file) return;
+
+        const reader = new FileReader();
+        reader.onload = function (e) {
+            const imgPreview = document.getElementById("pet-image-preview");
+            imgPreview.src = e.target.result;
+            imgPreview.style.display = "block"; // show the preview
+        };
+        reader.readAsDataURL(file);
+    });
+}
 
 
 function messageCycle() {
@@ -364,6 +405,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const page = window.location.pathname.split("/").pop();
     homepageEvent(page);
     eventPage(page);
+    dashboard(page);
 });
 
 
@@ -372,7 +414,7 @@ document.addEventListener("DOMContentLoaded", function () {
 // ------------------------------------------------------------- PET EVENT ------------------------------------------------------------
 // event (izani)
 // data object(stores event details)
-const allEvents=
+const allEvents =
     [
         {
             id: "e1",
@@ -627,7 +669,7 @@ function openEvent(eventId) {
     </div>
 `;
 
-// search events (izani)
+        // search events (izani)
         function searchEvents() {
             // 1. Get what the user typed in the search bar
             const searchTerm = document.getElementById('eventSearch').value.toLowerCase();
@@ -678,64 +720,64 @@ function openMap(location) {
     // Gunakan backtick (`) di awal dan di hujung, dan masukkan pembolehubah dalam ${ }
     window.open(`https://www.google.com/maps/search/${encodedLocation}`, '_blank');
 
-// Function to handle the image upload click
-function triggerFileInput() {
-    document.getElementById('imageInput').click();
-}
+    // Function to handle the image upload click
+    function triggerFileInput() {
+        document.getElementById('imageInput').click();
+    }
 
-// Function to preview the image immediately
-function previewImage(event) {
-    const reader = new FileReader();
-    const imageField = document.getElementById('profilePic');
-    reader.onload = function () {
-        if (reader.readyState === 2) {
-            imageField.src = reader.result;
+    // Function to preview the image immediately
+    function previewImage(event) {
+        const reader = new FileReader();
+        const imageField = document.getElementById('profilePic');
+        reader.onload = function () {
+            if (reader.readyState === 2) {
+                imageField.src = reader.result;
+            }
+        }
+        if (event.target.files[0]) {
+            reader.readAsDataURL(event.target.files[0]);
         }
     }
-    if (event.target.files[0]) {
-        reader.readAsDataURL(event.target.files[0]);
-    }
-}
 }
 
 
-    // ----------------------PROFILE----------------------------------
-    //add social media 
-    // Function to add multiple social media handles with delete confirmation
-    function addSocial() {
-        const platform = prompt("Enter platform (e.g. Instagram, Facebook):");
-        const username = prompt("Enter your @username:");
-
+// ----------------------PROFILE----------------------------------
 //add social media 
 // Function to add multiple social media handles with delete confirmation
 function addSocial() {
     const platform = prompt("Enter platform (e.g. Instagram, Facebook):");
     const username = prompt("Enter your @username:");
 
-    if (platform && username) {
-        const socialBox = document.getElementById('socialBox');
+    //add social media 
+    // Function to add multiple social media handles with delete confirmation
+    function addSocial() {
+        const platform = prompt("Enter platform (e.g. Instagram, Facebook):");
+        const username = prompt("Enter your @username:");
 
-        // 1. Remove the "No social media connected" placeholder if it's there
-        const emptyText = document.getElementById('socialText');
-        if (emptyText) {
-            // Removes the entire row containing the "No social media" text
-            emptyText.parentElement.remove();
-        }
-        // 2. Logic to pick the right icon
-        let iconClass = "fa-share-nodes"; // Default icon
-        const p = platform.toLowerCase();
+        if (platform && username) {
+            const socialBox = document.getElementById('socialBox');
 
-        if (p.includes("instagram")) iconClass = "fa-instagram";
-        else if (p.includes("facebook")) iconClass = "fa-facebook";
-        else if (p.includes("twitter") || p.includes("x")) iconClass = "fa-x-twitter";
-        else if (p.includes("tiktok")) iconClass = "fa-tiktok";
-        else if (p.includes("youtube")) iconClass = "fa-youtube";
-        // 3. Create a new div for this specific social handle
-        const newSocial = document.createElement('div');
-        newSocial.className = "d-flex align-items-center justify-content-between p-2 mb-2 bg-white rounded border shadow-sm w-100 social-item";
+            // 1. Remove the "No social media connected" placeholder if it's there
+            const emptyText = document.getElementById('socialText');
+            if (emptyText) {
+                // Removes the entire row containing the "No social media" text
+                emptyText.parentElement.remove();
+            }
+            // 2. Logic to pick the right icon
+            let iconClass = "fa-share-nodes"; // Default icon
+            const p = platform.toLowerCase();
 
-        // Use "fa-brands" for social media icons
-        newSocial.innerHTML = `
+            if (p.includes("instagram")) iconClass = "fa-instagram";
+            else if (p.includes("facebook")) iconClass = "fa-facebook";
+            else if (p.includes("twitter") || p.includes("x")) iconClass = "fa-x-twitter";
+            else if (p.includes("tiktok")) iconClass = "fa-tiktok";
+            else if (p.includes("youtube")) iconClass = "fa-youtube";
+            // 3. Create a new div for this specific social handle
+            const newSocial = document.createElement('div');
+            newSocial.className = "d-flex align-items-center justify-content-between p-2 mb-2 bg-white rounded border shadow-sm w-100 social-item";
+
+            // Use "fa-brands" for social media icons
+            newSocial.innerHTML = `
             <div class="d-flex align-items-center">
                 <i class="fa-brands ${iconClass} me-3 fs-4 text-success"></i>
                 <small><strong>${platform}:</strong> @${username}</small>
@@ -745,11 +787,11 @@ function addSocial() {
                 <i class="fa-solid fa-trash"></i>
             </button>
         `;
-        socialBox.prepend(newSocial);
+            socialBox.prepend(newSocial);
 
 
-        // 4. Set the internal HTML with a trash button that asks for confirmation
-        newSocial.innerHTML = `
+            // 4. Set the internal HTML with a trash button that asks for confirmation
+            newSocial.innerHTML = `
             <div class="d-flex align-items-center">
                 <i class="fa-solid fa-share-nodes me-2 text-success"></i>
                 <small><strong>${platform}:</strong> @${username}</small>
@@ -760,61 +802,62 @@ function addSocial() {
             </button>
         `;
 
-        // 5. Add the new handle to the top of the box
-        socialBox.prepend(newSocial);
+            // 5. Add the new handle to the top of the box
+            socialBox.prepend(newSocial);
+        }
     }
-}
 
-// Helper function to handle the removal and reset the empty state if needed
-function removeSocialItem(button) {
-    const socialBox = document.getElementById('socialBox');
-    // Remove the specific social media row
-    button.parentElement.remove();
+    // Helper function to handle the removal and reset the empty state if needed
+    function removeSocialItem(button) {
+        const socialBox = document.getElementById('socialBox');
+        // Remove the specific social media row
+        button.parentElement.remove();
 
-    // 5. If no items are left, reset back to the "Empty" state
-    const remainingItems = socialBox.querySelectorAll('.social-item');
-    if (remainingItems.length === 0) {
-        // Create the original placeholder structure
-        const placeholder = document.createElement('div');
-        placeholder.className = "d-flex align-items-center mb-2";
-        placeholder.innerHTML = `
+        // 5. If no items are left, reset back to the "Empty" state
+        const remainingItems = socialBox.querySelectorAll('.social-item');
+        if (remainingItems.length === 0) {
+            // Create the original placeholder structure
+            const placeholder = document.createElement('div');
+            placeholder.className = "d-flex align-items-center mb-2";
+            placeholder.innerHTML = `
             <i class="fa-solid fa-circle-nodes me-3 fs-4 text-secondary"></i>
             <span class="text-muted small" id="socialText">No social media connected</span>
         `;
-        // Put the placeholder back at the start of the box
-        socialBox.prepend(placeholder);
+            // Put the placeholder back at the start of the box
+            socialBox.prepend(placeholder);
+        }
+    }
+    // Function to toggle Edit Mode
+    function toggleEdit() {
+        // We only want to edit text and email inputs
+        const inputs = document.querySelectorAll('.profile-card input[type="text"], .profile-card input[type="email"]');
+        const editBtn = document.getElementById('editBtn');
+        const nameDisplay = document.getElementById('displayUserName');
+
+        if (inputs[0].hasAttribute('readonly')) {
+            // --- SWITCH TO EDIT MODE ---
+            inputs.forEach(input => {
+                input.removeAttribute('readonly');
+                input.style.backgroundColor = "#ffffff"; // Force white background
+                input.style.border = "1px solid #009200"; // Add green border
+            });
+            editBtn.innerText = "Save Changes";
+            editBtn.className = "btn btn-primary fw-bold rounded-pill py-2 w-100";
+        } else {
+            // --- SAVE AND LOCK ---
+            inputs.forEach(input => {
+                input.setAttribute('readonly', true);
+                input.style.backgroundColor = ""; // Return to CSS default
+                input.style.border = "";
+            });
+
+            // Update the big name at the top
+            nameDisplay.innerText = inputs[0].value;
+
+            editBtn.innerText = "Edit Profile";
+            editBtn.className = "btn btn-success fw-bold rounded-pill py-2 w-100";
+
+            alert("Profile saved!");
+        }
     }
 }
-// Function to toggle Edit Mode
-function toggleEdit() {
-    // We only want to edit text and email inputs
-    const inputs = document.querySelectorAll('.profile-card input[type="text"], .profile-card input[type="email"]');
-    const editBtn = document.getElementById('editBtn');
-    const nameDisplay = document.getElementById('displayUserName');
-
-    if (inputs[0].hasAttribute('readonly')) {
-        // --- SWITCH TO EDIT MODE ---
-        inputs.forEach(input => {
-            input.removeAttribute('readonly');
-            input.style.backgroundColor = "#ffffff"; // Force white background
-            input.style.border = "1px solid #009200"; // Add green border
-        });
-        editBtn.innerText = "Save Changes";
-        editBtn.className = "btn btn-primary fw-bold rounded-pill py-2 w-100";
-    } else {
-        // --- SAVE AND LOCK ---
-        inputs.forEach(input => {
-            input.setAttribute('readonly', true);
-            input.style.backgroundColor = ""; // Return to CSS default
-            input.style.border = "";
-        });
-
-        // Update the big name at the top
-        nameDisplay.innerText = inputs[0].value;
-
-        editBtn.innerText = "Edit Profile";
-        editBtn.className = "btn btn-success fw-bold rounded-pill py-2 w-100";
-
-        alert("Profile saved!");
-    }
-}}
