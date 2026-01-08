@@ -46,71 +46,107 @@
 
     
 <section class="header-section text-center py-5">
-        <div class="container">
-            <h1 class="display-4 fw-800">Find your <span style="color: var(--primary-color);">Soulmate</span></h1>
-            <p class="text-muted">Simple, modern adoption for your future best friend.</p>
-        </div>
-    </section>
+ <div class="container-fluid py-4">
+        <div class="row">
+            <div class="col-lg-3 mb-4">
+                <div class="card border-0 shadow-sm p-3 sticky-filter">
+                    <h5 class="fw-bold mb-3">Filter <span class="float-end small text-muted text-decoration-underline" style="cursor:pointer">Clear all</span></h5>
+                    
+                    <div class="filter-group mb-4">
+                        <h6 class="fw-bold">Gender</h6>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="gender" id="all" checked>
+                            <label class="form-check-label" for="all">All</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="gender" id="male">
+                            <label class="form-check-label" for="male">Male</label>
+                        </div>
+                    </div>
 
-    <div class="container pb-5">
-        <div class="row g-4">
-            <div class="col-md-4">
-                <div class="card pet-card shadow-sm" onclick="openModal('Luna', '1 Year', 'Cat', 'https://images.unsplash.com/photo-1514888286974-6c03e2ca1dba?w=500', 'Luna is a gentle soul who loves sunny spots.')">
-                    <span class="card-badge text-primary">New Arrival</span>
-                    <img src="https://images.unsplash.com/photo-1514888286974-6c03e2ca1dba?w=500" class="card-img-top">
-                    <div class="card-body p-4 text-center">
-                        <h4 class="fw-bold mb-1">Luna</h4>
-                        <p class="text-muted small mb-0"><i class="bi bi-geo-alt"></i> Kuala Lumpur</p>
+                    <div class="filter-group mb-4">
+                        <h6 class="fw-bold">Breed</h6>
+                        <input type="text" class="form-control form-control-sm mb-2" placeholder="Search Breed...">
+                        <div class="breed-list" style="max-height: 200px; overflow-y: auto;">
+                            <div class="form-check"><input class="form-check-input" type="checkbox" id="b1"><label class="form-check-label" for="b1">Golden Retriever</label></div>
+                            <div class="form-check"><input class="form-check-input" type="checkbox" id="b2"><label class="form-check-label" for="b2">Persian Cat</label></div>
+                            <div class="form-check"><input class="form-check-input" type="checkbox" id="b3"><label class="form-check-label" for="b3">Munchkin BSH</label></div>
+                        </div>
                     </div>
                 </div>
             </div>
 
-            <div class="col-md-4">
-                <div class="card pet-card shadow-sm" onclick="openModal('Buddy', '2 Years', 'Dog', 'https://images.unsplash.com/photo-1583511655857-d19b40a7a54e?w=500', 'Buddy is energetic and loves morning walks!')">
-                    <img src="https://images.unsplash.com/photo-1583511655857-d19b40a7a54e?w=500" class="card-img-top">
-                    <div class="card-body p-4 text-center">
-                        <h4 class="fw-bold mb-1">Buddy</h4>
-                        <p class="text-muted small mb-0"><i class="bi bi-geo-alt"></i> Terengganu</p>
-                    </div>
+            <div class="col-lg-9">
+                <div class="d-flex justify-content-between align-items-center mb-4">
+                    <h2 class="fw-bold">Kittens / Puppies</h2>
+                    <span class="text-muted">Showing 4 results</span>
                 </div>
-            </div>
 
-            <div class="col-md-4">
-                <div class="card pet-card shadow-sm" onclick="openModal('Charlie', '6 Months', 'Rabbit', 'https://images.unsplash.com/photo-1585110396000-c9ffd4e4b308?w=500', 'Charlie is a curious bunny who loves fresh carrots.')">
-                    <img src="https://images.unsplash.com/photo-1585110396000-c9ffd4e4b308?w=500" class="card-img-top">
-                    <div class="card-body p-4 text-center">
-                        <h4 class="fw-bold mb-1">Charlie</h4>
-                        <p class="text-muted small mb-0"><i class="bi bi-geo-alt"></i> Selangor</p>
+                <div class="row g-4" id="petGallery">
+                    <div class="col-md-4 col-sm-6">
+                        <div class="card pet-card border-0 shadow-sm h-100" onclick="openPetDetails('Buddy', 'Golden Retriever', '2 Years', 'Male', 'Selangor', 'https://images.unsplash.com/photo-1552053831-71594a27632d?w=500')">
+                            <div class="badge-container">
+                                <span class="badge bg-warning text-dark">Most View</span>
+                            </div>
+                            <img src="https://images.unsplash.com/photo-1552053831-71594a27632d?w=500" class="card-img-top" alt="Pet">
+                            <div class="card-body">
+                                <div class="d-flex justify-content-between">
+                                    <h5 class="fw-bold mb-0">Buddy</h5>
+                                    <i class="far fa-heart heart-icon"></i>
+                                </div>
+                                <p class="text-muted small mb-2">Male</p>
+                                <p class="text-secondary small mb-0"><i class="fas fa-map-marker-alt"></i> Selangor</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-4 col-sm-6">
+                        <div class="card pet-card border-0 shadow-sm h-100" onclick="openPetDetails('Luna', 'Persian Cat', '1 Year', 'Female', 'Kuala Lumpur', 'https://images.unsplash.com/photo-1514888286974-6c03e2ca1dba?w=500')">
+                            <img src="https://images.unsplash.com/photo-1514888286974-6c03e2ca1dba?w=500" class="card-img-top" alt="Pet">
+                            <div class="card-body">
+                                <div class="d-flex justify-content-between">
+                                    <h5 class="fw-bold mb-0">Luna</h5>
+                                    <i class="far fa-heart heart-icon"></i>
+                                </div>
+                                <p class="text-muted small mb-2">Female</p>
+                                <p class="text-secondary small mb-0"><i class="fas fa-map-marker-alt"></i> Kuala Lumpur</p>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
 
-    <div class="modal fade" id="petModal" tabindex="-1">
-        <div class="modal-dialog modal-lg modal-dialog-centered">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-                </div>
-                <div class="modal-body">
-                    <div class="row align-items-center">
-                        <div class="col-md-5 mb-4 mb-md-0">
-                            <img id="m-img" src="" class="img-fluid rounded-4 shadow-sm" alt="Pet">
+    <div class="modal fade" id="petDetailModal" tabindex="-1">
+        <div class="modal-dialog modal-xl modal-dialog-centered">
+            <div class="modal-content border-0 rounded-4">
+                <div class="modal-body p-0">
+                    <button type="button" class="btn-close position-absolute end-0 top-0 m-3 z-3" data-bs-dismiss="modal"></button>
+                    <div class="row g-0">
+                        <div class="col-lg-6">
+                            <img id="m-img" src="" class="img-fluid w-100 h-100 object-fit-cover rounded-start-4" style="min-height: 400px;">
                         </div>
-                        <div class="col-md-7 ps-md-4">
-                            <h2 id="m-name" class="fw-bold mb-0"></h2>
-                            <p id="m-type" class="text-primary fw-600 mb-3"></p>
+                        <div class="col-lg-6 p-5">
+                            <h1 id="m-name" class="fw-bold text-dark mb-4"></h1>
                             
-                            <div class="d-flex gap-3 mb-4 text-muted small">
-                                <span><i class="bi bi-calendar"></i> Age: <span id="m-age"></span></span>
-                                <span><i class="bi bi-gender-ambiguous"></i> Female</span>
+                            <table class="table table-borderless">
+                                <tr><td class="text-muted w-50">Species</td><td class="fw-bold" id="m-breed">: </td></tr>
+                                <tr><td class="text-muted">Gender</td><td class="fw-bold" id="m-gender">: </td></tr>
+                                <tr><td class="text-muted">Age</td><td class="fw-bold" id="m-age">: </td></tr>
+                                <tr><td class="text-muted">Location</td><td class="fw-bold" id="m-location">: </td></tr>
+                            </table>
+
+                            <div class="d-grid gap-2 mt-5">
+                                <button class="btn btn-dark btn-lg rounded-pill"><i class="fas fa-phone me-2"></i> CONTACT</button>
+                                <button class="btn btn-success btn-lg rounded-pill"><i class="fab fa-whatsapp me-2"></i> WHATSAPP US</button>
                             </div>
-                            
-                            <p id="m-desc" class="text-muted"></p>
-                            
-                            <div class="mt-4">
-                                <button class="btn btn-adopt w-100">Adopt Me Now</button>
+
+                            <div class="mt-4 d-flex gap-2">
+                                <span class="text-muted me-2">Share:</span>
+                                <a href="#" class="text-primary fs-4"><i class="fab fa-facebook"></i></a>
+                                <a href="#" class="text-dark fs-4"><i class="fab fa-x-twitter"></i></a>
+                                <a href="#" class="text-success fs-4"><i class="fab fa-whatsapp"></i></a>
                             </div>
                         </div>
                     </div>

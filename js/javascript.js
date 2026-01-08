@@ -717,7 +717,7 @@ function openEvent(eventId) {
 //--------------------------------------------------- PET FINDER PART (Lynn)------------------------------------------------------------
 function openMap(location) {
     const encodedLocation = encodeURIComponent(location);
-    // Gunakan backtick (`) di awal dan di hujung, dan masukkan pembolehubah dalam ${ }
+  
     window.open(`https://www.google.com/maps/search/${encodedLocation}`, '_blank');
 
     // Function to handle the image upload click
@@ -741,8 +741,17 @@ function openMap(location) {
 }
 
 
-// ----------------------PROFILE----------------------------------
+
+
+    // ----------------------PROFILE----------------------------------
+    //add social media 
+    // Function to add multiple social media handles with delete confirmation
+    function addSocial() {
+        const platform = prompt("Enter platform (e.g. Instagram, Facebook):");
+        const username = prompt("Enter your @username:");
+
 //add social media 
+
 // Function to add multiple social media handles with delete confirmation
 function addSocial() {
     const platform = prompt("Enter platform (e.g. Instagram, Facebook):");
@@ -861,3 +870,51 @@ function addSocial() {
         }
     }
 }
+
+// Function to toggle Edit Mode
+function toggleEdit() {
+    // We only want to edit text and email inputs
+    const inputs = document.querySelectorAll('.profile-card input[type="text"], .profile-card input[type="email"]');
+    const editBtn = document.getElementById('editBtn');
+    const nameDisplay = document.getElementById('displayUserName');
+
+    if (inputs[0].hasAttribute('readonly')) {
+        // --- SWITCH TO EDIT MODE ---
+        inputs.forEach(input => {
+            input.removeAttribute('readonly');
+            input.style.backgroundColor = "#ffffff"; // Force white background
+            input.style.border = "1px solid #009200"; // Add green border
+        });
+        editBtn.innerText = "Save Changes";
+        editBtn.className = "btn btn-primary fw-bold rounded-pill py-2 w-100";
+    } else {
+        // --- SAVE AND LOCK ---
+        inputs.forEach(input => {
+            input.setAttribute('readonly', true);
+            input.style.backgroundColor = ""; // Return to CSS default
+            input.style.border = "";
+        });
+
+        // Update the big name at the top
+        nameDisplay.innerText = inputs[0].value;
+
+        editBtn.innerText = "Edit Profile";
+        editBtn.className = "btn btn-success fw-bold rounded-pill py-2 w-100";
+
+        alert("Profile saved!");
+    }
+}}
+
+
+/*pop up adopt pet*/
+function showPetDetails(name, species, age, gender, desc, imgPath) {
+
+    document.getElementById('modalPetName').innerText=name;
+    document.getElementById('modalPetSpecies').innerText=species;
+    document.getElementById('modalPetAge').innerText=age;
+    document.getElementById('modalPetGender').innerText=gender;
+    document.getElementById('modalPetDesc').innerText=desc;
+    document.getElementById('modalPetImg').src=imgPath;
+}
+
+
