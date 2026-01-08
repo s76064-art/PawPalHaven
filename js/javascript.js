@@ -675,7 +675,7 @@ function openEvent(eventId) {
 //--------------------------------------------------- PET FINDER PART (Lynn)------------------------------------------------------------
 function openMap(location) {
     const encodedLocation = encodeURIComponent(location);
-    // Gunakan backtick (`) di awal dan di hujung, dan masukkan pembolehubah dalam ${ }
+  
     window.open(`https://www.google.com/maps/search/${encodedLocation}`, '_blank');
 
 // Function to handle the image upload click
@@ -699,6 +699,7 @@ function previewImage(event) {
 }
 
 
+
     // ----------------------PROFILE----------------------------------
     //add social media 
     // Function to add multiple social media handles with delete confirmation
@@ -707,6 +708,7 @@ function previewImage(event) {
         const username = prompt("Enter your @username:");
 
 //add social media 
+
 // Function to add multiple social media handles with delete confirmation
 function addSocial() {
     const platform = prompt("Enter platform (e.g. Instagram, Facebook):");
@@ -818,3 +820,16 @@ function toggleEdit() {
         alert("Profile saved!");
     }
 }}
+
+
+/*pop up adopt pet*/
+function showPetDetails(name, species, age, gender, desc, imgPath) {
+
+    document.getElementById('modalPetName').innerText=name;
+    document.getElementById('modalPetSpecies').innerText=species;
+    document.getElementById('modalPetAge').innerText=age;
+    document.getElementById('modalPetGender').innerText=gender;
+    document.getElementById('modalPetDesc').innerText=desc;
+    document.getElementById('modalPetImg').src=imgPath;
+}
+

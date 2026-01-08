@@ -189,26 +189,26 @@
 
 /* Dashboard sidebar */
 .sidebar {
-  min-height: 80vh;
-  background-color: #343a40;
+    min-height: 80vh;
+    background-color: #343a40;
 }
 
 .sidebar .nav-link {
-  color: white;
+    color: white;
 }
 
 .sidebar .nav-link.active,
 .sidebar .nav-link:hover {
-  background-color: #495057;
+    background-color: #495057;
 }
 
 .dashboard-page {
-  padding: 20px;
+    padding: 20px;
 }
 
 .card img {
-  max-height: 150px;
-  object-fit: cover;
+    max-height: 150px;
+    object-fit: cover;
 }
 
 
@@ -564,4 +564,61 @@
     background-color: #fff !important;
     border-color: #009200;
     box-shadow: 0 0 0 0.2rem rgba(0, 146, 0, 0.25);
+}
+
+/*lynn adopt pet 1 ----------------------------------------------------------------------------*/
+.custom-pet-card {
+    font-family: 'Inter', sans-serif;
+    border: none;
+    border-radius: 16px;
+    overflow: hidden;
+    background: #fff;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    max-width: 1000px;
+    /* Hadkan lebar supaya tak terlalu panjang */
+    margin: auto;
+}
+
+.info-panel {
+    background-color: #99b8e0;
+    /* Warna latar lembut untuk info */
+    padding: 2rem;
+}
+
+.contact-panel {
+    padding: 2rem;
+    background: #ffffff;
+    border-left: 1px solid #eee;
+}
+
+/* Memastikan info tersusun sebaris */
+.data-row {
+    display: flex;
+    justify-content: space-between;
+    padding: 8px 0;
+    border-bottom: 1px solid #ebf2f7;
+}
+
+.btn-adopt-custom {
+    background-color: #0d6efd;
+    color: white;
+    border-radius: 50px;
+    font-weight: 700;
+    width: fit-content;
+    padding: 10px 25px;
+    margin-top: 20px;
+    border: none;
+}
+
+/* Background hearder adopt pet*/
+.custom-header {
+    /* Letakkan nama fail imej di sini */
+    background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('login-registration-bg.jpg'); 
+    
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    min-height: 400px;
+    display: flex;
+    align-items: center;
 }
