@@ -416,6 +416,10 @@
     align-items: center;
 } */
 
+.emoji-icon {
+    font-size: 60px;   /* adjust size */
+    line-height: 1;
+}
 .accordion-item {
     border: none !important;
     margin-bottom: 25px !important;
