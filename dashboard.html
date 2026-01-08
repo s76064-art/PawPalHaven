@@ -12,6 +12,11 @@
     <!--Font awesome-->
     <script src="https://kit.fontawesome.com/b1605aa887.js" crossorigin="anonymous"></script>
 
+    <!--Leaflet For Map-->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+
+
     <link rel="icon" type="image/png" href="assets/img/pet-brand.png">
     <title>PawPal Haven-Dashboard</title>
 </head>
@@ -256,44 +261,74 @@
 
 
     <!-- Pet Modal -->
-    <div class="modal fade" id="petModal" tabindex="-1" aria-labelledby="petModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
+    <div class="modal fade" id="petModal" data-target="pet-map" tabindex="-1" aria-labelledby="petModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog modal-lg"> <!-- larger modal to fit map -->
             <div class="modal-content">
                 <form id="petForm">
                     <div class="modal-header">
                         <h5 class="modal-title" id="petModalLabel">Add/Edit Pet</h5>
                         <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
                     </div>
+
                     <div class="modal-body">
+
+                        <!-- Image input -->
                         <div class="mb-3">
-                            <img id="pet-image-preview" class="img-fluid mt-2" src="images/profile.png" style="display:block; max-height: 200px; margin: auto;" alt="Preview">
+                            <img id="clickable-img-input-pet" data-target="pet-image" class="img-fluid mt-2"
+                                src="images/profile.png"
+                                style="display:block; max-height:200px; margin:auto; cursor:pointer;" alt="Preview">
                             <label class="form-label">Pet Image</label>
-                            <input type="file" class="form-control" id="pet-image" accept="image/*" required>
+                            <input type="file" class="form-control" id="pet-image" data-target="clickable-img-input-pet"
+                                accept="image/*" required>
                         </div>
+
+                        <!-- Pet Name -->
                         <div class="mb-3">
                             <label class="form-label">Pet Name</label>
                             <input type="text" class="form-control" id="pet-name" required>
                         </div>
-                        <div class="mb-3">
-                            <label class="form-label">Species</label>
-                            <input type="text" class="form-control" id="pet-species" required>
+
+                        <!-- Species + gender -->
+                        <div class="row mb-3">
+                            <div class="col">
+                                <label class="form-label">Species</label>
+                                <input type="text" class="form-control" id="pet-species" required>
+                            </div>
+                            <div class="col">
+                                <label class="form-label">Gender</label>
+                                <select class="form-control" id="pet-gender">
+                                    <option>Male</option>
+                                    <option>Female</option>
+                                </select>
+                            </div>
                         </div>
-                        <div class="mb-3">
-                            <label class="form-label">Gender</label>
-                            <select class="form-control" id="pet-gender">
-                                <option>Male</option>
-                                <option>Female</option>
-                            </select>
-                        </div>
+
+                        <!-- Age -->
                         <div class="mb-3">
                             <label class="form-label">Age</label>
                             <input type="number" class="form-control" id="pet-age" required>
                         </div>
+
+                        <!-- Description -->
                         <div class="mb-3">
                             <label class="form-label">Description</label>
-                            <textarea type="text" class="form-control" id="pet-description" required></textarea>
+                            <textarea class="form-control" id="pet-description" required></textarea>
                         </div>
+
+                        <!-- Location Picker -->
+                        <h6 class="mt-4">Select Pet Location</h6>
+                        <div id="pet-map" style="height: 300px; border:1px solid #ccc;"></div>
+
+                        <!-- Hidden Inputs -->
+                        <input type="hidden" id="latitude">
+                        <input type="hidden" id="longitude">
+                        <input type="hidden" id="city">
+                        <input type="hidden" id="state">
+                        <input type="hidden" id="country">
+
                     </div>
+
                     <div class="modal-footer">
                         <button type="submit" class="btn btn-primary">Save Pet</button>
                     </div>
@@ -302,8 +337,10 @@
         </div>
     </div>
 
+
     <!-- Event Modal -->
-    <div class="modal fade" id="eventModal" tabindex="-1" aria-labelledby="eventModalLabel" aria-hidden="true">
+    <div class="modal fade" id="eventModal" data-target="event-map" tabindex="-1" aria-labelledby="eventModalLabel"
+        aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
                 <form id="eventForm">
@@ -312,14 +349,45 @@
                         <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
                     </div>
                     <div class="modal-body">
+                        <!-- Image input -->
+                        <div class="mb-3">
+                            <img id="clickable-img-input-event" data-target="poster-image" class="img-fluid mt-2"
+                                src="images/profile.png"
+                                style="display:block; max-height:200px; margin:auto; cursor:pointer;" alt="Preview">
+                            <label class="form-label">Poster Event</label>
+                            <input type="file" class="form-control" id="poster-image"
+                                data-target="clickable-img-input-event" accept="image/*" required>
+                        </div>
+
+                        <!--Event Name-->
                         <div class="mb-3">
                             <label class="form-label">Event Name</label>
                             <input type="text" class="form-control" id="event-name" required>
                         </div>
+
+                        <!--Date-->
                         <div class="mb-3">
                             <label class="form-label">Date</label>
                             <input type="date" class="form-control" id="event-date" required>
                         </div>
+
+                        <!-- Description -->
+                        <div class="mb-3">
+                            <label class="form-label">Description</label>
+                            <textarea class="form-control" id="pet-description" required></textarea>
+                        </div>
+
+                        <!-- Location Picker -->
+                        <h6 class="mt-4">Select Pet Location</h6>
+                        <div id="event-map" style="height: 300px; border:1px solid #ccc;"></div>
+
+                        <!-- Hidden Inputs -->
+                        <input type="hidden" id="latitude">
+                        <input type="hidden" id="longitude">
+                        <input type="hidden" id="city">
+                        <input type="hidden" id="state">
+                        <input type="hidden" id="country">
+
                     </div>
                     <div class="modal-footer">
                         <button type="submit" class="btn btn-primary">Save Event</button>
@@ -330,7 +398,8 @@
     </div>
 
     <!-- Lost Pet Modal -->
-    <div class="modal fade" id="lostPetModal" tabindex="-1" aria-labelledby="lostPetModalLabel" aria-hidden="true">
+    <div class="modal fade" id="lostPetModal" data-target="lost-pet-map" tabindex="-1" aria-labelledby="lostPetModalLabel"
+        aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
                 <form id="lostPetForm">
@@ -339,14 +408,59 @@
                         <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
                     </div>
                     <div class="modal-body">
+                        <!-- Image input -->
+                        <div class="mb-3">
+                            <img id="clickable-img-input-lost-pet" data-target="lost-pet-image" class="img-fluid mt-2"
+                                src="images/profile.png"
+                                style="display:block; max-height:200px; margin:auto; cursor:pointer;" alt="Preview">
+                            <label class="form-label">Pet Image</label>
+                            <input type="file" class="form-control" id="lost-pet-image" data-target="clickable-img-input-lost-pet"
+                                accept="image/*" required>
+                        </div>
+
+                        <!-- Pet Name -->
                         <div class="mb-3">
                             <label class="form-label">Pet Name</label>
                             <input type="text" class="form-control" id="lost-pet-name" required>
                         </div>
+
+                        <!-- Species + gender -->
+                        <div class="row mb-3">
+                            <div class="col">
+                                <label class="form-label">Species</label>
+                                <input type="text" class="form-control" id="lost-pet-species" required>
+                            </div>
+                            <div class="col">
+                                <label class="form-label">Gender</label>
+                                <select class="form-control" id="lost-pet-gender">
+                                    <option>Male</option>
+                                    <option>Female</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <!-- Age -->
+                        <div class="mb-3">
+                            <label class="form-label">Age</label>
+                            <input type="number" class="form-control" id="lost-pet-age" required>
+                        </div>
+
+                        <!-- Description -->
                         <div class="mb-3">
                             <label class="form-label">Description</label>
-                            <textarea class="form-control" id="lost-pet-desc" required></textarea>
+                            <textarea class="form-control" id="lost-pet-description" required></textarea>
                         </div>
+
+                        <!-- Location Picker -->
+                        <h6 class="mt-4">Select Pet Location</h6>
+                        <div id="lost-pet-map" style="height: 300px; border:1px solid #ccc;"></div>
+
+                        <!-- Hidden Inputs -->
+                        <input type="hidden" id="latitude">
+                        <input type="hidden" id="longitude">
+                        <input type="hidden" id="city">
+                        <input type="hidden" id="state">
+                        <input type="hidden" id="country">
                     </div>
                     <div class="modal-footer">
                         <button type="submit" class="btn btn-primary">Save Lost Pet</button>
