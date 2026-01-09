@@ -1,3 +1,173 @@
+//Classes
+//Main data
+class User {
+    static users = [];
+
+    constructor(userId, fullName, phone, email, password, social, pets, lostPets, events) {
+        this.userId = userId;
+        this.name = fullName;
+        this.phone = phone;
+        this.email = email;
+        this.password = password;
+        this.social = social || null;
+        this.pets = pets || [];
+        this.lostPets = lostPets || [];
+        this.events = events || [];
+
+    }
+
+    static create(userId, fullName, phone, email, password, social, pets, lostPets, events) {
+        const id = userId || generateId("U");
+
+        if (id === null) {
+            console.log("Unable to create user");
+            return null;
+        }
+
+        const user = new User(id, fullName, phone, email, password, social, pets, lostPets, events);
+        User.users.push(user);
+        return user;
+    }
+
+    static login(email, password) {
+        const user = User.users.find(u => u.email === email && u.password === password);
+        if (!user) {
+            console.log("Failed");
+            alert("Incorrect Username or password");
+            return false;
+        }
+
+        sessionStorage.setItem("loggedInUser", JSON.stringify(user));
+        window.location.href = "index.html";
+        console.log("Success");
+    }
+
+    static logout() {
+        sessionStorage.removeItem("loggedInUser");
+    }
+
+    static getCurrentUser() {
+        const userData = sessionStorage.getItem("loggedInUser");
+        return userData ? JSON.parse(userData) : null;
+    }
+}
+
+User.create(null, "Syamil", "012-3421010", "syamil@gmail.com", "123", null, null, null, null);
+
+class Pet {
+    static pets = [];
+    constructor(petId, petName, species, age, gender, description, address, image) {
+        this.petId = petId;
+        this.name = petName;
+        this.species = species;
+        this.age = age;
+        this.gender = gender;
+        this.description = description;
+        this.address = address;
+        this.image = image;
+
+    }
+
+    static create(petId, petName, species, age, gender, description, address, image) {
+        const id = petId || generateId("P");
+
+        if (id === null) {
+            console.log("Unable to create event");
+            return null;
+        }
+
+        const pet = new Pet(id, petName, species, age, gender, description, address, image);
+        Pet.pets.push(pet);
+        return pet;
+    }
+}
+
+class MyPetEvent {
+    static events = [];
+    constructor(eventId, eventName, date, time, description, address, image) {
+        this.eventId = eventId;
+        this.name = eventName;
+        this.date = date;
+        this.time = time;
+        this.description = description;
+        this.address = address;
+        this.image = image;
+    }
+
+    static create(eventId, eventName, date, time, description, address, image) {
+        const id = eventId || generateId("E");
+
+        if (id === null) {
+            console.log("Unable to create event");
+            return null;
+        }
+
+        const event = new MyPetEvent(id, eventName, date, time, description, address, image);
+        MyPetEvent.events.push(event);
+        return event;
+    }
+}
+
+class Social {
+    static socials = [];
+    constructor(socialId, socialLink, othersLink) {
+        this.socialId = socialId;
+        this.othersLink = othersLink;
+
+        const defaultLinks = {
+            Reddit: null,
+            Facebook: null,
+            Twitter: null,
+            Instagram: null,
+            LinkedIn: null
+        };
+
+        //Merge dictionary
+        this.links = Object.assign({}, defaultLinks, socialLink);
+    }
+
+
+    static create(socialId, socialLink, othersLink) {
+        const id = socialId || generateId("S");
+
+        if (id === null) {
+            console.log("Unable to create social ");
+            return null;
+        }
+
+        const social = new Social(id, socialLink, othersLink);
+        Social.socials.push(social);
+        return social;
+    }
+}
+
+class Address {
+    static addresses = [];
+    constructor(addressId, longitude, latitude, city, state, country) {
+        this.addressId = addressId;
+        this.longitude = longitude;
+        this.latitude = latitude;
+        this.city = city;
+        this.state = state;
+        this.country = country;
+    }
+
+    static create(addressId, longitude, latitude, city, state, country) {
+        const id = addressId || generateId('A');
+
+        if (id === null) {
+            console.log("Unable to create address ");
+            return null;
+        }
+
+        const address = new Address(id, longitude, latitude, city, state, country);
+        Address.addresses.push(address);
+        return address;
+    }
+}
+
+
+//Structure class
 class SlideShow {
     constructor(selector, interval) {
         this.container = document.querySelector(selector);
@@ -21,7 +191,6 @@ class SlideShow {
 
     makeDots() {
         this.dotContainer.innerHTML = "";
-        console.log(this.itemSlides.length);
         this.itemSlides.forEach((_, i) => {
             const dot = document.createElement("span");
             if (i === 0) { dot.classList.add("active"); }
@@ -151,11 +320,61 @@ class PetInfo {
     }
 }
 
+//Generate Id
+function generateId(type) {
+    switch (type) {
+        case 'U': return formatId(type, User.users.length + 1);
+        case 'P': return formatId(type, Pet.pets.length + 1);
+        case 'E': return formatId(type, Event.events.length + 1);
+        case 'S': return formatId(type, Social.socials.length + 1);
+        case 'A': return formatId(type, Address.addresses.length + 1);
+        default:
+            console.log("Unable to generate id using " + type);
+            return null;
+    }
+}
+
+//Format id
+function formatId(prefix, number) {
+    if (number >= 100) {
+        return prefix + number.toString();
+    } else if (number >= 10) {
+        return prefix + "0" + number.toString();
+    } else {
+        return prefix + "00" + number.toString();
+    }
+}
+
+
+//Protect pages that requires to be logged in
+function requireLogin() {
+    if (User.getCurrentUser() === null) {
+        alert("Login required");
+        window.location.href = "index.html";
+    }
+}
+
+//Update nav bar 
+function updateNavbar() {
+    const navLoginProfile = document.getElementById("login-profile-nav");
+    if (navLoginProfile === null) { return console.log("Missing id"); }
+
+    if (User.getCurrentUser() === null) {
+        navLoginProfile.innerHTML = `<a class="nav-link" href="login-registration.html">Login</a>`;
+        console.log("Non");
+    } else {
+        navLoginProfile.innerHTML = `<a class="nav-link" href="profile.html">Profile</a>`;
+        console.log("Profile");
+    }
+}
 
 //Functions that should be run on homepage
 function homepageEvent(page) {
     if (page === "index.html") {
         //showUpcomingPetEvent();
+
+        console.log(User.getCurrentUser());
+
         messageCycle(page);
         addCloseMapEvent();
 
@@ -180,11 +399,47 @@ function eventPage(page) {
     }
 }
 
+//Functions that should be run on login-register page
+function loginRegisterPage(page) {
+    if (page !== "login-registration.html") { return null; }
+
+    const loginForm = document.getElementById("login-form");
+    const loginBtn = document.getElementById("login-btn");
+    const emailInput = document.getElementById("login-email");
+    const passwordInput = document.getElementById("login-password");
+
+    loginBtn.addEventListener("click", function (e) {
+        e.preventDefault();
+        console.log("Clicked")
+
+        //Trigger report validity
+        let valid = true;
+        loginForm.querySelectorAll("input").forEach(input => {
+            if (!input.checkValidity()) {
+                input.classList.add("is-invalid");
+                valid = false;
+            }
+        });
+
+        if (!valid) return;
+
+        //Get values
+        const email = emailInput.value;
+        const password = passwordInput.value;
+
+        const status = User.login(email, password);;
+        if (status === false) {
+            //emailInput.classList.add("invalid-feedback");
+        }
+    })
+}
+
 //Functions that should be run on dashboard
 function dashboard(page) {
     if (page === "dashboard.html") {
+        requireLogin();
         addChangePageEvent();
-        
+
         imagePreviewEvent("pet-image");
         imagePreviewEvent("poster-image");
         imagePreviewEvent("lost-pet-image")
@@ -253,19 +508,22 @@ function addClickableImageInput(id) {
 //Add map functionality
 function addMapPicker(id) {
     const mapContainer = document.getElementById(id);
+    let map, marker;
 
     mapContainer.addEventListener('shown.bs.modal', function () {
-        let map, marker;
+
 
         // Default coordinates (fallback if geolocation fails)
         const defaultLat = 3.1390; // Kuala Lumpur
         const defaultLng = 101.6869;
 
-        map = L.map(mapContainer.dataset.target).setView([defaultLat, defaultLng], 13);
+        if (!map) {
+            map = L.map(mapContainer.dataset.target).setView([defaultLat, defaultLng], 13);
 
-        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-            maxZoom: 19,
-        }).addTo(map);
+            L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                maxZoom: 19,
+            }).addTo(map);
+        }
 
         // Try to use user's current location
         if (navigator.geolocation) {
@@ -307,21 +565,30 @@ function addMapPicker(id) {
 
     // Reverse geocode function
     async function reverseGeocode(lat, lng) {
+        const apiKey = "3c39795f825d401783a3cf2cd6ceb39e";
+        const url = `https://api.opencagedata.com/geocode/v1/json?q=${lat}+${lng}&key=${apiKey}&no_annotations=0&abbrv=0`;
+
         try {
-            const url = `https://nominatim.openstreetmap.org/reverse?lat=${lat}&lon=${lng}&format=json`;
-            const response = await fetch(url, { headers: { "User-Agent": "YourApp/1.0" } });
+            const response = await fetch(url);
             const data = await response.json();
 
-            const address = data.address;
-            document.getElementById("city").value = address.city || address.town || address.village || "";
-            document.getElementById("state").value = address.state || "";
-            document.getElementById("country").value = address.country || "";
+            if (data.results.length === 0) return;
 
+            // Pick the most confident result
+            const result = data.results.find(r => r.confidence >= 9) || data.results[0];
+            const c = result.components;
+
+            document.getElementById("city").value = c.city || c.town || c.village || c.hamlet || "";
+            document.getElementById("state").value = c.state || "";
+            document.getElementById("country").value = c.country || "";
+
+            console.log("City:", document.getElementById("city").value);
+            console.log("State:", document.getElementById("state").value);
+            console.log("Country:", document.getElementById("country").value);
         } catch (err) {
             console.error("Reverse geocoding failed", err);
         }
     }
-
 }
 
 
@@ -484,6 +751,7 @@ function PetEvent(eventName, location, date, time, description, social, poster) 
 
 //Open map
 function openMapModal(location) {
+    console.log("Trig")
     const mapUrl = `https://www.google.com/maps?q=${encodeURIComponent(location)}&output=embed`;
     document.getElementById("mapFrame").src = mapUrl;
     const mapModal = new bootstrap.Modal(document.getElementById('mapModal'));
@@ -499,9 +767,11 @@ function addCloseMapEvent(page) {
 
 document.addEventListener("DOMContentLoaded", function () {
     const page = window.location.pathname.split("/").pop();
+    updateNavbar();
     homepageEvent(page);
     eventPage(page);
     dashboard(page);
+    loginRegisterPage(page);
 });
 
 

@@ -76,49 +76,62 @@
 
     <main class="bg-login-registration-bg d-flex justify-content-center align-items-center">
 
-        <!--Login-->
-        <div class="jumbotron p-5 shadow rounded login-registration-container" id="login-form">
+        <!-- Login -->
+        <div class="jumbotron p-5 shadow rounded login-registration-container" id="login-form-container">
             <h1 class="mb-4 text-center">Login</h1>
-            <form>
+            <form id="login-form" class="needs-validation" novalidate>
                 <div class="mb-4">
-                    <label for="email" class="form-label small fw-bold">Email </label>
+                    <label for="login-email" class="form-label small fw-bold">Email</label>
                     <div class="input-group">
-                        <span class="input-group-text bg-light border-end-0"><i
-                                class="fa-solid fa-envelope text-muted"></i></span>
-                        <input type="email" id="email" class="form-control border-start-0 bg-light login-form-input" placeholder="Email" required>
+                        <span class="input-group-text bg-light border-end-0">
+                            <i class="fa-solid fa-envelope text-muted"></i>
+                        </span>
+                        <input type="email" id="login-email"
+                            class="form-control border-start-0 bg-light login-form-input" placeholder="Email" required>
+                        <div class="invalid-feedback">
+                            Please enter a valid email.
+                        </div>
                     </div>
                 </div>
 
                 <div class="mb-4">
-                    <label for="password" class="form-label small fw-bold">Password</label>
+                    <label for="login-password" class="form-label small fw-bold">Password</label>
                     <div class="input-group">
-                        <span class="input-group-text bg-light border-end-0"><i
-                                class="fa-solid fa-key text-muted"></i></span>
-                        <input type="password" id="password" class="form-control border-start-0 bg-light login-form-input" placeholder="Password" required>
+                        <span class="input-group-text bg-light border-end-0">
+                            <i class="fa-solid fa-key text-muted"></i>
+                        </span>
+                        <input type="password" id="login-password"
+                            class="form-control border-start-0 bg-light login-form-input" placeholder="Password"
+                            required minlength="6">
+                        <div class="invalid-feedback">
+                            Password must be at least 6 characters.
+                        </div>
                     </div>
                 </div>
 
-                <button type="submit" class="btn bg-green-2 w-100 mb-4 text-white">Login</button>
+                <button type="submit" class="btn bg-green-2 w-100 mb-4 text-white" id="login-btn">Login</button>
                 <button type="button" class="btn btn-primary w-100" id="register-btn">Register</button>
             </form>
         </div>
 
+
         <!--Register Form-->
-        <div class="container my-5 pt-5" id="register-form">
+        <div class="container my-5 pt-5" id="register-form-container">
             <div class="row justify-content-center">
                 <div class="col-md-6 col-lg-5">
                     <div class="profile-card shadow-lg rounded-4 p-5 bg-white text-center">
 
                         <h2 class="fw-bold mb-4">Register</h2>
 
-                        <form class="text-start mb-4">
+                        <form class="text-start mb-4" id="register-form">
 
                             <div class="mb-4">
                                 <label for="email-register" class="form-label small fw-bold">Email Address</label>
                                 <div class="input-group">
                                     <span class="input-group-text bg-light border-end-0"><i
                                             class="fa-solid fa-envelope text-muted"></i></span>
-                                    <input type="email" id="email-register" class="form-control border-start-0 bg-light" placeholder="Email" required>
+                                    <input type="email" id="email-register" class="form-control border-start-0 bg-light"
+                                        placeholder="Email" required>
                                 </div>
                             </div>
 
@@ -127,7 +140,8 @@
                                 <div class="input-group">
                                     <span class="input-group-text bg-light border-end-0"><i
                                             class="fa-solid fa-key text-muted"></i></span>
-                                    <input type="password" id="password-register" class="form-control border-start-0 bg-light" placeholder="Password" required>
+                                    <input type="password" id="password-register"
+                                        class="form-control border-start-0 bg-light" placeholder="Password" required>
                                 </div>
                             </div>
 
@@ -136,7 +150,8 @@
                                 <div class="input-group">
                                     <span class="input-group-text bg-light border-end-0"><i
                                             class="fa-solid fa-user text-muted"></i></span>
-                                    <input type="text" id="full-name" class="form-control border-start-0 bg-light" placeholder="Full Name" required>
+                                    <input type="text" id="full-name" class="form-control border-start-0 bg-light"
+                                        placeholder="Full Name" required>
                                 </div>
                             </div>
 

@@ -16,7 +16,6 @@
     <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
     <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
 
-
     <link rel="icon" type="image/png" href="assets/img/pet-brand.png">
     <title>PawPal Haven-Dashboard</title>
 </head>
@@ -58,7 +57,7 @@
 
                     <!-- Dropdown -->
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="tips.html" id="navbarDropdownMenuLink" role="button"
+                        <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" role="button"
                             data-bs-toggle="dropdown">
                             Tips
                         </a>
@@ -82,6 +81,7 @@
             </div>
         </div>
     </nav>
+
 
     <main class="container-fluid">
         <div class="row">
@@ -373,6 +373,12 @@
                         <div class="mb-3">
                             <label class="form-label">Date</label>
                             <input type="date" class="form-control" id="event-date" required>
+                        </div>
+
+                        <!--Time-->
+                        <div class="mb-3">
+                            <label class="form-label">Time</label>
+                            <input type="time" class="form-control" id="event-time" required>
                         </div>
 
                         <!-- Description -->
