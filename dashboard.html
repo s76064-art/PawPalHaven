@@ -41,15 +41,15 @@
                 <ul class="navbar-nav ms-auto">
 
                     <li class="nav-item">
-                        <a class="nav-link active" href="#">Home</a>
+                        <a class="nav-link active" href="index.html">Home</a>
                     </li>
 
                     <li class="nav-item">
-                        <a class="nav-link " href="#">Adopt Pets</a>
+                        <a class="nav-link " href="adopt-pet.html">Adopt Pets</a>
                     </li>
 
                     <li class="nav-item">
-                        <a class="nav-link " href="#">Pet Finder</a>
+                        <a class="nav-link " href="pet-finder.html">Pet Finder</a>
                     </li>
 
                     <li class="nav-item">
@@ -64,14 +64,18 @@
                         </a>
 
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                            <li><a class="dropdown-item" href="#">Cats</a></li>
-                            <li><a class="dropdown-item" href="#">Dogs</a></li>
-                            <li><a class="dropdown-item" href="#">Birds</a></li>
+                            <li><a class="dropdown-item" href="tips.html#catTipsButton">Cats</a></li>
+                            <li><a class="dropdown-item" href="tips.html#dogTipsButton">Dogs</a></li>
+                            <li><a class="dropdown-item" href="tips.html#birdTipsButton">Birds</a></li>
+                            <li><a class="dropdown-item" href="tips.html#rabbitTipsButton">Rabbits</a></li>
+                            <li><a class="dropdown-item" href="tips.html#fishTipsButton">Fishes</a></li>
                         </ul>
                     </li>
-
                     <li class="nav-item">
-                        <a class="nav-link" href="#profile.html">Profile</a>
+                        <a class="nav-link" href="about-us.html">About Us</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="profile.html">Profile</a>
                     </li>
 
                 </ul>
@@ -398,8 +402,8 @@
     </div>
 
     <!-- Lost Pet Modal -->
-    <div class="modal fade" id="lostPetModal" data-target="lost-pet-map" tabindex="-1" aria-labelledby="lostPetModalLabel"
-        aria-hidden="true">
+    <div class="modal fade" id="lostPetModal" data-target="lost-pet-map" tabindex="-1"
+        aria-labelledby="lostPetModalLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
                 <form id="lostPetForm">
@@ -414,8 +418,8 @@
                                 src="images/profile.png"
                                 style="display:block; max-height:200px; margin:auto; cursor:pointer;" alt="Preview">
                             <label class="form-label">Pet Image</label>
-                            <input type="file" class="form-control" id="lost-pet-image" data-target="clickable-img-input-lost-pet"
-                                accept="image/*" required>
+                            <input type="file" class="form-control" id="lost-pet-image"
+                                data-target="clickable-img-input-lost-pet" accept="image/*" required>
                         </div>
 
                         <!-- Pet Name -->
