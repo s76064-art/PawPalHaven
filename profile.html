@@ -50,89 +50,75 @@
         </div>
     </nav>
 
-    <div class="container my-5 pt-5" id="profile-section">
-        <div class="row justify-content-center">
-            <div class="col-md-6 col-lg-5">
-                <div class="profile-card shadow-lg rounded-4 p-5 bg-white text-center">
-                    <h2 class="fw-bold mb-4">My Profile</h2>
+  <div class="container my-5 pt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6 col-lg-5">
 
-                    <div class="profile-img-container mb-3 position-relative d-inline-block .profile form">
-                        <img src="images/profile.png" id="profilePic" alt="Profile Picture"
-                            class="rounded-circle border shadow-sm"
-                            style="width: 130px; height: 130px; object-fit: cover;">
+            <div class="profile-card shadow-lg rounded-4 p-5 bg-white text-center">
+                <h2 class="fw-bold mb-4">My Profile</h2>
 
-                        <div class="edit-badge bg-success text-white rounded-circle position-absolute bottom-0 end-0 border border-3 border-white p-2"
-                            style="cursor: pointer; width: 40px; height: 40px;" onclick="triggerFileInput()">
-                            <i class="fa-solid fa-camera"></i>
-                        </div>
+                <!-- Profile Image -->
+                <div class="profile-img-container position-relative d-inline-block mb-3">
+                    <img src="images/profile.png" id="profilePic"
+                         class="profile-img rounded-circle border shadow-sm">
 
-                        <input type="file" id="imageInput" accept="image/*" style="display: none;"
-                            onchange="previewImage(event)">
+                    <div class="edit-badge bg-success text-white rounded-circle border border-3 border-white">
+                        <i class="fa-solid fa-camera"></i>
                     </div>
 
-                    <h4 class="fw-bold mb-4" id="displayUserName">John Doe</h4>
+                    <input type="file" id="imageInput" accept="image/*">
+                </div>
 
-                    <div class="text-start mb-4">
-                        <h6 class="text-uppercase fw-bold text-muted small mb-3">Contact Information</h6>
+                <h4 class="fw-bold mb-4" id="displayUserName">John Doe</h4>
 
-                        <div class="mb-3 ">
-                            <label class="form-label small fw-bold">Full Name</label>
-                            <div class="input-group">
-                                <span class="input-group-text bg-light border-end-0"><i
-                                        class="fa-solid fa-user text-muted"></i></span>
-                                <input type="text" class="form-control border-start-0 bg-light" value="John Doe"
-                                    readonly>
-                            </div>
-                        </div>
+                <!-- Contact Info -->
+                <div class="text-start mb-4">
+                    <h6 class="text-uppercase fw-bold text-muted small mb-3">Contact Information</h6>
 
-                        <div class="mb-3">
-                            <label class="form-label small fw-bold">Phone Number</label>
-                            <div class="input-group">
-                                <span class="input-group-text bg-light border-end-0"><i
-                                        class="fa-solid fa-phone text-muted"></i></span>
-                                <input type="text" class="form-control border-start-0 bg-light" value="012-3456789"
-                                    readonly>
-                            </div>
-                        </div>
-
-                        <div class="mb-4">
-                            <label class="form-label small fw-bold">Email Address</label>
-                            <div class="input-group">
-                                <span class="input-group-text bg-light border-end-0"><i
-                                        class="fa-solid fa-envelope text-muted"></i></span>
-                                <input type="email" class="form-control border-start-0 bg-light"
-                                    value="john@example.com" readonly>
-                            </div>
-                        </div>
-
-                        <hr>
-
-                        <h6 class="text-uppercase fw-bold text-muted small mb-3">Social Media</h6>
-                        <div id="socialBox" class="p-3 bg-light rounded-3 border mb-4">
-
-                            <div class="d-flex align-items-center mb-2">
-                                <i class="fa-solid fa-circle-nodes me-3 fs-4 text-secondary"></i>
-                                <span class="text-muted small" id="socialText">No social media connected</span>
-                            </div>
-
-                            <div class="text-center mt-2">
-                                <button class="btn btn-outline-success btn-sm fw-bold px-3 w-100" onclick="addSocial()">
-                                    + Add Another Social Media
-                                </button>
-                            </div>
-                        </div>
+                    <div class="mb-3">
+                        <label class="form-label small fw-bold">Full Name</label>
+                        <input type="text" class="form-control bg-light" value="John Doe" readonly>
                     </div>
 
-                    <div class="d-grid">
-                        <button id="editBtn" class="btn btn-success fw-bold rounded-pill py-2 shadow-sm"
-                            onclick="toggleEdit()">
-                            Edit Profile
+                    <div class="mb-3">
+                        <label class="form-label small fw-bold">Phone Number</label>
+                        <input type="text" class="form-control bg-light" value="012-3456789" readonly>
+                    </div>
+
+                    <div class="mb-4">
+                        <label class="form-label small fw-bold">Email Address</label>
+                        <input type="email" class="form-control bg-light" value="john@example.com" readonly>
+                    </div>
+
+                    <hr>
+
+                    <!-- Social Media -->
+                    <h6 class="text-uppercase fw-bold text-muted small mb-3">Social Media</h6>
+                    <div id="socialBox" class="p-3 bg-light rounded-3 border mb-4">
+                        <div class="d-flex align-items-center mb-2">
+                            <i class="fa-solid fa-circle-nodes me-3 fs-4 text-secondary"></i>
+                            <span id="socialText" class="text-muted small">
+                                No social media connected
+                            </span>
+                        </div>
+
+                        <button id="addSocialBtn"
+                                class="btn btn-outline-success btn-sm fw-bold w-100">
+                            + Add Another Social Media
                         </button>
                     </div>
                 </div>
+
+                <button id="editBtn"
+                        class="btn btn-success fw-bold rounded-pill py-2 w-100">
+                    Edit Profile
+                </button>
+
             </div>
         </div>
     </div>
+</div>
+
 
     <script src="js/bootstrap.bundle.min.js"></script>
     <script src="js/javascript.js"></script>

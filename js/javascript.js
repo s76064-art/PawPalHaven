@@ -1112,165 +1112,93 @@ function openMap(location) {
 // ----------------------PROFILE----------------------------------
 //add social media 
 // Function to add multiple social media handles with delete confirmation
+// ---------------------- PROFILE ----------------------
+
+// Add social media
 function addSocial() {
     const platform = prompt("Enter platform (e.g. Instagram, Facebook):");
     const username = prompt("Enter your @username:");
 
-    //add social media 
+    if (!platform || !username) return;
 
-    // Function to add multiple social media handles with delete confirmation
-    function addSocial() {
-        const platform = prompt("Enter platform (e.g. Instagram, Facebook):");
-        const username = prompt("Enter your @username:");
+    const socialBox = document.getElementById("socialBox");
 
-        //add social media 
-        // Function to add multiple social media handles with delete confirmation
-        function addSocial() {
-            const platform = prompt("Enter platform (e.g. Instagram, Facebook):");
-            const username = prompt("Enter your @username:");
+    // Remove placeholder if exists
+    const emptyText = document.getElementById("socialText");
+    if (emptyText) {
+        emptyText.parentElement.remove();
+    }
 
-            if (platform && username) {
-                const socialBox = document.getElementById('socialBox');
+    // Choose icon
+    let iconClass = "fa-share-nodes";
+    const p = platform.toLowerCase();
 
-                // 1. Remove the "No social media connected" placeholder if it's there
-                const emptyText = document.getElementById('socialText');
-                if (emptyText) {
-                    // Removes the entire row containing the "No social media" text
-                    emptyText.parentElement.remove();
-                }
-                // 2. Logic to pick the right icon
-                let iconClass = "fa-share-nodes"; // Default icon
-                const p = platform.toLowerCase();
+    if (p.includes("instagram")) iconClass = "fa-instagram";
+    else if (p.includes("facebook")) iconClass = "fa-facebook";
+    else if (p.includes("twitter") || p.includes("x")) iconClass = "fa-x-twitter";
+    else if (p.includes("tiktok")) iconClass = "fa-tiktok";
+    else if (p.includes("youtube")) iconClass = "fa-youtube";
 
-                if (p.includes("instagram")) iconClass = "fa-instagram";
-                else if (p.includes("facebook")) iconClass = "fa-facebook";
-                else if (p.includes("twitter") || p.includes("x")) iconClass = "fa-x-twitter";
-                else if (p.includes("tiktok")) iconClass = "fa-tiktok";
-                else if (p.includes("youtube")) iconClass = "fa-youtube";
-                // 3. Create a new div for this specific social handle
-                const newSocial = document.createElement('div');
-                newSocial.className = "d-flex align-items-center justify-content-between p-2 mb-2 bg-white rounded border shadow-sm w-100 social-item";
+    const newSocial = document.createElement("div");
+    newSocial.className =
+        "d-flex align-items-center justify-content-between p-2 mb-2 bg-white rounded border shadow-sm social-item";
 
-                // Use "fa-brands" for social media icons
-                newSocial.innerHTML = `
-            <div class="d-flex align-items-center">
-                <i class="fa-brands ${iconClass} me-3 fs-4 text-success"></i>
-                <small><strong>${platform}:</strong> @${username}</small>
-            </div>
-            <button class="btn btn-sm text-danger border-0" 
-                    onclick="if(confirm('Are you sure you want to remove this social media link?')) { removeSocialItem(this); }">
-                <i class="fa-solid fa-trash"></i>
-            </button>
-        `;
-                socialBox.prepend(newSocial);
+    newSocial.innerHTML = `
+        <div class="d-flex align-items-center">
+            <i class="fa-brands ${iconClass} me-3 fs-4 text-success"></i>
+            <small><strong>${platform}:</strong> @${username}</small>
+        </div>
+        <button class="btn btn-sm text-danger border-0" onclick="removeSocialItem(this)">
+            <i class="fa-solid fa-trash"></i>
+        </button>
+    `;
 
+    socialBox.prepend(newSocial);
+}
 
-                // 4. Set the internal HTML with a trash button that asks for confirmation
-                newSocial.innerHTML = `
-            <div class="d-flex align-items-center">
-                <i class="fa-solid fa-share-nodes me-2 text-success"></i>
-                <small><strong>${platform}:</strong> @${username}</small>
-            </div>
-            <button class="btn btn-sm text-danger border-0" 
-                    onclick="if(confirm('Are you sure you want to remove this social media link?')) { removeSocialItem(this); }">
-                <i class="fa-solid fa-trash"></i>
-            </button>
-        `;
+// Remove social media
+function removeSocialItem(button) {
+    const socialBox = document.getElementById("socialBox");
+    button.parentElement.remove();
 
-                // 5. Add the new handle to the top of the box
-                socialBox.prepend(newSocial);
-            }
-        }
-
-        // Helper function to handle the removal and reset the empty state if needed
-        function removeSocialItem(button) {
-            const socialBox = document.getElementById('socialBox');
-            // Remove the specific social media row
-            button.parentElement.remove();
-
-            // 5. If no items are left, reset back to the "Empty" state
-            const remainingItems = socialBox.querySelectorAll('.social-item');
-            if (remainingItems.length === 0) {
-                // Create the original placeholder structure
-                const placeholder = document.createElement('div');
-                placeholder.className = "d-flex align-items-center mb-2";
-                placeholder.innerHTML = `
+    const remaining = socialBox.querySelectorAll(".social-item");
+    if (remaining.length === 0) {
+        const placeholder = document.createElement("div");
+        placeholder.className = "d-flex align-items-center mb-2";
+        placeholder.innerHTML = `
             <i class="fa-solid fa-circle-nodes me-3 fs-4 text-secondary"></i>
             <span class="text-muted small" id="socialText">No social media connected</span>
         `;
-                // Put the placeholder back at the start of the box
-                socialBox.prepend(placeholder);
-            }
-        }
-        // Function to toggle Edit Mode
-        function toggleEdit() {
-            // We only want to edit text and email inputs
-            const inputs = document.querySelectorAll('.profile-card input[type="text"], .profile-card input[type="email"]');
-            const editBtn = document.getElementById('editBtn');
-            const nameDisplay = document.getElementById('displayUserName');
-
-            if (inputs[0].hasAttribute('readonly')) {
-                // --- SWITCH TO EDIT MODE ---
-                inputs.forEach(input => {
-                    input.removeAttribute('readonly');
-                    input.style.backgroundColor = "#ffffff"; // Force white background
-                    input.style.border = "1px solid #009200"; // Add green border
-                });
-                editBtn.innerText = "Save Changes";
-                editBtn.className = "btn btn-primary fw-bold rounded-pill py-2 w-100";
-            } else {
-                // --- SAVE AND LOCK ---
-                inputs.forEach(input => {
-                    input.setAttribute('readonly', true);
-                    input.style.backgroundColor = ""; // Return to CSS default
-                    input.style.border = "";
-                });
-
-                // Update the big name at the top
-                nameDisplay.innerText = inputs[0].value;
-
-                editBtn.innerText = "Edit Profile";
-                editBtn.className = "btn btn-success fw-bold rounded-pill py-2 w-100";
-
-                alert("Profile saved!");
-            }
-        }
-    }
-
-    // Function to toggle Edit Mode
-    function toggleEdit() {
-        // We only want to edit text and email inputs
-        const inputs = document.querySelectorAll('.profile-card input[type="text"], .profile-card input[type="email"]');
-        const editBtn = document.getElementById('editBtn');
-        const nameDisplay = document.getElementById('displayUserName');
-
-        if (inputs[0].hasAttribute('readonly')) {
-            // --- SWITCH TO EDIT MODE ---
-            inputs.forEach(input => {
-                input.removeAttribute('readonly');
-                input.style.backgroundColor = "#ffffff"; // Force white background
-                input.style.border = "1px solid #009200"; // Add green border
-            });
-            editBtn.innerText = "Save Changes";
-            editBtn.className = "btn btn-primary fw-bold rounded-pill py-2 w-100";
-        } else {
-            // --- SAVE AND LOCK ---
-            inputs.forEach(input => {
-                input.setAttribute('readonly', true);
-                input.style.backgroundColor = ""; // Return to CSS default
-                input.style.border = "";
-            });
-
-            // Update the big name at the top
-            nameDisplay.innerText = inputs[0].value;
-
-            editBtn.innerText = "Edit Profile";
-            editBtn.className = "btn btn-success fw-bold rounded-pill py-2 w-100";
-
-            alert("Profile saved!");
-        }
+        socialBox.prepend(placeholder);
     }
 }
+
+// Toggle edit profile
+function toggleEdit() {
+    const inputs = document.querySelectorAll(
+        '.profile-card input[type="text"], .profile-card input[type="email"]'
+    );
+    const editBtn = document.getElementById("editBtn");
+    const nameDisplay = document.getElementById("displayUserName");
+
+    const isReadOnly = inputs[0].hasAttribute("readonly");
+
+    inputs.forEach(input => {
+        input.readOnly = !isReadOnly;
+        input.classList.toggle("bg-light", isReadOnly);
+    });
+
+    if (isReadOnly) {
+        editBtn.textContent = "Save Changes";
+        editBtn.className = "btn btn-primary fw-bold rounded-pill py-2 w-100";
+    } else {
+        nameDisplay.textContent = inputs[0].value;
+        editBtn.textContent = "Edit Profile";
+        editBtn.className = "btn btn-success fw-bold rounded-pill py-2 w-100";
+        alert("Profile saved!");
+    }
+}
+
 
 
 /*pop up adopt pet*/
