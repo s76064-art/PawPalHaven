@@ -689,15 +689,15 @@ body {
 
 /* Background hearder adopt pet*/
 .header-section {
-    /* Overlay Hitam: rgba(0, 0, 0, 0.5) akan menggelapkan gambar */
-    /* Overlay Putih: rgba(255, 255, 255, 0.5) akan mencerahkan gambar */
-    background-image: linear-gradient(rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.5)),
-        url('../images/background-2.png');
-
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    min-height: 500px;
+    /* Panggil imej anda di sini */
+    background-image: linear-gradient(rgba(98, 94, 94, 0.5), rgba(255, 249, 249, 0.5)) ,url('../images/background-2.png');
+    
+    /* ARAHAN PENTING: Supaya imej jadi full size */
+    background-size: cover;          /* Memenuhi ruang tanpa nampak penyek */
+    background-position: center;     /* Gambar sentiasa di tengah */
+    background-repeat: no-repeat;    /* Gambar tidak berulang */
+    /* Beri ketinggian minimum supaya gambar nampak luas */
+    min-height: 450px; 
     display: flex;
     align-items: center;
     color: white;
