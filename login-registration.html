@@ -65,7 +65,7 @@
                         </ul>
                     </li>
 
-                    <li class="nav-item">
+                    <li class="nav-item" id="login-profile-nav">
                         <a class="nav-link" href="#profile.html">Profile</a>
                     </li>
 
@@ -79,7 +79,7 @@
         <!-- Login -->
         <div class="jumbotron p-5 shadow rounded login-registration-container" id="login-form-container">
             <h1 class="mb-4 text-center">Login</h1>
-            <form id="login-form" class="needs-validation" novalidate>
+            <form id="login-form" novalidate>
                 <div class="mb-4">
                     <label for="login-email" class="form-label small fw-bold">Email</label>
                     <div class="input-group">
@@ -87,8 +87,9 @@
                             <i class="fa-solid fa-envelope text-muted"></i>
                         </span>
                         <input type="email" id="login-email"
-                            class="form-control border-start-0 bg-light login-form-input" placeholder="Email" required>
-                        <div class="invalid-feedback">
+                            class="form-control border-start-0 bg-light login-form-input z-2" placeholder="Email"
+                            required>
+                        <div class="invalid-feedback d-none" id="login-email-feedback">
                             Please enter a valid email.
                         </div>
                     </div>
@@ -101,9 +102,8 @@
                             <i class="fa-solid fa-key text-muted"></i>
                         </span>
                         <input type="password" id="login-password"
-                            class="form-control border-start-0 bg-light login-form-input" placeholder="Password"
-                            required minlength="6">
-                        <div class="invalid-feedback">
+                            class="form-control border-start-0 bg-light login-form-input" placeholder="Password">
+                        <div class="invalid-feedback d-none " id="login-password-feedback">
                             Password must be at least 6 characters.
                         </div>
                     </div>
@@ -127,11 +127,12 @@
 
                             <div class="mb-4">
                                 <label for="email-register" class="form-label small fw-bold">Email Address</label>
-                                <div class="input-group">
+                                <div class="input-group register-email-group">
                                     <span class="input-group-text bg-light border-end-0"><i
                                             class="fa-solid fa-envelope text-muted"></i></span>
                                     <input type="email" id="email-register" class="form-control border-start-0 bg-light"
                                         placeholder="Email" required>
+                                    <div class="invalid-feedback d-none " id="register-email-feedback"></div>
                                 </div>
                             </div>
 
@@ -142,6 +143,7 @@
                                             class="fa-solid fa-key text-muted"></i></span>
                                     <input type="password" id="password-register"
                                         class="form-control border-start-0 bg-light" placeholder="Password" required>
+                                    <div class="invalid-feedback d-none " id="register-password-feedback"></div>
                                 </div>
                             </div>
 
@@ -152,6 +154,7 @@
                                             class="fa-solid fa-user text-muted"></i></span>
                                     <input type="text" id="full-name" class="form-control border-start-0 bg-light"
                                         placeholder="Full Name" required>
+                                    <div class="invalid-feedback d-none " id="register-full-name-feedback"></div>
                                 </div>
                             </div>
 
@@ -162,10 +165,11 @@
                                             class="fa-solid fa-phone text-muted"></i></span>
                                     <input type="text" id="phone" class="form-control border-start-0 bg-light"
                                         pattern="[0-9]{3}-[0-9]{7}" required placeholder="000-0000000">
+                                    <div class="invalid-feedback d-none " id="register-phone-feedback"></div>
                                 </div>
                             </div>
 
-                            <button type="submit" class="btn btn-primary w-100 mt-4">Register</button>
+                            <button type="submit" class="btn btn-primary w-100 mt-4" id="sign-in-btn">Register</button>
                         </form>
                     </div>
                 </div>
