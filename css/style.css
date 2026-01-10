@@ -227,7 +227,7 @@
     object-fit: cover;
 }
 
-#register-form {
+#register-form-container {
     display: none;
 }
 
@@ -279,6 +279,12 @@
 
 .sitemap a:hover {
     color: rgb(20, 65, 6) !important;
+}
+
+.invalid-input .input-group-text,
+.invalid-input .form-control {
+    border-color:  rgb(220, 53, 69) !important;
+    z-index: 2;
 }
 
 @media (min-width: 1000px) {}

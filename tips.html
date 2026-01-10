@@ -27,8 +27,8 @@
             <div class="collapse navbar-collapse" id="navbarNavDropdown">
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#">Adopt Pets</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#">Pet Finder</a></li>
+                    <li class="nav-item"><a class="nav-link" href="adopt-pet.html">Adopt Pets</a></li>
+                    <li class="nav-item"><a class="nav-link" href="pet-finder.html">Pet Finder</a></li>
                     <li class="nav-item"><a class="nav-link" href="event.html">Events</a></li>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle active" href="tips.html" id="navbarDropdownMenuLink"
@@ -37,9 +37,12 @@
                             <li><a class="dropdown-item" href="#catTips">Cats</a></li>
                             <li><a class="dropdown-item" href="#dogTips">Dogs</a></li>
                             <li><a class="dropdown-item" href="#birdTips">Birds</a></li>
+                            <li><a class="dropdown-item" href="#rabbitTips">Rabbits</a></li>
+                            <li><a class="dropdown-item" href="#fishTips">Fishes</a></li>
                         </ul>
                     </li>
-                    <li class="nav-item"><a class="nav-link" href="#">Profile</a></li>
+                    <li class="nav-item"><a class="nav-link" href="about-us.html">About Us</a></li>
+                    <li class="nav-item"><a class="nav-link" href="profile.html">Profile</a></li>
                 </ul>
             </div>
         </div>
@@ -61,12 +64,12 @@
             <!-- Cat Tips -->
             <div class="accordion-item shadow-sm rounded-4 mb-4 border-0">
                 <h2 class="accordion-header">
-                    <button class="accordion-button rounded-4 shadow-none" type="button" data-bs-toggle="collapse"
+                    <button id="catTipsButton" class="accordion-button rounded-4 shadow-none" type="button" data-bs-toggle="collapse"
                         data-bs-target="#catTips">
                         <span class="emoji-icon me-3">&#128049;</span> Cat Care Tips
                     </button>
                 </h2>
-                <div id="catTips" class="accordion-collapse collapse show" data-bs-parent="#petTipsAccordion">
+                <div id="catTips" class="accordion-collapse collapse " data-bs-parent="#petTipsAccordion">
                     <div class="accordion-body p-lg-5">
                         <div class="row g-5">
                             <div class="col-lg-7">
@@ -132,7 +135,7 @@
             <!-- Dog Tips -->
             <div class="accordion-item shadow-sm rounded-4 mb-4 border-0">
                 <h2 class="accordion-header">
-                    <button class="accordion-button collapsed rounded-4 shadow-none" type="button"
+                    <button id="dogTipsButton" class="accordion-button collapsed rounded-4 shadow-none" type="button"
                         data-bs-toggle="collapse" data-bs-target="#dogTips">
                         <span class="emoji-icon me-3">&#128054;</span> Dog Care Tips
                     </button>
@@ -200,7 +203,7 @@
             <!-- Bird Tips -->
             <div class="accordion-item shadow-sm rounded-4 mb-4 border-0">
                 <h2 class="accordion-header">
-                    <button class="accordion-button collapsed rounded-4 shadow-none" type="button"
+                    <button id="birdTipsButton" class="accordion-button collapsed rounded-4 shadow-none" type="button"
                         data-bs-toggle="collapse" data-bs-target="#birdTips">
                         <span class="emoji-icon me-3">&#128038;</span> Bird Care Tips
                     </button>
@@ -267,7 +270,7 @@
             <!-- Rabbit Tips -->
             <div class="accordion-item shadow-sm rounded-4 mb-4 border-0">
                 <h2 class="accordion-header">
-                    <button class="accordion-button collapsed rounded-4 shadow-none" type="button"
+                    <button id="rabbitTipsButton" class="accordion-button collapsed rounded-4 shadow-none" type="button"
                         data-bs-toggle="collapse" data-bs-target="#rabbitTips">
                         <span class="emoji-icon me-3">&#128048;</span> Rabbit Care Tips
                     </button>
@@ -344,7 +347,7 @@
             <!-- Fish Tips -->
             <div class="accordion-item shadow-sm rounded-4 mb-4 border-0">
                 <h2 class="accordion-header">
-                    <button class="accordion-button collapsed rounded-4 shadow-none" type="button"
+                    <button id="fishTipsButton" class="accordion-button collapsed rounded-4 shadow-none" type="button"
                         data-bs-toggle="collapse" data-bs-target="#fishTips">
                         <span class="emoji-icon me-3">&#128032;</span> Fish Care Tips
                     </button>
