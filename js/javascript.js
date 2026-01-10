@@ -811,11 +811,6 @@ function openEvent(eventId) {
 
 
 //--------------------------------------------------- PET FINDER PART (Lynn)------------------------------------------------------------
-function openMap(location) {
-    const encodedLocation = encodeURIComponent(location);
-
-    window.open(`https://www.google.com/maps/search/${encodedLocation}`, '_blank');
-
     // Function to handle the image upload click
     function triggerFileInput() {
         document.getElementById('imageInput').click();
@@ -834,7 +829,7 @@ function openMap(location) {
             reader.readAsDataURL(event.target.files[0]);
         }
     }
-}
+
 
 
 
