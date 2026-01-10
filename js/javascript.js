@@ -1,4 +1,95 @@
+//Gloabal vars
+let pawpalHavenDB;
+
+
 //Classes
+
+// Local Database
+class Database {
+    constructor(dbName, dbVersion) {
+        this.dbName = dbName;
+        this.version = dbVersion;
+        this.db = null;
+    }
+
+    async openDB() {
+        return new Promise((resolve, reject) => {
+            //Open db
+            const request = indexedDB.open(this.dbName, this.version);
+
+            //Create/Retrieve table
+            request.onupgradeneeded = (event) => {
+                const db = event.target.result;
+
+                if (!db.objectStoreNames.contains("user"))
+                    db.createObjectStore("user", { keyPath: "userId" });
+                if (!db.objectStoreNames.contains("pet"))
+                    db.createObjectStore("pet", { keyPath: "petId" });
+                if (!db.objectStoreNames.contains("event"))
+                    db.createObjectStore("event", { keyPath: "eventId" });
+                if (!db.objectStoreNames.contains("social"))
+                    db.createObjectStore("social", { keyPath: "socialId" });
+                if (!db.objectStoreNames.contains("address"))
+                    db.createObjectStore("address", { keyPath: "addressId" });
+            };
+
+            request.onsuccess = () => {
+                this.db = request.result;
+                resolve(this.db);
+            };
+            request.onerror = (e) => reject(e.target.error);
+        });
+    }
+
+    //Add
+    async add(storeName, obj) {
+        return new Promise((resolve, reject) => {
+            const tx = this.db.transaction(storeName, "readwrite");
+            const store = tx.objectStore(storeName);
+            const request = store.add(obj);
+            request.onsuccess = () => resolve(true);
+            request.onerror = (e) => reject(e.target.error);
+        });
+    }
+
+    //Delete
+    async deleteById(storeName, id) {
+        return new Promise((resolve, reject) => {
+            const tx = this.db.transaction(storeName, "readwrite");
+            const store = tx.objectStore(storeName);
+
+            const request = store.delete(id);
+            request.onsuccess = () => resolve(true);
+            request.onerror = (e) => reject(e.target.error);
+        });
+    }
+
+    //Retrieve
+    async get(storeName, key) {
+        return new Promise((resolve, reject) => {
+            const tx = this.db.transaction(storeName, "readonly");
+            const store = tx.objectStore(storeName);
+            const request = store.get(key);
+            request.onsuccess = () => resolve(request.result);
+            request.onerror = (e) => reject(e.target.error);
+        });
+    }
+
+    //Retrieve all data by storename
+    async getAllDataByStoreName(storename) {
+        return new Promise((resolve, reject) => {
+            const tx = this.db.transaction(storename, "readonly");
+            const store = tx.objectStore(storename);
+
+            const request = store.getAll();
+            request.onsuccess = () => resolve(request.result);
+            request.onerror = (e) => reject(e.target.error);
+        });
+    }
+
+}
+
+
 //Main data
 class User {
     static users = [];
@@ -17,14 +108,24 @@ class User {
     }
 
     static create(userId, fullName, phone, email, password, social, pets, lostPets, events) {
+        //Check if email already exist
+        if (User.users.find(u => u.email === email)) {
+            return false;
+        }
+
+        //Generate id
         const id = userId || generateId("U");
 
+        //Reject user creation
         if (id === null) {
             console.log("Unable to create user");
             return null;
         }
 
+        //Create user
         const user = new User(id, fullName, phone, email, password, social, pets, lostPets, events);
+        const status = pawpalHavenDB.add("user", user);
+        console.log(status);
         User.users.push(user);
         return user;
     }
@@ -33,17 +134,42 @@ class User {
         const user = User.users.find(u => u.email === email && u.password === password);
         if (!user) {
             console.log("Failed");
-            alert("Incorrect Username or password");
             return false;
         }
 
         sessionStorage.setItem("loggedInUser", JSON.stringify(user));
         window.location.href = "index.html";
         console.log("Success");
+        return true;
     }
 
     static logout() {
         sessionStorage.removeItem("loggedInUser");
+    }
+
+    static register(email, password, fullName, phone) {
+        const user = User.create(null, fullName, phone, email, password, null, null, null, null);
+        if (user === null) {
+            return {
+                message: "Unable to create user",
+                isValid: null,
+                redirect: null
+            }
+        } else if (user === false) {
+            return {
+                message: "Email already exist",
+                isValid: false,
+                redirect: false
+            }
+        }
+
+        console.log("Success");
+        sessionStorage.setItem("loggedInUser", JSON.stringify(user));
+        return {
+            message: "Register Success",
+            isValid: true,
+            redirect: "index.html"
+        };
     }
 
     static getCurrentUser() {
@@ -51,8 +177,6 @@ class User {
         return userData ? JSON.parse(userData) : null;
     }
 }
-
-User.create(null, "Syamil", "012-3421010", "syamil@gmail.com", "123", null, null, null, null);
 
 class Pet {
     static pets = [];
@@ -403,34 +527,173 @@ function eventPage(page) {
 function loginRegisterPage(page) {
     if (page !== "login-registration.html") { return null; }
 
-    const loginForm = document.getElementById("login-form");
+    const loginForm = document.getElementById("login-form-container");
     const loginBtn = document.getElementById("login-btn");
+
     const emailInput = document.getElementById("login-email");
     const passwordInput = document.getElementById("login-password");
 
+    const loginEmailFeedback = document.getElementById("login-email-feedback");
+    const loginPasswordFeedback = document.getElementById("login-password-feedback");
+
+    const registerForm = document.getElementById("register-form-container");
+    const registerBtn = document.getElementById("register-btn");
+
+    //Register
+    const emailRegisterInput = document.getElementById("email-register");
+    const passwordRegisterInput = document.getElementById("password-register");
+    const fullNameRegisterInput = document.getElementById("full-name");
+    const phoneRegisterInput = document.getElementById("phone");
+
+    const registerEmailFeedback = document.getElementById("register-email-feedback");
+    const registerPasswordFeedback = document.getElementById("register-password-feedback");
+    const registerFullNameFeedback = document.getElementById("register-full-name-feedback");
+    const registerPhoneFeedback = document.getElementById("register-phone-feedback");
+
+    //Register form
+    registerBtn.addEventListener("click", function () {
+        document.querySelectorAll(".login-form-input").forEach(input => input.disabled = true);
+
+        //Enable register 
+        loginForm.style.display = "none";
+        registerForm.style.display = "block";
+
+        const signinBtn = document.getElementById("sign-in-btn");
+        signinBtn.addEventListener("click", function (e) {
+            e.preventDefault();
+
+            //Check validity
+            let valid = true;
+            registerForm.querySelectorAll(".input-group").forEach(group => {
+                const input = group.querySelector("input");
+
+                if (!input.checkValidity()) {
+                    group.classList.add("invalid-input");
+
+                    const errMessage = input.validationMessage;
+                    let feedback;
+                    switch (input) {
+                        case emailRegisterInput:
+                            feedback = registerEmailFeedback;
+                            break;
+                        case passwordRegisterInput:
+                            feedback = registerPasswordFeedback;
+                            break;
+                        case fullNameRegisterInput:
+                            feedback = registerFullNameFeedback;
+                            break;
+                        case phoneRegisterInput:
+                            feedback = registerPhoneFeedback;
+                            break;
+                    }
+
+                    if (!feedback) { console.log("Unable to validate"); return null }
+                    feedback.classList.remove("d-none");
+                    feedback.classList.add("d-block");
+                    feedback.innerText = errMessage;
+                    valid = false;
+                }
+            })
+
+            if (!valid) { return null; }
+
+            //Get values
+            const email = emailRegisterInput.value;
+            const password = passwordRegisterInput.value;
+            const fullName = fullNameRegisterInput.value;
+            const phone = phoneRegisterInput.value;
+
+            //Register
+            const success = User.register(email, password, fullName, phone);
+            console.log(success.isValid);
+            if (success.isValid === false) {
+                document.querySelector(".register-email-group").classList.add("invalid-input")
+                registerEmailFeedback.classList.remove("d-none");
+                registerEmailFeedback.classList.add("d-block");
+                console.log(success.message);
+                registerEmailFeedback.innerText = success.message;
+            } else if (success.isValid === null) {
+                alert("Unable to register");
+            } else {
+                window.location.href = success.redirect;
+            }
+
+        })
+
+        //Detect changes in register input
+        registerForm.querySelectorAll(".input-group").forEach(group => {
+            const input = group.querySelector("input");
+
+            input.addEventListener("input", function () {
+                group.classList.remove("invalid-input");
+                registerEmailFeedback.classList.add("d-none");
+                registerPasswordFeedback.classList.add("d-none");
+                registerFullNameFeedback.classList.add("d-none");
+                registerPhoneFeedback.classList.add("d-none");
+            });
+
+        })
+
+    });
+
+    //Detect login btn clicked
     loginBtn.addEventListener("click", function (e) {
         e.preventDefault();
         console.log("Clicked")
 
         //Trigger report validity
         let valid = true;
-        loginForm.querySelectorAll("input").forEach(input => {
+        loginForm.querySelectorAll(".input-group").forEach(group => {
+            const input = group.querySelector("input");
             if (!input.checkValidity()) {
-                input.classList.add("is-invalid");
+                group.classList.add("invalid-input");
+
+                const errMessage = input.validationMessage;
+                //Check which input 
+                if (input === emailInput) {
+                    loginEmailFeedback.classList.remove("d-none");
+                    loginEmailFeedback.classList.add("d-block");
+                    loginEmailFeedback.innerText = errMessage;
+                } else {
+                    loginPasswordFeedback.classList.remove("d-none");
+                    loginPasswordFeedback.classList.add("d-block");
+                    loginPasswordFeedback.innerText = errMessage;
+                }
+
                 valid = false;
             }
         });
 
-        if (!valid) return;
+        if (!valid) return null;
 
         //Get values
         const email = emailInput.value;
         const password = passwordInput.value;
 
-        const status = User.login(email, password);;
+        const status = User.login(email, password);
         if (status === false) {
-            //emailInput.classList.add("invalid-feedback");
+            loginForm.querySelectorAll(".input-group").forEach(group => { group.classList.add("invalid-input"); });
+
+            loginEmailFeedback.classList.remove("d-none");
+            loginEmailFeedback.classList.add("d-block");
+            loginEmailFeedback.innerText = "Wrong email";
+
+            loginPasswordFeedback.classList.remove("d-none");
+            loginPasswordFeedback.classList.add("d-block");
+            loginPasswordFeedback.innerText = "Wrong password";
         }
+
+        //Detect changes in login input
+        loginForm.querySelectorAll(".input-group").forEach(group => {
+            const input = group.querySelector("input");
+
+            input.addEventListener("input", function () {
+                group.classList.remove("invalid-input");
+                loginEmailFeedback.classList.add("d-none");
+                loginPasswordFeedback.classList.add("d-none");
+            });
+
+        })
     })
 }
 
@@ -590,7 +853,6 @@ function addMapPicker(id) {
         }
     }
 }
-
 
 
 function messageCycle() {
@@ -765,7 +1027,14 @@ function addCloseMapEvent(page) {
     })
 }
 
-document.addEventListener("DOMContentLoaded", function () {
+
+document.addEventListener("DOMContentLoaded", async function () {
+    //Initialize DB
+    pawpalHavenDB = new Database("Test", 1);
+    await pawpalHavenDB.openDB();
+
+    User.create(null, "Syamil", "012-3421010", "syamil@gmail.com", "123", null, null, null, null);
+
     const page = window.location.pathname.split("/").pop();
     updateNavbar();
     homepageEvent(page);
