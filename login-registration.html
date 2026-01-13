@@ -4,16 +4,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Login or Register to PawPal Haven - Access your pet adoption account and manage your profile.">
+    <meta name="keywords" content="pet adoption login, register, account, pet profile">
+    <meta name="author" content="PawPal Haven Team">
+    <meta name="robots" content="index, follow">
 
     <!--Custom CSS-->
     <link rel="stylesheet" href="css/style.css">
-    <!--Boostrap CSS-->
+    <!--Bootstrap CSS-->
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <!--Font awesome-->
     <script src="https://kit.fontawesome.com/b1605aa887.js" crossorigin="anonymous"></script>
 
     <link rel="icon" type="image/png" href="assets/img/pet-brand.png">
-    <title>PawPal Haven-Login</title>
+    <title>PawPal Haven - Login & Register</title>
 </head>
 
 <body>
@@ -111,12 +115,14 @@
 
                             <div class="mb-4">
                                 <label for="email-register" class="form-label small fw-bold">Email Address</label>
-                                <div class="input-group register-email-group">
+                                <div class="input-group">
                                     <span class="input-group-text bg-light border-end-0"><i
                                             class="fa-solid fa-envelope text-muted"></i></span>
                                     <input type="email" id="email-register" class="form-control border-start-0 bg-light"
                                         placeholder="Email" required>
-                                    <div class="invalid-feedback d-none " id="register-email-feedback"></div>
+                                    <div class="invalid-feedback d-none " id="register-email-feedback">
+                                        Invalid email.
+                                    </div>
                                 </div>
                             </div>
 
@@ -127,7 +133,9 @@
                                             class="fa-solid fa-key text-muted"></i></span>
                                     <input type="password" id="password-register"
                                         class="form-control border-start-0 bg-light" placeholder="Password" required>
-                                    <div class="invalid-feedback d-none " id="register-password-feedback"></div>
+                                    <div class="invalid-feedback d-none " id="register-password-feedback">
+                                        Invalid email.
+                                    </div>
                                 </div>
                             </div>
 
@@ -138,7 +146,9 @@
                                             class="fa-solid fa-user text-muted"></i></span>
                                     <input type="text" id="full-name" class="form-control border-start-0 bg-light"
                                         placeholder="Full Name" required>
-                                    <div class="invalid-feedback d-none " id="register-full-name-feedback"></div>
+                                    <div class="invalid-feedback d-none " id="register-full-name-feedback">
+                                        Invalid email.
+                                    </div>
                                 </div>
                             </div>
 
@@ -149,7 +159,9 @@
                                             class="fa-solid fa-phone text-muted"></i></span>
                                     <input type="text" id="phone" class="form-control border-start-0 bg-light"
                                         pattern="[0-9]{3}-[0-9]{7}" required placeholder="000-0000000">
-                                    <div class="invalid-feedback d-none " id="register-phone-feedback"></div>
+                                    <div class="invalid-feedback d-none " id="register-phone-feedback">
+                                        Invalid email.
+                                    </div>
                                 </div>
                             </div>
 
@@ -181,10 +193,10 @@
                     <h5>Sitemap</h5>
                     <ul class="list-unstyled sitemap">
                         <li><a href="index.html" class="text-white text-decoration-none">Home</a></li>
-                        <li><a href="" class="text-white text-decoration-none">Adopt Pets</a></li>
-                        <li><a href="" class="text-white text-decoration-none">Tips</a></li>
-                        <li><a href="" class="text-white text-decoration-none">Pet Finder</a></li>
-                        <li><a href="" class="text-white text-decoration-none">Tips</a></li>
+                        <li><a href="adopt-pet.html" class="text-white text-decoration-none">Adopt Pets</a></li>
+                        <li><a href="tips.html" class="text-white text-decoration-none">Tips</a></li>
+                        <li><a href="pet-finder.html" class="text-white text-decoration-none">Pet Finder</a></li>
+                        <li><a href="event.html" class="text-white text-decoration-none">Events</a></li>
                     </ul>
                 </div>
 
@@ -192,23 +204,27 @@
                 <div class="col-md-4 mb-4 text-center text-md-start">
                     <h5>Connect With Us</h5>
                     <div class="mb-3">
-                        <a href="#" class="text-white mx-2"><i class="fab fa-facebook fa-lg"></i></a>
-                        <a href="#" class="text-white mx-2"><i class="fab fa-twitter fa-lg"></i></a>
-                        <a href="#" class="text-white mx-2"><i class="fab fa-instagram fa-lg"></i></a>
-                        <a href="#" class="text-white mx-2"><i class="fab fa-youtube fa-lg"></i></a>
+                        <a href="https://www.facebook.com" target="_blank" rel="noopener noreferrer" class="text-white mx-2" title="Visit our Facebook"><i class="fab fa-facebook fa-lg"></i></a>
+                        <a href="https://www.twitter.com" target="_blank" rel="noopener noreferrer" class="text-white mx-2" title="Visit our Twitter"><i class="fab fa-twitter fa-lg"></i></a>
+                        <a href="https://www.instagram.com" target="_blank" rel="noopener noreferrer" class="text-white mx-2" title="Visit our Instagram"><i class="fab fa-instagram fa-lg"></i></a>
+                        <a href="https://www.youtube.com" target="_blank" rel="noopener noreferrer" class="text-white mx-2" title="Visit our YouTube"><i class="fab fa-youtube fa-lg"></i></a>
+                    </div>
+                    <div class="mb-3">
+                        <p class="mb-2"><strong>Contact Us</strong></p>
+                        <p class="mb-0"><small><a href="mailto:support@pawpalhaven.com" class="text-white text-decoration-none"><i class="fas fa-envelope me-1"></i>support@pawpalhaven.com</a></small></p>
                     </div>
                     <ul class="list-unstyled">
                         <li>
-                            <p class="mb-0"><strong>Auhtors</strong></p>
+                            <p class="mb-0"><strong>Authors</strong></p>
                         </li>
                         <li>
                             <p class="mb-0"><small>Syamil Bin Md Noor (S76064)</small></p>
                         </li>
                         <li>
-                            <p class="mb-0"><small>Izani ()</small></p>
+                            <p class="mb-0"><small>Syafiqah Izani</small></p>
                         </li>
                         <li>
-                            <p class="mb-0"><small>Adlyn ()</small></p>
+                            <p class="mb-0"><small>Adlynn Syakirah (S76245)</small></p>
                         </li>
                     </ul>
                 </div>

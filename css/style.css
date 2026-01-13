@@ -1,7 +1,21 @@
+/*Root*/
+:root {
+    --reddit-color:     #FF4500;
+    --instagram-color:  #E1306C; /* primary pink gradient color */
+    --twitter-color:    #000000; /* X uses black as brand color */
+    --facebook-color:   #1877F2;
+    --tiktok-color:     #69C9D0; /* TikTok cyan accent */
+    --youtube-color:    #FF0000;
+    --linkedin-color:   #0A66C2;
+    --github-color:     #181717;
+    --others-color:     #858383;
+}
+
+
 /*Color*/
 
 .bg-green-1 {
-    background-color: rgb(0, 146, 0) !important;
+    background-color: #01776d !important;
 }
 
 .bg-green-2 {
@@ -198,10 +212,17 @@
     color: white;
 }
 
+
 .sidebar .nav-link.active,
 .sidebar .nav-link:hover {
     background-color: #495057;
 }
+
+.hidden-side-bar .nav-link.active,
+.hidden-side-bar .nav-link:hover {
+    background-color: #495057;
+}
+
 
 .dashboard-page {
     padding: 20px;
@@ -252,26 +273,62 @@
     background: #ffffff;
 }
 
-.fa-facebook:hover {
-    color: rgb(0, 160, 253);
+
+/* Reddit */
+.fa-reddit:hover,
+.reddit-solid {
+    color: var(--reddit-color);
 }
 
-.fa-twitter:hover {
-    color: rgb(81, 113, 255);
+/* Instagram */
+.fa-instagram:hover,
+.instagram-solid {
+    color: var(--instagram-color);
 }
 
-
-.fa-youtube:hover {
-    color: rgb(216, 15, 15);
+/* Twitter */
+.fa-x-twitter:hover,
+.fa-twitter:hover,
+.twitter-solid {
+    color: var(--twitter-color);
 }
 
-.fa-instagram:hover {
-    color: rgb(225, 48, 108);
+/* Facebook */
+.fa-facebook:hover,
+.facebook-solid {
+    color: var(--facebook-color);
 }
 
-.fa-tiktok:hover {
-    color: rgb(71, 71, 71);
+/* TikTok */
+.fa-tiktok:hover,
+.fa-tiktok-solid {
+    color: var(--tiktok-color);
 }
+
+/* YouTube */
+.fa-youtube:hover,
+.youtube-solid {
+    color: var(--youtube-color);
+}
+
+/* LinkedIn */
+.fa-linkedin:hover,
+.linkedin-solid {
+    color: var(--linkedin-color);
+}
+
+/* GitHub */
+.fa-github:hover,
+.github-solid {
+    color: var(--github-color);
+}
+
+/*Other color*/
+.fa-link:hover,
+.link-solid{
+    color: var(--others-color);
+}
+
 
 .fa-map:hover {
     color: white;
@@ -283,7 +340,7 @@
 
 .invalid-input .input-group-text,
 .invalid-input .form-control {
-    border-color:  rgb(220, 53, 69) !important;
+    border-color: rgb(220, 53, 69) !important;
     z-index: 2;
 }
 
@@ -776,6 +833,16 @@ body {
     background-position: center;     /* Gambar sentiasa di tengah */
     background-repeat: no-repeat;    /* Gambar tidak berulang */
     min-height: 450px; 
+} 
+
+.custom-header {
+    /* Letakkan nama fail imej di sini */
+    background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url('login-registration-bg.jpg');
+
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    min-height: 400px;
     display: flex;
     align-items: center;
     color: white;
@@ -801,4 +868,235 @@ body {
     font-weight: 300;
 }
 
+<<<<<<< HEAD
 
+=======
+/* ============================================
+   BONUS FEATURE: CSS TRANSITIONS & EFFECTS
+   ============================================ */
+
+/* Smooth transitions for navigation links */
+.nav-link {
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.nav-link:hover {
+    transform: translateY(-2px);
+    color: #02af02 !important;
+    text-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: #02af02;
+    transition: width 0.3s ease;
+}
+
+.nav-link:hover::after {
+    width: 100%;
+}
+
+/* Card hover effects with smooth transitions */
+.card {
+    transition: all 0.4s cubic-bezier(0.23, 1, 0.320, 1);
+    transform: translateZ(0);
+}
+
+.card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 12px 30px rgba(0, 146, 0, 0.3) !important;
+}
+
+.pet-card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.pet-card:hover {
+    transform: scale(1.02);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2) !important;
+}
+
+/* Button smooth transitions */
+.btn {
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(0, 146, 0, 0.3) !important;
+}
+
+.btn::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    transition: width 0.6s, height 0.6s;
+}
+
+.btn:hover::before {
+    width: 300px;
+    height: 300px;
+}
+
+/* Image hover effects */
+img {
+    transition: transform 0.4s ease, filter 0.4s ease;
+}
+
+img:hover {
+    transform: scale(1.05);
+    filter: brightness(1.1);
+}
+
+.card-img-top {
+    transition: all 0.3s ease;
+}
+
+.card:hover .card-img-top {
+    filter: brightness(1.15);
+}
+
+/* Table row hover effects */
+table tbody tr {
+    transition: all 0.3s ease;
+}
+
+table tbody tr:hover {
+    background-color: rgba(2, 175, 2, 0.1) !important;
+    transform: scale(1.01);
+    box-shadow: inset 0 0 10px rgba(0, 146, 0, 0.1);
+}
+
+/* Input field transitions */
+input, textarea, select {
+    transition: all 0.3s ease;
+}
+
+input:focus, textarea:focus, select:focus {
+    transform: scale(1.02);
+    box-shadow: 0 0 15px rgba(2, 175, 2, 0.4) !important;
+}
+
+/* Footer link transitions */
+footer a {
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+footer a:hover {
+    color: #02af02 !important;
+    transform: translateX(3px);
+    text-decoration: underline !important;
+}
+
+/* Icon spinning animation on hover */
+.social-font i {
+    transition: all 0.3s ease;
+}
+
+.social-font i:hover {
+    transform: rotate(20deg) scale(1.2);
+    color: #02af02 !important;
+}
+
+/* Badge/Tag animations */
+.badge {
+    transition: all 0.3s ease;
+}
+
+.badge:hover {
+    transform: scale(1.1);
+    box-shadow: 0 5px 15px rgba(0, 146, 0, 0.3);
+}
+
+/* Accordion smooth transitions */
+.accordion-button {
+    transition: all 0.3s ease;
+}
+
+.accordion-button:hover {
+    background-color: rgba(2, 175, 2, 0.1);
+    transform: translateX(5px);
+}
+
+.accordion-button:not(.collapsed) {
+    background-color: rgba(2, 175, 2, 0.2);
+    color: #009200;
+}
+
+/* Modal fade in effect */
+.modal.fade {
+    animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Alert animations */
+.alert {
+    animation: slideInUp 0.4s ease;
+}
+
+@keyframes slideInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Smooth scroll behavior */
+html {
+    scroll-behavior: smooth;
+}
+
+/* Section transition on load */
+section {
+    animation: fadeInUp 0.6s ease;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Form group animations */
+.form-group {
+    transition: all 0.3s ease;
+}
+
+.form-group:focus-within {
+    transform: translateY(-2px);
+}
+>>>>>>> 502ebd48f94df15b8c50d7431998304f5edb761b

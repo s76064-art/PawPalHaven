@@ -4,10 +4,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="PawPal Haven Dashboard - Manage your pet listings, events, and lost pet reports.">
+    <meta name="keywords" content="pet dashboard, manage pets, pet listings, pet events">
+    <meta name="author" content="PawPal Haven Team">
+    <meta name="robots" content="noindex, nofollow">
 
     <!--Custom CSS-->
     <link rel="stylesheet" href="css/style.css">
-    <!--Boostrap CSS-->
+    <!--Bootstrap CSS-->
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <!--Font awesome-->
     <script src="https://kit.fontawesome.com/b1605aa887.js" crossorigin="anonymous"></script>
@@ -17,10 +21,10 @@
     <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
 
     <link rel="icon" type="image/png" href="assets/img/pet-brand.png">
-    <title>PawPal Haven-Dashboard</title>
+    <title>PawPal Haven - Dashboard</title>
 </head>
 
-<body>
+<body class="p-0">
     <!--Navigation bar-->
     <nav class="navbar navbar-expand-lg " id="nav-bar-transparent-off">
         <div class="container-fluid mx-3">
@@ -86,8 +90,8 @@
     <main class="container-fluid">
         <div class="row">
 
-            <!-- Sidebar for desktop (hidden on small screens) -->
-            <nav id="dashboardSidebar" class="col-md-3 col-lg-2 d-none d-md-block bg-dark sidebar">
+            <!-- Desktop Sidebar -->
+            <nav id="dashboardSidebar" class="col-md-3 col-lg-2 d-none d-md-block bg-dark sidebar min-vh-100">
                 <div class="position-sticky pt-3">
                     <h5 class="text-white text-center mb-4">Dashboard</h5>
                     <ul class="nav flex-column">
@@ -104,165 +108,47 @@
                 </div>
             </nav>
 
-            <!-- Mobile sidebar toggle button -->
-            <div class="d-md-none mb-3">
-                <button class="btn btn-dark" type="button" data-bs-toggle="offcanvas"
+            <!-- Mobile Sidebar Toggle -->
+            <div class="d-md-none bg-dark p-2">
+                <button class="btn btn-outline-light w-100" type="button" data-bs-toggle="offcanvas"
                     data-bs-target="#offcanvasSidebar">
-                    <i class="fa-solid fa-bars"></i> Menu
+                    <i class="fa-solid fa-bars"></i> Dashboard Menu
                 </button>
             </div>
 
-            <!-- Offcanvas for mobile -->
-            <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasSidebar">
+            <!-- Mobile Sidebar -->
+            <div class="offcanvas offcanvas-start p-0" tabindex="-1" id="offcanvasSidebar">
                 <div class="offcanvas-header bg-dark text-white">
                     <h5 class="offcanvas-title">Dashboard</h5>
                     <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas"></button>
                 </div>
-                <div class="offcanvas-body bg-dark">
+                <div class="offcanvas-body bg-dark hidden-side-bar">
                     <ul class="nav flex-column">
                         <li class="nav-item">
-                            <a class="nav-link text-white active" href="#" data-target="pets-page">Pets</a>
+                            <a class="nav-link text-white active a-link" href="#" data-target="pets-page">Pets</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-white" href="#" data-target="events-page">Events</a>
+                            <a class="nav-link text-white a-link" href="#" data-target="events-page">Events</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-white" href="#" data-target="lost-pets-page">Lost Pets</a>
+                            <a class="nav-link text-white a-link" href="#" data-target="lost-pets-page">Lost Pets</a>
                         </li>
                     </ul>
                 </div>
             </div>
 
             <!-- Main Content -->
-            <div class="col-md-9 col-lg-10">
-                <!-- Pets Page -->
-                <div id="pets-page" class="dashboard-page">
-                    <h2>My Pets for Adoption</h2>
-                    <button class="btn btn-success mb-3" data-bs-toggle="modal" data-bs-target="#petModal"
-                        onclick="">Add New Pet</button>
-
-                    <div id="pets-list" class="row g-4"> <!-- g-4 = spacing between columns -->
-
-                        <!-- Pet Item 1 -->
-                        <div class="col-md-12 col-lg-6">
-                            <div class="bg-dark p-3 rounded h-100 d-flex">
-                                <!-- Image -->
-                                <div class="me-3 d-flex align-items-center justify-content-center">
-                                    <img class="img-fluid card dashboard-pet-event"
-                                        src="assets/img/petAdoptionImages/cat.png" alt="Pet Image">
-                                </div>
-                                <!-- Info -->
-                                <div class="text-white flex-grow-1 d-flex flex-column justify-content-between">
-                                    <div>
-                                        <h3 class="fw-bold mb-1">[Pet Name]</h3>
-                                        <p class="mb-1">Species: </p>
-                                        <p class="mb-1">Gender: </p>
-                                        <p class="mb-3">Age: </p>
-                                    </div>
-                                    <div class="d-flex gap-2">
-                                        <button class="btn btn-primary flex-fill">Edit</button>
-                                        <button class="btn btn-danger flex-fill">Delete</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Pet Item 2 -->
-                        <div class="col-md-12 col-lg-6">
-                            <div class="bg-dark p-3 rounded h-100 d-flex">
-                                <div class="me-3 d-flex align-items-center justify-content-center">
-                                    <img class="img-fluid card dashboard-pet-event"
-                                        src="assets/img/petAdoptionImages/husky.png" alt="Pet Image">
-                                </div>
-                                <div class="text-white flex-grow-1 d-flex flex-column justify-content-between">
-                                    <div>
-                                        <h2 class="fw-bold mb-1">[Pet Name]</h2>
-                                        <p class="mb-1">Species: </p>
-                                        <p class="mb-1">Gender: </p>
-                                        <p class="mb-3">Age: </p>
-                                    </div>
-                                    <div class="d-flex gap-2">
-                                        <button class="btn btn-primary flex-fill">Edit</button>
-                                        <button class="btn btn-danger flex-fill">Delete</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-
-
-                    </div>
-
-                </div>
-
-                <!-- Events Page -->
-                <div id="events-page" class="dashboard-page" style="display:none;">
-                    <h2>My Events</h2>
-                    <button class="btn btn-success mb-3" data-bs-toggle="modal" data-bs-target="#eventModal"
-                        onclick="openAddEventModal()">Add New Event</button>
-                    <div class="row" id="events-list">
-
-                        <!-- Event Item 1 -->
-                        <div class="col-md-12 col-lg-6">
-                            <div class="bg-dark p-3 rounded h-100 d-flex">
-                                <!-- Image -->
-                                <div class="me-3 d-flex align-items-center justify-content-center">
-                                    <img class="img-fluid card dashboard-pet-event" src="assets/img/Poster1.png"
-                                        alt="Pet Image">
-                                </div>
-                                <!-- Info -->
-                                <div class="text-white flex-grow-1 d-flex flex-column justify-content-between">
-                                    <div>
-                                        <h3 class="fw-bold mb-1">[Event Name]</h3>
-                                        <p class="mb-1">Date: </p>
-                                        <p class="mb-1">Location: </p>
-                                    </div>
-                                    <div class="d-flex gap-2">
-                                        <button class="btn btn-primary flex-fill">Edit</button>
-                                        <button class="btn btn-danger flex-fill">Delete</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Lost Pets Page -->
-                <div id="lost-pets-page" class="dashboard-page" style="display:none;">
-                    <h2>My Lost Pets</h2>
-                    <button class="btn btn-success mb-3" data-bs-toggle="modal" data-bs-target="#lostPetModal"
-                        onclick="openAddLostPetModal()">Add Lost Pet</button>
-                    <div class="row" id="lost-pets-list">
-                        <!-- Pet Item 1 -->
-                        <div class="col-md-12 col-lg-6">
-                            <div class="bg-dark p-3 rounded h-100 d-flex">
-                                <!-- Image -->
-                                <div class="me-3 d-flex align-items-center justify-content-center">
-                                    <img class="img-fluid card dashboard-pet-event"
-                                        src="assets/img/petAdoptionImages/cat.png" alt="Pet Image">
-                                </div>
-                                <!-- Info -->
-                                <div class="text-white flex-grow-1 d-flex flex-column justify-content-between">
-                                    <div>
-                                        <h3 class="fw-bold mb-1">[Pet Name]</h3>
-                                        <p class="mb-1">Species: </p>
-                                        <p class="mb-1">Location: </p>
-                                        <p class="mb-3">Last Scene: </p>
-                                    </div>
-                                    <div class="d-flex gap-2">
-                                        <button class="btn btn-primary flex-fill">Edit</button>
-                                        <button class="btn btn-danger flex-fill">Delete</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+            <div class="col-md-9 col-lg-10 mt-3">
+                <div class="dashboard-page">
+                    <h2 id="dashboard-title">My Pets for Adoption</h2>
+                    <button id="add-btn" class="btn btn-success mb-3" data-bs-toggle="modal"
+                        data-bs-target="#petModal" data-type="add">Add New Pet</button>
+                    <div id="item-container" class="row g-4"></div>
                 </div>
             </div>
+
         </div>
     </main>
-
-
 
     <!-- Pet Modal -->
     <div class="modal fade" id="petModal" data-target="pet-map" tabindex="-1" aria-labelledby="petModalLabel"
@@ -283,58 +169,79 @@
                                 src="images/profile.png"
                                 style="display:block; max-height:200px; margin:auto; cursor:pointer;" alt="Preview">
                             <label class="form-label">Pet Image</label>
-                            <input type="file" class="form-control" id="pet-image" data-target="clickable-img-input-pet"
-                                accept="image/*" required>
+                            <div class="input-group">
+                                <input type="file" class="form-control" id="pet-image"
+                                    data-target="clickable-img-input-pet" accept="image/*" required>
+                                <div class="invalid-feedback d-none" id="pet-image-feedback">Invalid image.</div>
+                            </div>
                         </div>
 
                         <!-- Pet Name -->
                         <div class="mb-3">
                             <label class="form-label">Pet Name</label>
-                            <input type="text" class="form-control" id="pet-name" required>
+                            <div class="input-group">
+                                <input type="text" class="form-control" id="pet-name" required>
+                                <div class="invalid-feedback d-none" id="pet-name-feedback">Invalid name.</div>
+                            </div>
                         </div>
 
-                        <!-- Species + gender -->
+                        <!-- Species + Gender -->
                         <div class="row mb-3">
                             <div class="col">
                                 <label class="form-label">Species</label>
-                                <input type="text" class="form-control" id="pet-species" required>
+                                <div class="input-group">
+                                    <input type="text" class="form-control" id="pet-species" required>
+                                    <div class="invalid-feedback d-none" id="pet-species-feedback">Invalid species.
+                                    </div>
+                                </div>
                             </div>
                             <div class="col">
                                 <label class="form-label">Gender</label>
-                                <select class="form-control" id="pet-gender">
-                                    <option>Male</option>
-                                    <option>Female</option>
-                                </select>
+                                <div class="input-group">
+                                    <select class="form-control" id="pet-gender">
+                                        <option>Male</option>
+                                        <option>Female</option>
+                                    </select>
+                                    <div class="invalid-feedback d-none" id="pet-gender-feedback">Invalid gender.</div>
+                                </div>
                             </div>
                         </div>
 
                         <!-- Age -->
                         <div class="mb-3">
                             <label class="form-label">Age</label>
-                            <input type="number" class="form-control" id="pet-age" required>
+                            <div class="input-group">
+                                <input type="number" class="form-control" id="pet-age" required>
+                                <div class="invalid-feedback d-none" id="pet-age-feedback">Invalid age.</div>
+                            </div>
                         </div>
 
                         <!-- Description -->
                         <div class="mb-3">
                             <label class="form-label">Description</label>
-                            <textarea class="form-control" id="pet-description" required></textarea>
+                            <div class="input-group">
+                                <textarea class="form-control" id="pet-description" required></textarea>
+                                <div class="invalid-feedback d-none" id="pet-description-feedback">Invalid description.
+                                </div>
+                            </div>
                         </div>
 
                         <!-- Location Picker -->
                         <h6 class="mt-4">Select Pet Location</h6>
                         <div id="pet-map" style="height: 300px; border:1px solid #ccc;"></div>
 
+
                         <!-- Hidden Inputs -->
-                        <input type="hidden" id="latitude">
-                        <input type="hidden" id="longitude">
-                        <input type="hidden" id="city">
-                        <input type="hidden" id="state">
-                        <input type="hidden" id="country">
+                        <input type="hidden" id="pet-latitude">
+                        <input type="hidden" id="pet-longitude">
+                        <input type="hidden" id="pet-city">
+                        <input type="hidden" id="pet-state">
+                        <input type="hidden" id="pet-country">
 
                     </div>
 
                     <div class="modal-footer">
-                        <button type="submit" class="btn btn-primary">Save Pet</button>
+                        <button id="save-pet-btn" data-type="Add" type="submit" class="btn btn-primary">Add Pet</button>
                     </div>
                 </form>
             </div>
@@ -353,54 +260,70 @@
                         <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
                     </div>
                     <div class="modal-body">
-                        <!-- Image input -->
+                        <!-- Poster Event -->
                         <div class="mb-3">
                             <img id="clickable-img-input-event" data-target="poster-image" class="img-fluid mt-2"
                                 src="images/profile.png"
                                 style="display:block; max-height:200px; margin:auto; cursor:pointer;" alt="Preview">
                             <label class="form-label">Poster Event</label>
-                            <input type="file" class="form-control" id="poster-image"
-                                data-target="clickable-img-input-event" accept="image/*" required>
+                            <div class="input-group">
+                                <input type="file" class="form-control" id="poster-image" data-target="clickable-img-input-event" accept="image/*" required>
+                                <div class="invalid-feedback d-none" id="poster-image-feedback">Invalid image.</div>
+                            </div>
                         </div>
 
-                        <!--Event Name-->
+                        <!-- Event Name -->
                         <div class="mb-3">
                             <label class="form-label">Event Name</label>
-                            <input type="text" class="form-control" id="event-name" required>
+                            <div class="input-group">
+                                <input type="text" class="form-control" id="event-name" required>
+                                <div class="invalid-feedback d-none" id="event-name-feedback">Invalid event name.</div>
+                            </div>
                         </div>
 
-                        <!--Date-->
+                        <!-- Date -->
                         <div class="mb-3">
                             <label class="form-label">Date</label>
-                            <input type="date" class="form-control" id="event-date" required>
+                            <div class="input-group">
+                                <input type="date" class="form-control" id="event-date" required>
+                                <div class="invalid-feedback d-none" id="event-date-feedback">Invalid date.</div>
+                            </div>
                         </div>
 
-                        <!--Time-->
+                        <!-- Time -->
                         <div class="mb-3">
                             <label class="form-label">Time</label>
-                            <input type="time" class="form-control" id="event-time" required>
+                            <div class="input-group">
+                                <input type="time" class="form-control" id="event-time" required>
+                                <div class="invalid-feedback d-none" id="event-time-feedback">Invalid time.</div>
+                            </div>
                         </div>
 
                         <!-- Description -->
                         <div class="mb-3">
                             <label class="form-label">Description</label>
-                            <textarea class="form-control" id="pet-description" required></textarea>
+                            <div class="input-group">
+                                <textarea class="form-control" id="event-description" required></textarea>
+                                <div class="invalid-feedback d-none" id="event-description-feedback">Invalid
+                                    description.</div>
+                            </div>
                         </div>
 
+
                         <!-- Location Picker -->
-                        <h6 class="mt-4">Select Pet Location</h6>
+                        <h6 class="mt-4">Select Event Location</h6>
                         <div id="event-map" style="height: 300px; border:1px solid #ccc;"></div>
 
                         <!-- Hidden Inputs -->
-                        <input type="hidden" id="latitude">
-                        <input type="hidden" id="longitude">
-                        <input type="hidden" id="city">
-                        <input type="hidden" id="state">
-                        <input type="hidden" id="country">
+                        <input type="hidden" id="event-latitude">
+                        <input type="hidden" id="event-longitude">
+                        <input type="hidden" id="event-city">
+                        <input type="hidden" id="event-state">
+                        <input type="hidden" id="event-country">
 
                     </div>
                     <div class="modal-footer">
-                        <button type="submit" class="btn btn-primary">Save Event</button>
+                        <button id="save-event-btn" type="submit" class="btn btn-primary">Save Event</button>
                     </div>
                 </form>
             </div>
@@ -418,47 +341,67 @@
                         <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
                     </div>
                     <div class="modal-body">
-                        <!-- Image input -->
+                        <!-- Image -->
                         <div class="mb-3">
                             <img id="clickable-img-input-lost-pet" data-target="lost-pet-image" class="img-fluid mt-2"
                                 src="images/profile.png"
                                 style="display:block; max-height:200px; margin:auto; cursor:pointer;" alt="Preview">
                             <label class="form-label">Pet Image</label>
-                            <input type="file" class="form-control" id="lost-pet-image"
-                                data-target="clickable-img-input-lost-pet" accept="image/*" required>
+                            <div class="input-group">
+                                <input type="file" class="form-control" id="lost-pet-image" accept="image/*" required>
+                                <div class="invalid-feedback d-none" id="lost-pet-image-feedback">Invalid image.</div>
+                            </div>
                         </div>
 
                         <!-- Pet Name -->
                         <div class="mb-3">
                             <label class="form-label">Pet Name</label>
-                            <input type="text" class="form-control" id="lost-pet-name" required>
+                            <div class="input-group">
+                                <input type="text" class="form-control" id="lost-pet-name" required>
+                                <div class="invalid-feedback d-none" id="lost-pet-name-feedback">Invalid name.</div>
+                            </div>
                         </div>
 
-                        <!-- Species + gender -->
+                        <!-- Species + Gender -->
                         <div class="row mb-3">
                             <div class="col">
                                 <label class="form-label">Species</label>
-                                <input type="text" class="form-control" id="lost-pet-species" required>
+                                <div class="input-group">
+                                    <input type="text" class="form-control" id="lost-pet-species" required>
+                                    <div class="invalid-feedback d-none" id="lost-pet-species-feedback">Invalid species.
+                                    </div>
+                                </div>
                             </div>
                             <div class="col">
                                 <label class="form-label">Gender</label>
-                                <select class="form-control" id="lost-pet-gender">
-                                    <option>Male</option>
-                                    <option>Female</option>
-                                </select>
+                                <div class="input-group">
+                                    <select class="form-control" id="lost-pet-gender">
+                                        <option>Male</option>
+                                        <option>Female</option>
+                                    </select>
+                                    <div class="invalid-feedback d-none" id="lost-pet-gender-feedback">Invalid gender.
+                                    </div>
+                                </div>
                             </div>
                         </div>
 
                         <!-- Age -->
                         <div class="mb-3">
                             <label class="form-label">Age</label>
-                            <input type="number" class="form-control" id="lost-pet-age" required>
+                            <div class="input-group">
+                                <input type="number" class="form-control" id="lost-pet-age" required>
+                                <div class="invalid-feedback d-none" id="lost-pet-age-feedback">Invalid age.</div>
+                            </div>
                         </div>
 
                         <!-- Description -->
                         <div class="mb-3">
                             <label class="form-label">Description</label>
-                            <textarea class="form-control" id="lost-pet-description" required></textarea>
+                            <div class="input-group">
+                                <textarea class="form-control" id="lost-pet-description" required></textarea>
+                                <div class="invalid-feedback d-none" id="lost-pet-description-feedback">Invalid
+                                    description.</div>
+                            </div>
                         </div>
 
                         <!-- Location Picker -->
@@ -466,14 +409,14 @@
                         <div id="lost-pet-map" style="height: 300px; border:1px solid #ccc;"></div>
 
                         <!-- Hidden Inputs -->
-                        <input type="hidden" id="latitude">
-                        <input type="hidden" id="longitude">
-                        <input type="hidden" id="city">
-                        <input type="hidden" id="state">
-                        <input type="hidden" id="country">
+                        <input type="hidden" id="lost-latitude">
+                        <input type="hidden" id="lost-longitude">
+                        <input type="hidden" id="lost-city">
+                        <input type="hidden" id="lost-state">
+                        <input type="hidden" id="lost-country">
                     </div>
                     <div class="modal-footer">
-                        <button type="submit" class="btn btn-primary">Save Lost Pet</button>
+                        <button id="save-lost-pet-btn" type="submit" class="btn btn-primary">Save Lost Pet</button>
                     </div>
                 </form>
             </div>
