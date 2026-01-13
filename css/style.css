@@ -107,6 +107,13 @@
     font-weight: 700;
 }
 
+.team-img {
+    height: 250px;              
+    width: 100%;                
+    object-fit: cover;            
+    object-position: center;      
+}
+
 .home-social-icons a {
     color: #fff;
     width: 40px;
