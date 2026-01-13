@@ -4,7 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="PawPal Haven - Your trusted platform for pet adoption, events, and pet care tips. Find your perfect companion today!">
+    <meta name="description"
+        content="PawPal Haven - Your trusted platform for pet adoption, events, and pet care tips. Find your perfect companion today!">
     <meta name="keywords" content="pet adoption, pet care, dog adoption, cat adoption, pet events, pet tips">
     <meta name="author" content="PawPal Haven Team - Syamil Bin Md Noor, Syafiqah Izani, Adlynn Syakirah">
     <meta name="robots" content="index, follow">
@@ -20,9 +21,9 @@
     <title>PawPal Haven - Pet Adoption & Care Platform</title>
 </head>
 
-<body>
+<body class="p-0">
     <!--Navigation bar-->
-    <nav class="navbar navbar-expand-lg fixed-top" id="nav-bar">
+    <nav class="navbar navbar-expand-lg" id="nav-bar">
         <div class="container-fluid mx-3">
 
             <a class="navbar-brand text-white" href="#">
@@ -63,7 +64,7 @@
                         </a>
 
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                           <li><a class="dropdown-item" href="tips.html#catTipsButton">Cats</a></li>
+                            <li><a class="dropdown-item" href="tips.html#catTipsButton">Cats</a></li>
                             <li><a class="dropdown-item" href="tips.html#dogTipsButton">Dogs</a></li>
                             <li><a class="dropdown-item" href="tips.html#birdTipsButton">Birds</a></li>
                             <li><a class="dropdown-item" href="tips.html#rabbitTipsButton">Rabbits</a></li>
@@ -84,202 +85,156 @@
         </div>
     </nav>
 
-    <!--Message-->
-    <div class="container-fluid px-0 header-section mt-5 pt-5">
-        <diV class="message" id="message">
-            <h2>Pets bring joy to the world</h2>
-            <p>Adopt one now</p>
-        </diV>
-    </div>
+
+    <!-- TITLE -->
+    <section class="header-section-1 bg-white shadow-sm d-flex justify-content-center py-5">
+        <div class="d-md-flex justify-content-center align-items-center text-center text-md-start">
+            <div class="header-content m-auto d-flex align-items-center flex-column">
+                <h1 class="display-4 fw-bold text-dark text-center">
+                    Welcome to <span class="text-green-2">PawPal Haven</span>
+                </h1>
+                <p class="lead fs-5 fw-bold text-white p-3 rounded ">
+                    A place where pet enthusiasts can adopt new pets and explore new events.
+                </p>
+            </div>
+        </div>
+    </section>
+
 
     <main>
-        <!--Events -->
-        <section class="container-fluid bg-light px-0">
-            <div class="sub-header text-center text-lg-start bevel-border-br bg-green-1">
-                <h1>Upcoming Events</h1>
+        <!-- Events Section -->
+        <section class="container-fluid home-events-section bg-light py-5">
+            <div class="text-center mb-5">
+                <h2 class="fw-bold text-dark home-events-title">Upcoming Events</h2>
             </div>
 
-            <div class="container-lg my-lg-4 my-0 px-0">
-
-                <!-- Slider Wrapper -->
-                <div class="custom-slider event-slider bg-green-2">
-
-                    <!-- All slides -->
-                    <div class="slides">
-
-                        <!--Slide-->
-                        <div class="slide">
-                            <div class="row g-4 align-items-center">
-
-                                <!--Poster-->
-                                <div class="col-lg-4 col-12 text-center">
-                                    <img src="assets/img/Poster1.png" class="img-fluid w-100 h-auto" />
-                                </div>
-
-                                <!--Event info-->
-                                <div class="col-lg-6 col-12 text-white">
-                                    <!--Event Description-->
-                                    <h2 class=" text-center text-lg-start">Event Name</h2>
-                                    <div class="date-time-event text-center text-lg-start">
-                                        <p>Date: [Date]</p>
-                                        <p>Time: [Time]</p>
-                                    </div>
-                                    <p class=" text-center text-lg-start">Location: [locations]</p>
-                                    <p class="text-justify px-lg-1 px-4">
-                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec eget dictum ante,
-                                        non ornare magna. Etiam gravida sem porttitor sem congue, vitae varius orci
-                                        mattis. Mauris id cursus est. Curabitur mattis elementum diam a condimentum.
-                                        Vivamus quis leo eu metus facilisis gravida et eu justo. Duis convallis suscipit
-                                        velit quis lobortis. Quisque ultricies consectetur ultricies. Phasellus in dui
-                                    </p>
-
-                                    <!--Social-->
-                                    <div class="text-center text-lg-start">
-                                        <div
-                                            class="d-inline-flex bg-green-3 bevel-border text-center text-black my-lg-2 my-4 social-container">
-                                            <div class="row g-0">
-                                                <div class="col-auto d-flex justify-content-center align-items-center">
-                                                    <h6 class="my-0 social-bar-right bg-green-4 text-white">
-                                                        <strong>Follow Us</strong>
-                                                    </h6>
-                                                </div>
-                                                <div
-                                                    class="col-auto p-3 d-flex justify-content-center align-items-center social-font ">
-                                                    <i class="fa-brands fa-facebook fa-xl mx-2"></i>
-                                                    <i class="fa-brands fa-youtube fa-xl mx-2"></i>
-                                                    <i class="fa-brands fa-instagram fa-xl mx-2"></i>
-                                                    <i class="fa-brands fa-tiktok fa-xl mx-2"></i>
-                                                    <i class="fa-brands fa-twitter fa-xl mx-2"></i>
-                                                    <i class="fa-regular fa-map fa-xl mx-2"
-                                                        onclick="openMapModal('5.352468, 103.099591')"></i>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                </div>
-
+            <div class="row g-4 justify-content-center">
+                <!-- Event Card 1 -->
+                <div class="col-lg-4 col-md-6">
+                    <div class="card home-event-card shadow-lg border-0 h-100">
+                        <img src="assets/img/Poster1.png" class="card-img-top" alt="Event Poster">
+                        <div class="card-body">
+                            <h5 class="card-title home-event-name">Pet Adoption Fair</h5>
+                            <p class="mb-1"><strong>Date:</strong> 20 Jan 2026</p>
+                            <p class="mb-1"><strong>Time:</strong> 10:00 AM - 4:00 PM</p>
+                            <p class="mb-1"><strong>Location:</strong> Kuala Lumpur City Park</p>
+                            <p class="card-text">
+                                Join us for a fun-filled day of pet adoption, activities, and meet other pet lovers!
+                            </p>
+                            <div class="d-flex justify-content-center mt-3 home-social-icons">
+                                <a href="#" class="btn home-btn-facebook mx-1"><i class="fab fa-facebook"></i></a>
+                                <a href="#" class="btn home-btn-youtube mx-1"><i class="fab fa-youtube"></i></a>
+                                <a href="#" class="btn home-btn-twitter mx-1"><i class="fab fa-twitter"></i></a>
+                                <a href="#" class="btn home-btn-instagram mx-1"><i class="fab fa-instagram"></i></a>
                             </div>
-
                         </div>
-
-
-
-
                     </div>
+                </div>
 
-                    <!-- Dots -->
-                    <div class="dots"></div>
-
+                <!-- Event Card 2 -->
+                <div class="col-lg-4 col-md-6">
+                    <div class="card home-event-card shadow-lg border-0 h-100">
+                        <img src="assets/img/Poster2.png" class="card-img-top" alt="Event Poster">
+                        <div class="card-body">
+                            <h5 class="card-title home-event-name">Pet Wellness Workshop</h5>
+                            <p class="mb-1"><strong>Date:</strong> 27 Jan 2026</p>
+                            <p class="mb-1"><strong>Time:</strong> 1:00 PM - 5:00 PM</p>
+                            <p class="mb-1"><strong>Location:</strong> PetCare Center</p>
+                            <p class="card-text">
+                                Learn how to take care of your furry friends with tips from professional veterinarians.
+                            </p>
+                            <div class="d-flex justify-content-center mt-3 home-social-icons">
+                                <a href="#" class="btn home-btn-facebook mx-1"><i class="fab fa-facebook"></i></a>
+                                <a href="#" class="btn home-btn-youtube mx-1"><i class="fab fa-youtube"></i></a>
+                                <a href="#" class="btn home-btn-twitter mx-1"><i class="fab fa-twitter"></i></a>
+                                <a href="#" class="btn home-btn-instagram mx-1"><i class="fab fa-instagram"></i></a>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
 
-        <!--Adoption-->
-        <section class="container-fluid bg-light-2 px-0 py-1 pt-0">
-            <div class="d-flex justify-content-center justify-content-lg-end bevel-border-bl p-0 sub-header-left">
-                <h1 class="bg-green-1 bevel-border-bl mb-0 text-center">Adopt A Pet</h1>
+        <!-- Adopt A Pet Section -->
+        <section class="container-fluid home-pets-section bg-light py-5">
+            <div class="text-center mb-5">
+                <h2 class="fw-bold text-dark home-pets-title">Adopt A Pet</h2>
             </div>
 
-            <div class="container-lg my-lg-4 my-0 px-0">
-
-                <!-- Slider Wrapper -->
-                <div class="custom-slider pet-slider">
-
-                    <!-- All slides -->
-                    <div class="slides">
-
-                        <div class="slide">
-                            <div class="row g-5 justify-content-center p-3">
-                                <div class="col-md-4 col-sm-6">
-                                    <div class="pet-card bg-light bevel-border-1 overflow-hidden">
-                                        <!--Pet Name-->
-                                        <h3 class="pet-name text-center bg-green-1 p-2 text-white">Snowy</h3>
-
-                                        <div class="jumbotron p-2 w-100">
-
-                                            <!--Pet Image-->
-                                            <div class="container-fluid d-flex justify-content-center mb-4">
-                                                <div class="pet-img">
-                                                    <img src="assets/img/petAdoptionImages/cat.png" class="img-fluid"
-                                                        alt="Snowy">
-                                                </div>
-                                            </div>
-
-                                            <!--Pet info-->
-                                            <div class="container-fluid text-start text-lg-center">
-                                                <div class="row mb-1">
-                                                    <div class="col-xl-6 col-md-12 pet-label"><strong>Species:</strong>
-                                                        [Species]</div>
-                                                    <div class="col-xl-6  col-sm-12 pet-label"><strong>Age:</strong>
-                                                        [Age]
-                                                    </div>
-                                                    <div class="col-xl-6  col-md-12 pet-label"><strong>Gender:</strong>
-                                                        [Gender]</div>
-                                                    <div class="col-xl-6  col-md-12 pet-label"><strong>Color:</strong>
-                                                        [Color]</div>
-                                                </div>
-                                            </div>
-
-                                        </div>
-
-                                        <!--Contact-->
-                                        <div class="container-fluid mt-3 bg-green-3 p-0">
-                                            <h5 class="p-2 bg-green-1 text-white text-center">Contact</h5>
-
-                                            <div class="text-center mb-1"><i class="fa-solid fa-phone"></i>: 000-0000000
-                                            </div>
-
-                                            <div
-                                                class="d-flex justify-content-center align-items-center p-3 social-font">
-                                                <i class="fa-brands fa-facebook fa-xl mx-2"></i>
-                                                <i class="fa-brands fa-youtube fa-xl mx-2"></i>
-                                                <i class="fa-brands fa-instagram fa-xl mx-2"></i>
-                                                <i class="fa-brands fa-tiktok fa-xl mx-2"></i>
-                                                <i class="fa-brands fa-twitter fa-xl mx-2"></i>
-                                                <i class="fa-regular fa-map fa-xl mx-2"
-                                                    onclick="openMapModal('5.352468, 103.099591')"></i>
-                                            </div>
-                                        </div>
-
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-
-                    <!-- Dots -->
-                    <div class="dots"></div>
-                </div>
-
-                <!-- Map Modal -->
-                <div class="modal fade" id="mapModal" tabindex="-1" aria-labelledby="mapModalLabel" aria-hidden="true">
-                    <div class="modal-dialog modal-lg modal-dialog-centered">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h5 class="modal-title" id="mapModalLabel">Pet Location</h5>
-                                <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                    aria-label="Close"></button>
-                            </div>
-                            <div class="modal-body p-0">
-                                <iframe id="mapFrame"
-                                    src="https://www.google.com/maps?q=Pet+Adoption+Center+Kuala+Lumpur&output=embed"
-                                    width="100%" height="400" style="border:0;" allowfullscreen="" loading="lazy">
-                                </iframe>
-                            </div>
+            <div class="row g-4 justify-content-center">
+                <!-- Pet Card 1 -->
+                <div class="col-lg-3 col-md-6">
+                    <div class="card home-pet-card shadow-lg border-0 h-100 text-center">
+                        <h5 class="card-header bg-success text-white home-pet-name">Snowy</h5>
+                        <img src="assets/img/petAdoptionImages/cat.png" class="card-img-top" alt="Snowy">
+                        <div class="card-body">
+                            <p class="mb-1"><strong>Species:</strong> Cat</p>
+                            <p class="mb-1"><strong>Age:</strong> 2 Years</p>
+                            <p class="mb-1"><strong>Gender:</strong> Female</p>
+                            <p class="mb-1"><strong>Color:</strong> White</p>
+                            <a href="contact.html" class="btn home-btn-contact mt-3">Contact Owner</a>
                         </div>
                     </div>
                 </div>
 
+                <!-- Pet Card 2 -->
+                <div class="col-lg-3 col-md-6">
+                    <div class="card home-pet-card shadow-lg border-0 h-100 text-center">
+                        <h5 class="card-header bg-success text-white home-pet-name">Buddy</h5>
+                        <img src="assets/img/petAdoptionImages/dog.png" class="card-img-top" alt="Buddy">
+                        <div class="card-body">
+                            <p class="mb-1"><strong>Species:</strong> Dog</p>
+                            <p class="mb-1"><strong>Age:</strong> 1 Year</p>
+                            <p class="mb-1"><strong>Gender:</strong> Male</p>
+                            <p class="mb-1"><strong>Color:</strong> Brown</p>
+                            <a href="contact.html" class="btn home-btn-contact mt-3">Contact Owner</a>
+                        </div>
+                    </div>
+                </div>
 
+                <!-- Pet Card 3 -->
+                <div class="col-lg-3 col-md-6">
+                    <div class="card home-pet-card shadow-lg border-0 h-100 text-center">
+                        <h5 class="card-header bg-success text-white home-pet-name">Luna</h5>
+                        <img src="assets/img/petAdoptionImages/rabbit.png" class="card-img-top" alt="Luna">
+                        <div class="card-body">
+                            <p class="mb-1"><strong>Species:</strong> Rabbit</p>
+                            <p class="mb-1"><strong>Age:</strong> 6 Months</p>
+                            <p class="mb-1"><strong>Gender:</strong> Female</p>
+                            <p class="mb-1"><strong>Color:</strong> Gray</p>
+                            <a href="contact.html" class="btn home-btn-contact mt-3">Contact Owner</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </section>
-
-
     </main>
 
 
-<!--Footer-->
+
+
+    <!-- Map Modal -->
+    <div class="modal fade" id="mapModal" tabindex="-1" aria-labelledby="mapModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="mapModalLabel">Pet Location</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body p-0">
+                    <iframe id="mapFrame"
+                        src="https://www.google.com/maps?q=Pet+Adoption+Center+Kuala+Lumpur&output=embed" width="100%"
+                        height="400" style="border:0;" allowfullscreen="" loading="lazy">
+                    </iframe>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
     <footer class="bg-green-1 text-white pt-5 pb-3">
         <div class="container">
 
@@ -311,17 +266,26 @@
                 <div class="col-md-4 mb-4 text-center text-md-start">
                     <h5>Connect With Us</h5>
                     <div class="mb-3">
-                        <a href="https://www.facebook.com" target="_blank" rel="noopener noreferrer" class="text-white mx-2" title="Visit our Facebook"><i class="fab fa-facebook fa-lg"></i></a>
-                        <a href="https://www.twitter.com" target="_blank" rel="noopener noreferrer" class="text-white mx-2" title="Visit our Twitter"><i class="fab fa-twitter fa-lg"></i></a>
-                        <a href="https://www.instagram.com" target="_blank" rel="noopener noreferrer" class="text-white mx-2" title="Visit our Instagram"><i class="fab fa-instagram fa-lg"></i></a>
-                        <a href="https://www.youtube.com" target="_blank" rel="noopener noreferrer" class="text-white mx-2" title="Visit our YouTube"><i class="fab fa-youtube fa-lg"></i></a>
+                        <a href="https://www.facebook.com" target="_blank" rel="noopener noreferrer"
+                            class="text-white mx-2" title="Visit our Facebook"><i class="fab fa-facebook fa-lg"></i></a>
+                        <a href="https://www.twitter.com" target="_blank" rel="noopener noreferrer"
+                            class="text-white mx-2" title="Visit our Twitter"><i class="fab fa-twitter fa-lg"></i></a>
+                        <a href="https://www.instagram.com" target="_blank" rel="noopener noreferrer"
+                            class="text-white mx-2" title="Visit our Instagram"><i
+                                class="fab fa-instagram fa-lg"></i></a>
+                        <a href="https://www.youtube.com" target="_blank" rel="noopener noreferrer"
+                            class="text-white mx-2" title="Visit our YouTube"><i class="fab fa-youtube fa-lg"></i></a>
                     </div>
                     <div class="mb-3">
                         <p class="mb-2"><strong>Contact Us</strong></p>
-                        <p class="mb-0"><small><a href="mailto:info@pawpalhaven.com" class="text-white text-decoration-none"><i class="fas fa-envelope me-1"></i>info@pawpalhaven.com</a></small></p>
+                        <p class="mb-0"><small><a href="mailto:info@pawpalhaven.com"
+                                    class="text-white text-decoration-none"><i
+                                        class="fas fa-envelope me-1"></i>info@pawpalhaven.com</a></small></p>
                     </div>
                     <ul class="list-unstyled">
-                        <li><p class="mb-0"><strong>Authors</strong></p></li>
+                        <li>
+                            <p class="mb-0"><strong>Authors</strong></p>
+                        </li>
                         <li>
                             <p class="mb-0"><small>Syamil Bin Md Noor (S76064)</small></p>
                         </li>

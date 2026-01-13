@@ -22,6 +22,11 @@
     background-color: rgb(2, 175, 2) !important;
 }
 
+
+.text-green-2 {
+    color: rgb(4, 97, 4) !important;
+}
+
 .bg-green-3 {
     background-color: rgb(77, 242, 77) !important;
 }
@@ -35,7 +40,7 @@
 }
 
 #nav-bar {
-    background-color: rgba(0, 0, 0, 0.421) !important;
+    background-color: #01776d !important;
 }
 
 #nav-bar-transparent-off {
@@ -813,6 +818,29 @@ body {
 .header-section {
     background-image: linear-gradient(rgba(142, 142, 142, 0.4), rgba(176, 165, 165, 0.697)), url('../images/background-2.png') !important;
     background-repeat: no-repeat;
+    background-image: linear-gradient(rgba(98, 94, 94, 0.5), rgba(255, 249, 249, 0.5)) ,url('../images/background-2.png');
+    
+    background-size: cover;          /* Memenuhi ruang tanpa nampak penyek */
+    background-position: center;     /* Gambar sentiasa di tengah */
+    background-repeat: no-repeat;    /* Gambar tidak berulang */
+    min-height: 450px; 
+} 
+
+.header-section-1 {
+    background-image: linear-gradient(rgba(98, 94, 94, 0.5), rgba(255, 249, 249, 0.5)) ,url('../assets/img/header-bg.png');
+    
+    background-size: cover;          /* Memenuhi ruang tanpa nampak penyek */
+    background-position: center;     /* Gambar sentiasa di tengah */
+    background-repeat: no-repeat;    /* Gambar tidak berulang */
+    min-height: 400px; 
+    max-height: 500px;
+} 
+
+
+.custom-header {
+    /* Letakkan nama fail imej di sini */
+    background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url('login-registration-bg.jpg');
+
     background-size: cover;
     background-position: center;
     height: 400px; /* Increased height to account for nav space */
@@ -824,7 +852,7 @@ body {
     justify-content: center;
 }
 
-/*search bar pet finder*/
+
 /* Remove Bootstrap's default input focus outline */
 #eventSearch:focus {
     box-shadow: none;
@@ -844,11 +872,6 @@ body {
 }
 
 
-/* ============================================
-   BONUS FEATURE: CSS TRANSITIONS & EFFECTS
-   ============================================ */
-
-/* Smooth transitions for navigation links */
 .nav-link {
     transition: all 0.3s ease;
     position: relative;

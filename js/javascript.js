@@ -396,8 +396,9 @@ class MyPetEvent {
             console.log("Unable to create pet");
             return null;
         }
+        console.log(address);
 
-        const event = new MyPetEvent(id, userId, eventName, date, time, description, address, image);
+        const event = new MyPetEvent(id, userId, eventName, date, time, description, address.addressId, image);
 
 
         // Store in IndexedDB (await!)
@@ -1303,9 +1304,9 @@ async function dashboard(page) {
     ["clickable-img-input-pet", "clickable-img-input-event", "clickable-img-input-lost-pet"].forEach(clickId => addClickableImageInput(clickId));
 
     // ===== MAP SETUP =====
-    addMapPicker("petModal", "pet-city", "pet-latitude", "pet-longitude", "pet-city", "pet-state", "pet-country");
-    addMapPicker("eventModal", "event-city", "event-latitude", "event-longitude", "event-city", "event-state", "event-country");
-    addMapPicker("lostPetModal", "lost-city", "lost-latitude", "lost-longitude", "lost-city", "lost-state", "lost-country");
+    addMapPicker("petModal", "pet-city", "pet-latitude", "pet-longitude", "pet-state", "pet-country");
+    addMapPicker("eventModal", "event-city", "event-latitude", "event-longitude", "event-state", "event-country");
+    addMapPicker("lostPetModal", "lost-city", "lost-latitude", "lost-longitude", "lost-state", "lost-country");
 
     const pageLinks = document.querySelectorAll(".a-link");
     const dashboardTitle = document.getElementById("dashboard-title");
@@ -1405,16 +1406,19 @@ async function dashboard(page) {
             title: "My Events",
             btnTitle: "Add New Event",
             btnAttribute: "#eventModal",
-            item: event => `<div class="col-md-12 col-lg-6">
+            item: async event => {
+                const addr = await pawpalHavenDB.get("address", event.addressId);
+
+                return `<div class="col-md-12 col-lg-6">
                 <div class="bg-dark p-3 rounded h-100 d-flex">
                     <div class="me-3 d-flex align-items-center justify-content-center">
-                        <img class="img-fluid card dashboard-pet-event" src="${URL.createObjectURL(event.image)}" alt="Event Poster">
+                        <img class="img-fluid card dashboard-pet-event" src="${URL.createObjectURL(event.image)}">
                     </div>
                     <div class="text-white flex-grow-1 d-flex flex-column justify-content-between">
                         <div>
                             <h3 class="fw-bold mb-1">${event.name}</h3>
                             <p class="mb-1">Date: ${event.date}</p>
-                            <p class="mb-1">Location: ${event.address ? event.address.city : ''}</p>
+                            <p class="mb-1">Location: ${addr.city || addr.state}</p>
                         </div>
                         <div class="d-flex gap-2">
                             <button class="btn btn-primary flex-fill edit-btn" data-item-id="${event.eventId}" data-type="event">Edit</button>
@@ -1422,7 +1426,8 @@ async function dashboard(page) {
                         </div>
                     </div>
                 </div>
-            </div>`
+            </div>`;
+            }
         },
         lost: {
             title: "My Lost Pets",
@@ -1476,7 +1481,8 @@ async function dashboard(page) {
             div.innerHTML = `<p class="fs-2 m-0 mt-4"><i class="fa-solid fa-dog"></i> Wow such emptiness <i class="fa-solid fa-cat"></i></p>`;
             itemContainer.appendChild(div);
         } else {
-            itemContainer.innerHTML = data.map(pageDetails.item).join("");
+            const htmlList = await Promise.all(data.map(pageDetails.item));
+            itemContainer.innerHTML = htmlList.join("");
             // ===== EDIT BUTTON =====
             document.querySelectorAll(".edit-btn").forEach(btn => {
                 btn.addEventListener("click", async () => {
@@ -1499,7 +1505,7 @@ async function dashboard(page) {
                     modalData.inputs.description && (modalData.inputs.description.value = item.description || "");
 
                     //Get address
-                    console.log(item.addressId);
+                    console.log(item);
                     const address = await pawpalHavenDB.get("address", item.addressId);
                     console.log(address);
 
@@ -1631,7 +1637,7 @@ async function dashboard(page) {
 
             const type = modalData.saveBtn.dataset.type;
             const user = await User.getCurrentUser();
-            console.log(properties.address.latitude);
+            console.log(properties.address);
 
             if (type === "add") {
                 if (key === "pet") {
@@ -1648,16 +1654,26 @@ async function dashboard(page) {
 
                 // Merge updated values (IDs remain)
 
-                console.log(existing);
-                console.log(properties);
-                const updated = {
-                    ...existing,
-                    ...properties
-                };
-                updated.address = existing.addressId;
+                const updated = { ...existing }; // start with original
+
+                for (const key in properties) {
+                    if (key === "address") continue; // skip address merging
+
+                    // merge arrays instead of replacing them
+                    if (Array.isArray(existing[key]) && Array.isArray(properties[key])) {
+                        updated[key] = [...existing[key], ...properties[key]];
+                    }
+                    // normal override for non-array fields
+                    else {
+                        updated[key] = properties[key];
+                    }
+                }
                 console.log(updated);
+                properties.address["addressId"] = updated['addressId'];
+                const address = properties.address;
 
                 await pawpalHavenDB.update(storeName, updated);
+                await pawpalHavenDB.update("address", address);
             }
 
             displayItem(key === "pet" ? "pets-page" : key === "event" ? "events-page" : "lost-pets-page");
@@ -1775,7 +1791,6 @@ function addMapPicker(id, cityId, latitudeId, longitudeId, stateid, countryId) {
                 marker = L.marker([userLat, userLng]).addTo(map);
 
                 document.getElementById(latitudeId).value = userLat;
-                console.log(userLat);
                 document.getElementById(longitudeId).value = userLng;
 
                 reverseGeocode(userLat, userLng);
