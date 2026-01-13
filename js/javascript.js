@@ -1,9 +1,7 @@
 //Gloabal vars
 let pawpalHavenDB;
 
-
 //Classes
-
 // Local Database
 class Database {
     constructor(dbName, dbVersion) {
@@ -25,6 +23,8 @@ class Database {
                     db.createObjectStore("user", { keyPath: "userId" });
                 if (!db.objectStoreNames.contains("pet"))
                     db.createObjectStore("pet", { keyPath: "petId" });
+                if (!db.objectStoreNames.contains("lost-pet"))
+                    db.createObjectStore("lost-pet", { keyPath: "petId" });
                 if (!db.objectStoreNames.contains("event"))
                     db.createObjectStore("event", { keyPath: "eventId" });
                 if (!db.objectStoreNames.contains("social"))
@@ -87,68 +87,98 @@ class Database {
         });
     }
 
+    //Update existing data
+    async update(storeName, data) {
+        return new Promise((resolve, reject) => {
+            const tx = this.db.transaction(storeName, "readwrite");
+            const store = tx.objectStore(storeName);
+
+            const request = store.put(data);
+            request.onsuccess = () => resolve(true);
+            request.onerror = (e) => reject(e.target.error);
+        });
+    }
+
 }
 
 
 //Main data
 class User {
-    static users = [];
-
-    constructor(userId, fullName, phone, email, password, social, pets, lostPets, events) {
+    constructor(userId, fullName, phone, email, password, socialId) {
         this.userId = userId;
         this.name = fullName;
         this.phone = phone;
         this.email = email;
         this.password = password;
-        this.social = social || null;
-        this.pets = pets || [];
-        this.lostPets = lostPets || [];
-        this.events = events || [];
-
+        this.socialId = socialId;
+        this.petLength = 0;
+        this.lostPetLength = 0;
+        this.eventLength = 0;
     }
 
-    static create(userId, fullName, phone, email, password, social, pets, lostPets, events) {
-        //Check if email already exist
-        if (User.users.find(u => u.email === email)) {
+    static async create(userId, fullName, phone, email, password) {
+        // Check if email already exists
+        const users = await pawpalHavenDB.getAllDataByStoreName("user");
+        if (users.find(u => u.email === email)) {
             return false;
         }
 
-        //Generate id
-        const id = userId || generateId("U");
+        // Generate id (async safe if needed)
+        const id = userId || await generateId("U"); // use await if generateId is async
 
-        //Reject user creation
         if (id === null) {
             console.log("Unable to create user");
             return null;
         }
 
-        //Create user
-        const user = new User(id, fullName, phone, email, password, social, pets, lostPets, events);
-        const status = pawpalHavenDB.add("user", user);
-        console.log(status);
-        User.users.push(user);
+        //Generate social
+        const social = await Social.create(null, id);
+        if (social === null) {
+            console.log("Unable to create user");
+            return null;
+        }
+
+        // Create a User instance
+        const user = new User(id, fullName, phone, email, password, social.socialId);
+
+        // Convert to plain object for IndexedDB
+        const plainUser = JSON.parse(JSON.stringify(user));
+
+        // Store in IndexedDB (await!)
+        try {
+            const status = await pawpalHavenDB.add("user", user);
+            sessionStorage.setItem("loggedInUser", plainUser);
+        } catch (err) {
+            console.error("Failed to add user to DB:", err);
+            return null;
+        }
+
         return user;
     }
 
-    static login(email, password) {
-        const user = User.users.find(u => u.email === email && u.password === password);
+    //Login
+    static async login(email, password) {
+        const users = await pawpalHavenDB.getAllDataByStoreName("user");
+        const user = users.find(u => u.email === email && u.password === password);
         if (!user) {
-            console.log("Failed");
             return false;
         }
 
         sessionStorage.setItem("loggedInUser", JSON.stringify(user));
         window.location.href = "index.html";
-        console.log("Success");
         return true;
     }
 
+    //Logout
     static logout() {
         sessionStorage.removeItem("loggedInUser");
+        window.location.href = "index.html";
     }
 
-    static register(email, password, fullName, phone) {
-        const user = User.create(null, fullName, phone, email, password, null, null, null, null);
+
+    //Register
+    static async register(email, password, fullName, phone) {
+        const user = await User.create(null, fullName, phone, email, password, null, null, null, null);
         if (user === null) {
             return {
                 message: "Unable to create user",
@@ -172,103 +202,384 @@ class User {
         };
     }
 
-    static getCurrentUser() {
+    //Get current logged in user
+    static async getCurrentUser() {
         const userData = sessionStorage.getItem("loggedInUser");
         return userData ? JSON.parse(userData) : null;
     }
+
+    //Get image from user.
+    static async getImageFromUser(user) {
+        const userId = user.userId;
+
+        //find user
+        const users = await pawpalHavenDB.getAllDataByStoreName("user");
+        const targetUser = users.find(u => u.userId === userId)
+        if (!targetUser) { return null; }
+
+        //Return image
+        return targetUser.image;
+    }
+
+    //Get social media links from user
+    static async getSocialFromUser(user) {
+        const socialId = user.socialId;
+
+        //find social
+        const social = await pawpalHavenDB.getAllDataByStoreName("social");
+        const target = social.find(s => s.socialId === socialId)
+
+        //Return social
+        return target;
+    }
+
+
+    //Add social media links to user
+    static async addSocialMedia(user, link) {
+        const social = await User.getSocialFromUser(user);
+        if (!social) { return null };
+
+        await Social.addSocial(social, link);
+    }
+
+
+    //Remove social media links from user
+    static async removeSocialMedia(user, link) {
+        const social = await User.getSocialFromUser(user);
+        if (!social) { return null };
+
+        await Social.removeSocial(social, link);
+    }
+
 }
 
 class Pet {
-    static pets = [];
-    constructor(petId, petName, species, age, gender, description, address, image) {
+    constructor(petId, userId, petName, species, age, gender, description, addressId, image, status) {
         this.petId = petId;
+        this.userId = userId;
         this.name = petName;
         this.species = species;
         this.age = age;
         this.gender = gender;
         this.description = description;
-        this.address = address;
+        this.addressId = addressId;
         this.image = image;
-
+        this.status = status;
     }
 
-    static create(petId, petName, species, age, gender, description, address, image) {
-        const id = petId || generateId("P");
+    static async create(petId, userId, petName, species, age, gender, description, image, addressDetails, status) {
+        const id = petId || await generateId("P");
 
         if (id === null) {
-            console.log("Unable to create event");
+            console.log("Unable to create pet");
             return null;
         }
 
-        const pet = new Pet(id, petName, species, age, gender, description, address, image);
-        Pet.pets.push(pet);
+        //Create address
+        const address = await Address.create(null, id, addressDetails.longitude, addressDetails.latitude, addressDetails.city, addressDetails.state, addressDetails.country);
+        if (address === null) {
+            console.log("Unable to create pet");
+            return null;
+        }
+
+        const pet = new Pet(id, userId, petName, species, age, gender, description, address.addressId, image, status);
+
+
+        // Store in IndexedDB (await!)
+        try {
+            let storeName;
+            if (status === "adopt") {
+                storeName = "pet"
+            } else if (status === "lost") {
+                storeName = "lost-pet"
+            } else {
+                console.log("Invalid status. Pet did not save in datastore");
+                return null;
+            }
+
+            const dbStatus = await pawpalHavenDB.add(storeName, pet);
+        } catch (err) {
+            console.error("Failed to add pet to DB:", err);
+            return null;
+        }
+
+
         return pet;
+    }
+
+    //Add pets
+    static async addPet(user, properties) {
+        const userId = user.userId;
+
+        const pet = await Pet.create(null, userId, properties.name, properties.species, properties.age, properties.gender, properties.description, properties.image, properties.address, properties.status);
+
+        if (pet === null) {
+            console.log("Unable to add pet to user");
+        }
+
+        if (properties.status === "adopt") {
+            user.petLength += 1;
+        } else if (properties.status === "lost") {
+            user.lostPetLength += 1;
+        }
+
+        await pawpalHavenDB.update("user", user);
+    }
+
+    //Remove
+    static async removePet(user, pet) {
+        let storeName;
+        if (pet.status === "adopt") {
+            storeName = "pet"
+        } else if (pet.status === "lost") {
+            storeName = "lost-pet"
+        } else {
+            console.log("Invalid status. Pet did not remove from  datastore");
+            return null;
+        }
+
+        //Delete from db
+        const dbStatus = await pawpalHavenDB.deleteById(storeName, pet.petId);
+        if (!dbStatus) {
+            console.log("Unable delete pet from DB");
+        }
+
+        //Update and save user
+        if (pet.status === "adopt") {
+            user.petLength += 1;
+        } else if (pet.status === "lost") {
+            user.lostPetLength += 1;
+        }
+
+        await pawpalHavenDB.update("user", user);
+    }
+
+    //Update pet
+    static async update(pet) {
+        let storeName;
+        if (pet.status === "adopt") {
+            storeName = "pet"
+        } else if (pet.status === "lost") {
+            storeName = "lost-pet"
+        } else {
+            console.log("Invalid status. Pet did not remove from  datastore");
+            return null;
+        }
+
+        await pawpalHavenDB.update(storeName, pet);
     }
 }
 
 class MyPetEvent {
-    static events = [];
-    constructor(eventId, eventName, date, time, description, address, image) {
+    constructor(eventId, userId, eventName, date, time, description, addressId, image) {
         this.eventId = eventId;
+        this.userId = userId
         this.name = eventName;
         this.date = date;
         this.time = time;
         this.description = description;
-        this.address = address;
+        this.addressId = addressId;
         this.image = image;
     }
 
-    static create(eventId, eventName, date, time, description, address, image) {
-        const id = eventId || generateId("E");
+    static async create(eventId, userId, eventName, date, time, description, addressDetails, image) {
+        const id = eventId || await generateId("E");
 
         if (id === null) {
             console.log("Unable to create event");
             return null;
         }
 
-        const event = new MyPetEvent(id, eventName, date, time, description, address, image);
-        MyPetEvent.events.push(event);
+        //Create address
+        const address = await Address.create(null, id, addressDetails.longitude, addressDetails.latitude, addressDetails.city, addressDetails.state, addressDetails.country);
+        if (address === null) {
+            console.log("Unable to create pet");
+            return null;
+        }
+
+        const event = new MyPetEvent(id, userId, eventName, date, time, description, address, image);
+
+
+        // Store in IndexedDB (await!)
+        try {
+            const status = await pawpalHavenDB.add("event", event);
+        } catch (err) {
+            console.error("Failed to add event to DB:", err);
+            return null;
+        }
         return event;
+    }
+
+    //Add pets
+    static async addEvent(user, properties) {
+        const userId = user.userId;
+        console.log(properties);
+
+        const event = await MyPetEvent.create(null, userId, properties.name, properties.date, properties.time, properties.description, properties.address, properties.image);
+
+        if (event === null) {
+            console.log("Unable to add pet to user");
+        }
+
+        if (properties.status === "adopt") {
+            user.petLength += 1;
+        } else if (properties.status === "lost") {
+            user.lostPetLength += 1;
+        }
+
+        await pawpalHavenDB.update("user", user);
     }
 }
 
 class Social {
-    static socials = [];
-    constructor(socialId, socialLink, othersLink) {
-        this.socialId = socialId;
-        this.othersLink = othersLink;
+    static platforms = {
+        reddit: {
+            icon: "fa-brands fa-reddit",
+            solid: "reddit-solid",
+            name: "Reddit"
+        },
+        instagram: {
+            icon: "fa-brands fa-instagram",
+            solid: "instagram-solid",
+            name: "Instagram"
+        },
+        twitter: {
+            icon: "fa-brands fa-x-twitter",
+            solid: "twitter-solid",
+            name: "Twitter"
+        },
+        facebook: {
+            icon: "fa-brands fa-facebook",
+            solid: "facebook-solid",
+            name: "Facebook"
+        },
+        tiktok: {
+            icon: "fa-brands fa-tiktok",
+            solid: "fa-tiktok-solid",
+            name: "TikTok"
+        },
+        youtube: {
+            icon: "fa-brands fa-youtube",
+            solid: "youtube-solid",
+            name: "Youtube"
+        },
+        linkedin: {
+            icon: "fa-brands fa-linkedin",
+            solid: "linkedin-solid",
+            name: "LinkedIn"
+        },
+        github: {
+            icon: "fa-brands fa-github",
+            solid: "github-solid",
+            name: "GitHub"
+        }
+    };
 
-        const defaultLinks = {
-            Reddit: null,
-            Facebook: null,
-            Twitter: null,
-            Instagram: null,
-            LinkedIn: null
+
+    constructor(socialId, userId) {
+        this.socialId = socialId;
+        this.userId = userId;
+        this.links = {
+            reddit: null,
+            facebook: null,
+            twitter: null,
+            instagram: null,
+            linkedIn: null,
+            youtube: null,
+            tikTok: null,
+            gitHub: null,
         };
 
-        //Merge dictionary
-        this.links = Object.assign({}, defaultLinks, socialLink);
     }
 
 
-    static create(socialId, socialLink, othersLink) {
-        const id = socialId || generateId("S");
+    static async create(socialId, userId) {
+        const id = socialId || await generateId("S");
 
         if (id === null) {
             console.log("Unable to create social ");
             return null;
+        } socialId
+
+        const social = new Social(id, userId);
+
+        // Store in IndexedDB (await!)
+        try {
+            const status = await pawpalHavenDB.add("social", social);
+        } catch (err) {
+            console.error("Failed to add social to DB:", err);
+            return null;
         }
 
-        const social = new Social(id, socialLink, othersLink);
-        Social.socials.push(social);
         return social;
+    }
+
+    static async addSocial(social, link) {
+
+        let socialName;
+        const lower = link.toLowerCase();
+        for (const name in Social.platforms) {
+            if (lower.includes(name)) {
+                socialName = name;
+            }
+        }
+
+        if (!socialName) {
+            const list = Object.values(social.links);
+            socialName = "Social" + list.length;
+        }
+        console.log(social);
+        social.links[socialName] = link;
+
+        //Save
+        await pawpalHavenDB.update("social", social);
+    }
+
+    static async removeSocial(social, link) {
+        const entries = Object.entries(social.links);
+
+        entries.forEach(([key, value]) => {
+            if (value === link) {
+
+                // Check if the key is in default platforms
+                let isExist = false;
+                for (const name in Social.platforms) {
+                    if (key.includes(name)) {
+                        isExist = true;
+                        break;
+                    }
+                }
+
+                // Delete or null
+                if (isExist) {
+                    social.links[key] = null;
+                } else {
+                    delete social.links[key];
+                }
+            }
+        });
+
+        // Save
+        await pawpalHavenDB.update("social", social);
+    }
+
+
+    static getSocialIconFromLink(link) {
+        const lower = link.toLowerCase();
+        for (const key in Social.platforms) {
+            if (lower.includes(key)) {
+                return Social.platforms[key];
+            }
+        }
+
+        return { icon: "fa-solid fa-link", solid: "link-solid", name: "Link" };
     }
 }
 
 class Address {
-    static addresses = [];
-    constructor(addressId, longitude, latitude, city, state, country) {
+    constructor(addressId, belongId, longitude, latitude, city, state, country) {
         this.addressId = addressId;
+        this.belongId = belongId;
         this.longitude = longitude;
         this.latitude = latitude;
         this.city = city;
@@ -276,16 +587,24 @@ class Address {
         this.country = country;
     }
 
-    static create(addressId, longitude, latitude, city, state, country) {
-        const id = addressId || generateId('A');
+    static async create(addressId, belongId, longitude, latitude, city, state, country) {
+        const id = addressId || await generateId('A');
 
         if (id === null) {
             console.log("Unable to create address ");
             return null;
         }
 
-        const address = new Address(id, longitude, latitude, city, state, country);
-        Address.addresses.push(address);
+        const address = new Address(id, belongId, longitude, latitude, city, state, country);
+
+
+        // Store in IndexedDB (await!)
+        try {
+            const status = await pawpalHavenDB.add("address", address);
+        } catch (err) {
+            console.error("Failed to add address to DB:", err);
+            return null;
+        }
         return address;
     }
 }
@@ -445,18 +764,24 @@ class PetInfo {
 }
 
 //Generate Id
-function generateId(type) {
+async function generateId(type) {
+    let storeName = null;
+
     switch (type) {
-        case 'U': return formatId(type, User.users.length + 1);
-        case 'P': return formatId(type, Pet.pets.length + 1);
-        case 'E': return formatId(type, Event.events.length + 1);
-        case 'S': return formatId(type, Social.socials.length + 1);
-        case 'A': return formatId(type, Address.addresses.length + 1);
+        case 'U': storeName = "user"; break;
+        case 'P': storeName = "pet"; break;
+        case 'E': storeName = "event"; break;
+        case 'S': storeName = "social"; break;
+        case 'A': storeName = "address"; break;
         default:
             console.log("Unable to generate id using " + type);
             return null;
     }
+
+    const records = await pawpalHavenDB.getAllDataByStoreName(storeName);
+    return formatId(type, records.length + 1);
 }
+
 
 //Format id
 function formatId(prefix, number) {
@@ -471,33 +796,28 @@ function formatId(prefix, number) {
 
 
 //Protect pages that requires to be logged in
-function requireLogin() {
-    if (User.getCurrentUser() === null) {
-        alert("Login required");
+async function requireLogin() {
+    if (await User.getCurrentUser() === null) {
         window.location.href = "index.html";
     }
 }
 
 //Update nav bar 
-function updateNavbar() {
+async function updateNavbar() {
     const navLoginProfile = document.getElementById("login-profile-nav");
     if (navLoginProfile === null) { return console.log("Missing id"); }
 
-    if (User.getCurrentUser() === null) {
+    if (await User.getCurrentUser() === null) {
         navLoginProfile.innerHTML = `<a class="nav-link" href="login-registration.html">Login</a>`;
-        console.log("Non");
     } else {
         navLoginProfile.innerHTML = `<a class="nav-link" href="profile.html">Profile</a>`;
-        console.log("Profile");
     }
 }
 
 //Functions that should be run on homepage
-function homepageEvent(page) {
+async function homepageEvent(page) {
     if (page === "index.html") {
         //showUpcomingPetEvent();
-
-        console.log(User.getCurrentUser());
 
         messageCycle(page);
         addCloseMapEvent();
@@ -559,7 +879,7 @@ function loginRegisterPage(page) {
         registerForm.style.display = "block";
 
         const signinBtn = document.getElementById("sign-in-btn");
-        signinBtn.addEventListener("click", function (e) {
+        signinBtn.addEventListener("click", async function (e) {
             e.preventDefault();
 
             //Check validity
@@ -604,13 +924,12 @@ function loginRegisterPage(page) {
             const phone = phoneRegisterInput.value;
 
             //Register
-            const success = User.register(email, password, fullName, phone);
-            console.log(success.isValid);
+            const success = await User.register(email, password, fullName, phone);
+
             if (success.isValid === false) {
                 document.querySelector(".register-email-group").classList.add("invalid-input")
                 registerEmailFeedback.classList.remove("d-none");
                 registerEmailFeedback.classList.add("d-block");
-                console.log(success.message);
                 registerEmailFeedback.innerText = success.message;
             } else if (success.isValid === null) {
                 alert("Unable to register");
@@ -637,7 +956,7 @@ function loginRegisterPage(page) {
     });
 
     //Detect login btn clicked
-    loginBtn.addEventListener("click", function (e) {
+    loginBtn.addEventListener("click", async function (e) {
         e.preventDefault();
         console.log("Clicked")
 
@@ -670,8 +989,9 @@ function loginRegisterPage(page) {
         const email = emailInput.value;
         const password = passwordInput.value;
 
-        const status = User.login(email, password);
+        const status = await User.login(email, password);
         if (status === false) {
+            console.log("Wrong")
             loginForm.querySelectorAll(".input-group").forEach(group => { group.classList.add("invalid-input"); });
 
             loginEmailFeedback.classList.remove("d-none");
@@ -697,49 +1017,691 @@ function loginRegisterPage(page) {
     })
 }
 
-//Functions that should be run on dashboard
-function dashboard(page) {
-    if (page === "dashboard.html") {
-        requireLogin();
-        addChangePageEvent();
+//Profile page 
+async function profilePage(page) {
+    if (page !== "profile.html") return null;
+    requireLogin();
 
-        imagePreviewEvent("pet-image");
-        imagePreviewEvent("poster-image");
-        imagePreviewEvent("lost-pet-image")
+    //Get current login in user
+    let user = await User.getCurrentUser();
 
-        addClickableImageInput("clickable-img-input-pet");
-        addClickableImageInput("clickable-img-input-event");
-        addClickableImageInput("clickable-img-input-lost-pet");
+    //Elements 
+    const username = document.getElementById("display-username");
+    const fullNameInput = document.getElementById("full-name");
+    const emailInput = document.getElementById("email");
+    const phoneInput = document.getElementById("phone");
+    const editBtn = document.getElementById("edit-btn");
+    const editImageBtn = document.getElementById("edit-image-btn")
+    const imageInput = document.getElementById("image-input");
+    const profilePic = document.getElementById("profile-pic");
+    const logoutBtn = document.getElementById("logout-btn");
+    const dashboardBtn = document.getElementById("dashboard-btn");
+    const profileForm = document.getElementById("profile-form");
+    const fullNameFeedback = document.getElementById("profile-full-name-feedback");
+    const emailFeedback = document.getElementById("profile-email-feedback");
+    const phoneFeedback = document.getElementById("profile-phone-feedback");
+    const socialForm = document.getElementById("social-form");
+    const inputModalIcon = document.getElementById("input-modal-icon");
+    const inputLink = document.getElementById("input-link");
+    const inputLinkFeedback = document.getElementById("input-link-feedback");
+    const addSocialBtn = document.getElementById("add-social-btn");
+    const socialContainer = document.getElementById("social-container");
 
-        addMapPicker("petModal");
-        addMapPicker("eventModal");
-        addMapPicker("lostPetModal");
+
+    //Add listeners
+    imagePreviewEvent("image-input");
+    addClickableImageInput("edit-image-btn");
+    async function updateProfileDisplay() {
+        //Apply user data
+        username.innerText = user.name;
+        fullNameInput.value = user.name;
+        emailInput.value = user.email;
+        phoneInput.value = user.phone;
+
+        // Check if image exists AND is a Blob/File
+        const imgBlob = await User.getImageFromUser(user);
+        if (imgBlob instanceof Blob) {
+            profilePic.src = URL.createObjectURL(imgBlob);
+        } else {
+            console.log(imgBlob);
+            profilePic.src = "images/profile.png"; // fallback image
+        }
     }
-}
 
-//Give functionality to side-navbar in dashboard
-function addChangePageEvent() {
-    const pageLinks = document.querySelectorAll(".a-link");
+    async function displaySocials() {
+        let social = await User.getSocialFromUser(user);
+        if (!social) { console.log("Unable to retrive social"); return null; }
 
-    pageLinks.forEach(element => {
-        const target = element.dataset.target;
+        const links = Object.values(social.links);
+        socialContainer.innerHTML = "";
 
-        element.addEventListener("click", function () {
-            //Hide every single page
-            document.querySelectorAll(".dashboard-page").forEach(page => {
-                page.style.display = "none";
-            });
+        let numberOfLink = 0;
+        links.forEach(link => {
+            if (!link) return;
 
-            //Show the correct page
-            console.log(target);
-            document.getElementById(target).style.display = "block";
+            const socialIcon = Social.getSocialIconFromLink(link);
 
-            //Update side-navbar
-            pageLinks.forEach(link => link.classList.remove("active"));
-            element.classList.add("active");
+            if (socialIcon.icon !== null) {
+                let div = document.createElement("div");
+                div.innerHTML = `
+                    <div
+                        class="d-flex align-items-center justify-content-between p-2 mb-2 bg-white rounded border shadow-sm w-100 social-item">
+                        <div class="d-flex align-items-center">
+                          <a href="${link}" target="_blank" class="text-black text-decoration-none"><i class="${socialIcon.icon} ${socialIcon.solid} me-3 fs-4"></i>
+                          ${socialIcon.name}</a>
+                        </div>
+                        <button type="button" class="btn btn-sm text-danger border-0" '>
+                            <i class="fa-solid fa-trash"></i>
+                        </button>
+                    </div>
+                `;
+                div.classList.add("media-container");
+
+                div.querySelector("button").addEventListener("click", () => removeMediaItem(link));
+                numberOfLink++;
+                socialContainer.appendChild(div);
+            }
         });
 
+        if (numberOfLink === 0) {
+            let div = document.createElement("div");
+            div.innerHTML = `<p class ="text-center">You dont have any social media linked yet.</p>`;
+            socialContainer.appendChild(div);
+        }
+    }
+
+    //Remove media social item
+    async function removeMediaItem(link) {
+        let mediaContainers = socialContainer.querySelectorAll(".media-container");
+
+        for (const element of mediaContainers) {
+            const anchor = element.querySelector("a");
+
+            if (anchor && anchor.href === link) {
+                element.remove(); // Remove UI
+
+                await User.removeSocialMedia(user, link); // Remove and save
+
+                displaySocials(); // Re-display media
+                break; // stop after one match
+            }
+        }
+    }
+
+
+    //Display current user data
+    updateProfileDisplay();
+
+    //Display socials
+    displaySocials();
+
+    //Edit btn
+    let isEditMode = false;
+    editBtn.addEventListener("click", async function () {
+        if (isEditMode === false) {
+            //Edit mode
+            //Edit image btn
+            editImageBtn.classList.remove("d-none");
+            editImageBtn.classList.add("d-block");
+
+            //Make all inputs editable
+            fullNameInput.removeAttribute("readonly");
+            emailInput.removeAttribute("readonly");
+            phoneInput.removeAttribute("readonly");
+
+            editBtn.innerText = "Save Changes";
+        } else {
+            //Save changes
+
+            //Grab data
+            const newFullName = fullNameInput.value;
+            const newEmail = emailInput.value;
+            const newPhone = phoneInput.value;
+            const newImage = imageInput.files[0];
+
+            //Check validity
+            let isValid = true;
+            profileForm.querySelectorAll(".input-group").forEach(group => {
+                const input = group.querySelector("input");
+                if (!input.checkValidity()) {
+                    group.classList.add("invalid-input");
+
+                    const errMessage = input.validationMessage;
+                    //Check which input 
+                    if (input === emailInput) {
+                        emailFeedback.classList.remove("d-none");
+                        emailFeedback.classList.add("d-block");
+                        emailFeedback.innerText = errMessage;
+                    } else if (input === fullNameInput) {
+                        fullNameFeedback.classList.remove("d-none");
+                        fullNameFeedback.classList.add("d-block");
+                        fullNameFeedback.innerText = errMessage;
+                    } else if (input === phoneInput) {
+                        phoneFeedback.classList.remove("d-none");
+                        phoneFeedback.classList.add("d-block");
+                        phoneFeedback.innerText = errMessage;
+                    }
+
+                    isValid = false;
+                }
+            });
+
+            if (!isValid) { return null };
+
+            editImageBtn.classList.remove("d-block");
+            editImageBtn.classList.add("d-none");
+
+            //Make all inputs only readable
+            fullNameInput.setAttribute("readonly", "true");
+            emailInput.setAttribute("readonly", "true");
+            phoneInput.setAttribute("readonly", "true");
+
+            user.name = newFullName;
+            user.email = newEmail;
+            user.phone = newPhone;
+            user.image = newImage;
+
+            await pawpalHavenDB.update("user", user);
+
+            //Update session storage 
+            sessionStorage.setItem("loggedInUser", JSON.stringify(user));
+
+            user = await User.getCurrentUser();
+            updateProfileDisplay()
+
+            editBtn.innerText = "Edit Profile";
+        }
+
+        isEditMode = !isEditMode;
     });
+
+    //Detect changes in input
+    profileForm.querySelectorAll(".input-group").forEach(group => {
+        const input = group.querySelector("input");
+
+        input.addEventListener("input", function () {
+            group.classList.remove("invalid-input");
+
+            emailFeedback.classList.add("d-none");
+            phoneFeedback.classList.add("d-none");
+            fullNameFeedback.classList.add("d-none");
+
+        });
+
+    })
+
+    //Detect changes in link input
+    socialForm.querySelectorAll(".input-group").forEach(group => {
+        const input = group.querySelector("input");
+
+        input.addEventListener("input", function () {
+            group.classList.remove("invalid-input");
+
+            inputLinkFeedback.classList.add("d-none");
+
+        });
+
+    })
+
+    //Change icon dynamically
+    inputLink.addEventListener("input", function () {
+        let link = inputLink.value;
+        const social = Social.getSocialIconFromLink(link);
+        inputModalIcon.innerHTML = `<span class="${social.icon} ${social.solid} fs-1"> </span>`
+    })
+
+    //Add social btn
+    addSocialBtn.addEventListener("click", async function () {
+        //Grab link
+        const userLink = inputLink.value;
+
+        //Check validity
+        let isValid = true;
+        socialForm.querySelectorAll(".input-group").forEach(group => {
+            const input = group.querySelector("input");
+            if (!input.checkValidity()) {
+                group.classList.add("invalid-input");
+
+                const errMessage = input.validationMessage;
+                //Check which input 
+                if (input === inputLink) {
+                    inputLinkFeedback.classList.remove("d-none");
+                    inputLinkFeedback.classList.add("d-block");
+                    inputLinkFeedback.innerText = errMessage;
+                }
+
+                isValid = false;
+            }
+        });
+
+        if (!isValid) { return null };
+
+        //Add social media and save
+        await User.addSocialMedia(user, userLink);
+
+
+        displaySocials();
+
+    });
+
+    //Logout btn
+    logoutBtn.addEventListener("click", User.logout);
+
+    //Dashboard btn
+    dashboardBtn.addEventListener("click", function () {
+        window.location.href = "dashboard.html"
+    });
+}
+
+//Functions that should be run on dashboard
+async function dashboard(page) {
+    if (page !== "dashboard.html") return null;
+    requireLogin();
+
+    // ===== IMAGE PREVIEW SETUP =====
+    ["pet-image", "poster-image", "lost-pet-image"].forEach(imageId => imagePreviewEvent(imageId));
+    ["clickable-img-input-pet", "clickable-img-input-event", "clickable-img-input-lost-pet"].forEach(clickId => addClickableImageInput(clickId));
+
+    // ===== MAP SETUP =====
+    addMapPicker("petModal", "pet-city","pet-latitude", "pet-longitude", "pet-city", "pet-state", "pet-country");
+    addMapPicker("eventModal", "event-city","event-latitude", "event-longitude", "event-city", "event-state", "event-country");
+    addMapPicker("lostPetModal", "lost-city","lost-latitude", "lost-longitude", "lost-city", "lost-state", "lost-country");
+
+    const pageLinks = document.querySelectorAll(".a-link");
+    const dashboardTitle = document.getElementById("dashboard-title");
+    const addBtn = document.getElementById("add-btn");
+    const itemContainer = document.getElementById("item-container");
+
+    // ===== MODALS & FORMS =====
+    const modals = {
+        pet: {
+            modalElement: document.getElementById("petModal"),
+            modal: new bootstrap.Modal(document.getElementById("petModal")),
+            form: document.getElementById("petForm"),
+            inputs: {
+                image: document.getElementById("pet-image"),
+                clickableImg: document.getElementById("clickable-img-input-pet"),
+                name: document.getElementById("pet-name"),
+                species: document.getElementById("pet-species"),
+                gender: document.getElementById("pet-gender"),
+                age: document.getElementById("pet-age"),
+                description: document.getElementById("pet-description"),
+                latitude: document.getElementById("pet-latitude"),
+                longitude: document.getElementById("pet-longitude"),
+                city: document.getElementById("pet-city"),
+                state: document.getElementById("pet-state"),
+                country: document.getElementById("pet-country"),
+            },
+            saveBtn: document.getElementById("save-pet-btn")
+        },
+        event: {
+            modalElement: document.getElementById("eventModal"),
+            modal: new bootstrap.Modal(document.getElementById("eventModal")),
+            form: document.getElementById("eventForm"),
+            inputs: {
+                image: document.getElementById("poster-image"),
+                clickableImg: document.getElementById("clickable-img-input-event"),
+                name: document.getElementById("event-name"),
+                date: document.getElementById("event-date"),
+                time: document.getElementById("event-time"),
+                description: document.getElementById("event-description"),
+                latitude: document.getElementById("event-latitude"),
+                longitude: document.getElementById("event-longitude"),
+                city: document.getElementById("event-city"),
+                state: document.getElementById("event-state"),
+                country: document.getElementById("event-country"),
+            },
+            saveBtn: document.getElementById("save-event-btn")
+        },
+        lost: {
+            modalElement: document.getElementById("lostPetModal"),
+            modal: new bootstrap.Modal(document.getElementById("lostPetModal")),
+            form: document.getElementById("lostPetForm"),
+            inputs: {
+                image: document.getElementById("lost-pet-image"),
+                clickableImg: document.getElementById("clickable-img-input-lost-pet"),
+                name: document.getElementById("lost-pet-name"),
+                species: document.getElementById("lost-pet-species"),
+                gender: document.getElementById("lost-pet-gender"),
+                age: document.getElementById("lost-pet-age"),
+                description: document.getElementById("lost-pet-description"),
+                latitude: document.getElementById("lost-latitude"),
+                longitude: document.getElementById("lost-longitude"),
+                city: document.getElementById("lost-city"),
+                state: document.getElementById("lost-state"),
+                country: document.getElementById("lost-country"),
+            },
+            saveBtn: document.getElementById("save-lost-pet-btn")
+        }
+    };
+
+    // ===== PAGE CONFIG =====
+    const pages = {
+        adopt: {
+            title: "My Pets for Adoption",
+            btnTitle: "Add New Pet",
+            btnAttribute: "#petModal",
+            item: pet => `<div class="col-md-12 col-lg-6">
+                <div class="bg-dark p-3 rounded h-100 d-flex">
+                    <div class="me-3 d-flex align-items-center justify-content-center">
+                        <img class="img-fluid card dashboard-pet-event" src="${URL.createObjectURL(pet.image)}" alt="Pet Image">
+                    </div>
+                    <div class="text-white flex-grow-1 d-flex flex-column justify-content-between">
+                        <div>
+                            <h3 class="fw-bold mb-1">${pet.name}</h3>
+                            <p class="mb-1">Species: ${pet.species}</p>
+                            <p class="mb-1">Gender: ${pet.gender}</p>
+                            <p class="mb-3">Age: ${pet.age}</p>
+                        </div>
+                        <div class="d-flex gap-2">
+                            <button class="btn btn-primary flex-fill edit-btn" data-item-id="${pet.petId}" data-type="adopt">Edit</button>
+                            <button class="btn btn-danger flex-fill delete-btn" data-item-id="${pet.petId}" data-type="adopt">Delete</button>
+                        </div>
+                    </div>
+                </div>
+            </div>`
+        },
+        event: {
+            title: "My Events",
+            btnTitle: "Add New Event",
+            btnAttribute: "#eventModal",
+            item: event => `<div class="col-md-12 col-lg-6">
+                <div class="bg-dark p-3 rounded h-100 d-flex">
+                    <div class="me-3 d-flex align-items-center justify-content-center">
+                        <img class="img-fluid card dashboard-pet-event" src="${URL.createObjectURL(event.image)}" alt="Event Poster">
+                    </div>
+                    <div class="text-white flex-grow-1 d-flex flex-column justify-content-between">
+                        <div>
+                            <h3 class="fw-bold mb-1">${event.name}</h3>
+                            <p class="mb-1">Date: ${event.date}</p>
+                            <p class="mb-1">Location: ${event.address ? event.address.city : ''}</p>
+                        </div>
+                        <div class="d-flex gap-2">
+                            <button class="btn btn-primary flex-fill edit-btn" data-item-id="${event.eventId}" data-type="event">Edit</button>
+                            <button class="btn btn-danger flex-fill delete-btn" data-item-id="${event.eventId}" data-type="event">Delete</button>
+                        </div>
+                    </div>
+                </div>
+            </div>`
+        },
+        lost: {
+            title: "My Lost Pets",
+            btnTitle: "Add Lost Pet",
+            btnAttribute: "#lostPetModal",
+            item: pet => `<div class="col-md-12 col-lg-6">
+                <div class="bg-dark p-3 rounded h-100 d-flex">
+                    <div class="me-3 d-flex align-items-center justify-content-center">
+                        <img class="img-fluid card dashboard-pet-event" src="${URL.createObjectURL(pet.image)}" alt="Pet Image">
+                    </div>
+                    <div class="text-white flex-grow-1 d-flex flex-column justify-content-between">
+                        <div>
+                            <h3 class="fw-bold mb-1">${pet.name}</h3>
+                            <p class="mb-1">Species: ${pet.species}</p>
+                            <p class="mb-1">Gender: ${pet.gender}</p>
+                            <p class="mb-3">Age: ${pet.age}</p>
+                        </div>
+                        <div class="d-flex gap-2">
+                            <button class="btn btn-primary flex-fill edit-btn" data-item-id="${pet.petId}" data-type="lost">Edit</button>
+                            <button class="btn btn-danger flex-fill delete-btn" data-item-id="${pet.petId}" data-type="lost">Delete</button>
+                        </div>
+                    </div>
+                </div>
+            </div>`
+        }
+    };
+
+    // ===== UTILITY =====
+    function getStoreNameByType(type) {
+        return type === "adopt" ? "pet"
+            : type === "event" ? "event"
+                : "lost-pet";
+    }
+
+    // ===== DISPLAY ITEMS =====
+    async function displayItem(pageId) {
+        let storeName = "", pageDetails = null;
+        if (pageId === "pets-page") { storeName = "pet"; pageDetails = pages.adopt; }
+        else if (pageId === "events-page") { storeName = "event"; pageDetails = pages.event; }
+        else if (pageId === "lost-pets-page") { storeName = "lost-pet"; pageDetails = pages.lost; }
+
+        const data = await pawpalHavenDB.getAllDataByStoreName(storeName);
+        itemContainer.innerHTML = "";
+        dashboardTitle.textContent = pageDetails.title;
+        addBtn.textContent = pageDetails.btnTitle;
+        addBtn.setAttribute("data-bs-target", pageDetails.btnAttribute);
+
+        if (!data.length) {
+            const div = document.createElement("div");
+            div.className = "container-fluid d-flex align-items-center justify-content-center col-12 gap-2";
+            div.innerHTML = `<p class="fs-2 m-0 mt-4"><i class="fa-solid fa-dog"></i> Wow such emptiness <i class="fa-solid fa-cat"></i></p>`;
+            itemContainer.appendChild(div);
+        } else {
+            itemContainer.innerHTML = data.map(pageDetails.item).join("");
+            // ===== EDIT BUTTON =====
+            document.querySelectorAll(".edit-btn").forEach(btn => {
+                btn.addEventListener("click", async () => {
+                    const type = btn.dataset.type;
+                    const itemId = btn.dataset.itemId;
+                    const storeName = getStoreNameByType(type);
+                    const modalData = modals[type === "adopt" ? "pet" : type];
+
+                    const item = await pawpalHavenDB.get(storeName, itemId);
+                    if (!item) return;
+
+                    // ===== STORE CURRENT IMAGE =====
+                    let currentImage = item.image || null;
+
+                    // Fill modal fields
+                    modalData.inputs.name.value = item.name || "";
+                    modalData.inputs.species && (modalData.inputs.species.value = item.species || "");
+                    modalData.inputs.gender && (modalData.inputs.gender.value = item.gender || "");
+                    modalData.inputs.age && (modalData.inputs.age.value = item.age || "");
+                    modalData.inputs.description && (modalData.inputs.description.value = item.description || "");
+
+                    //Get address
+                    console.log(item.addressId);
+                    const address = await pawpalHavenDB.get("address", item.addressId);
+                                        console.log(address);
+
+                    //Set map location
+                    modalData.inputs.longitude.value = address.longitude ||  101.6869;
+                    modalData.inputs.latitude.value = address.latitude || 3.1390;
+                    modalData.inputs.city.value = address.city || "";
+                    modalData.inputs.state.value = address.state || "";
+                    modalData.inputs.country.value = address.country || "";
+                    modalData.modalElement.addMarker(modalData.inputs.latitude.value,  modalData.inputs.longitude.value);
+
+                    //Clear input file
+                    document.getElementById(modalData.inputs.clickableImg.dataset.target).value = "";
+
+                    // Image preview
+                    if (currentImage) {
+                        modalData.inputs.clickableImg.src = URL.createObjectURL(currentImage);
+                    } else {
+                        modalData.inputs.clickableImg.src = ""; // or default image
+                    }
+
+                    // ===== EVENT DATE & TIME =====
+                    if (type === "event") {
+                        modalData.inputs.date.value = item.date || "";
+                        modalData.inputs.time.value = item.time || "";
+                    }
+
+                    modalData.saveBtn.dataset.type = "save";
+                    modalData.saveBtn.dataset.itemId = itemId;
+                    modalData.saveBtn.innerText = type === "event" ? "Save Event" : "Save Pet";
+
+                    modalData.modal.show();
+                });
+            });
+
+
+            // ===== DELETE BUTTON =====
+            document.querySelectorAll(".delete-btn").forEach(btn => {
+                btn.addEventListener("click", async () => {
+                    const type = btn.dataset.type;
+                    const itemId = btn.dataset.itemId;
+                    const storeName = getStoreNameByType(type);
+
+                    if (!confirm("Are you sure you want to delete this item?")) return;
+
+                    await pawpalHavenDB.deleteById(storeName, itemId);
+
+                    const refreshPageId =
+                        type === "adopt" ? "pets-page" :
+                            type === "event" ? "events-page" :
+                                "lost-pets-page";
+
+                    displayItem(refreshPageId);
+                });
+            });
+        }
+    }
+
+    displayItem("pets-page"); // default
+
+    // ===== FORM SUBMISSION =====
+    Object.keys(modals).forEach(key => {
+        const modalData = modals[key];
+        modalData.saveBtn.addEventListener("click", async function (e) {
+            e.preventDefault();
+            let valid = true;
+
+            // Form validation
+            modalData.form.querySelectorAll(".input-group, .mb-3").forEach(group => {
+                const input = group.querySelector("input, textarea, select");
+                if (!input) return;
+
+                if (!input.checkValidity()) {
+                    group.classList.add("invalid-input");
+                    const feedback = group.querySelector(".invalid-feedback");
+                    if (feedback) {
+                        feedback.classList.remove("d-none");
+                        feedback.classList.add("d-block");
+                        feedback.innerText = input.validationMessage;
+                    }
+                    valid = false;
+                } else {
+                    group.classList.remove("invalid-input");
+                    const feedback = group.querySelector(".invalid-feedback");
+                    if (feedback) {
+                        feedback.classList.add("d-none");
+                        feedback.classList.remove("d-block");
+                    }
+                }
+            });
+
+            if (!valid) return;
+
+            // Build properties object
+            let properties;
+            if (key === "event") {
+                properties = {
+                    name: modalData.inputs.name.value,
+                    date: modalData.inputs.date.value,
+                    time: modalData.inputs.time.value,
+                    description: modalData.inputs.description.value,
+                    image: modalData.inputs.image.files && modalData.inputs.image.files[0] ? modalData.inputs.image.files[0] : null,
+                    address: {
+                        latitude: modalData.inputs.latitude.value,
+                        longitude: modalData.inputs.longitude.value,
+                        city: modalData.inputs.city.value,
+                        state: modalData.inputs.state.value,
+                        country: modalData.inputs.country.value
+                    }
+                };
+            } else {
+                properties = {
+                    name: modalData.inputs.name.value,
+                    species: modalData.inputs.species.value,
+                    age: modalData.inputs.age.value,
+                    gender: modalData.inputs.gender.value,
+                    description: modalData.inputs.description.value,
+                    image: modalData.inputs.image.files && modalData.inputs.image.files[0] ? modalData.inputs.image.files[0] : null,
+                    address: {
+                        latitude: modalData.inputs.latitude.value,
+                        longitude: modalData.inputs.longitude.value,
+                        city: modalData.inputs.city.value,
+                        state: modalData.inputs.state.value,
+                        country: modalData.inputs.country.value
+                    },
+                    status: key === "pet" ? "adopt" : "lost"
+                };
+            }
+
+            const type = modalData.saveBtn.dataset.type;
+            const user = await User.getCurrentUser();
+            console.log(properties.address.latitude);
+
+            if (type === "add") {
+                if (key === "pet") {
+                    await Pet.addPet(user, properties);
+                }
+                else if (key === "event") await MyPetEvent.addEvent(user, properties); //HERE
+                else if (key === "lost") await Pet.addPet(user, properties);
+            } else if (type === "save") {
+                const itemId = modalData.saveBtn.dataset.itemId;
+                const storeName = getStoreNameByType(key === "pet" ? "adopt" : key === "event" ? "event" : "lost-pet");
+                let existing = await pawpalHavenDB.get(storeName, itemId);
+
+                if (!existing) return;
+
+                // Merge updated values (IDs remain)
+
+                console.log(existing);
+                console.log(properties);
+                const updated = {
+                    ...existing,
+                    ...properties
+                };
+                updated.address= existing.addressId;
+                 console.log(updated);
+
+                await pawpalHavenDB.update(storeName, updated);
+            }
+
+            displayItem(key === "pet" ? "pets-page" : key === "event" ? "events-page" : "lost-pets-page");
+            modalData.modal.hide();
+        });
+    });
+
+    // ===== PAGE LINKS =====
+    pageLinks.forEach(link => {
+        link.addEventListener("click", function () {
+            pageLinks.forEach(l => l.classList.remove("active"));
+            link.classList.add("active");
+            displayItem(link.dataset.target);
+        });
+    });
+
+    // ===== ADD BUTTON =====
+    addBtn.addEventListener("click", function () {
+        const page = addBtn.dataset.bsTarget;
+
+        if (page === "#petModal") {
+            modals.pet.saveBtn.dataset.type = "add";
+            modals.pet.saveBtn.innerText = "Add Pet";
+            modals.pet.form.reset(); // reset all inputs
+            modals.pet.inputs.clickableImg.src = "images/profile.png"; // reset image preview
+            // reset location fields
+            ["latitude", "longitude", "city", "state", "country"].forEach(field => modals.pet.inputs[field].value = "");
+        }
+        else if (page === "#eventModal") {
+            modals.event.saveBtn.dataset.type = "add";
+            modals.event.saveBtn.innerText = "Add Event";
+            modals.event.form.reset();
+            modals.event.inputs.clickableImg.src = "images/profile.png";
+            ["latitude", "longitude", "city", "state", "country"].forEach(field => modals.event.inputs[field].value = "");
+        }
+        else if (page === "#lostPetModal") {
+            modals.lost.saveBtn.dataset.type = "add";
+            modals.lost.saveBtn.innerText = "Add Pet";
+            modals.lost.form.reset();
+            modals.lost.inputs.clickableImg.src = "images/profile.png";
+            ["latitude", "longitude", "city", "state", "country"].forEach(field => modals.lost.inputs[field].value = "");
+        }
+    });
+
 }
 
 //Upload image preview
@@ -769,39 +1731,50 @@ function addClickableImageInput(id) {
 
 
 //Add map functionality
-function addMapPicker(id) {
+function addMapPicker(id, cityId, latitudeId, longitudeId, stateid, countryId) {
     const mapContainer = document.getElementById(id);
     let map, marker;
 
+
+    // Helper to add or move marker
+    function addMarker(lat, lng) {
+        if (!map) return; // Map not initialized yet
+        if (marker) map.removeLayer(marker); // Remove existing marker
+        marker = L.marker([lat, lng]).addTo(map);
+        map.setView([lat, lng], 13); // Center map on marker
+    }
+
+
     mapContainer.addEventListener('shown.bs.modal', function () {
-
-
-        // Default coordinates (fallback if geolocation fails)
-        const defaultLat = 3.1390; // Kuala Lumpur
+        // Default coordinates
+        const defaultLat = 3.1390;
         const defaultLng = 101.6869;
 
         if (!map) {
             map = L.map(mapContainer.dataset.target).setView([defaultLat, defaultLng], 13);
-
             L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
                 maxZoom: 19,
             }).addTo(map);
         }
 
-        // Try to use user's current location
+        // Remove old click listeners to avoid multiple markers
+        map.off('click');
+
+        // Try geolocation
         if (navigator.geolocation) {
             navigator.geolocation.getCurrentPosition(function (position) {
                 const userLat = position.coords.latitude;
                 const userLng = position.coords.longitude;
                 map.setView([userLat, userLng], 13);
 
-                // Optional: place a marker at current location
+                // Remove old marker if exists
+                if (marker) map.removeLayer(marker);
                 marker = L.marker([userLat, userLng]).addTo(map);
 
-                document.getElementById("latitude").value = userLat;
-                document.getElementById("longitude").value = userLng;
+                document.getElementById(latitudeId).value = userLat;
+                console.log(userLat);
+                document.getElementById(longitudeId).value = userLng;
 
-                // Optional: reverse geocode user's location
                 reverseGeocode(userLat, userLng);
             }, function (err) {
                 console.warn("Geolocation failed or denied, using default location", err);
@@ -813,20 +1786,19 @@ function addMapPicker(id) {
             const lat = e.latlng.lat;
             const lng = e.latlng.lng;
 
-            if (marker) marker.remove();
+            // Remove existing marker
+            if (marker) map.removeLayer(marker);
             marker = L.marker([lat, lng]).addTo(map);
 
-            document.getElementById("latitude").value = lat;
-            document.getElementById("longitude").value = lng;
+            document.getElementById(latitudeId).value = lat;
+            document.getElementById(longitudeId).value = lng;
 
             reverseGeocode(lat, lng);
         });
 
-        // Fix map display
         setTimeout(() => { map.invalidateSize(); }, 200);
     });
 
-    // Reverse geocode function
     async function reverseGeocode(lat, lng) {
         const apiKey = "3c39795f825d401783a3cf2cd6ceb39e";
         const url = `https://api.opencagedata.com/geocode/v1/json?q=${lat}+${lng}&key=${apiKey}&no_annotations=0&abbrv=0`;
@@ -835,24 +1807,22 @@ function addMapPicker(id) {
             const response = await fetch(url);
             const data = await response.json();
 
-            if (data.results.length === 0) return;
+            if (!data.results || !data.results.length) return;
 
-            // Pick the most confident result
             const result = data.results.find(r => r.confidence >= 9) || data.results[0];
             const c = result.components;
-
-            document.getElementById("city").value = c.city || c.town || c.village || c.hamlet || "";
-            document.getElementById("state").value = c.state || "";
-            document.getElementById("country").value = c.country || "";
-
-            console.log("City:", document.getElementById("city").value);
-            console.log("State:", document.getElementById("state").value);
-            console.log("Country:", document.getElementById("country").value);
+            console.log(document.getElementById(latitudeId).value);
+            document.getElementById(cityId).value = c.city || c.town || c.village || c.hamlet || "";
+            document.getElementById(stateid).value = c.state || "";
+            document.getElementById(countryId).value = c.country || "";
         } catch (err) {
             console.error("Reverse geocoding failed", err);
         }
     }
+
+    mapContainer.addMarker = addMarker;
 }
+
 
 
 function messageCycle() {
@@ -1013,7 +1983,6 @@ function PetEvent(eventName, location, date, time, description, social, poster) 
 
 //Open map
 function openMapModal(location) {
-    console.log("Trig")
     const mapUrl = `https://www.google.com/maps?q=${encodeURIComponent(location)}&output=embed`;
     document.getElementById("mapFrame").src = mapUrl;
     const mapModal = new bootstrap.Modal(document.getElementById('mapModal'));
@@ -1030,10 +1999,8 @@ function addCloseMapEvent(page) {
 
 document.addEventListener("DOMContentLoaded", async function () {
     //Initialize DB
-    pawpalHavenDB = new Database("Test", 1);
+    pawpalHavenDB = new Database("Test", 2);
     await pawpalHavenDB.openDB();
-
-    User.create(null, "Syamil", "012-3421010", "syamil@gmail.com", "123", null, null, null, null);
 
     const page = window.location.pathname.split("/").pop();
     updateNavbar();
@@ -1041,6 +2008,7 @@ document.addEventListener("DOMContentLoaded", async function () {
     eventPage(page);
     dashboard(page);
     loginRegisterPage(page);
+    profilePage(page);
 });
 
 
@@ -1502,6 +2470,7 @@ document.getElementById('signUpForm').addEventListener('submit', function(e) {
     // Redirect to profile page (Make sure you have profile.html created)
     window.location.href = "profile.html"; 
 });
+<<<<<<< HEAD
 
 /** Search pet lynn */
  function searchPets() {
@@ -1514,3 +2483,5 @@ document.getElementById('signUpForm').addEventListener('submit', function(e) {
                     event.description.toLowerCase().includes(searchTerm);
             });
         }
+=======
+>>>>>>> 80ad6086055842f35e90f13ce5c4d4782f594394
