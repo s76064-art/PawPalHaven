@@ -17,38 +17,26 @@
 
 <body class="m-0 p-0">
     <!-- Navbar items -->
-    <nav class="navbar navbar-expand-lg fixed-top" id="nav-bar">
-        <div class="collapse navbar-collapse" id="navbarNavDropdown">
-            <a class="navbar-brand text-white" href="#">
-                <img src="assets/img/pet-brand.png" alt="Brand Icon" width="60">
-                PawPal Haven
-            </a>
-            <ul class="navbar-nav ms-auto">
-
-                <li class="nav-item">
-                    <a class="nav-link " href="index.html">Home</a>
-                </li>
-
-                <li class="nav-item">
-                    <a class="nav-link " href="adopt-pet.html">Adopt Pets</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link active " href="pet-finder.html">Pet Finder</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link " href="event.html">Events</a>
-                </li>
-                <li class="nav-item"> <a class="nav-link " href="tips.html">Tips</a></li> 
-                <li class="nav-item">
-                    <a class="nav-link" href="about-us.html">About Us</a>
-                </li>
-                <li class="nav-item" id="login-profile-nav">
-                    <a class="nav-link" href="profile.html">Profile</a>
-                </li>
-
-            </ul>
+    <nav class="navbar navbar-expand-lg" id="nav-bar">
+        <div class="container-fluid mx-3"> <a class="navbar-brand text-white" href="#"> <img
+                    src="assets/img/pet-brand.png" alt="Brand Icon" width="60"> PawPal Haven </a> <!-- Mobile toggle -->
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown">
+                <span class="navbar-toggler-icon"></span> </button> <!-- Navbar items -->
+            <div class="collapse navbar-collapse" id="navbarNavDropdown">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"> <a class="nav-link " href="index.html">Home</a> </li>
+                    <li class="nav-item"> <a class="nav-link " href="adopt-pet.html">Adopt Pets</a> </li>
+                    <li class="nav-item"> <a class="nav-link " href="pet-finder.html">Pet Finder</a> </li>
+                    <li class="nav-item"> <a class="nav-link " href="event.html">Events</a> </li>
+                    <li class="nav-item"> <a class="nav-link " href="tips.html">Tips</a></li>
+                    <li class="nav-item"> <a class="nav-link" href="about-us.html">About Us</a> </li>
+                    <li class="nav-item" id="login-profile-nav"> <a class="nav-link" href="profile.html">Profile</a>
+                    </li>
+                </ul>
+            </div>
         </div>
     </nav>
+
     <!--End Of Navigation-->
     <section class="header-section  py-5 mt-0 bg-white shadow-sm mb-5">
         <div class=" container pt-4">
@@ -58,7 +46,7 @@
                     <h1 class="display-4 fw-bold text-dark">
                         <span class="text-success">Lost</span> Pet
                     </h1>
-                    <p class="lead text-muted" style="max-width: 500px; stroke-width: 2%;">
+                    <p class="lead fw-normal w-50">
                         Every pet deserves a loving home. Help us reunite these furry friends with their families.
                     </p>
                 </div>
@@ -223,10 +211,11 @@
                         <i class="fa-solid fa-location-dot text-danger me-2"></i>
                         Langkawi, Kedah
                     </p>
-                   <button class="btn-contact-owner" data-bs-toggle="modal" data-bs-target="#petContactModal"
+                    <button class="btn-contact-owner" data-bs-toggle="modal" data-bs-target="#petContactModal"
                         data-bs-toggle="modal" data-bs-target="#petContactModal" data-name="Mahmud"
-                        data-species="Rainbow Lorikeet (Trichoglossus moluccanus)." data-age="5 Years" data-gender="Male"
-                        data-img="images/petLost (3).jpg" data-desc="Once calling his name he will come.">
+                        data-species="Rainbow Lorikeet (Trichoglossus moluccanus)." data-age="5 Years"
+                        data-gender="Male" data-img="images/petLost (3).jpg"
+                        data-desc="Once calling his name he will come.">
                         Contact Owner
                     </button>
                 </div>
