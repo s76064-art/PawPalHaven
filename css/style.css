@@ -770,17 +770,14 @@ body {
 
 /* Background hearder adopt pet*/
 .header-section {
-    /* Panggil imej anda di sini */
     background-image: linear-gradient(rgba(98, 94, 94, 0.5), rgba(255, 249, 249, 0.5)) ,url('../images/background-2.png');
     
-    /* ARAHAN PENTING: Supaya imej jadi full size */
     background-size: cover;          /* Memenuhi ruang tanpa nampak penyek */
     background-position: center;     /* Gambar sentiasa di tengah */
     background-repeat: no-repeat;    /* Gambar tidak berulang */
-    /* Beri ketinggian minimum supaya gambar nampak luas */
     min-height: 450px; 
     display: flex;
     align-items: center;
     color: white;
-    /* Tukar teks kepada putih jika guna overlay gelap */
+    
 }

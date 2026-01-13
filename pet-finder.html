@@ -32,11 +32,9 @@
                 <li class="nav-item">
                     <a class="nav-link " href="adpot-pet.html">Adopt Pets</a>
                 </li>
-
                 <li class="nav-item">
                     <a class="nav-link " href="pet-finder.html">Pet Finder</a>
                 </li>
-
                 <li class="nav-item">
                     <a class="nav-link " href="event.html">Events</a>
                 </li>
@@ -68,7 +66,7 @@
     </nav>
     <!--End Of Navigation-->
 
-    <section class="container-fluid py-5" id="pet-finder">
+    <section class="container-fluid py-5" id="pet-finder.html">
         <main class="container mt-5 pt-5">
             <div class="row gx-4 gy-5">
                 <div class="col-md-8">
@@ -76,311 +74,322 @@
                     <p class="lead text-muted">Help us reunite these furry friends with their families.</p>
                 </div>
                 <div class="col-md-4 text-md-end">
-                    <button class="btn btn-danger btn-lg shadow-sm" data-bs-toggle="modal"
-                        data-bs-target="#reportLostModal">
+                    <button class="btn btn-danger btn-lg shadow-sm" data-bs-toggle="modal" data-bs-target="#authModal">
                         <i class="fa-solid fa-bullhorn me-2"></i>Report Lost Pet
                     </button>
                 </div>
-            
 
-            <hr class="mb-5">
 
-            <div class="row g-3 mb-5 p-4 shadow-sm rounded border bg-white align-items-center">
-                <div class="col-md-8">
-                    <div class="input-group">
-                        <span class="input-group-text bg-white border-end-0">
-                            <i class="fa-solid fa-magnifying-glass text-muted"></i>
-                        </span>
-                        <input type="text" class="form-control border-start-0"
-                            placeholder="Search by name, breed or location...">
+                <hr class="mb-5">
+
+                <div class="row g-3 mb-5 p-4 shadow-sm rounded border bg-white align-items-center">
+                    <div class="col-md-8">
+                        <div class="input-group">
+                            <span class="input-group-text bg-white border-end-0">
+                                <i class="fa-solid fa-magnifying-glass text-muted"></i>
+                            </span>
+                            <input type="text" class="form-control border-start-0"
+                                placeholder="Search by name, breed or location...">
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <select class="form-select">
+                            <option selected>Sort by Date</option>
+                            <option>Newest First</option>
+                            <option>Oldest First</option>
+                        </select>
                     </div>
                 </div>
-                <div class="col-md-4">
-                    <select class="form-select">
-                        <option selected>Sort by Date</option>
-                        <option>Newest First</option>
-                        <option>Oldest First</option>
-                    </select>
-                </div>
-            </div>
-            <!--End navigation-->
-            <div class="container my-5">
-                <!--PET 1-->
-                <div class="row g-4">
-                    <div class="col md-4">
-                        <div class="pph-pet-card h-100">
-                            <div class="pph-pet-image">
-                                <span class="pph-missing-badge">MISSING</span>
-                                <img src="https://placedog.net/500/500?id=11">
+                <!--End navigation-->
+                <div class="container my-5">
+                    <!--PET 1-->
+                    <div class="row g-4">
+                        <div class="col md-4">
+                            <div class="pph-pet-card h-100">
+                                <div class="pph-pet-image">
+                                    <span class="pph-missing-badge">MISSING</span>
+                                    <img src="https://placedog.net/500/500?id=11">
+                                </div>
+                                <h4 class="fw-bold">George & Mickey</h4>
+                                <p class="pph-species">
+                                    <strong>Species:</strong>
+                                    <span>Have red colar and big paw</span>
+                                </p>
+
+                                <p class="pph-last-seen">
+                                    <i class="fa-regular fa-calendar me-2"></i>
+                                    Last Seen: Oct 24th, 2025
+                                </p>
+                                <p class="text-muted">
+                                    <i class="fa-solid fa-location-dot text-danger me-2"></i>
+                                    Sungai Buloh, Selangor
+                                </p>
+                                <button class="btn pph-contact-btn text-white w-100 mt-2" data-bs-toggle="modal"
+                                    data-bs-target="#petContactlModal">
+                                    Contact Owner
+                                </button>
                             </div>
-                            <h4 class="fw-bold">George & Mickey</h4>
-                            <p class="pph-species">
-                                <strong>Species:</strong>
-                                <span>Have red colar and big paw</span>
-                            </p>
-
-                            <p class="pph-last-seen">
-                                <i class="fa-regular fa-calendar me-2"></i>
-                                Last Seen: Oct 24th, 2025
-                            </p>
-                            <p class="text-muted">
-                                <i class="fa-solid fa-location-dot text-danger me-2"></i>
-                                Sungai Buloh, Selangor
-                            </p>
-                            <button class="btn pph-contact-btn text-white w-100 mt-2" data-bs-toggle="modal"
-                                data-bs-target="#pphContactModal">
-                                Contact Owner
-                            </button>
                         </div>
-                    </div>
 
-                    <!-- PET 2 -->
-                    <div class="col-md-4">
-                        <div class="pph-pet-card h-100">
-                            <div class="pph-pet-image">
-                                <span class="pph-missing-badge">MISSING</span>
-                                <img src="images/petLost (5).jpg">
+                        <!-- PET 2 -->
+                        <div class="col-md-4">
+                            <div class="pph-pet-card h-100">
+                                <div class="pph-pet-image">
+                                    <span class="pph-missing-badge">MISSING</span>
+                                    <img src="images/petLost (5).jpg">
+                                </div>
+                                <h4 class="fw-bold">Missy</h4>
+                                <p class="pph-species">
+                                    <strong>Species:</strong>
+                                    <span>White British Short Hair</span>
+                                </p>
+
+                                <p class="pph-last-seen">
+                                    <i class="fa-regular fa-calendar me-2"></i>
+                                    Last Seen: Dec 24th, 2025
+                                </p>
+                                <p class="text-muted">
+                                    <i class="fa-solid fa-location-dot text-danger me-2"></i>
+                                    Batu Pahat, Johor
+                                </p>
+                                <button class="btn pph-contact-btn w-100 mt-2" data-bs-toggle="modal"
+                                    data-bs-target="#petContactlModal">
+                                    Contact Owner
+                                </button>
                             </div>
-                            <h4 class="fw-bold">Missy</h4>
-                            <p class="pph-species">
-                                <strong>Species:</strong>
-                                <span>White British Short Hair</span>
-                            </p>
-
-                            <p class="pph-last-seen">
-                                <i class="fa-regular fa-calendar me-2"></i>
-                                Last Seen: Dec 24th, 2025
-                            </p>
-                            <p class="text-muted">
-                                <i class="fa-solid fa-location-dot text-danger me-2"></i>
-                                Batu Pahat, Johor
-                            </p>
-                            <button class="btn pph-contact-btn w-100 mt-2" data-bs-toggle="modal"
-                                data-bs-target="#pphContactModal">
-                                Contact Owner
-                            </button>
                         </div>
-                    </div>
 
-                    <!-- PET 3 -->
-                    <div class="col-md-4">
-                        <div class="pph-pet-card h-100">
-                            <div class="pph-pet-image">
-                                <span class="pph-missing-badge">MISSING</span>
-                                <img src="images/petLost (4).jpg">
+                        <!-- PET 3 -->
+                        <div class="col-md-4">
+                            <div class="pph-pet-card h-100">
+                                <div class="pph-pet-image">
+                                    <span class="pph-missing-badge">MISSING</span>
+                                    <img src="images/petLost (4).jpg">
+                                </div>
+                                <h4 class="fw-bold">Charlie</h4>
+                                <p class="pph-species">
+                                    <strong>Species:</strong>
+                                    <span>Brown rabbit with blue colar</span>
+                                </p>
+
+                                <p class="pph-last-seen">
+                                    <i class="fa-regular fa-calendar me-2"></i>
+                                    Last Seen: Jan 1st, 2024
+                                </p>
+                                <p class="text-muted">
+                                    <i class="fa-solid fa-location-dot text-danger me-2"></i>
+                                    Alor Star, Kedah
+                                </p>
+                                <button class="btn pph-contact-btn w-100 mt-2" data-bs-toggle="modal"
+                                    data-bs-target="#petContactlModal">
+                                    Contact Owner
+                                </button>
                             </div>
-                            <h4 class="fw-bold">Charlie</h4>
-                            <p class="pph-species">
-                                <strong>Species:</strong>
-                                <span>Brown rabbit with blue colar</span>
-                            </p>
-
-                            <p class="pph-last-seen">
-                                <i class="fa-regular fa-calendar me-2"></i>
-                                Last Seen: Jan 1st, 2024
-                            </p>
-                            <p class="text-muted">
-                                <i class="fa-solid fa-location-dot text-danger me-2"></i>
-                                Alor Star, Kedah
-                            </p>
-                            <button class="btn pph-contact-btn w-100 mt-2" data-bs-toggle="modal"
-                                data-bs-target="#pphContactModal">
-                                Contact Owner
-                            </button>
                         </div>
-                    </div>
 
-                    <!-- PET 4 -->
-                    <div class="col-md-4">
-                        <div class="pph-pet-card h-100">
-                            <div class="pph-pet-image">
-                                <span class="pph-missing-badge">MISSING</span>
-                                <img src="images/petLost (4).jpg">
+                        <!-- PET 4 -->
+                        <div class="col-md-4">
+                            <div class="pph-pet-card h-100">
+                                <div class="pph-pet-image">
+                                    <span class="pph-missing-badge">MISSING</span>
+                                    <img src="images/petLost (2).jpg">
+                                </div>
+                                <h4 class="fw-bold">Charlie</h4>
+                                <p class="pph-species">
+                                    <strong>Species:</strong>
+                                    <span>Brown rabbit with blue colar</span>
+                                </p>
+
+                                <p class="pph-last-seen">
+                                    <i class="fa-regular fa-calendar me-2"></i>
+                                    Last Seen: Jan 1st, 2024
+                                </p>
+                                <p class="text-muted">
+                                    <i class="fa-solid fa-location-dot text-danger me-2"></i>
+                                    Alor Star, Kedah
+                                </p>
+                                <button class="btn pph-contact-btn w-100 mt-2" data-bs-toggle="modal"
+                                    data-bs-target="#petContactlModal">
+                                    Contact Owner
+                                </button>
                             </div>
-                            <h4 class="fw-bold">Charlie</h4>
-                            <p class="pph-species">
-                                <strong>Species:</strong>
-                                <span>Brown rabbit with blue colar</span>
-                            </p>
-
-                            <p class="pph-last-seen">
-                                <i class="fa-regular fa-calendar me-2"></i>
-                                Last Seen: Jan 1st, 2024
-                            </p>
-                            <p class="text-muted">
-                                <i class="fa-solid fa-location-dot text-danger me-2"></i>
-                                Alor Star, Kedah
-                            </p>
-                            <button class="btn pph-contact-btn w-100 mt-2" data-bs-toggle="modal"
-                                data-bs-target="#pphContactModal">
-                                Contact Owner
-                            </button>
                         </div>
-                    </div>
 
-                    <!-- PET 5 -->
-                    <div class="col-md-4">
-                        <div class="pph-pet-card h-100">
-                            <div class="pph-pet-image">
-                                <span class="pph-missing-badge">MISSING</span>
-                                <img src="images/petLost (4).jpg">
+                        <!-- PET 5 -->
+                        <div class="col-md-4">
+                            <div class="pph-pet-card h-100">
+                                <div class="pph-pet-image">
+                                    <span class="pph-missing-badge">MISSING</span>
+                                    <img src="images/petLost (3).jpg">
+                                </div>
+                                <h4 class="fw-bold">Charlie</h4>
+                                <p class="pph-species">
+                                    <strong>Species:</strong>
+                                    <span>Brown rabbit with blue colar</span>
+                                </p>
+
+                                <p class="pph-last-seen">
+                                    <i class="fa-regular fa-calendar me-2"></i>
+                                    Last Seen: Jan 1st, 2024
+                                </p>
+                                <p class="text-muted">
+                                    <i class="fa-solid fa-location-dot text-danger me-2"></i>
+                                    Alor Star, Kedah
+                                </p>
+                                <button class="btn pph-contact-btn w-100 mt-2" data-bs-toggle="modal"
+                                    data-bs-target="#petContactlModal">
+                                    Contact Owner
+                                </button>
                             </div>
-                            <h4 class="fw-bold">Charlie</h4>
-                            <p class="pph-species">
-                                <strong>Species:</strong>
-                                <span>Brown rabbit with blue colar</span>
-                            </p>
-
-                            <p class="pph-last-seen">
-                                <i class="fa-regular fa-calendar me-2"></i>
-                                Last Seen: Jan 1st, 2024
-                            </p>
-                            <p class="text-muted">
-                                <i class="fa-solid fa-location-dot text-danger me-2"></i>
-                                Alor Star, Kedah
-                            </p>
-                            <button class="btn pph-contact-btn w-100 mt-2" data-bs-toggle="modal"
-                                data-bs-target="#pphContactModal">
-                                Contact Owner
-                            </button>
                         </div>
-                    </div>
 
-                </div>
-            </div>
-            <!-- PET 6 -->
-            <div class="col-md-4">
-                <div class="pph-pet-card h-100">
-                    <div class="pph-pet-image">
-                        <span class="pph-missing-badge">MISSING</span>
-                        <img src="images/petLost (4).jpg">
-                    </div>
-                    <h4 class="fw-bold">Charlie</h4>
-                    <p class="pph-species">
-                        <strong>Species:</strong>
-                        <span>Brown rabbit with blue colar</span>
-                    </p>
+                        <!-- PET 6 -->
+                        <div class="col-md-4">
+                            <div class="pph-pet-card h-100">
+                                <div class="pph-pet-image">
+                                    <span class="pph-missing-badge">MISSING</span>
+                                    <img src="images/petLost (6).jpg">
+                                </div>
+                                <h4 class="fw-bold">Charlie</h4>
+                                <p class="pph-species">
+                                    <strong>Species:</strong>
+                                    <span>Brown rabbit with blue colar</span>
+                                </p>
 
-                    <p class="pph-last-seen">
-                        <i class="fa-regular fa-calendar me-2"></i>
-                        Last Seen: Jan 1st, 2024
-                    </p>
-                    <p class="text-muted">
-                        <i class="fa-solid fa-location-dot text-danger me-2"></i>
-                        Alor Star, Kedah
-                    </p>
-                    <button class="btn pph-contact-btn w-100 mt-2" data-bs-toggle="modal"
-                        data-bs-target="#pphContactModal">
-                        Contact Owner
-                    </button>
+                                <p class="pph-last-seen">
+                                    <i class="fa-regular fa-calendar me-2"></i>
+                                    Last Seen: Jan 1st, 2024
+                                </p>
+                                <p class="text-muted">
+                                    <i class="fa-solid fa-location-dot text-danger me-2"></i>
+                                    Alor Star, Kedah
+                                </p>
+                                <button class="btn pph-contact-btn w-100 mt-2" data-bs-toggle="modal"
+                                    data-bs-target="#petContactModal">
+                                    Contact Owner
+                                </button>
+                            </div>
+                        </div>
+
+                    </div>
                 </div>
             </div>
 
-            </div>
-            </div>
-            </div>
-            </div>
-
-            <!-- MODAL -->
-            <div class="modal fade" id="pphPetProfileModal" tabindex="-1">
-                <div class="modal-dialog modal-xl modal-dialog-centered">
-                    <div class="modal-content p-4 pph-modal-card">
-
-                        <!-- HEADER -->
+            <!--Pop up message-->
+            <div class="modal fade" id="petContactlModal" tabindex="-1" aria-hidden="true">
+                <div class="modal-dialog modal-lg modal-dialog-centered">
+                    <div class="modal-content border-0 shadow-lg" style="border-radius: 5px;">
                         <div class="modal-header border-0">
-                            <h4 class="modal-title">
-                                Pet Profile: <span class="text-primary">Luna</span>
-                            </h4>
-                            <button class="btn-close" data-bs-dismiss="modal"></button>
+                            <h5 class="modal-title fw-bold">Pet Profile: <span id="modalPetName"
+                                    class="text-primary"></span></h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
-
-                        <!-- BODY -->
-                        <div class="modal-body">
-                            <div class="row align-items-center">
-
-                                <!-- LEFT IMAGE -->
-                                <div class="col-md-4 text-center">
-                                    <img src="https://placekitten.com/500/500" class="pph-modal-img" alt="Luna">
+                        <div class="modal-body p-4">
+                            <div class="row g-4">
+                                <div class="col-md-4">
+                                    <img id="modalPetImg" src="" class="img-fluid rounded-4 shadow-sm w-100"
+                                        style="height: 250px; object-fit: cover;">
                                 </div>
-
-                                <!-- DETAILS -->
-                                <div class="col-md-5">
-                                    <p><strong>Species:</strong> Persian Cat</p>
-                                    <p><strong>Age:</strong> 4 Month</p>
-                                    <p><strong>Gender:</strong> Female</p>
-
+                                <div class="col-md-5 border-end">
+                                    <h4 class="fw-bold mb-3" id="modalPetNameTitle"></h4>
+                                    <div class="mb-2 small text-muted"><strong>Species:</strong> <span
+                                            id="modalPetSpecies"></span></div>
+                                    <div class="mb-2 small text-muted"><strong>Age:</strong> <span
+                                            id="modalPetAge"></span>
+                                    </div>
+                                    <div class="mb-2 small text-muted"><strong>Gender:</strong> <span
+                                            id="modalPetGender"></span></div>
                                     <hr>
-
-                                    <p class="text-muted">
-                                        Luna masih bayi suka tangkap bola, main bola.
-                                    </p>
+                                    <p class="small text-secondary" id="modalPetDesc"></p>
                                 </div>
-
-                                <!-- CONTACT -->
-                                <div class="col-md-3 text-center pph-contact-box">
-                                    <p class="fw-bold mb-3">Ready to Adopt?</p>
-
-                                    <a href="https://wa.me/60123456789" target="_blank"
-                                        class="btn pph-whatsapp-btn w-100 mb-3">
-                                        <i class="fa-brands fa-whatsapp me-2"></i>
-                                        WhatsApp
-                                    </a>
-
-                                    <a href="tel:+60123456789" class="btn pph-call-btn w-100">
-                                        <i class="fa-solid fa-phone me-2"></i>
-                                        Call
-                                    </a>
+                                <div class="col-md-3 text-center d-flex flex-column justify-content-center">
+                                    <h6 class="fw-bold small mb-3">Ready to Adopt?</h6>
+                                    <button class="btn btn-success rounded-pill mb-2 w-100 py-2 fw-bold">
+                                        <i class="fa-brands fa-whatsapp"></i> WhatsApp
+                                    </button>
+                                    <button class="btn btn-outline-primary rounded-pill w-100 py-2 fw-bold">
+                                        <i class="fa-solid fa-phone"></i> Call
+                                    </button>
                                 </div>
-
                             </div>
                         </div>
-
                     </div>
                 </div>
             </div>
-
-            <!-- <div class="modal fade" id="pphContactModal" tabindex="-1">
-            <div class="modal-dialog modal-dialog-centered">
-                <div class="modal-content">
-
-                    <div class="modal-header">
-                        <h5 class="modal-title pph-modal-title">Contact Pet Owner</h5>
-                        <button class="btn-close" data-bs-dismiss="modal"></button>
-                    </div>
-
-                    <div class="modal-body">
-                        <form>
-                            <div class="mb-3">
-                                <label class="form-label">Your Name</label>
-                                <input type="text" class="form-control" placeholder="Enter your name">
-                            </div>
-
-                            <div class="mb-3">
-                                <label class="form-label">Email</label>
-                                <input type="email" class="form-control" placeholder="example@email.com">
-                            </div>
-
-                            <div class="mb-3">
-                                <label class="form-label">Message</label>
-                                <textarea class="form-control" rows="3"
-                                    placeholder="I think I saw your pet at..."></textarea>
-                            </div>
-                        </form>
-                    </div>
-
-                    <div class="modal-footer">
-                        <button class="btn btn-success">Send Message</button>
-                        <button class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-                    </div>
-
-                </div>
-            </div>
-        </div> -->
-
 
 
             <!--report lost bar-->
-            <div class="modal fade" id="reportLostModal" tabindex="-1" aria-hidden="true">
+
+            <div class="modal fade" id="authModal" tabindex="-1" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered">
+                    <div class="modal-content border-0 shadow rounded-4">
+                        <div class="modal-header border-0 pb-0">
+                            <ul class="nav nav-pills mb-3 w-100" id="pills-tab" role="tablist">
+                                <li class="nav-item w-50" role="presentation">
+                                    <button class="nav-link active w-100 rounded-pill" id="pills-login-tab"
+                                        data-bs-toggle="pill" data-bs-target="#pills-login" type="button"
+                                        role="tab">Sign In</button>
+                                </li>
+                                <li class="nav-item w-50" role="presentation">
+                                    <button class="nav-link w-100 rounded-pill" id="pills-register-tab"
+                                        data-bs-toggle="pill" data-bs-target="#pills-register" type="button"
+                                        role="tab">Sign Up</button>
+                                </li>
+                            </ul>
+                            <button type="button" class="btn-close ms-auto" data-bs-dismiss="modal"
+                                aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body p-4 pt-0">
+                            <div class="tab-content" id="pills-tabContent">
+
+                                <div class="tab-pane fade show active" id="pills-login" role="tabpanel">
+                                    <form id="signInForm" class="text-center">
+                                        <h3 class="fw-bold mb-3">Welcome Back</h3>
+                                        <div class="form-floating mb-3">
+                                            <input type="email" class="form-control" id="loginEmail"
+                                                placeholder="name@example.com" required>
+                                            <label>Email address</label>
+                                        </div>
+                                        <div class="form-floating mb-4">
+                                            <input type="password" class="form-control" id="loginPass"
+                                                placeholder="Password" required>
+                                            <label>Password</label>
+                                        </div>
+                                        <button type="submit" class="btn btn-dark w-100 py-3 rounded-pill fw-bold">Sign
+                                            In & Continue</button>
+                                    </form>
+                                </div>
+
+                                <div class="tab-pane fade" id="pills-register" role="tabpanel">
+                                    <form id="signUpForm" class="text-center">
+                                        <h3 class="fw-bold mb-3">Create Account</h3>
+                                        <div class="form-floating mb-3">
+                                            <input type="text" class="form-control" id="regName" placeholder="Full Name"
+                                                required>
+                                            <label>Full Name</label>
+                                        </div>
+                                        <div class="form-floating mb-3">
+                                            <input type="email" class="form-control" id="regEmail"
+                                                placeholder="name@example.com" required>
+                                            <label>Email address</label>
+                                        </div>
+                                        <div class="form-floating mb-4">
+                                            <input type="password" class="form-control" id="regPass"
+                                                placeholder="Password" required>
+                                            <label>Password</label>
+                                        </div>
+                                        <button type="submit"
+                                            class="btn btn-primary w-100 py-3 rounded-pill fw-bold">Sign Up & Create
+                                            Profile</button>
+                                    </form>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- <div class="modal fade" id="reportLostModal" tabindex="-1" aria-hidden="true">
                 <div class="modal-dialog">
                     <div class="modal-content">
                         <div class="modal-header">
@@ -414,7 +423,7 @@
                         </div>
                     </div>
                 </div>
-            </div>
+            </div> -->
 
             <footer class="footer border-top">
                 <div class="container text-center">

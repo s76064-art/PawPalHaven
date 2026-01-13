@@ -1477,3 +1477,28 @@ function showPetDetails(name, species, age, gender, desc, imgPath) {
 }
 
 
+/* report lost pet button */
+// 1. Handle Sign In (Stays on Pet Finder Page)
+document.getElementById('signInForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+    
+    // Close the Modal
+    const authModal = bootstrap.Modal.getInstance(document.getElementById('authModal'));
+    authModal.hide();
+
+    // Show a success alert (Optional)
+    alert("Signed in successfully! Returning to Pet Finder.");
+    
+    // Page doesn't change, just closes the modal so they can continue looking at pets
+});
+
+// 2. Handle Sign Up (Redirects to Profile Page)
+document.getElementById('signUpForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+
+    // Show a success alert
+    alert("Account created! Redirecting to your Profile...");
+
+    // Redirect to profile page (Make sure you have profile.html created)
+    window.location.href = "profile.html"; 
+});
