@@ -1502,3 +1502,15 @@ document.getElementById('signUpForm').addEventListener('submit', function(e) {
     // Redirect to profile page (Make sure you have profile.html created)
     window.location.href = "profile.html"; 
 });
+
+/** Search pet lynn */
+ function searchPets() {
+            // 1. Get what the user typed in the search bar
+            const searchTerm = document.getElementById('petSearch').value.toLowerCase();
+
+            // 2. Filter the allEvents array
+            const matchedEvents = allEvents.filter(event => {
+                return event.title.toLowerCase().includes(searchTerm) ||
+                    event.description.toLowerCase().includes(searchTerm);
+            });
+        }

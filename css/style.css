@@ -567,18 +567,28 @@ body {
 
 /* BUTTON */
 .pph-contact-btn {
-    background: linear-gradient(135deg, #1f8f5f, #a9d711);
-    color: #01ff09;
-    border-radius: 12px;
-    padding: 14px;
-    font-size: 16px;
-    font-weight: 600;
+    background-color: #0d6efd;
+    color: white;
+    border-radius: 50px;
+    font-weight: 700;
+    width: fit-content;
+    padding: 10px 25px;
+    margin-top: 20px;
+    border: none;
+    
+}
+
+.btn-contact-owner {
+    background-color: #0d6efd;
+    color: white;
+    border-radius: 50px;
+    font-weight: 700;
+    width: fit-content;
+    padding: 10px 25px;
+    margin-top: 20px;
     border: none;
 }
 
-.pph-contact-btn:hover {
-    background: #485b53;
-}
 
 /* MODAL */
 .pph-modal-title {
@@ -757,16 +767,6 @@ body {
     border-bottom: 1px solid #ebf2f7;
 }
 
-.btn-adopt-custom {
-    background-color: #0d6efd;
-    color: white;
-    border-radius: 50px;
-    font-weight: 700;
-    width: fit-content;
-    padding: 10px 25px;
-    margin-top: 20px;
-    border: none;
-}
 
 /* Background hearder adopt pet*/
 .header-section {
@@ -781,3 +781,24 @@ body {
     color: white;
     
 }
+
+/*search bar pet finder*/
+/* Remove Bootstrap's default input focus outline */
+#eventSearch:focus {
+    box-shadow: none;
+    background-color: transparent;
+}
+
+/* Optional: Make the underline turn dark when active */
+.input-group:focus-within {
+    border-color: #212529 !important; 
+    transition: border-color 0.3s ease;
+}
+
+/* Make the placeholder text look cleaner */
+#eventSearch::placeholder {
+    color: #adb5bd;
+    font-weight: 300;
+}
+
+

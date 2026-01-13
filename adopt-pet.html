@@ -12,7 +12,7 @@
     <script src="https://kit.fontawesome.com/b1605aa887.js" crossorigin="anonymous"></script>
 
     <link rel="icon" type="image/png" href="assets/img/pet-brand.png">
-    <title>Adopt-Pet PawPal Haven</title>
+    <title>Adopt Pet - PawPal Haven</title>
 </head>
 
 <body>
@@ -32,11 +32,11 @@
                 <div class="collapse navbar-collapse" id="navbarNavDropdown">
                     <ul class="navbar-nav ms-auto">
                         <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
-                        <li class="nav-item"><a class="nav-link" href="adopt-pet.html">Adopt Pets</a></li>
+                        <li class="nav-item"><a class="nav-link active" href="adopt-pet.html">Adopt Pets</a></li>
                         <li class="nav-item"><a class="nav-link" href="pet-finder.html">Pet Finder</a></li>
                         <li class="nav-item"><a class="nav-link" href="event.html">Events</a></li>
                         <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle active" href="tips.html" id="navbarDropdownMenuLink"
+                            <a class="nav-link dropdown-toggle " href="tips.html" id="navbarDropdownMenuLink"
                                 role="button" data-bs-toggle="dropdown">Tips</a>
                             <ul class="dropdown-menu border-0 shadow">
                                 <li><a class="dropdown-item" href="tips.html#catTipsButton">Cats</a></li>
@@ -56,8 +56,8 @@
 
 
         <!-- TITLE -->
-        <section class="header-section py-5 mt-5 bg-white shadow-sm mb-5" id="adopt-pet">
-            <div class="container pt-4">
+        <section class="header-section  py-5 mt-5 bg-white shadow-sm mb-5">
+            <div class=" container pt-4">
                 <div class="d-md-flex justify-content-between align-items-start text-center text-md-start">
 
                     <div class="header-content mb-4 mb-md-0">
@@ -71,7 +71,7 @@
                     <div class="search-container col-12 col-md-4">
                         <div class="input-group shadow-sm border rounded-pill overflow-hidden">
 
-      
+
 
                             <span class="input-group-text bg-white border-0 ps-3">
                                 <i class="fa-solid fa-magnifying-glass text-muted"></i>
@@ -88,11 +88,10 @@
 
         <!--PET LIST-->
         <!--PET 1-->
-        <!--PET NEW MORE MODERN-->
         <div class="card pet-card mb-4 shadow-sm border-0 rounded-4 overflow-hidden">
             <div class="row g-0 align-items-stretch">
                 <div class="col-md-3">
-                    <img src="https://images.unsplash.com/photo-1543466835-00a7907e9de1?auto=format&fit=crop&w=500&q=80"
+                    <img src="images/petFinder-dog2.jpg"
                         class="img-fluid h-100 w-100" style="object-fit: cover; min-height: 250px;" alt="Dog">
                 </div>
                 <!--PET INFO-->
@@ -146,7 +145,7 @@
         <div class="card pet-card mb-4 shadow-sm border-0 rounded-4 overflow-hidden">
             <div class="row g-0 align-items-stretch">
                 <div class="col-md-3">
-                    <img src="../PawPalHaven/images/petFinder-dog1.jpg" class="img-fluid h-100 w-100"
+                    <img src="images/petFinder-dog1.jpg" class="img-fluid h-100 w-100"
                         style="object-fit: cover; min-height: 250px;" alt="Dog">
                 </div>
                 <!--PET INFO-->
@@ -220,10 +219,6 @@
                             </p>
                         </div>
                     </div>
-                    <button class="btn-adopt-custom" data-bs-toggle="modal" data-bs-target="#petDetailModal"
-                        onclick="showPetDetails('Luna', ' Persian Cat', '4 Month', 'Female', 'Luna masih bayi suka tangkap bola, main bola.', 'images/cat-adopt-1.jpg')">
-                        View Me
-                    </button>
                 </div>
                 <!--Contact-->
                 <div class="col-md-3 d-flex flex-column justify-content-center bg-light p-4 border-start">
@@ -249,7 +244,7 @@
         </div>
 
         <!--Pop up message-->
-        <div class="modal fade" id="petDetailModal" tabindex="-1" aria-hidden="true">
+        <!-- <div class="modal fade" id="petDetailModal" tabindex="-1" aria-hidden="true">
             <div class="modal-dialog modal-lg modal-dialog-centered">
                 <div class="modal-content border-0 shadow-lg" style="border-radius: 5px;">
                     <div class="modal-header border-0">
@@ -287,7 +282,7 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div> -->
         <!-- Map Modal -->
         <div class="modal fade" id="mapModal" tabindex="-1" aria-labelledby="mapModalLabel" aria-hidden="true">
             <div class="modal-dialog modal-lg modal-dialog-centered">
@@ -305,7 +300,7 @@
                 </div>
             </div>
         </div>
-
+        <!--FOOTER-->
         <footer class="bg-green-1 text-white pt-5 pb-3">
             <div class="container">
 
@@ -326,10 +321,10 @@
                         <h5>Sitemap</h5>
                         <ul class="list-unstyled sitemap">
                             <li><a href="index.html" class="text-white text-decoration-none">Home</a></li>
-                            <li><a href="" class="text-white text-decoration-none">Adopt Pets</a></li>
-                            <li><a href="" class="text-white text-decoration-none">Tips</a></li>
-                            <li><a href="" class="text-white text-decoration-none">Pet Finder</a></li>
-                            <li><a href="" class="text-white text-decoration-none">Tips</a></li>
+                            <li><a href="adopt-pet.html" class="text-white text-decoration-none">Adopt Pets</a></li>
+                            <li><a href="pet-finder.html" class="text-white text-decoration-none">Pet Finder</a></li>
+                            <li><a href="pet-finder.html" class="text-white text-decoration-none">Events</a></li>
+                            <li><a href="tips.html" class="text-white text-decoration-none">Tips</a></li>
                         </ul>
                     </div>
 
@@ -350,7 +345,7 @@
                                 <p class="mb-0"><small>Syamil Bin Md Noor (S76064)</small></p>
                             </li>
                             <li>
-                                <p class="mb-0"><small>Izani ()</small></p>
+                                <p class="mb-0"><small>Syafiqah Izani (S75776)</small></p>
                             </li>
                             <li>
                                 <p class="mb-0"><small>Adlynn Syakirah (S76245)</small></p>

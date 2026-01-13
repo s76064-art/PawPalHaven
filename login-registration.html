@@ -17,41 +17,26 @@
 </head>
 
 <body>
-    <!--Navigation bar-->
-    <nav class="navbar navbar-expand-lg " id="nav-bar-transparent-off">
+   <!-- Navigation Bar -->
+    <nav class="navbar navbar-expand-lg fixed-top" id="nav-bar">
         <div class="container-fluid mx-3">
-
-            <a class="navbar-brand text-white" href="#">
-                <img src="assets/img/pet-brand.png" alt="Brand Icon" width="60">
+            <a class="navbar-brand text-white fw-bold" href="index.html">
+                <img src="assets/img/pet-brand.png" alt="Brand Icon" width="50" class="me-2">
                 PawPal Haven
             </a>
 
-            <!-- Mobile toggle -->
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown">
+            <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarNavDropdown">
                 <span class="navbar-toggler-icon"></span>
             </button>
 
-            <!-- Navbar items -->
             <div class="collapse navbar-collapse" id="navbarNavDropdown">
                 <ul class="navbar-nav ms-auto">
-
-                    <li class="nav-item">
-                        <a class="nav-link active" href="#">Home</a>
-                    </li>
-
-                    <li class="nav-item">
-                        <a class="nav-link " href="#">Adopt Pets</a>
-                    </li>
-
-                    <li class="nav-item">
-                        <a class="nav-link " href="#">Pet Finder</a>
-                    </li>
-
-                    <li class="nav-item">
-                        <a class="nav-link " href="event.html">Events</a>
-                    </li>
-
-                    <!-- Dropdown -->
+                    <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="adopt-pet.html">Adopt Pets</a></li>
+                    <li class="nav-item"><a class="nav-link" href="pet-finder">Pet Finder</a></li>
+                    <li class="nav-item"><a class="nav-link" href="event.html">Events</a></li>
+                      <!-- Dropdown -->
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="tips.html" id="navbarDropdownMenuLink" role="button"
                             data-bs-toggle="dropdown">
@@ -59,16 +44,15 @@
                         </a>
 
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                            <li><a class="dropdown-item" href="#">Cats</a></li>
-                            <li><a class="dropdown-item" href="#">Dogs</a></li>
-                            <li><a class="dropdown-item" href="#">Birds</a></li>
+                           <li><a class="dropdown-item" href="tips.html#catTipsButton">Cats</a></li>
+                            <li><a class="dropdown-item" href="tips.html#dogTipsButton">Dogs</a></li>
+                            <li><a class="dropdown-item" href="tips.html#birdTipsButton">Birds</a></li>
+                            <li><a class="dropdown-item" href="tips.html#rabbitTipsButton">Rabbits</a></li>
+                            <li><a class="dropdown-item" href="tips.html#fishTipsButton">Fishes</a></li>
                         </ul>
                     </li>
-
-                    <li class="nav-item" id="login-profile-nav">
-                        <a class="nav-link" href="#profile.html">Profile</a>
-                    </li>
-
+                    <li class="nav-item"><a class="nav-link active" href="about.html">About Us</a></li>
+                    <li class="nav-item"><a class="nav-link" href="profile.html">Profile</a></li>
                 </ul>
             </div>
         </div>
