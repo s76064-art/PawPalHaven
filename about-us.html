@@ -42,8 +42,8 @@
                     <li class="nav-item"><a class="nav-link" href="adopt-pet.html">Adopt Pets</a></li>
                     <li class="nav-item"><a class="nav-link" href="pet-finder.html">Pet Finder</a></li>
                     <li class="nav-item"><a class="nav-link" href="event.html">Events</a></li>
-                    <li class="nav-item"> <a class="nav-link " href="tips.html">Tips</a></li> 
-                    
+                    <li class="nav-item"> <a class="nav-link " href="tips.html">Tips</a></li>
+
                     <li class="nav-item"><a class="nav-link active" href="about-us.html">About Us</a></li>
                     <li class="nav-item"><a class="nav-link" href="profile.html">Profile</a></li>
                 </ul>
@@ -126,53 +126,92 @@
         </div>
     </section>
 
-    <!-- Team Members -->
+    <!-- Adopt A Pet Section -->
+    <section class="container mb-5">
+        <div class="text-center mb-4 home-section-title home-pets-title">
+            <h2 class="fw-semibold text-dark py-2 px-4 d-inline-block rounded-pill shadow-sm">
+                <i class="fa-solid fa-paw me-2 text-info"></i>
+                Adopt A Pet
+            </h2>
+        </div>
+
+        <div id="homePetsCarousel" class="carousel slide" data-bs-ride="carousel">
+            <div class="carousel-inner">
+                <!-- Pet cards will be inserted dynamically here -->
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#homePetsCarousel" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon"></span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#homePetsCarousel" data-bs-slide="next">
+                <span class="carousel-control-next-icon"></span>
+            </button>
+        </div>
+    </section>
+
+    <!-- Upcoming Events Section -->
+    <section class="container mb-5">
+        <div class="text-center mb-4 home-section-title home-events-title">
+            <h2 class="fw-semibold text-dark py-2 px-4 d-inline-block rounded-pill shadow-sm">
+                <i class="fa-solid fa-calendar-days me-2 text-info"></i>
+                Upcoming Events
+            </h2>
+        </div>
+
+        <div id="homeEventsCarousel" class="carousel slide" data-bs-ride="carousel">
+            <div class="carousel-inner">
+                <!-- Event cards will be inserted dynamically here -->
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#homeEventsCarousel"
+                data-bs-slide="prev">
+                <span class="carousel-control-prev-icon"></span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#homeEventsCarousel"
+                data-bs-slide="next">
+                <span class="carousel-control-next-icon"></span>
+            </button>
+        </div>
+    </section>
+
+    <!-- Team Members Section -->
     <section class="container mb-5">
         <h2 class="fw-bold text-center mb-4">Meet Our Team</h2>
-
         <div class="row g-4">
-
             <div class="col-md-4">
                 <div class="card h-100 shadow-sm border-0 rounded-4 text-center">
-                    <img src="images/syamil.jpg" class="card-img-top rounded-top-4" alt="Team Member 1">
+                    <img src="images/syamil.jpg" class="card-img-top team-img rounded-top-4" alt="Syamil">
                     <div class="card-body">
                         <h5 class="fw-bold">Syamil</h5>
                         <p class="text-muted mb-1">Project Manager</p>
-                        <p class="small text-secondary">
-                            Oversees project planning, coordination, and ensures system requirements are met.
-                        </p>
+                        <p class="small text-secondary">Oversees project planning, coordination, and ensures system
+                            requirements are met.</p>
                     </div>
                 </div>
             </div>
-
             <div class="col-md-4">
                 <div class="card h-100 shadow-sm border-0 rounded-4 text-center">
-                    <img src="images/izani.jpg" class="card-img-top rounded-top-4" alt="Team Member 2">
+                    <img src="images/izani.jpg" class="card-img-top team-img rounded-top-4" alt="Syafiqah Izani">
                     <div class="card-body">
                         <h5 class="fw-bold">Syafiqah Izani</h5>
                         <p class="text-muted mb-1">Frontend Developer</p>
-                        <p class="small text-secondary">
-                            Designs and implements user-friendly interfaces using HTML, CSS, and Bootstrap.
-                        </p>
+                        <p class="small text-secondary">Designs and implements user-friendly interfaces using HTML, CSS,
+                            and Bootstrap.</p>
                     </div>
                 </div>
             </div>
-
             <div class="col-md-4">
                 <div class="card h-100 shadow-sm border-0 rounded-4 text-center">
-                    <img src="images/lynn.jpg" class="card-img-top rounded-top-4" alt="Team Member 3">
+                    <img src="images/lynn.jpg" class="card-img-top team-img rounded-top-4" alt="Adlynn Syakirah">
                     <div class="card-body">
                         <h5 class="fw-bold">Adlynn Syakirah</h5>
                         <p class="text-muted mb-1">Backend Developer</p>
-                        <p class="small text-secondary">
-                            Handles system logic, database integration, and functionality.
+                        <p class="small text-secondary">Handles system logic, database integration, and functionality.
                         </p>
                     </div>
                 </div>
             </div>
-
         </div>
     </section>
+
 
     <!-- Footer -->
     <footer class="bg-green-1 text-white pt-5 pb-3">
