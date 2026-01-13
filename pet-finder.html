@@ -30,7 +30,7 @@
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link " href="adpot-pet.html">Adopt Pets</a>
+                    <a class="nav-link " href="adopt-pet.html">Adopt Pets</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link active " href="pet-finder.html">Pet Finder</a>
@@ -67,7 +67,7 @@
     <!--End Of Navigation-->
 
     <section class="container-fluid py-5">
-     
+
         <main class="container mt-5 pt-5">
             <div class="row gx-4 gy-5">
                 <div class="col-md-8">
@@ -264,46 +264,52 @@
 
             <!--Pop up message-->
             <button class="btn-contact-owner w-100 mt-2" data-bs-toggle="modal" data-bs-target="#petContactModal">
-    Contact Owner
-</button>
+                Contact Owner
+            </button>
 
-<div class="modal fade" id="petContactModal" tabindex="-1" aria-hidden="true">
-    <div class="modal-dialog modal-lg modal-dialog-centered">
-        <div class="modal-content border-0 shadow-lg" style="border-radius: 15px;">
-            <div class="modal-header border-0">
-                <h5 class="modal-title fw-bold">Pet Profile: <span id="modalPetName" class="text-primary"></span></h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body p-4">
-                <div class="row g-4">
-                    <div class="col-md-4">
-                        <img id="modalPetImg" src="assets/img/placeholder.jpg" class="img-fluid rounded-4 shadow-sm w-100"
-                            style="height: 250px; object-fit: cover;">
-                    </div>
-                    
-                    <div class="col-md-5 border-end">
-                        <h4 class="fw-bold mb-3" id="modalPetNameTitle">Buddy</h4>
-                        <div class="mb-2 small text-muted"><strong>Species:</strong> <span id="modalPetSpecies">Beagle</span></div>
-                        <div class="mb-2 small text-muted"><strong>Age:</strong> <span id="modalPetAge">2 Years</span></div>
-                        <div class="mb-2 small text-muted"><strong>Gender:</strong> <span id="modalPetGender">Male</span></div>
-                        <hr>
-                        <p class="small text-secondary" id="modalPetDesc">Friendly and energetic. Loves to play fetch.</p>
-                    </div>
+            <div class="modal fade" id="petContactModal" tabindex="-1" aria-hidden="true">
+                <div class="modal-dialog modal-lg modal-dialog-centered">
+                    <div class="modal-content border-0 shadow-lg" style="border-radius: 15px;">
+                        <div class="modal-header border-0">
+                            <h5 class="modal-title fw-bold">Pet Profile: <span id="modalPetName"
+                                    class="text-primary"></span></h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body p-4">
+                            <div class="row g-4">
+                                <div class="col-md-4">
+                                    <img id="modalPetImg" src="assets/img/placeholder.jpg"
+                                        class="img-fluid rounded-4 shadow-sm w-100"
+                                        style="height: 250px; object-fit: cover;">
+                                </div>
 
-                    <div class="col-md-3 text-center d-flex flex-column justify-content-center">
-                        <h6 class="fw-bold small mb-3">Ready to Help?</h6>
-                        <button class="btn btn-success rounded-pill mb-2 w-100 py-2 fw-bold">
-                            <i class="fa-brands fa-whatsapp"></i> WhatsApp
-                        </button>
-                        <button class="btn btn-outline-primary rounded-pill w-100 py-2 fw-bold">
-                            <i class="fa-solid fa-phone"></i> Call
-                        </button>
+                                <div class="col-md-5 border-end">
+                                    <h4 class="fw-bold mb-3" id="modalPetNameTitle">Buddy</h4>
+                                    <div class="mb-2 small text-muted"><strong>Species:</strong> <span
+                                            id="modalPetSpecies">Beagle</span></div>
+                                    <div class="mb-2 small text-muted"><strong>Age:</strong> <span id="modalPetAge">2
+                                            Years</span></div>
+                                    <div class="mb-2 small text-muted"><strong>Gender:</strong> <span
+                                            id="modalPetGender">Male</span></div>
+                                    <hr>
+                                    <p class="small text-secondary" id="modalPetDesc">Friendly and energetic. Loves to
+                                        play fetch.</p>
+                                </div>
+
+                                <div class="col-md-3 text-center d-flex flex-column justify-content-center">
+                                    <h6 class="fw-bold small mb-3">Ready to Help?</h6>
+                                    <button class="btn btn-success rounded-pill mb-2 w-100 py-2 fw-bold">
+                                        <i class="fa-brands fa-whatsapp"></i> WhatsApp
+                                    </button>
+                                    <button class="btn btn-outline-primary rounded-pill w-100 py-2 fw-bold">
+                                        <i class="fa-solid fa-phone"></i> Call
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </div>
-</div>
 
 
             <!--report lost bar-->

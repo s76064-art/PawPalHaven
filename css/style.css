@@ -47,17 +47,6 @@
     color: white !important;
 }
 
-.masthead {
-    background-image: url("../assets/img/header-bg.png") !important;
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: center;
-    height: 500px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
 .message {
     background-color: rgba(255, 246, 246, 0.544) !important;
     border-radius: .5em;
@@ -822,26 +811,17 @@ body {
 
 /* Background hearder adopt pet*/
 .header-section {
-    background-image: linear-gradient(rgba(98, 94, 94, 0.5), rgba(255, 249, 249, 0.5)) ,url('../images/background-2.png');
-    
-    background-size: cover;          /* Memenuhi ruang tanpa nampak penyek */
-    background-position: center;     /* Gambar sentiasa di tengah */
-    background-repeat: no-repeat;    /* Gambar tidak berulang */
-    min-height: 450px; 
-} 
-
-.custom-header {
-    /* Letakkan nama fail imej di sini */
-    background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url('login-registration-bg.jpg');
-
+    background-image: linear-gradient(rgba(142, 142, 142, 0.4), rgba(176, 165, 165, 0.697)), url('../images/background-2.png') !important;
+    background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
-    background-repeat: no-repeat;
-    min-height: 400px;
+    height: 400px; /* Increased height to account for nav space */
+    width: 100%;
+    margin-top: 0 !important; /* Remove any gaps at the top */
+    padding-top: 80px; /* Push the text down so it doesn't hit the nav */
     display: flex;
     align-items: center;
-    color: white;
-    
+    justify-content: center;
 }
 
 /*search bar pet finder*/
@@ -863,9 +843,7 @@ body {
     font-weight: 300;
 }
 
-<<<<<<< HEAD
 
-=======
 /* ============================================
    BONUS FEATURE: CSS TRANSITIONS & EFFECTS
    ============================================ */
@@ -922,7 +900,7 @@ body {
     transition: all 0.3s ease;
     position: relative;
     overflow: hidden;
-}
+}   
 
 .btn:hover {
     transform: translateY(-2px);
@@ -1094,4 +1072,3 @@ section {
 .form-group:focus-within {
     transform: translateY(-2px);
 }
->>>>>>> 502ebd48f94df15b8c50d7431998304f5edb761b

@@ -4,7 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Discover exciting pet-related events and workshops at PawPal Haven. Join our community for adoption events, training sessions, and more.">
+    <meta name="description"
+        content="Discover exciting pet-related events and workshops at PawPal Haven. Join our community for adoption events, training sessions, and more.">
     <meta name="keywords" content="pet events, dog training, pet workshops, adoption events, pet community">
     <meta name="author" content="PawPal Haven Team">
     <meta name="robots" content="index, follow">
@@ -78,11 +79,11 @@
     </nav>
 
     <!-- event section -->
-    <div class="container mt-5 pt-5">
+    <!-- <div class="header-section mt-5 pt-5">
         <div class="d-flex justify-content-between align-items-center flex-wrap mb-4">
 
             <div class="me-3">
-                <h1 class="display-4 fw-bold mb-0">Events</h1>
+                <h1 class="display-4 fw-bold mb-0"></h1>
                 <p class="lead text-muted mb-0">Discover exciting pet gatherings and workshops.</p>
             </div>
 
@@ -98,7 +99,32 @@
 
         </div>
         <hr>
-    </div>
+    </div> -->
+
+    <section class="header-section  py-5 mt-5 bg-white shadow-sm mb-5">
+        <div class=" container pt-4">
+            <div class="d-md-flex justify-content-between align-items-start text-center text-md-start">
+
+                <div class="header-content mb-4 mb-md-0">
+                    <h1 class="display-4 fw-bold text-dark">Events</h1>
+                    <p class="lead text-muted" style="max-width: 500px; stroke-width: 2%;">
+                        Discover exciting pet gatherings and workshops. </p>
+                </div>
+
+                <!--Search Bar -->
+                <div class="search-container col-12 col-md-4">
+                    <div class="input-group shadow-sm border rounded-pill overflow-hidden">
+                        <span class="input-group-text bg-white border-0 ps-3">
+                            <i class="fa-solid fa-magnifying-glass text-muted"></i>
+                        </span>
+                        <input type="text" id="eventSearch" class="form-control border-0 py-2"
+                            placeholder="Search events..." onkeyup="searchEvents()">
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
 
     <div class="row g-4" id="event-container">
     </div>
