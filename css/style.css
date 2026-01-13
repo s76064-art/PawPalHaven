@@ -1,14 +1,17 @@
 /*Root*/
 :root {
-    --reddit-color:     #FF4500;
-    --instagram-color:  #E1306C; /* primary pink gradient color */
-    --twitter-color:    #000000; /* X uses black as brand color */
-    --facebook-color:   #1877F2;
-    --tiktok-color:     #69C9D0; /* TikTok cyan accent */
-    --youtube-color:    #FF0000;
-    --linkedin-color:   #0A66C2;
-    --github-color:     #181717;
-    --others-color:     #858383;
+    --reddit-color: #FF4500;
+    --instagram-color: #E1306C;
+    /* primary pink gradient color */
+    --twitter-color: #000000;
+    /* X uses black as brand color */
+    --facebook-color: #1877F2;
+    --tiktok-color: #69C9D0;
+    /* TikTok cyan accent */
+    --youtube-color: #FF0000;
+    --linkedin-color: #0A66C2;
+    --github-color: #181717;
+    --others-color: #858383;
 }
 
 
@@ -78,6 +81,71 @@
     border-radius: 2vh;
     width: 100%;
 }
+
+/* Home Section Main Color */
+:root {
+    --home-main-color: #01776d;
+}
+
+/* Events Cards */
+.home-event-card {
+    border-radius: 15px;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.home-event-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 20px 30px rgba(0, 0, 0, 0.2);
+}
+
+.home-event-name {
+    color: var(--home-main-color);
+    font-size: 1.3rem;
+    font-weight: 700;
+}
+
+/* Social Buttons */
+.home-social-icons a {
+    color: #fff;
+    width: 40px;
+    height: 40px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    transition: transform 0.2s;
+}
+
+.home-social-icons a:hover {
+    transform: scale(1.2);
+}
+
+/* Pet Cards */
+.home-pet-card {
+    border-radius: 15px;
+    overflow: hidden;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.home-pet-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 15px 25px rgba(0, 0, 0, 0.2);
+}
+
+.home-pet-card img {
+    border-bottom: 1px solid #ddd;
+}
+
+.home-btn-contact {
+    background-color: var(--home-main-color);
+    border-color: var(--home-main-color);
+}
+
+.home-btn-contact:hover {
+    background-color: #016155;
+    border-color: #016155;
+}
+
 
 .slides {
     display: flex;
@@ -319,7 +387,7 @@
 
 /*Other color*/
 .fa-link:hover,
-.link-solid{
+.link-solid {
     color: var(--others-color);
 }
 
@@ -618,11 +686,13 @@ body {
 
 /* BUTTON */
 .btn-contact-owner {
-    background-color: #0d6efd; /* Your Blue */
+    background-color: #0d6efd;
+    /* Your Blue */
     color: white;
-    border-radius: 50px; /* Modern Pill Shape */
+    border-radius: 50px;
+    /* Modern Pill Shape */
     font-weight: 700;
-    width: 100%; 
+    width: 100%;
     padding: 12px 25px;
     margin-top: 10px;
     border: none;
@@ -630,8 +700,10 @@ body {
 }
 
 .btn-contact-owner:hover {
-    background-color: #0b5ed7; /* Slightly darker on hover */
-    transform: translateY(-2px); /* Subtle lift effect */
+    background-color: #0b5ed7;
+    /* Slightly darker on hover */
+    transform: translateY(-2px);
+    /* Subtle lift effect */
     box-shadow: 0 5px 15px rgba(13, 110, 253, 0.3);
 }
 
@@ -644,47 +716,47 @@ body {
 /*pop up contact owner untuk lost pet*/
 /* MODAL CARD */
 .pph-modal-card {
-  border-radius: 18px;
+    border-radius: 18px;
 }
 
 /* MODAL IMAGE */
 .pph-modal-img {
-  width: 100%;
-  max-width: 280px;
-  border-radius: 16px;
-  object-fit: cover;
+    width: 100%;
+    max-width: 280px;
+    border-radius: 16px;
+    object-fit: cover;
 }
 
 /* CONTACT SIDE */
 .pph-contact-box {
-  border-left: 1px solid #e0e0e0;
+    border-left: 1px solid #e0e0e0;
 }
 
 /* WHATSAPP BUTTON */
 .pph-whatsapp-btn {
-  background-color: #198754;
-  color: #fff;
-  border-radius: 30px;
-  padding: 12px;
-  font-weight: 600;
+    background-color: #198754;
+    color: #fff;
+    border-radius: 30px;
+    padding: 12px;
+    font-weight: 600;
 }
 
 .pph-whatsapp-btn:hover {
-  background-color: #157347;
+    background-color: #157347;
 }
 
 /* CALL BUTTON */
 .pph-call-btn {
-  border: 2px solid #0d6efd;
-  color: #0d6efd;
-  border-radius: 30px;
-  padding: 12px;
-  font-weight: 600;
+    border: 2px solid #0d6efd;
+    color: #0d6efd;
+    border-radius: 30px;
+    padding: 12px;
+    font-weight: 600;
 }
 
 .pph-call-btn:hover {
-  background-color: #0d6efd;
-  color: #fff;
+    background-color: #0d6efd;
+    color: #fff;
 }
 
 
@@ -818,23 +890,29 @@ body {
 .header-section {
     background-image: linear-gradient(rgba(142, 142, 142, 0.4), rgba(176, 165, 165, 0.697)), url('../images/background-2.png') !important;
     background-repeat: no-repeat;
-    background-image: linear-gradient(rgba(98, 94, 94, 0.5), rgba(255, 249, 249, 0.5)) ,url('../images/background-2.png');
-    
-    background-size: cover;          /* Memenuhi ruang tanpa nampak penyek */
-    background-position: center;     /* Gambar sentiasa di tengah */
-    background-repeat: no-repeat;    /* Gambar tidak berulang */
-    min-height: 450px; 
-} 
+    background-image: linear-gradient(rgba(98, 94, 94, 0.5), rgba(255, 249, 249, 0.5)), url('../images/background-2.png');
+
+    background-size: cover;
+    /* Memenuhi ruang tanpa nampak penyek */
+    background-position: center;
+    /* Gambar sentiasa di tengah */
+    background-repeat: no-repeat;
+    /* Gambar tidak berulang */
+    min-height: 450px;
+}
 
 .header-section-1 {
-    background-image: linear-gradient(rgba(98, 94, 94, 0.5), rgba(255, 249, 249, 0.5)) ,url('../assets/img/header-bg.png');
-    
-    background-size: cover;          /* Memenuhi ruang tanpa nampak penyek */
-    background-position: center;     /* Gambar sentiasa di tengah */
-    background-repeat: no-repeat;    /* Gambar tidak berulang */
-    min-height: 400px; 
+    background-image: linear-gradient(rgba(98, 94, 94, 0.5), rgba(255, 249, 249, 0.5)), url('../assets/img/header-bg.png');
+
+    background-size: cover;
+    /* Memenuhi ruang tanpa nampak penyek */
+    background-position: center;
+    /* Gambar sentiasa di tengah */
+    background-repeat: no-repeat;
+    /* Gambar tidak berulang */
+    min-height: 400px;
     max-height: 500px;
-} 
+}
 
 
 .custom-header {
@@ -843,10 +921,13 @@ body {
 
     background-size: cover;
     background-position: center;
-    height: 400px; /* Increased height to account for nav space */
+    height: 400px;
+    /* Increased height to account for nav space */
     width: 100%;
-    margin-top: 0 !important; /* Remove any gaps at the top */
-    padding-top: 80px; /* Push the text down so it doesn't hit the nav */
+    margin-top: 0 !important;
+    /* Remove any gaps at the top */
+    padding-top: 80px;
+    /* Push the text down so it doesn't hit the nav */
     display: flex;
     align-items: center;
     justify-content: center;
@@ -861,7 +942,7 @@ body {
 
 /* Optional: Make the underline turn dark when active */
 .input-group:focus-within {
-    border-color: #212529 !important; 
+    border-color: #212529 !important;
     transition: border-color 0.3s ease;
 }
 
@@ -923,7 +1004,7 @@ body {
     transition: all 0.3s ease;
     position: relative;
     overflow: hidden;
-}   
+}
 
 .btn:hover {
     transform: translateY(-2px);
@@ -978,11 +1059,15 @@ table tbody tr:hover {
 }
 
 /* Input field transitions */
-input, textarea, select {
+input,
+textarea,
+select {
     transition: all 0.3s ease;
 }
 
-input:focus, textarea:focus, select:focus {
+input:focus,
+textarea:focus,
+select:focus {
     transform: scale(1.02);
     box-shadow: 0 0 15px rgba(2, 175, 2, 0.4) !important;
 }
@@ -1044,6 +1129,7 @@ footer a:hover {
         opacity: 0;
         transform: translateY(-20px);
     }
+
     to {
         opacity: 1;
         transform: translateY(0);
@@ -1060,6 +1146,7 @@ footer a:hover {
         opacity: 0;
         transform: translateY(20px);
     }
+
     to {
         opacity: 1;
         transform: translateY(0);
@@ -1081,6 +1168,7 @@ section {
         opacity: 0;
         transform: translateY(30px);
     }
+
     to {
         opacity: 1;
         transform: translateY(0);
