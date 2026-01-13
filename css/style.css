@@ -947,9 +947,6 @@ body {
 /* Background hearder adopt pet*/
 .header-section {
     background-image: linear-gradient(rgba(142, 142, 142, 0.4), rgba(176, 165, 165, 0.697)), url('../images/background-2.png') !important;
-    background-repeat: no-repeat;
-    background-image: linear-gradient(rgba(98, 94, 94, 0.5), rgba(255, 249, 249, 0.5)), url('../images/background-2.png');
-
     background-size: cover;
     /* Memenuhi ruang tanpa nampak penyek */
     background-position: center;
@@ -958,20 +955,6 @@ body {
     /* Gambar tidak berulang */
     min-height: 450px;
 }
-
-.header-section-1 {
-    background-image: linear-gradient(rgba(98, 94, 94, 0.5), rgba(255, 249, 249, 0.5)), url('../assets/img/header-bg.png');
-
-    background-size: cover;
-    /* Memenuhi ruang tanpa nampak penyek */
-    background-position: center;
-    /* Gambar sentiasa di tengah */
-    background-repeat: no-repeat;
-    /* Gambar tidak berulang */
-    min-height: 400px;
-    max-height: 500px;
-}
-
 
 .custom-header {
     /* Letakkan nama fail imej di sini */
@@ -1018,7 +1001,7 @@ body {
 
 .nav-link:hover {
     transform: translateY(-2px);
-    color: #02af02 !important;
+    color: #f6fffc !important;
     text-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
@@ -1029,7 +1012,7 @@ body {
     left: 0;
     width: 0;
     height: 2px;
-    background-color: #02af02;
+    background-color: #cbed0a;
     transition: width 0.3s ease;
 }
 
