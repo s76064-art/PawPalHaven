@@ -1222,6 +1222,4 @@ section {
     transition: all 0.3s ease;
 }
 
-.form-group:focus-within {
-    transform: translateY(-2px);
 }
