@@ -623,27 +623,22 @@ body {
 }
 
 /* BUTTON */
-.pph-contact-btn {
-    background-color: #0d6efd;
+.btn-contact-owner {
+    background-color: #0d6efd; /* Your Blue */
     color: white;
-    border-radius: 50px;
+    border-radius: 50px; /* Modern Pill Shape */
     font-weight: 700;
-    width: fit-content;
-    padding: 10px 25px;
-    margin-top: 20px;
+    width: 100%; 
+    padding: 12px 25px;
+    margin-top: 10px;
     border: none;
-    
+    transition: all 0.3s ease;
 }
 
-.btn-contact-owner {
-    background-color: #0d6efd;
-    color: white;
-    border-radius: 50px;
-    font-weight: 700;
-    width: fit-content;
-    padding: 10px 25px;
-    margin-top: 20px;
-    border: none;
+.btn-contact-owner:hover {
+    background-color: #0b5ed7; /* Slightly darker on hover */
+    transform: translateY(-2px); /* Subtle lift effect */
+    box-shadow: 0 5px 15px rgba(13, 110, 253, 0.3);
 }
 
 
