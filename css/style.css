@@ -84,9 +84,25 @@
 
 :root {
     --home-main-color: #01776d;
+    --home-events-color: #01776d;
 }
 
-/* ----- Events ----- */
+/* Section Titles */
+.home-section-title h2 {
+    display: inline-block;
+    padding: 0.5rem 1.5rem;
+    border-radius: 10px;
+}
+
+.home-events-title h2 {
+    background-color: var(--home-events-color);
+}
+
+.home-pets-title h2 {
+    background-color: var(--home-main-color);
+}
+
+/* Event Card */
 .home-event-card {
     border-radius: 15px;
     transition: transform 0.3s, box-shadow 0.3s;
@@ -94,70 +110,61 @@
 
 .home-event-card:hover {
     transform: translateY(-10px);
-    box-shadow: 0 20px 30px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 20px 30px rgba(0, 0, 0, 0.15);
 }
 
-.home-event-name {
-    color: var(--home-main-color);
-    font-size: 1.2rem;
-    font-weight: 700;
-}
-
-.home-social-icons a {
+.home-event-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background: rgba(1, 119, 109, 0.419);
     color: #fff;
-    width: 40px;
-    height: 40px;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 50%;
-    transition: transform 0.2s;
+    border-top-right-radius: 15px;
 }
 
-.home-social-icons a:hover {
-    transform: scale(1.2);
-}
-
-.home-btn-facebook {
-    background: #3b5998;
-}
-
-.home-btn-youtube {
-    background: #ff0000;
-}
-
-.home-btn-twitter {
-    background: #1da1f2;
-}
-
-.home-btn-instagram {
-    background: #e1306c;
-}
-
-/* ----- Pets ----- */
+/* Pet Card */
 .home-pet-card {
     border-radius: 15px;
-    overflow: hidden;
     transition: transform 0.3s, box-shadow 0.3s;
+    background: #fff;
 }
 
 .home-pet-card:hover {
-    transform: translateY(-8px);
-    box-shadow: 0 15px 25px rgba(0, 0, 0, 0.2);
+    transform: translateY(-10px);
+    box-shadow: 0 20px 30px rgba(0, 0, 0, 0.15);
 }
 
-.home-pet-card img {
-    border-bottom: 1px solid #ddd;
+.home-pet-img img {
+    width: 120px;
+    height: 120px;
+    object-fit: cover;
+    border: 4px solid var(--home-main-color);
+}
+
+.home-pet-info .badge {
+    font-size: 0.85rem;
+    padding: 0.5em 0.7em;
+    border-radius: 10px;
 }
 
 .home-btn-contact {
     background-color: var(--home-main-color);
     border-color: var(--home-main-color);
+    font-weight: 600;
+    transition: all 0.3s;
 }
 
 .home-btn-contact:hover {
     background-color: #016155;
     border-color: #016155;
+}
+
+/* Carousel Controls */
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+    width: 3rem;
+    height: 3rem;
 }
 
 
