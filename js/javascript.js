@@ -2451,31 +2451,45 @@ function toggleEdit() {
 
 
 
-/*pop up lost pet*/
-document.addEventListener("DOMContentLoaded", function () {
-    const modal = document.getElementById("petContactModal");
+/*pop up adopt pet*/
+function showPetDetails(name, species, age, gender, desc, imgPath) {
 
-    modal.addEventListener("show.bs.modal", function (event) {
-        const button = event.relatedTarget;
+    document.getElementById('modalPetName').innerText = name;
+    document.getElementById('modalPetSpecies').innerText = species;
+    document.getElementById('modalPetAge').innerText = age;
+    document.getElementById('modalPetGender').innerText = gender;
+    document.getElementById('modalPetDesc').innerText = desc;
+    document.getElementById('modalPetImg').src = imgPath;
+}
 
-        // Get data from button
-        document.getElementById("modalPetName").textContent = button.dataset.name;
-        document.getElementById("modalPetNameTitle").textContent = button.dataset.name;
-        document.getElementById("modalPetSpecies").textContent = button.dataset.species;
-        document.getElementById("modalPetAge").textContent = button.dataset.age;
-        document.getElementById("modalPetGender").textContent = button.dataset.gender;
-        document.getElementById("modalPetDesc").textContent = button.dataset.desc;
-        document.getElementById("modalPetImg").src = button.dataset.img;
-         // WhatsApp & Call links
-        document.getElementById("whatsappBtn").href =
-            `https://wa.me/${phone}?text=I%20found%20your%20pet%20(${button.dataset.name})`;
 
-        document.getElementById("callBtn").href = `tel:${phone}`;
-    });
+/* report lost pet button 
+// 1. Handle Sign In (Stays on Pet Finder Page)
+document.getElementById('signInForm').addEventListener('submit', function (e) {
+    e.preventDefault();
+
+    // Close the Modal
+    const authModal = bootstrap.Modal.getInstance(document.getElementById('authModal'));
+    authModal.hide();
+
+    // Show a success alert (Optional)
+    alert("Signed in successfully! Returning to Pet Finder.");
+
+    // Page doesn't change, just closes the modal so they can continue looking at pets
 });
 
+// 2. Handle Sign Up (Redirects to Profile Page)
+document.getElementById('signUpForm').addEventListener('submit', function (e) {
+    e.preventDefault();
 
-/** Search pet lynn tpi tak function lagi*/
+    // Show a success alert
+    alert("Account created! Redirecting to your Profile...");
+
+    // Redirect to profile page (Make sure you have profile.html created)
+    window.location.href = "profile.html";
+});
+
+/** Search pet lynn */
 function searchPets() {
     // 1. Get what the user typed in the search bar
     const searchTerm = document.getElementById('petSearch').value.toLowerCase();

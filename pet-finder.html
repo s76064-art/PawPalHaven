@@ -71,7 +71,7 @@
 
                 <div class="header-content mb-4 mb-md-0">
                     <h1 class="display-4 fw-bold text-dark">
-                        <span class="text-success">Lost</span> Pet
+                        <span class="text-success">Lost</span> Pet 
                     </h1>
                     <p class="lead text-muted" style="max-width: 500px; stroke-width: 2%;">
                         Every pet deserves a loving home. Help us reunite these furry friends with their families.
@@ -118,7 +118,8 @@
                         <i class="fa-solid fa-location-dot text-danger me-2"></i>
                         Sungai Buloh, Selangor
                     </p>
-                    <button class="btn-contact-owner" data-bs-toggle="modal" data-bs-target="#petContactModal">
+                    <button class="btn btn-contact-owner w-100 mt-2" data-bs-toggle="modal"
+                        data-bs-target="#petContactlModal">
                         Contact Owner
                     </button>
                 </div>
@@ -145,7 +146,8 @@
                         <i class="fa-solid fa-location-dot text-danger me-2"></i>
                         Batu Pahat, Johor
                     </p>
-                    <button class="btn-contact-owner" data-bs-toggle="modal" data-bs-target="#petContactModal">
+                    <button class="btn btn-contact-owner w-100 mt-2" data-bs-toggle="modal"
+                        data-bs-target="#petContactlModal">
                         Contact Owner
                     </button>
                 </div>
@@ -172,7 +174,8 @@
                         <i class="fa-solid fa-location-dot text-danger me-2"></i>
                         Alor Star, Kedah
                     </p>
-                    <button class="btn-contact-owner" data-bs-toggle="modal" data-bs-target="#petContactModal">
+                    <button class="btn btn-contact-owner w-100 mt-2" data-bs-toggle="modal"
+                        data-bs-target="#petContactlModal">
                         Contact Owner
                     </button>
                 </div>
@@ -199,7 +202,8 @@
                         <i class="fa-solid fa-location-dot text-danger me-2"></i>
                         Kuala Nerus, Terengganu
                     </p>
-                    <button class="btn-contact-owner" data-bs-toggle="modal" data-bs-target="#petContactModal">
+                    <button class="btn btn-contact-owner w-100 mt-2" data-bs-toggle="modal"
+                        data-bs-target="#petContactlModal">
                         Contact Owner
                     </button>
                 </div>
@@ -226,7 +230,8 @@
                         <i class="fa-solid fa-location-dot text-danger me-2"></i>
                         Langkawi, Kedah
                     </p>
-                    <button class="btn-contact-owner" data-bs-toggle="modal" data-bs-target="#petContactModal">
+                    <button class="btn btn-contact-owner w-100 mt-2" data-bs-toggle="modal"
+                        data-bs-target="#petContactlModal">
                         Contact Owner
                     </button>
                 </div>
@@ -253,18 +258,10 @@
                         <i class="fa-solid fa-location-dot text-danger me-2"></i>
                         Pekan, Pahang
                     </p>
-                    <button class="btn-contact-owner"class="btn-contact-owner w-100 mt-2"
-    data-bs-toggle="modal"
-    data-bs-target="#petContactModal"
-    data-name="Oyen"
-    data-species="Maine Coon"
-    data-age="Unknown"
-    data-gender="Unknown"
-    data-img="images/petLost (6).jpg"
-    data-desc="Orange Maine Coon, friendly but shy.">
+                    <button class="btn-contact-owner w-100 mt-2" data-bs-toggle="modal"
+                        data-bs-target="#petContactModal">
                         Contact Owner
                     </button>
-
                 </div>
             </div>
 
@@ -272,7 +269,11 @@
     </div>
     </div>
 
-    <!--Contact owner modal-->
+    <!--Pop up message-->
+    <button class="btn-contact-owner w-100 mt-2" data-bs-toggle="modal" data-bs-target="#petContactModal">
+        Contact Owner
+    </button>
+
     <div class="modal fade" id="petContactModal" tabindex="-1" aria-hidden="true">
         <div class="modal-dialog modal-lg modal-dialog-centered">
             <div class="modal-content border-0 shadow-lg" style="border-radius: 15px;">
@@ -300,23 +301,11 @@
                             <p class="small text-secondary" id="modalPetDesc">Friendly and energetic. Loves to
                                 play fetch.</p>
                         </div>
-                        <div class="d-flex justify-content-between align-items-center social-font text-muted fs-5">
-   <div class="col-md-3 d-flex justify-content-center">
-        <div class="social-vertical">
-            <a href="#"><i class="fa-brands fa-facebook"></i></a>
-            <a href="#"><i class="fa-brands fa-instagram"></i></a>
-            <a href="#"><i class="fa-brands fa-tiktok"></i></a>
-            <a href="#"><i class="fa-brands fa-whatsapp"></i></a>
-            <i class="fa-regular fa-map" onclick="openMapModal('5.352468,103.099591')"></i>
-        </div>
-    </div>
+
                         <div class="col-md-3 text-center d-flex flex-column justify-content-center">
                             <h6 class="fw-bold small mb-3">Ready to Help?</h6>
                             <button class="btn btn-success rounded-pill mb-2 w-100 py-2 fw-bold">
                                 <i class="fa-brands fa-whatsapp"></i> WhatsApp
-                            </button>
-                            <button class="btn btn-outline-primary rounded-pill w-100 py-2 fw-bold">
-                                <i class="fa-solid fa-phone"></i> Call
                             </button>
                             <button class="btn btn-outline-primary rounded-pill w-100 py-2 fw-bold">
                                 <i class="fa-solid fa-phone"></i> Call
@@ -327,6 +316,79 @@
             </div>
         </div>
     </div>
+
+
+    <!--report lost bar-->
+
+    <!-- <div class="modal fade" id="authModal" tabindex="-1" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered">
+                    <div class="modal-content border-0 shadow rounded-4">
+                        <div class="modal-header border-0 pb-0">
+                            <ul class="nav nav-pills mb-3 w-100" id="pills-tab" role="tablist">
+                                <li class="nav-item w-50" role="presentation">
+                                    <button class="nav-link active w-100 rounded-pill" id="pills-login-tab"
+                                        data-bs-toggle="pill" data-bs-target="#pills-login" type="button"
+                                        role="tab">Sign In</button>
+                                </li>
+                                <li class="nav-item w-50" role="presentation">
+                                    <button class="nav-link w-100 rounded-pill" id="pills-register-tab"
+                                        data-bs-toggle="pill" data-bs-target="#pills-register" type="button"
+                                        role="tab">Sign Up</button>
+                                </li>
+                            </ul>
+                            <button type="button" class="btn-close ms-auto" data-bs-dismiss="modal"
+                                aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body p-4 pt-0">
+                            <div class="tab-content" id="pills-tabContent">
+
+                                <div class="tab-pane fade show active" id="pills-login" role="tabpanel">
+                                    <form id="signInForm" class="text-center">
+                                        <h3 class="fw-bold mb-3">Welcome Back</h3>
+                                        <div class="form-floating mb-3">
+                                            <input type="email" class="form-control" id="loginEmail"
+                                                placeholder="name@example.com" required>
+                                            <label>Email address</label>
+                                        </div>
+                                        <div class="form-floating mb-4">
+                                            <input type="password" class="form-control" id="loginPass"
+                                                placeholder="Password" required>
+                                            <label>Password</label>
+                                        </div>
+                                        <button type="submit" class="btn btn-dark w-100 py-3 rounded-pill fw-bold">Sign
+                                            In & Continue</button>
+                                    </form>
+                                </div>
+
+                                <div class="tab-pane fade" id="pills-register" role="tabpanel">
+                                    <form id="signUpForm" class="text-center">
+                                        <h3 class="fw-bold mb-3">Create Account</h3>
+                                        <div class="form-floating mb-3">
+                                            <input type="text" class="form-control" id="regName" placeholder="Full Name"
+                                                required>
+                                            <label>Full Name</label>
+                                        </div>
+                                        <div class="form-floating mb-3">
+                                            <input type="email" class="form-control" id="regEmail"
+                                                placeholder="name@example.com" required>
+                                            <label>Email address</label>
+                                        </div>
+                                        <div class="form-floating mb-4">
+                                            <input type="password" class="form-control" id="regPass"
+                                                placeholder="Password" required>
+                                            <label>Password</label>
+                                        </div>
+                                        <button type="submit"
+                                            class="btn btn-primary w-100 py-3 rounded-pill fw-bold">Sign Up & Create
+                                            Profile</button>
+                                    </form>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div> -->
 
 
     <footer class="footer border-top">

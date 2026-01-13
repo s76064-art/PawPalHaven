@@ -18,7 +18,7 @@
 /*Color*/
 
 .bg-green-1 {
-    background-color: #118a80 !important;
+    background-color: #01776d !important;
 }
 
 .bg-green-2 {
@@ -43,7 +43,7 @@
 }
 
 #nav-bar {
-    background-color: #00a395 !important;
+    background-color: #01776d !important;
 }
 
 #nav-bar-transparent-off {
@@ -82,7 +82,6 @@
     width: 100%;
 }
 
-/* Home Section Main Color */
 :root {
     --home-main-color: #01776d;
 }
@@ -175,6 +174,7 @@
     background-color: #016155;
     border-color: #016155;
 }
+
 
 
 .slides {
@@ -715,20 +715,13 @@ body {
 }
 
 /* BUTTON */
-
-.btn-contact-owner {
-    background: rgb(5, 174, 8) !important;
-        font-weight: 700;
-    border: none;
-    border-radius: 50px;
-}
-
 .btn-contact-owner {
     background-color: #0d6efd;
     /* Your Blue */
     color: white;
     border-radius: 50px;
     /* Modern Pill Shape */
+    font-weight: 700;
     width: 100%;
     padding: 12px 25px;
     margin-top: 10px;
@@ -997,7 +990,7 @@ body {
 
 .nav-link:hover {
     transform: translateY(-2px);
-    color: #f1f8f1 !important;
+    color: #02af02 !important;
     text-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
@@ -1008,7 +1001,7 @@ body {
     left: 0;
     width: 0;
     height: 2px;
-    background-color: #19b19b;
+    background-color: #02af02;
     transition: width 0.3s ease;
 }
 
