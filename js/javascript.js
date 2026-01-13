@@ -1742,6 +1742,7 @@ function addMapPicker(id, cityId, latitudeId, longitudeId, stateid, countryId) {
         if (marker) map.removeLayer(marker); // Remove existing marker
         marker = L.marker([lat, lng]).addTo(map);
         map.setView([lat, lng], 13); // Center map on marker
+        console.log("Update");
     }
 
 
@@ -1760,8 +1761,10 @@ function addMapPicker(id, cityId, latitudeId, longitudeId, stateid, countryId) {
         // Remove old click listeners to avoid multiple markers
         map.off('click');
 
+
         // Try geolocation
-        if (navigator.geolocation) {
+        if (navigator.geolocation && !document.getElementById(latitudeId).value && !document.getElementById(longitudeId).value) {
+            console.log("Using current location")
             navigator.geolocation.getCurrentPosition(function (position) {
                 const userLat = position.coords.latitude;
                 const userLng = position.coords.longitude;
@@ -2445,7 +2448,7 @@ function showPetDetails(name, species, age, gender, desc, imgPath) {
 }
 
 
-/* report lost pet button */
+/* report lost pet button 
 // 1. Handle Sign In (Stays on Pet Finder Page)
 document.getElementById('signInForm').addEventListener('submit', function (e) {
     e.preventDefault();
