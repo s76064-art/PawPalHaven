@@ -107,13 +107,6 @@
     font-weight: 700;
 }
 
-.team-img {
-    height: 250px;              
-    width: 100%;                
-    object-fit: cover;            
-    object-position: center;      
-}
-
 .home-social-icons a {
     color: #fff;
     width: 40px;
@@ -1037,7 +1030,7 @@ body {
     height: 280px;          /* control frame height */
     width: 100%;
     object-fit: cover;      /* crop nicely */
-    object-position: center 25%; /* move image down */
+    object-position: center 30%; /* move image down */
     border-top-left-radius: 1rem;
     border-top-right-radius: 1rem;
 }
