@@ -107,13 +107,6 @@
     font-weight: 700;
 }
 
-.team-img {
-    height: 250px;              
-    width: 100%;                
-    object-fit: cover;            
-    object-position: center;      
-}
-
 .home-social-icons a {
     color: #fff;
     width: 40px;
@@ -1032,6 +1025,19 @@ body {
 .nav-link:hover::after {
     width: 100%;
 }
+
+.team-img {
+    height: 280px;          /* control frame height */
+    width: 100%;
+    object-fit: cover;      /* crop nicely */
+    object-position: center 30%; /* move image down */
+    border-top-left-radius: 1rem;
+    border-top-right-radius: 1rem;
+}
+.team-img.face-low {
+    object-position: center 15%;
+}
+
 
 /* Card hover effects with smooth transitions */
 .card {
