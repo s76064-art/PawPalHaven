@@ -101,148 +101,168 @@
     </section>
 
 
-    <!-- Upcoming Events Section -->
-    <section class="container-fluid py-5 home-events-section">
-        <div class="text-center mb-4 home-section-title home-events-title">
-            <h2 class="fw-bold text-white py-2 rounded">Upcoming Events</h2>
-        </div>
-
-        <div id="homeEventsCarousel" class="carousel slide" data-bs-ride="carousel">
-            <div class="carousel-inner">
-
-                <!-- Event Slide -->
-                <div class="carousel-item active">
-                    <div class="row justify-content-center">
-                        <div class="col-lg-6 col-md-8">
-                            <div class="card home-event-card shadow-lg border-0 overflow-hidden">
-                                <div class="position-relative">
-                                    <img src="assets/img/Poster1.png" class="card-img-top" alt="Event Poster">
-                                    <div class="home-event-overlay p-3">
-                                        <h5 class="card-title text-white">Pet Adoption Fair</h5>
-                                        <p class="mb-1"><span class="badge bg-info">Date: 15 Jan 2026</span></p>
-                                        <p class="mb-1"><span class="badge bg-warning text-dark">Time: 10:00 AM</span>
-                                        </p>
-                                        <p><span class="badge bg-success">Location: Kuala Lumpur</span></p>
-                                    </div>
-                                </div>
-                                <div class="card-body">
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec eget dictum ante,
-                                        non ornare magna.</p>
-                                    <div class="d-flex justify-content-center mt-3">
-                                        <a href="#" class="btn btn-facebook mx-1"><i
-                                                class="fa-brands fa-facebook"></i></a>
-                                        <a href="#" class="btn btn-youtube mx-1"><i
-                                                class="fa-brands fa-youtube"></i></a>
-                                        <a href="#" class="btn btn-twitter mx-1"><i
-                                                class="fa-brands fa-twitter"></i></a>
-                                        <a href="#" class="btn btn-instagram mx-1"><i
-                                                class="fa-brands fa-instagram"></i></a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                     <div class="carousel-item active">
-                    <div class="row justify-content-center">
-                        <div class="col-lg-6 col-md-8">
-                            <div class="card home-event-card shadow-lg border-0 overflow-hidden">
-                                <div class="position-relative">
-                                    <img src="assets/img/Poster1.png" class="card-img-top" alt="Event Poster">
-                                    <div class="home-event-overlay p-3">
-                                        <h5 class="card-title text-white">Pet Adoption Fair</h5>
-                                        <p class="mb-1"><span class="badge bg-info">Date: 15 Jan 2026</span></p>
-                                        <p class="mb-1"><span class="badge bg-warning text-dark">Time: 10:00 AM</span>
-                                        </p>
-                                        <p><span class="badge bg-success">Location: Kuala Lumpur</span></p>
-                                    </div>
-                                </div>
-                                <div class="card-body">
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec eget dictum ante,
-                                        non ornare magna.</p>
-                                    <div class="d-flex justify-content-center mt-3">
-                                        <a href="#" class="btn btn-facebook mx-1"><i
-                                                class="fa-brands fa-facebook"></i></a>
-                                        <a href="#" class="btn btn-youtube mx-1"><i
-                                                class="fa-brands fa-youtube"></i></a>
-                                        <a href="#" class="btn btn-twitter mx-1"><i
-                                                class="fa-brands fa-twitter"></i></a>
-                                        <a href="#" class="btn btn-instagram mx-1"><i
-                                                class="fa-brands fa-instagram"></i></a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Duplicate for more events -->
+    <main>
+        <!-- Events Section -->
+        <section class="container-fluid home-events-section bg-light py-5">
+            <div class="text-center mb-5">
+                <h2 class="fw-bold text-dark home-events-title">Upcoming Events</h2>
             </div>
 
-            <!-- Carousel Controls -->
-            <button class="carousel-control-prev" type="button" data-bs-target="#homeEventsCarousel"
-                data-bs-slide="prev">
-                <span class="carousel-control-prev-icon bg-dark rounded-circle p-2"></span>
-            </button>
-            <button class="carousel-control-next" type="button" data-bs-target="#homeEventsCarousel"
-                data-bs-slide="next">
-                <span class="carousel-control-next-icon bg-dark rounded-circle p-2"></span>
-            </button>
-        </div>
-    </section>
+            <div id="homeEventsCarousel" class="carousel slide" data-bs-ride="carousel">
+                <div class="carousel-inner">
 
-    <!-- Adopt a Pet Section -->
-    <section class="container-fluid py-5 home-pets-section bg-light">
-        <div class="text-center mb-4 home-section-title home-pets-title">
-            <h2 class="fw-bold text-white py-2 rounded">Adopt A Pet</h2>
-        </div>
-
-        <div id="homePetsCarousel" class="carousel slide" data-bs-ride="carousel">
-            <div class="carousel-inner">
-
-                <!-- Pet Slide -->
-                <div class="carousel-item active">
-                    <div class="row justify-content-center g-4">
-
-                        <div class="col-lg-3 col-md-6">
-                            <div class="card home-pet-card shadow-lg border-0 h-100 text-center p-3">
-                                <div class="home-pet-name-banner bg-success text-white py-2 rounded-top">
-                                    <h5 class="mb-0">Snowy</h5>
+                    <!-- Slide 1 -->
+                    <div class="carousel-item active">
+                        <div class="row g-4 justify-content-center">
+                            <!-- Event Card 1 -->
+                            <div class="col-lg-4 col-md-6">
+                                <div class="card home-event-card shadow-lg border-0 h-100">
+                                    <img src="assets/img/Poster1.png" class="card-img-top" alt="Event Poster">
+                                    <div class="card-body">
+                                        <h5 class="card-title home-event-name">Pet Adoption Fair</h5>
+                                        <p class="mb-1"><strong>Date:</strong> 20 Jan 2026</p>
+                                        <p class="mb-1"><strong>Time:</strong> 10:00 AM - 4:00 PM</p>
+                                        <p class="mb-1"><strong>Location:</strong> Kuala Lumpur City Park</p>
+                                        <p class="card-text">
+                                            Join us for a fun-filled day of pet adoption, activities, and meet other pet
+                                            lovers!
+                                        </p>
+                                        <div class="d-flex justify-content-center mt-3 home-social-icons">
+                                            <a href="#" class="btn home-btn-facebook mx-1"><i
+                                                    class="fab fa-facebook"></i></a>
+                                            <a href="#" class="btn home-btn-youtube mx-1"><i
+                                                    class="fab fa-youtube"></i></a>
+                                            <a href="#" class="btn home-btn-twitter mx-1"><i
+                                                    class="fab fa-twitter"></i></a>
+                                            <a href="#" class="btn home-btn-instagram mx-1"><i
+                                                    class="fab fa-instagram"></i></a>
+                                        </div>
+                                    </div>
                                 </div>
+                            </div>
 
-                                <div class="home-pet-img my-3">
-                                    <img src="assets/img/petAdoptionImages/cat.png"
-                                        class="img-fluid rounded-circle home-pet-img-border" alt="Snowy">
+                            <!-- Event Card 2 -->
+                            <div class="col-lg-4 col-md-6">
+                                <div class="card home-event-card shadow-lg border-0 h-100">
+                                    <img src="assets/img/Poster2.png" class="card-img-top" alt="Event Poster">
+                                    <div class="card-body">
+                                        <h5 class="card-title home-event-name">Pet Wellness Workshop</h5>
+                                        <p class="mb-1"><strong>Date:</strong> 27 Jan 2026</p>
+                                        <p class="mb-1"><strong>Time:</strong> 1:00 PM - 5:00 PM</p>
+                                        <p class="mb-1"><strong>Location:</strong> PetCare Center</p>
+                                        <p class="card-text">
+                                            Learn how to take care of your furry friends with tips from professional
+                                            veterinarians.
+                                        </p>
+                                        <div class="d-flex justify-content-center mt-3 home-social-icons">
+                                            <a href="#" class="btn home-btn-facebook mx-1"><i
+                                                    class="fab fa-facebook"></i></a>
+                                            <a href="#" class="btn home-btn-youtube mx-1"><i
+                                                    class="fab fa-youtube"></i></a>
+                                            <a href="#" class="btn home-btn-twitter mx-1"><i
+                                                    class="fab fa-twitter"></i></a>
+                                            <a href="#" class="btn home-btn-instagram mx-1"><i
+                                                    class="fab fa-instagram"></i></a>
+                                        </div>
+                                    </div>
                                 </div>
-
-                                <div class="home-pet-info d-flex justify-content-center flex-wrap mb-3">
-                                    <span class="badge bg-primary m-1"><i class="fas fa-paw me-1"></i>Cat</span>
-                                    <span class="badge bg-warning text-dark m-1"><i
-                                            class="fas fa-birthday-cake me-1"></i>2 Years</span>
-                                    <span class="badge bg-info text-dark m-1"><i
-                                            class="fas fa-venus-mars me-1"></i>Female</span>
-                                </div>
-
-                                <a href="contact.html" class="btn home-btn-contact btn-primary w-100">Contact Owner</a>
                             </div>
                         </div>
-
-                         
-                        <!-- Duplicate for more pets -->
                     </div>
+
+                    <!-- Add more slides if needed -->
                 </div>
+
+                <!-- Carousel Controls -->
+                <button class="carousel-control-prev" type="button" data-bs-target="#homeEventsCarousel"
+                    data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon bg-dark rounded-circle p-2"></span>
+                    <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#homeEventsCarousel"
+                    data-bs-slide="next">
+                    <span class="carousel-control-next-icon bg-dark rounded-circle p-2"></span>
+                    <span class="visually-hidden">Next</span>
+                </button>
+            </div>
+        </section>
+
+        <!-- Adopt A Pet Section -->
+        <section class="container-fluid home-pets-section bg-light py-5">
+            <div class="text-center mb-5">
+                <h2 class="fw-bold text-dark home-pets-title">Adopt A Pet</h2>
             </div>
 
-            <!-- Carousel Controls -->
-            <button class="carousel-control-prev" type="button" data-bs-target="#homePetsCarousel" data-bs-slide="prev">
-                <span class="carousel-control-prev-icon bg-dark rounded-circle p-2"></span>
-            </button>
-            <button class="carousel-control-next" type="button" data-bs-target="#homePetsCarousel" data-bs-slide="next">
-                <span class="carousel-control-next-icon bg-dark rounded-circle p-2"></span>
-            </button>
-        </div>
-    </section>
+            <div id="homePetsCarousel" class="carousel slide" data-bs-ride="carousel">
+                <div class="carousel-inner">
+
+                    <!-- Slide 1 -->
+                    <div class="carousel-item active">
+                        <div class="row g-4 justify-content-center">
+                            <!-- Pet Card 1 -->
+                            <div class="col-lg-3 col-md-6">
+                                <div class="card home-pet-card shadow-lg border-0 h-100 text-center">
+                                    <h5 class="card-header bg-success text-white home-pet-name">Snowy</h5>
+                                    <img src="assets/img/petAdoptionImages/cat.png" class="card-img-top" alt="Snowy">
+                                    <div class="card-body">
+                                        <p class="mb-1"><strong>Species:</strong> Cat</p>
+                                        <p class="mb-1"><strong>Age:</strong> 2 Years</p>
+                                        <p class="mb-1"><strong>Gender:</strong> Female</p>
+                                        <p class="mb-1"><strong>Color:</strong> White</p>
+                                        <a href="contact.html" class="btn home-btn-contact mt-3">Contact Owner</a>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Pet Card 2 -->
+                            <div class="col-lg-3 col-md-6">
+                                <div class="card home-pet-card shadow-lg border-0 h-100 text-center">
+                                    <h5 class="card-header bg-success text-white home-pet-name">Buddy</h5>
+                                    <img src="assets/img/petAdoptionImages/dog.png" class="card-img-top" alt="Buddy">
+                                    <div class="card-body">
+                                        <p class="mb-1"><strong>Species:</strong> Dog</p>
+                                        <p class="mb-1"><strong>Age:</strong> 1 Year</p>
+                                        <p class="mb-1"><strong>Gender:</strong> Male</p>
+                                        <p class="mb-1"><strong>Color:</strong> Brown</p>
+                                        <a href="contact.html" class="btn home-btn-contact mt-3">Contact Owner</a>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Pet Card 3 -->
+                            <div class="col-lg-3 col-md-6">
+                                <div class="card home-pet-card shadow-lg border-0 h-100 text-center">
+                                    <h5 class="card-header bg-success text-white home-pet-name">Luna</h5>
+                                    <img src="assets/img/petAdoptionImages/rabbit.png" class="card-img-top" alt="Luna">
+                                    <div class="card-body">
+                                        <p class="mb-1"><strong>Species:</strong> Rabbit</p>
+                                        <p class="mb-1"><strong>Age:</strong> 6 Months</p>
+                                        <p class="mb-1"><strong>Gender:</strong> Female</p>
+                                        <p class="mb-1"><strong>Color:</strong> Gray</p>
+                                        <a href="contact.html" class="btn home-btn-contact mt-3">Contact Owner</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Add more slides if needed -->
+                </div>
+
+                <!-- Carousel Controls -->
+                <button class="carousel-control-prev" type="button" data-bs-target="#homePetsCarousel"
+                    data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon bg-dark rounded-circle p-2"></span>
+                    <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#homePetsCarousel"
+                    data-bs-slide="next">
+                    <span class="carousel-control-next-icon bg-dark rounded-circle p-2"></span>
+                    <span class="visually-hidden">Next</span>
+                </button>
+            </div>
+        </section>
+    </main>
 
     <!-- Map Modal -->
     <div class="modal fade" id="mapModal" tabindex="-1" aria-labelledby="mapModalLabel" aria-hidden="true">
