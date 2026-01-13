@@ -1026,6 +1026,19 @@ body {
     width: 100%;
 }
 
+.team-img {
+    height: 280px;          /* control frame height */
+    width: 100%;
+    object-fit: cover;      /* crop nicely */
+    object-position: center 25%; /* move image down */
+    border-top-left-radius: 1rem;
+    border-top-right-radius: 1rem;
+}
+.team-img.face-low {
+    object-position: center 15%;
+}
+
+
 /* Card hover effects with smooth transitions */
 .card {
     transition: all 0.4s cubic-bezier(0.23, 1, 0.320, 1);
