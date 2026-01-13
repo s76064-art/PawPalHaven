@@ -18,7 +18,7 @@
 /*Color*/
 
 .bg-green-1 {
-    background-color: #01776d !important;
+    background-color: #118a80 !important;
 }
 
 .bg-green-2 {
@@ -43,7 +43,7 @@
 }
 
 #nav-bar {
-    background-color: #01776d !important;
+    background-color: #00a395 !important;
 }
 
 #nav-bar-transparent-off {
@@ -82,11 +82,12 @@
     width: 100%;
 }
 
+/* Home Section Main Color */
 :root {
     --home-main-color: #01776d;
 }
 
-/* ----- Events ----- */
+/* Events Cards */
 .home-event-card {
     border-radius: 15px;
     transition: transform 0.3s, box-shadow 0.3s;
@@ -99,10 +100,11 @@
 
 .home-event-name {
     color: var(--home-main-color);
-    font-size: 1.2rem;
+    font-size: 1.3rem;
     font-weight: 700;
 }
 
+/* Social Buttons */
 .home-social-icons a {
     color: #fff;
     width: 40px;
@@ -118,23 +120,7 @@
     transform: scale(1.2);
 }
 
-.home-btn-facebook {
-    background: #3b5998;
-}
-
-.home-btn-youtube {
-    background: #ff0000;
-}
-
-.home-btn-twitter {
-    background: #1da1f2;
-}
-
-.home-btn-instagram {
-    background: #e1306c;
-}
-
-/* ----- Pets ----- */
+/* Pet Cards */
 .home-pet-card {
     border-radius: 15px;
     overflow: hidden;
@@ -159,7 +145,6 @@
     background-color: #016155;
     border-color: #016155;
 }
-
 
 
 .slides {
@@ -700,13 +685,20 @@ body {
 }
 
 /* BUTTON */
+
+.btn-contact-owner {
+    background: rgb(5, 174, 8) !important;
+        font-weight: 700;
+    border: none;
+    border-radius: 50px;
+}
+
 .btn-contact-owner {
     background-color: #0d6efd;
     /* Your Blue */
     color: white;
     border-radius: 50px;
     /* Modern Pill Shape */
-    font-weight: 700;
     width: 100%;
     padding: 12px 25px;
     margin-top: 10px;
@@ -975,7 +967,7 @@ body {
 
 .nav-link:hover {
     transform: translateY(-2px);
-    color: #02af02 !important;
+    color: #f1f8f1 !important;
     text-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
@@ -986,7 +978,7 @@ body {
     left: 0;
     width: 0;
     height: 2px;
-    background-color: #02af02;
+    background-color: #19b19b;
     transition: width 0.3s ease;
 }
 
