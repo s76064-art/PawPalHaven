@@ -701,26 +701,17 @@ body {
 }
 
 /* BUTTON */
+
+
 .btn-contact-owner {
-    background-color: #0d6efd;
-    /* Your Blue */
+    background: #0d6efd !important;
     color: white;
-    border-radius: 50px;
-    /* Modern Pill Shape */
     font-weight: 700;
-    width: 100%;
+    width: fit-content;
     padding: 12px 25px;
-    margin-top: 10px;
+    border-radius: 50px;
     border: none;
     transition: all 0.3s ease;
-}
-
-.btn-contact-owner:hover {
-    background-color: #0b5ed7;
-    /* Slightly darker on hover */
-    transform: translateY(-2px);
-    /* Subtle lift effect */
-    box-shadow: 0 5px 15px rgba(13, 110, 253, 0.3);
 }
 
 
@@ -776,7 +767,28 @@ body {
 }
 
 
-/*try kat atas ni*/
+/*social media for pop up lost pet*/
+.social-vertical {
+    display: flex;
+    flex-direction: column;      /* vertical */
+    gap: 15px;
+    align-items: center;
+    font-size: 22px;
+}
+
+.social-vertical i {
+    cursor: pointer;
+    color: #6c757d;
+    transition: all 0.3s ease;
+}
+
+.social-vertical i:hover {
+    color: #0d6efd;
+    transform: scale(1.2);
+}
+
+
+/*------------------------------------------------------------------------*/
 /* Profile Card Styling */
 .profile-card {
     border: none;
