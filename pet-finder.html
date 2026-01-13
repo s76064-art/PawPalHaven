@@ -26,14 +26,14 @@
             <ul class="navbar-nav ms-auto">
 
                 <li class="nav-item">
-                    <a class="nav-link active" href="index.html">Home</a>
+                    <a class="nav-link " href="index.html">Home</a>
                 </li>
 
                 <li class="nav-item">
                     <a class="nav-link " href="adpot-pet.html">Adopt Pets</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link " href="pet-finder.html">Pet Finder</a>
+                    <a class="nav-link active " href="pet-finder.html">Pet Finder</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link " href="event.html">Events</a>
@@ -66,40 +66,31 @@
     </nav>
     <!--End Of Navigation-->
 
-    <section class="container-fluid py-5" id="pet-finder.html">
+    <section class="container-fluid py-5">
+     
         <main class="container mt-5 pt-5">
             <div class="row gx-4 gy-5">
                 <div class="col-md-8">
-                    <h1 class="display-4 fw-bold mb-0 text-dark">LOST Pets</h1>
+                    <h1 class="display-4 fw-bold mb-0 text-dark">Lost Pet</h1>
                     <p class="lead text-muted">Help us reunite these furry friends with their families.</p>
                 </div>
-                <div class="col-md-4 text-md-end">
-                    <button class="btn btn-danger btn-lg shadow-sm" data-bs-toggle="modal" data-bs-target="#authModal">
+                <div class="col-md-4 text-md-end ms-auto">
+                    <!--Button report-->
+                    <!-- <button class="btn btn-danger btn-lg shadow-sm" data-bs-toggle="modal" data-bs-target="#authModal">
                         <i class="fa-solid fa-bullhorn me-2"></i>Report Lost Pet
-                    </button>
-                </div>
+                    </button> -->
+                    <div class="input-group shadow-sm mt-3">
+                        <span class="input-group-text bg-white border-end-0">
+                            <i class="fa-solid fa-magnifying-glass text-muted"></i>
+                        </span>
+                        <input type="text" id="eventSearch" class="form-control border-start-0"
+                            placeholder="Search Pet,Name,Location..." onkeyup="searchPets()">
+                    </div>
 
+                </div>
 
                 <hr class="mb-5">
 
-                <div class="row g-3 mb-5 p-4 shadow-sm rounded border bg-white align-items-center">
-                    <div class="col-md-8">
-                        <div class="input-group">
-                            <span class="input-group-text bg-white border-end-0">
-                                <i class="fa-solid fa-magnifying-glass text-muted"></i>
-                            </span>
-                            <input type="text" class="form-control border-start-0"
-                                placeholder="Search by name, breed or location...">
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <select class="form-select">
-                            <option selected>Sort by Date</option>
-                            <option>Newest First</option>
-                            <option>Oldest First</option>
-                        </select>
-                    </div>
-                </div>
                 <!--End navigation-->
                 <div class="container my-5">
                     <!--PET 1-->
@@ -264,7 +255,7 @@
                                     <i class="fa-solid fa-location-dot text-danger me-2"></i>
                                     Alor Star, Kedah
                                 </p>
-                                <button class="btn pph-contact-btn w-100 mt-2" data-bs-toggle="modal"
+                                <button class="btn-contact-owner w-100 mt-2" data-bs-toggle="modal"
                                     data-bs-target="#petContactModal">
                                     Contact Owner
                                 </button>
@@ -320,7 +311,7 @@
 
             <!--report lost bar-->
 
-            <div class="modal fade" id="authModal" tabindex="-1" aria-hidden="true">
+            <!-- <div class="modal fade" id="authModal" tabindex="-1" aria-hidden="true">
                 <div class="modal-dialog modal-dialog-centered">
                     <div class="modal-content border-0 shadow rounded-4">
                         <div class="modal-header border-0 pb-0">
@@ -388,42 +379,8 @@
                         </div>
                     </div>
                 </div>
-            </div>
-            <!-- <div class="modal fade" id="reportLostModal" tabindex="-1" aria-hidden="true">
-                <div class="modal-dialog">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title fw-bold">Report a Lost Pet</h5>
-                            <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-                        </div>
-                        <div class="modal-body">
-                            <form id="lostPetForm">
-                                <div class="mb-3">
-                                    <label class="form-label">Pet Name</label>
-                                    <input type="text" class="form-control" required>
-                                </div>
-                                <div class="mb-3">
-                                    <label class="form-label">Species / Breed</label>
-                                    <input type="text" class="form-control" placeholder="e.g. Orange Cat">
-                                </div>
-                                <div class="mb-3">
-                                    <label class="form-label">Last Seen Location</label>
-                                    <input type="text" class="form-control">
-                                </div>
-                                <div class="mb-3">
-                                    <label class="form-label">Upload Picture</label>
-                                    <input type="file" class="form-control">
-                                </div>
-                                <div class="mb-3">
-                                    <label class="form-label">Your Phone Number</label>
-                                    <input type="tel" class="form-control" placeholder="01x-xxxxxxx">
-                                </div>
-                                <button type="submit" class="btn btn-primary w-100">Submit Report</button>
-                            </form>
-                        </div>
-                    </div>
-                </div>
             </div> -->
+
 
             <footer class="footer border-top">
                 <div class="container text-center">

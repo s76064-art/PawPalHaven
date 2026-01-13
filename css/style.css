@@ -567,18 +567,28 @@ body {
 
 /* BUTTON */
 .pph-contact-btn {
-    background: linear-gradient(135deg, #1f8f5f, #a9d711);
-    color: #01ff09;
-    border-radius: 12px;
-    padding: 14px;
-    font-size: 16px;
-    font-weight: 600;
+    background-color: #0d6efd;
+    color: white;
+    border-radius: 50px;
+    font-weight: 700;
+    width: fit-content;
+    padding: 10px 25px;
+    margin-top: 20px;
+    border: none;
+    
+}
+
+.btn-contact-owner {
+    background-color: #0d6efd;
+    color: white;
+    border-radius: 50px;
+    font-weight: 700;
+    width: fit-content;
+    padding: 10px 25px;
+    margin-top: 20px;
     border: none;
 }
 
-.pph-contact-btn:hover {
-    background: #485b53;
-}
 
 /* MODAL */
 .pph-modal-title {
@@ -757,16 +767,6 @@ body {
     border-bottom: 1px solid #ebf2f7;
 }
 
-.btn-adopt-custom {
-    background-color: #0d6efd;
-    color: white;
-    border-radius: 50px;
-    font-weight: 700;
-    width: fit-content;
-    padding: 10px 25px;
-    margin-top: 20px;
-    border: none;
-}
 
 /* Background hearder adopt pet*/
 .header-section {
@@ -780,4 +780,252 @@ body {
     align-items: center;
     color: white;
     
+}
+
+/*search bar pet finder*/
+/* Remove Bootstrap's default input focus outline */
+#eventSearch:focus {
+    box-shadow: none;
+    background-color: transparent;
+}
+
+/* Optional: Make the underline turn dark when active */
+.input-group:focus-within {
+    border-color: #212529 !important; 
+    transition: border-color 0.3s ease;
+}
+
+/* Make the placeholder text look cleaner */
+#eventSearch::placeholder {
+    color: #adb5bd;
+    font-weight: 300;
+}
+
+/* ============================================
+   BONUS FEATURE: CSS TRANSITIONS & EFFECTS
+   ============================================ */
+
+/* Smooth transitions for navigation links */
+.nav-link {
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.nav-link:hover {
+    transform: translateY(-2px);
+    color: #02af02 !important;
+    text-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: #02af02;
+    transition: width 0.3s ease;
+}
+
+.nav-link:hover::after {
+    width: 100%;
+}
+
+/* Card hover effects with smooth transitions */
+.card {
+    transition: all 0.4s cubic-bezier(0.23, 1, 0.320, 1);
+    transform: translateZ(0);
+}
+
+.card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 12px 30px rgba(0, 146, 0, 0.3) !important;
+}
+
+.pet-card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.pet-card:hover {
+    transform: scale(1.02);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2) !important;
+}
+
+/* Button smooth transitions */
+.btn {
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(0, 146, 0, 0.3) !important;
+}
+
+.btn::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    transition: width 0.6s, height 0.6s;
+}
+
+.btn:hover::before {
+    width: 300px;
+    height: 300px;
+}
+
+/* Image hover effects */
+img {
+    transition: transform 0.4s ease, filter 0.4s ease;
+}
+
+img:hover {
+    transform: scale(1.05);
+    filter: brightness(1.1);
+}
+
+.card-img-top {
+    transition: all 0.3s ease;
+}
+
+.card:hover .card-img-top {
+    filter: brightness(1.15);
+}
+
+/* Table row hover effects */
+table tbody tr {
+    transition: all 0.3s ease;
+}
+
+table tbody tr:hover {
+    background-color: rgba(2, 175, 2, 0.1) !important;
+    transform: scale(1.01);
+    box-shadow: inset 0 0 10px rgba(0, 146, 0, 0.1);
+}
+
+/* Input field transitions */
+input, textarea, select {
+    transition: all 0.3s ease;
+}
+
+input:focus, textarea:focus, select:focus {
+    transform: scale(1.02);
+    box-shadow: 0 0 15px rgba(2, 175, 2, 0.4) !important;
+}
+
+/* Footer link transitions */
+footer a {
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+footer a:hover {
+    color: #02af02 !important;
+    transform: translateX(3px);
+    text-decoration: underline !important;
+}
+
+/* Icon spinning animation on hover */
+.social-font i {
+    transition: all 0.3s ease;
+}
+
+.social-font i:hover {
+    transform: rotate(20deg) scale(1.2);
+    color: #02af02 !important;
+}
+
+/* Badge/Tag animations */
+.badge {
+    transition: all 0.3s ease;
+}
+
+.badge:hover {
+    transform: scale(1.1);
+    box-shadow: 0 5px 15px rgba(0, 146, 0, 0.3);
+}
+
+/* Accordion smooth transitions */
+.accordion-button {
+    transition: all 0.3s ease;
+}
+
+.accordion-button:hover {
+    background-color: rgba(2, 175, 2, 0.1);
+    transform: translateX(5px);
+}
+
+.accordion-button:not(.collapsed) {
+    background-color: rgba(2, 175, 2, 0.2);
+    color: #009200;
+}
+
+/* Modal fade in effect */
+.modal.fade {
+    animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Alert animations */
+.alert {
+    animation: slideInUp 0.4s ease;
+}
+
+@keyframes slideInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Smooth scroll behavior */
+html {
+    scroll-behavior: smooth;
+}
+
+/* Section transition on load */
+section {
+    animation: fadeInUp 0.6s ease;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Form group animations */
+.form-group {
+    transition: all 0.3s ease;
+}
+
+.form-group:focus-within {
+    transform: translateY(-2px);
 }
