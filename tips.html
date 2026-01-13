@@ -34,19 +34,11 @@
                     <li class="nav-item"><a class="nav-link" href="adopt-pet.html">Adopt Pets</a></li>
                     <li class="nav-item"><a class="nav-link" href="pet-finder.html">Pet Finder</a></li>
                     <li class="nav-item"><a class="nav-link" href="event.html">Events</a></li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle active" href="tips.html" id="navbarDropdownMenuLink"
-                            role="button" data-bs-toggle="dropdown">Tips</a>
-                        <ul class="dropdown-menu border-0 shadow">
-                            <li><a class="dropdown-item" href="#catTips">Cats</a></li>
-                            <li><a class="dropdown-item" href="#dogTips">Dogs</a></li>
-                            <li><a class="dropdown-item" href="#birdTips">Birds</a></li>
-                            <li><a class="dropdown-item" href="#rabbitTips">Rabbits</a></li>
-                            <li><a class="dropdown-item" href="#fishTips">Fishes</a></li>
-                        </ul>
-                    </li>
+                    <li class="nav-item"> <a class="nav-link " href="tips.html">Tips</a></li> 
                     <li class="nav-item"><a class="nav-link" href="about-us.html">About Us</a></li>
-                    <li class="nav-item"><a class="nav-link" href="profile.html">Profile</a></li>
+                    <li class="nav-item" id="login-profile-nav">
+                        <a class="nav-link" href="profile.html">Profile</a>
+                    </li>
                 </ul>
             </div>
         </div>
@@ -68,8 +60,8 @@
             <!-- Cat Tips -->
             <div class="accordion-item shadow-sm rounded-4 mb-4 border-0 ">
                 <h2 class="accordion-header ">
-                    <button id="catTipsButton" class="accordion-button rounded-4 shadow-none" type="button" data-bs-toggle="collapse"
-                        data-bs-target="#catTips">
+                    <button id="catTipsButton" class="accordion-button rounded-4 shadow-none" type="button"
+                        data-bs-toggle="collapse" data-bs-target="#catTips">
                         <span class="emoji-icon me-3">&#128049;</span> Cat Care Tips
                     </button>
                 </h2>
@@ -427,8 +419,9 @@
     <!-- Pet Care Comparison Table -->
     <section class="container py-5 mb-5">
         <h2 class="fw-bold text-center mb-4">Pet Care Comparison Guide</h2>
-        <p class="text-center text-muted mb-4">Quick reference for essential care requirements across different pet types.</p>
-        
+        <p class="text-center text-muted mb-4">Quick reference for essential care requirements across different pet
+            types.</p>
+
         <div class="table-responsive shadow rounded-4 overflow-hidden">
             <table class="table table-hover mb-0">
                 <thead class="bg-green-1 text-white">
@@ -487,7 +480,8 @@
         </div>
 
         <div class="alert alert-info mt-4 rounded-4" role="alert">
-            <i class="fas fa-lightbulb me-2"></i><strong>Pro Tip:</strong> Every pet has unique needs! Always research your specific species or breed for tailored care guidelines.
+            <i class="fas fa-lightbulb me-2"></i><strong>Pro Tip:</strong> Every pet has unique needs! Always research
+            your specific species or breed for tailored care guidelines.
         </div>
     </section>
 
@@ -520,20 +514,35 @@
                 <div class="col-md-4 mb-4 text-center text-md-start">
                     <h5>Connect With Us</h5>
                     <div class="mb-3">
-                        <a href="https://www.facebook.com" target="_blank" rel="noopener noreferrer" class="text-white mx-2" title="Visit our Facebook"><i class="fab fa-facebook fa-lg"></i></a>
-                        <a href="https://www.twitter.com" target="_blank" rel="noopener noreferrer" class="text-white mx-2" title="Visit our Twitter"><i class="fab fa-twitter fa-lg"></i></a>
-                        <a href="https://www.instagram.com" target="_blank" rel="noopener noreferrer" class="text-white mx-2" title="Visit our Instagram"><i class="fab fa-instagram fa-lg"></i></a>
-                        <a href="https://www.youtube.com" target="_blank" rel="noopener noreferrer" class="text-white mx-2" title="Visit our YouTube"><i class="fab fa-youtube fa-lg"></i></a>
+                        <a href="https://www.facebook.com" target="_blank" rel="noopener noreferrer"
+                            class="text-white mx-2" title="Visit our Facebook"><i class="fab fa-facebook fa-lg"></i></a>
+                        <a href="https://www.twitter.com" target="_blank" rel="noopener noreferrer"
+                            class="text-white mx-2" title="Visit our Twitter"><i class="fab fa-twitter fa-lg"></i></a>
+                        <a href="https://www.instagram.com" target="_blank" rel="noopener noreferrer"
+                            class="text-white mx-2" title="Visit our Instagram"><i
+                                class="fab fa-instagram fa-lg"></i></a>
+                        <a href="https://www.youtube.com" target="_blank" rel="noopener noreferrer"
+                            class="text-white mx-2" title="Visit our YouTube"><i class="fab fa-youtube fa-lg"></i></a>
                     </div>
                     <div class="mb-3">
                         <p class="mb-2"><strong>Contact Us</strong></p>
-                        <p class="mb-0"><small><a href="mailto:support@pawpalhaven.com" class="text-white text-decoration-none"><i class="fas fa-envelope me-1"></i>support@pawpalhaven.com</a></small></p>
+                        <p class="mb-0"><small><a href="mailto:support@pawpalhaven.com"
+                                    class="text-white text-decoration-none"><i
+                                        class="fas fa-envelope me-1"></i>support@pawpalhaven.com</a></small></p>
                     </div>
                     <ul class="list-unstyled">
-                        <li><p class="mb-0"><strong>Authors</strong></p></li>
-                        <li><p class="mb-0"><small>Syamil Bin Md Noor (S76064)</small></p></li>
-                        <li><p class="mb-0"><small>Syafiqah Izani</small></p></li>
-                        <li><p class="mb-0"><small>Adlynn Syakirah (S76245)</small></p></li>
+                        <li>
+                            <p class="mb-0"><strong>Authors</strong></p>
+                        </li>
+                        <li>
+                            <p class="mb-0"><small>Syamil Bin Md Noor (S76064)</small></p>
+                        </li>
+                        <li>
+                            <p class="mb-0"><small>Syafiqah Izani</small></p>
+                        </li>
+                        <li>
+                            <p class="mb-0"><small>Adlynn Syakirah (S76245)</small></p>
+                        </li>
                     </ul>
                 </div>
             </div>

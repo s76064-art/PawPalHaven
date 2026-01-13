@@ -1561,7 +1561,7 @@ async function dashboard(page) {
             btnTitle: "Add New Pet",
             btnAttribute: "#petModal",
             item: pet => `<div class="col-md-12 col-lg-6">
-                <div class="bg-dark p-3 rounded h-100 d-flex">
+                <div class="bg-item p-3 rounded h-100 d-flex">
                     <div class="me-3 d-flex align-items-center justify-content-center">
                         <img class="img-fluid card dashboard-pet-event" src="${URL.createObjectURL(pet.image)}" alt="Pet Image">
                     </div>
@@ -1588,7 +1588,7 @@ async function dashboard(page) {
                 const addr = await pawpalHavenDB.get("address", event.addressId);
 
                 return `<div class="col-md-12 col-lg-6">
-                <div class="bg-dark p-3 rounded h-100 d-flex">
+                <div class="bg-item p-3 rounded h-100 d-flex">
                     <div class="me-3 d-flex align-items-center justify-content-center">
                         <img class="img-fluid card dashboard-pet-event" src="${URL.createObjectURL(event.image)}">
                     </div>
@@ -1612,7 +1612,7 @@ async function dashboard(page) {
             btnTitle: "Add Lost Pet",
             btnAttribute: "#lostPetModal",
             item: pet => `<div class="col-md-12 col-lg-6">
-                <div class="bg-dark p-3 rounded h-100 d-flex">
+                <div class="bg-item p-3 rounded h-100 d-flex">
                     <div class="me-3 d-flex align-items-center justify-content-center">
                         <img class="img-fluid card dashboard-pet-event" src="${URL.createObjectURL(pet.image)}" alt="Pet Image">
                     </div>
