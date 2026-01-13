@@ -610,6 +610,184 @@ class Address {
     }
 }
 
+async function homepage(page) {
+    if (page !== "index.html") { return }
+
+    // ---- Load Pets (3 per carousel slide) ----
+    const pets = await pawpalHavenDB.getAllDataByStoreName("pet");
+    const petCarousel = document.querySelector("#homePetsCarousel .carousel-inner");
+    petCarousel.innerHTML = "";
+
+    if (!pets || pets.length === 0) {
+        petCarousel.innerHTML = `
+    <div class="carousel-item active">
+        <div class="text-center py-5">No pets available for adoption.</div>
+    </div>`;
+    } else {
+        let slidePets = [];
+
+        for (let index = 0; index < pets.length; index++) {
+            const pet = pets[index];
+            slidePets.push(pet);
+
+            if (slidePets.length === 3 || index === pets.length - 1) {
+
+                const cardsHTML = await Promise.all(
+                    slidePets.map(async pet => {
+                        const owner = pet.userId ? await pawpalHavenDB.get("user", pet.userId) : null;
+                        const social = owner ? await User.getSocialFromUser(owner) : null;
+
+                        let socialButtons = "";
+                        if (social?.links) {
+                            for (const [platform, link] of Object.entries(social.links)) {
+                                if (link) {
+                                    const iconData = Social.platforms[platform] || { icon: "fa-solid fa-link", name: "Link" };
+
+                                    socialButtons += `
+                                <a href="${link}" target="_blank" 
+                                   class="btn btn-sm btn-outline-dark mx-1" 
+                                   title="${iconData.name}">
+                                    <i class="${iconData.icon}"></i>
+                                </a>`;
+                                }
+                            }
+                        }
+
+                        return `
+                   <div class="col-md-4">
+    <div class="card home-pet-card rounded-4 shadow-sm border-0 mb-4 overflow-hidden">
+
+        <!-- Image -->
+        <div class="position-relative">
+            <img src="${pet.image ? URL.createObjectURL(pet.image) : 'images/default-pet.png'}"
+                class="card-img-top home-pet-img" alt="${pet.name}">
+
+            <!-- Subtle top label -->
+            <span class="badge bg-success position-absolute top-0 start-0 m-2 px-3 py-2">
+                🐾 Adopt Me
+            </span>
+        </div>
+
+        <!-- Body -->
+        <div class="card-body text-center">
+
+            <!-- Name -->
+            <h5 class="fw-bold text-primary mb-1">${pet.name}</h5>
+
+            <!-- Species -->
+            <p class="text-muted small mb-1">
+                <i class="fa-solid fa-paw me-1"></i>
+                ${pet.species?.trim() || "Unknown breed"}
+            </p>
+
+            <!-- Age -->
+            <p class="small mb-2">
+                <i class="fa-solid fa-birthday-cake me-1"></i>
+                ${pet.age || "Age not listed"}
+            </p>
+
+            <!-- Button -->
+            <a href="petDetails.html?id=${pet.id}" class="btn btn-primary btn-sm px-4 rounded-pill mt-2">
+                View Details
+            </a>
+
+            <!-- Social Icons -->
+            <div class="d-flex justify-content-center mt-3">
+                ${socialButtons}
+            </div>
+        </div>
+    </div>
+</div>
+
+                `;
+                    })
+                ).then(results => results.join(""));
+
+                const isActive = (index < 3) ? "active" : "";
+
+                const slideHTML = `
+            <div class="carousel-item ${isActive}">
+                <div class="row justify-content-center">
+                    ${cardsHTML}
+                </div>
+            </div>`;
+
+                petCarousel.insertAdjacentHTML("beforeend", slideHTML);
+                slidePets = [];
+            }
+        }
+    }
+
+    // ---- Load Events ----
+    const events = await pawpalHavenDB.getAllDataByStoreName("event");
+    const eventCarousel = document.querySelector("#homeEventsCarousel .carousel-inner");
+    eventCarousel.innerHTML = ""; // Clear previous
+
+    if (!events || events.length === 0) {
+        eventCarousel.innerHTML = `<div class="carousel-item active">
+        <div class="text-center py-5">No upcoming events at the moment.</div>
+    </div>`;
+    } else {
+        for (let i = 0; i < events.length; i++) {
+            const event = events[i];
+            const owner = await pawpalHavenDB.get("user", event.userId);
+            const social = owner ? await User.getSocialFromUser(owner) : null;
+            const address = event.addressId ? await pawpalHavenDB.get("address", event.addressId) : null;
+
+            const isActive = i === 0 ? "active" : "";
+
+            const locationText = address
+                ? `${address.city}, ${address.state}, ${address.country}`
+                : "Location TBD";
+
+            // Generate social buttons dynamically
+            let socialButtons = "";
+            if (social) {
+                for (const [platform, link] of Object.entries(social.links)) {
+                    if (link) {
+                        const iconData = Social.platforms[platform.toLowerCase()] || { icon: "fa-solid fa-link", name: "Link" };
+                        socialButtons += `
+                        <a href="${link}" target="_blank" class="btn btn-outline-dark mx-1" title="${iconData.name}">
+                            <i class="${iconData.icon}"></i>
+                        </a>
+                    `;
+                    }
+                }
+            }
+
+            const eventCard = `
+            <div class="carousel-item ${isActive}">
+                <div class="row justify-content-center">
+                    <div class="col-lg-6 col-md-8">
+                        <div class="card home-event-card shadow-lg border-0 overflow-hidden">
+                            <div class="position-relative">
+                                <img src="${event.image ? URL.createObjectURL(event.image) : 'assets/img/Poster1.png'}"
+                                    class="card-img-top" alt="${event.name}">
+                                <div class="home-event-overlay p-3">
+                                    <h5 class="card-title text-white">${event.name}</h5>
+                                    <p class="mb-1"><span class="badge bg-info">Date: ${event.date}</span></p>
+                                    <p class="mb-1"><span class="badge bg-warning text-dark">Time: ${event.time}</span></p>
+                                    <p><span class="badge bg-success">Location: ${locationText}</span></p>
+                                </div>
+                            </div>
+                            <div class="card-body">
+                                <p>${event.description || "No description available."}</p>
+                                <div class="d-flex justify-content-center mt-3">
+                                    ${socialButtons || `<a href="contact.html" class="btn btn-primary">Contact Organizer</a>`}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        `;
+            eventCarousel.insertAdjacentHTML("beforeend", eventCard);
+        }
+    }
+
+}
+
+
 
 //Structure class
 class SlideShow {
@@ -1383,7 +1561,7 @@ async function dashboard(page) {
             btnTitle: "Add New Pet",
             btnAttribute: "#petModal",
             item: pet => `<div class="col-md-12 col-lg-6">
-                <div class="bg-dark p-3 rounded h-100 d-flex">
+                <div class="bg-item p-3 rounded h-100 d-flex">
                     <div class="me-3 d-flex align-items-center justify-content-center">
                         <img class="img-fluid card dashboard-pet-event" src="${URL.createObjectURL(pet.image)}" alt="Pet Image">
                     </div>
@@ -1410,7 +1588,7 @@ async function dashboard(page) {
                 const addr = await pawpalHavenDB.get("address", event.addressId);
 
                 return `<div class="col-md-12 col-lg-6">
-                <div class="bg-dark p-3 rounded h-100 d-flex">
+                <div class="bg-item p-3 rounded h-100 d-flex">
                     <div class="me-3 d-flex align-items-center justify-content-center">
                         <img class="img-fluid card dashboard-pet-event" src="${URL.createObjectURL(event.image)}">
                     </div>
@@ -1434,7 +1612,7 @@ async function dashboard(page) {
             btnTitle: "Add Lost Pet",
             btnAttribute: "#lostPetModal",
             item: pet => `<div class="col-md-12 col-lg-6">
-                <div class="bg-dark p-3 rounded h-100 d-flex">
+                <div class="bg-item p-3 rounded h-100 d-flex">
                     <div class="me-3 d-flex align-items-center justify-content-center">
                         <img class="img-fluid card dashboard-pet-event" src="${URL.createObjectURL(pet.image)}" alt="Pet Image">
                     </div>
@@ -2022,7 +2200,7 @@ document.addEventListener("DOMContentLoaded", async function () {
 
     const page = window.location.pathname.split("/").pop();
     updateNavbar();
-    homepageEvent(page);
+    homepage(page);
     eventPage(page);
     dashboard(page);
     loginRegisterPage(page);

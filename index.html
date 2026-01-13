@@ -8,78 +8,30 @@
         content="PawPal Haven - Your trusted platform for pet adoption, events, and pet care tips. Find your perfect companion today!">
     <meta name="keywords" content="pet adoption, pet care, dog adoption, cat adoption, pet events, pet tips">
     <meta name="author" content="PawPal Haven Team - Syamil Bin Md Noor, Syafiqah Izani, Adlynn Syakirah">
-    <meta name="robots" content="index, follow">
-
-    <!--Custom CSS-->
-    <link rel="stylesheet" href="css/style.css">
-    <!--Bootstrap CSS-->
-    <link rel="stylesheet" href="css/bootstrap.min.css">
-    <!--Font awesome-->
+    <meta name="robots" content="index, follow"> <!--Custom CSS-->
+    <link rel="stylesheet" href="css/style.css"> <!--Bootstrap CSS-->
+    <link rel="stylesheet" href="css/bootstrap.min.css"> <!--Font awesome-->
     <script src="https://kit.fontawesome.com/b1605aa887.js" crossorigin="anonymous"></script>
-
     <link rel="icon" type="image/png" href="assets/img/pet-brand.png">
     <title>PawPal Haven - Pet Adoption & Care Platform</title>
 </head>
 
-<body class="p-0">
-    <!--Navigation bar-->
+<body class="p-0"> <!--Navigation bar-->
     <nav class="navbar navbar-expand-lg" id="nav-bar">
-        <div class="container-fluid mx-3">
-
-            <a class="navbar-brand text-white" href="#">
-                <img src="assets/img/pet-brand.png" alt="Brand Icon" width="60">
-                PawPal Haven
-            </a>
-
-            <!-- Mobile toggle -->
+        <div class="container-fluid mx-3"> <a class="navbar-brand text-white" href="#"> <img
+                    src="assets/img/pet-brand.png" alt="Brand Icon" width="60"> PawPal Haven </a> <!-- Mobile toggle -->
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-
-            <!-- Navbar items -->
+                <span class="navbar-toggler-icon"></span> </button> <!-- Navbar items -->
             <div class="collapse navbar-collapse" id="navbarNavDropdown">
                 <ul class="navbar-nav ms-auto">
-
-                    <li class="nav-item">
-                        <a class="nav-link active" href="index.html">Home</a>
+                    <li class="nav-item"> <a class="nav-link active" href="index.html">Home</a> </li>
+                    <li class="nav-item"> <a class="nav-link " href="adopt-pet.html">Adopt Pets</a> </li>
+                    <li class="nav-item"> <a class="nav-link " href="pet-finder.html">Pet Finder</a> </li>
+                    <li class="nav-item"> <a class="nav-link " href="event.html">Events</a> </li>
+                    <li class="nav-item"> <a class="nav-link " href="tips.html">Tips</a></li> 
+                    <li class="nav-item"> <a class="nav-link" href="about-us.html">About Us</a> </li>
+                    <li class="nav-item" id="login-profile-nav"> <a class="nav-link" href="profile.html">Profile</a>
                     </li>
-
-                    <li class="nav-item">
-                        <a class="nav-link " href="adopt-pet.html">Adopt Pets</a>
-                    </li>
-
-                    <li class="nav-item">
-                        <a class="nav-link " href="pet-finder.html">Pet Finder</a>
-                    </li>
-
-                    <li class="nav-item">
-                        <a class="nav-link " href="event.html">Events</a>
-                    </li>
-
-                    <!-- Dropdown -->
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="tips.html" id="navbarDropdownMenuLink" role="button"
-                            data-bs-toggle="dropdown">
-                            Tips
-                        </a>
-
-                        <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                            <li><a class="dropdown-item" href="tips.html#catTipsButton">Cats</a></li>
-                            <li><a class="dropdown-item" href="tips.html#dogTipsButton">Dogs</a></li>
-                            <li><a class="dropdown-item" href="tips.html#birdTipsButton">Birds</a></li>
-                            <li><a class="dropdown-item" href="tips.html#rabbitTipsButton">Rabbits</a></li>
-                            <li><a class="dropdown-item" href="tips.html#fishTipsButton">Fishes</a></li>
-                        </ul>
-                    </li>
-
-                    <li class="nav-item">
-                        <a class="nav-link" href="about-us.html">About Us</a>
-                    </li>
-
-                    <li class="nav-item" id="login-profile-nav">
-                        <a class="nav-link" href="profile.html">Profile</a>
-                    </li>
-
                 </ul>
             </div>
         </div>
@@ -90,218 +42,74 @@
     <section class="header-section bg-white shadow-sm d-flex justify-content-center py-5">
         <div class="d-md-flex justify-content-center align-items-center text-center text-md-start">
             <div class="header-content m-auto d-flex align-items-center flex-column">
-                <h1 class="display-4 fw-bold text-dark text-center">
-                    Welcome to <span class="text-green-2">PawPal Haven</span>
-                </h1>
-                <p class="lead fs-5 fw-bold text-white p-3 rounded ">
-                    A place where pet enthusiasts can adopt new pets and explore new events.
-                </p>
+                <h1 class="display-4 fw-bold text-dark text-center"> Welcome to <span class="text-green-2">PawPal
+                        Haven</span> </h1>
+                <p class="lead fs-5 fw-bold text-white p-3 rounded "> A place where pet enthusiasts can adopt new pets
+                    and explore new events. </p>
             </div>
         </div>
-    </section>
+    </section> <!-- Upcoming Events Section -->
+    <section class="container-fluid py-5 home-events-section">
+        <div class="text-center mb-4 home-section-title home-events-title">
+            <h2 class="home-section-badge home-events-badge">
+                <i class="fa-solid fa-paw me-2 text-info"></i>
+                Upcoming Events
+            </h2>
+        </div>
 
 
-    <main>
-        <!-- Events Section -->
-        <section class="container-fluid home-events-section bg-light py-5">
-            <div class="text-center mb-5">
-                <h2 class="fw-bold text-dark home-events-title">Upcoming Events</h2>
-            </div>
+        <div id="homeEventsCarousel" class="carousel slide" data-bs-ride="carousel">
+            <div class="carousel-inner"> <!-- Event Slide -->
 
-            <div id="homeEventsCarousel" class="carousel slide" data-bs-ride="carousel">
-                <div class="carousel-inner">
 
-                    <!-- Slide 1 -->
-                    <div class="carousel-item active">
-                        <div class="row g-4 justify-content-center">
-                            <!-- Event Card 1 -->
-                            <div class="col-lg-4 col-md-6">
-                                <div class="card home-event-card shadow-lg border-0 h-100">
-                                    <img src="assets/img/Poster1.png" class="card-img-top" alt="Event Poster">
-                                    <div class="card-body">
-                                        <h5 class="card-title home-event-name">Pet Adoption Fair</h5>
-                                        <p class="mb-1"><strong>Date:</strong> 20 Jan 2026</p>
-                                        <p class="mb-1"><strong>Time:</strong> 10:00 AM - 4:00 PM</p>
-                                        <p class="mb-1"><strong>Location:</strong> Kuala Lumpur City Park</p>
-                                        <p class="card-text">
-                                            Join us for a fun-filled day of pet adoption, activities, and meet other pet
-                                            lovers!
-                                        </p>
-                                        <div class="d-flex justify-content-center mt-3 home-social-icons">
-                                            <a href="#" class="btn home-btn-facebook mx-1"><i
-                                                    class="fab fa-facebook"></i></a>
-                                            <a href="#" class="btn home-btn-youtube mx-1"><i
-                                                    class="fab fa-youtube"></i></a>
-                                            <a href="#" class="btn home-btn-twitter mx-1"><i
-                                                    class="fab fa-twitter"></i></a>
-                                            <a href="#" class="btn home-btn-instagram mx-1"><i
-                                                    class="fab fa-instagram"></i></a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+            </div> <!-- Carousel Controls --> <button class="carousel-control-prev" type="button"
+                data-bs-target="#homeEventsCarousel" data-bs-slide="prev"> <span
+                    class="carousel-control-prev-icon bg-dark rounded-circle p-2"></span> </button> <button
+                class="carousel-control-next" type="button" data-bs-target="#homeEventsCarousel" data-bs-slide="next">
+                <span class="carousel-control-next-icon bg-dark rounded-circle p-2"></span> </button>
+        </div>
+    </section> <!-- Adopt a Pet Section -->
+    <section class="container-fluid py-5 home-pets-section bg-light">
+        <div class="text-center mb-4 home-section-title home-pets-title">
+            <h2 class="home-section-badge home-pets-badge ">
+                <i class="fa-solid fa-paw me-2 text-warning"></i>
+                Adopt A Pet
+            </h2>
+        </div>
 
-                            <!-- Event Card 2 -->
-                            <div class="col-lg-4 col-md-6">
-                                <div class="card home-event-card shadow-lg border-0 h-100">
-                                    <img src="assets/img/Poster2.png" class="card-img-top" alt="Event Poster">
-                                    <div class="card-body">
-                                        <h5 class="card-title home-event-name">Pet Wellness Workshop</h5>
-                                        <p class="mb-1"><strong>Date:</strong> 27 Jan 2026</p>
-                                        <p class="mb-1"><strong>Time:</strong> 1:00 PM - 5:00 PM</p>
-                                        <p class="mb-1"><strong>Location:</strong> PetCare Center</p>
-                                        <p class="card-text">
-                                            Learn how to take care of your furry friends with tips from professional
-                                            veterinarians.
-                                        </p>
-                                        <div class="d-flex justify-content-center mt-3 home-social-icons">
-                                            <a href="#" class="btn home-btn-facebook mx-1"><i
-                                                    class="fab fa-facebook"></i></a>
-                                            <a href="#" class="btn home-btn-youtube mx-1"><i
-                                                    class="fab fa-youtube"></i></a>
-                                            <a href="#" class="btn home-btn-twitter mx-1"><i
-                                                    class="fab fa-twitter"></i></a>
-                                            <a href="#" class="btn home-btn-instagram mx-1"><i
-                                                    class="fab fa-instagram"></i></a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
 
-                    <!-- Add more slides if needed -->
-                </div>
+        <div id="homePetsCarousel" class="carousel slide" data-bs-ride="carousel">
+            <div class="carousel-inner"> <!-- Pet Slide -->
 
-                <!-- Carousel Controls -->
-                <button class="carousel-control-prev" type="button" data-bs-target="#homeEventsCarousel"
-                    data-bs-slide="prev">
-                    <span class="carousel-control-prev-icon bg-dark rounded-circle p-2"></span>
-                    <span class="visually-hidden">Previous</span>
-                </button>
-                <button class="carousel-control-next" type="button" data-bs-target="#homeEventsCarousel"
-                    data-bs-slide="next">
-                    <span class="carousel-control-next-icon bg-dark rounded-circle p-2"></span>
-                    <span class="visually-hidden">Next</span>
-                </button>
-            </div>
-        </section>
-
-        <!-- Adopt A Pet Section -->
-        <section class="container-fluid home-pets-section bg-light py-5">
-            <div class="text-center mb-5">
-                <h2 class="fw-bold text-dark home-pets-title">Adopt A Pet</h2>
-            </div>
-
-            <div id="homePetsCarousel" class="carousel slide" data-bs-ride="carousel">
-                <div class="carousel-inner">
-
-                    <!-- Slide 1 -->
-                    <div class="carousel-item active">
-                        <div class="row g-4 justify-content-center">
-                            <!-- Pet Card 1 -->
-                            <div class="col-lg-3 col-md-6">
-                                <div class="card home-pet-card shadow-lg border-0 h-100 text-center">
-                                    <h5 class="card-header bg-success text-white home-pet-name">Snowy</h5>
-                                    <img src="assets/img/petAdoptionImages/cat.png" class="card-img-top" alt="Snowy">
-                                    <div class="card-body">
-                                        <p class="mb-1"><strong>Species:</strong> Cat</p>
-                                        <p class="mb-1"><strong>Age:</strong> 2 Years</p>
-                                        <p class="mb-1"><strong>Gender:</strong> Female</p>
-                                        <p class="mb-1"><strong>Color:</strong> White</p>
-                                        <a href="contact.html" class="btn home-btn-contact mt-3">Contact Owner</a>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!-- Pet Card 2 -->
-                            <div class="col-lg-3 col-md-6">
-                                <div class="card home-pet-card shadow-lg border-0 h-100 text-center">
-                                    <h5 class="card-header bg-success text-white home-pet-name">Buddy</h5>
-                                    <img src="assets/img/petAdoptionImages/dog.png" class="card-img-top" alt="Buddy">
-                                    <div class="card-body">
-                                        <p class="mb-1"><strong>Species:</strong> Dog</p>
-                                        <p class="mb-1"><strong>Age:</strong> 1 Year</p>
-                                        <p class="mb-1"><strong>Gender:</strong> Male</p>
-                                        <p class="mb-1"><strong>Color:</strong> Brown</p>
-                                        <a href="contact.html" class="btn home-btn-contact mt-3">Contact Owner</a>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!-- Pet Card 3 -->
-                            <div class="col-lg-3 col-md-6">
-                                <div class="card home-pet-card shadow-lg border-0 h-100 text-center">
-                                    <h5 class="card-header bg-success text-white home-pet-name">Luna</h5>
-                                    <img src="assets/img/petAdoptionImages/rabbit.png" class="card-img-top" alt="Luna">
-                                    <div class="card-body">
-                                        <p class="mb-1"><strong>Species:</strong> Rabbit</p>
-                                        <p class="mb-1"><strong>Age:</strong> 6 Months</p>
-                                        <p class="mb-1"><strong>Gender:</strong> Female</p>
-                                        <p class="mb-1"><strong>Color:</strong> Gray</p>
-                                        <a href="contact.html" class="btn home-btn-contact mt-3">Contact Owner</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Add more slides if needed -->
-                </div>
-
-                <!-- Carousel Controls -->
-                <button class="carousel-control-prev" type="button" data-bs-target="#homePetsCarousel"
-                    data-bs-slide="prev">
-                    <span class="carousel-control-prev-icon bg-dark rounded-circle p-2"></span>
-                    <span class="visually-hidden">Previous</span>
-                </button>
-                <button class="carousel-control-next" type="button" data-bs-target="#homePetsCarousel"
-                    data-bs-slide="next">
-                    <span class="carousel-control-next-icon bg-dark rounded-circle p-2"></span>
-                    <span class="visually-hidden">Next</span>
-                </button>
-            </div>
-        </section>
-    </main>
-
-    <!-- Map Modal -->
+            </div> <!-- Carousel Controls --> <button class="carousel-control-prev" type="button"
+                data-bs-target="#homePetsCarousel" data-bs-slide="prev"> <span
+                    class="carousel-control-prev-icon bg-dark rounded-circle p-2"></span> </button> <button
+                class="carousel-control-next" type="button" data-bs-target="#homePetsCarousel" data-bs-slide="next">
+                <span class="carousel-control-next-icon bg-dark rounded-circle p-2"></span> </button>
+        </div>
+    </section> <!-- Map Modal -->
     <div class="modal fade" id="mapModal" tabindex="-1" aria-labelledby="mapModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-lg modal-dialog-centered">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="mapModalLabel">Pet Location</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    <h5 class="modal-title" id="mapModalLabel">Pet Location</h5> <button type="button" class="btn-close"
+                        data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-                <div class="modal-body p-0">
-                    <iframe id="mapFrame"
+                <div class="modal-body p-0"> <iframe id="mapFrame"
                         src="https://www.google.com/maps?q=Pet+Adoption+Center+Kuala+Lumpur&output=embed" width="100%"
-                        height="400" style="border:0;" allowfullscreen="" loading="lazy">
-                    </iframe>
-                </div>
+                        height="400" style="border:0;" allowfullscreen="" loading="lazy"> </iframe> </div>
             </div>
         </div>
     </div>
-
-
-
-
-
     <footer class="bg-green-1 text-white pt-5 pb-3">
         <div class="container">
-
-            <div class="row">
-
-                <!-- About Section -->
+            <div class="row"> <!-- About Section -->
                 <div class="col-md-4 mb-md-4 mb-2">
                     <h5>About</h5>
-                    <p>
-                        A central hub for pet lovers! Adopt or list pets for adoption, get care tips, find and promote
-                        events, and share lost pet posts with the community.
-                    </p>
-                </div>
-
-                <!-- Sitemap Section -->
-                <div class="col-md-4 mb-md-4 mb-0  text-center text-md-start">
+                    <p> A central hub for pet lovers! Adopt or list pets for adoption, get care tips, find and promote
+                        events, and share lost pet posts with the community. </p>
+                </div> <!-- Sitemap Section -->
+                <div class="col-md-4 mb-md-4 mb-0 text-center text-md-start">
                     <h5>Sitemap</h5>
                     <ul class="list-unstyled sitemap">
                         <li><a href="index.html" class="text-white text-decoration-none">Home</a></li>
@@ -311,21 +119,18 @@
                         <li><a href="event.html" class="text-white text-decoration-none">Events</a></li>
                         <li><a href="about-us.html" class="text-white text-decoration-none">About Us</a></li>
                     </ul>
-                </div>
-
-                <!-- Social and Creators Section -->
+                </div> <!-- Social and Creators Section -->
                 <div class="col-md-4 mb-4 text-center text-md-start">
                     <h5>Connect With Us</h5>
-                    <div class="mb-3">
-                        <a href="https://www.facebook.com" target="_blank" rel="noopener noreferrer"
+                    <div class="mb-3"> <a href="https://www.facebook.com" target="_blank" rel="noopener noreferrer"
                             class="text-white mx-2" title="Visit our Facebook"><i class="fab fa-facebook fa-lg"></i></a>
                         <a href="https://www.twitter.com" target="_blank" rel="noopener noreferrer"
                             class="text-white mx-2" title="Visit our Twitter"><i class="fab fa-twitter fa-lg"></i></a>
                         <a href="https://www.instagram.com" target="_blank" rel="noopener noreferrer"
                             class="text-white mx-2" title="Visit our Instagram"><i
-                                class="fab fa-instagram fa-lg"></i></a>
-                        <a href="https://www.youtube.com" target="_blank" rel="noopener noreferrer"
-                            class="text-white mx-2" title="Visit our YouTube"><i class="fab fa-youtube fa-lg"></i></a>
+                                class="fab fa-instagram fa-lg"></i></a> <a href="https://www.youtube.com"
+                            target="_blank" rel="noopener noreferrer" class="text-white mx-2"
+                            title="Visit our YouTube"><i class="fab fa-youtube fa-lg"></i></a>
                     </div>
                     <div class="mb-3">
                         <p class="mb-2"><strong>Contact Us</strong></p>
@@ -348,21 +153,13 @@
                         </li>
                     </ul>
                 </div>
-
             </div>
-
             <hr class="bg-light">
-
             <div class="row">
-                <div class="col text-center">
-                    <small>&copy; 2026 PawPal Haven. All Rights Reserved.</small>
-                </div>
+                <div class="col text-center"> <small>&copy; 2026 PawPal Haven. All Rights Reserved.</small> </div>
             </div>
-
         </div>
-    </footer>
-
-    <!--Boostrap JS-->
+    </footer> <!--Boostrap JS-->
     <script src="js/bootstrap.bundle.min.js"></script>
     <script src="js/javascript.js"></script>
 </body>
