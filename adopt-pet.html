@@ -52,7 +52,9 @@
                             </ul>
                         </li>
                         <li class="nav-item"><a class="nav-link" href="about-us.html">About Us</a></li>
-                        <li class="nav-item"><a class="nav-link" href="profile.html">Profile</a></li>
+                        <li class="nav-item" id="login-profile-nav">
+                            <a class="nav-link" href="profile.html">Profile</a>
+                        </li>
                     </ul>
                 </div>
             </div>
@@ -68,7 +70,8 @@
                     <div class="header-content mb-4 mb-md-0">
                         <h1 class="display-4 fw-bold text-dark">Adopt Yours<span class="text-success"> Now</span></h1>
                         <p class="lead text-muted" style="max-width: 500px; stroke-width: 2%;">
-                            Every pet deserves a loving home. Find your new best friend and start a journey of unconditional love today.
+                            Every pet deserves a loving home. Find your new best friend and start a journey of
+                            unconditional love today.
                         </p>
 
                     </div>
@@ -91,161 +94,165 @@
 
         <!--PET LIST-->
         <div class="container" style="max-width: 1000px;">
-        <!--PET 1-->
-        <div class="card pet-card mb-5 shadow-sm border-0 rounded-4 overflow-hidden">
-            <div class="row g-0 align-items-stretch">
-                <div class="col-md-3">
-                    <img src="images/petFinder-dog2.jpg" class="img-fluid h-100 w-100"
-                        style="object-fit: cover; min-height: 250px;" alt="Dog">
-                </div>
-                <!--PET INFO-->
-                <div class="col-md-6 d-flex flex-column justify-content-center bg-white p-3">
-                    <h3 class="card-title fw-bold text-primary mb-2" style="font-size: 1.3rem;">Buddy</h3>
+            <!--PET 1-->
+            <div class="card pet-card mb-5 shadow-sm border-0 rounded-4 overflow-hidden">
+                <div class="row g-0 align-items-stretch">
+                    <div class="col-md-3">
+                        <img src="images/petFinder-dog2.jpg" class="img-fluid h-100 w-100"
+                            style="object-fit: cover; min-height: 250px;" alt="Dog">
+                    </div>
+                    <!--PET INFO-->
+                    <div class="col-md-6 d-flex flex-column justify-content-center bg-white p-3">
+                        <h3 class="card-title fw-bold text-primary mb-2" style="font-size: 1.3rem;">Buddy</h3>
 
-                    <div class="row">
-                        <div class="col-md-5 border-end">
-                            <div class="mb-1 "><strong class="text-muted">Species:</strong> <br>Golden Retriever
+                        <div class="row">
+                            <div class="col-md-5 border-end">
+                                <div class="mb-1 "><strong class="text-muted">Species:</strong> <br>Golden Retriever
+                                </div>
+                                <div class="mb-1 "><strong class="text-muted">Age:</strong> <br>2 Years</div>
+                                <div class="mb-1 "><strong class="text-muted">Gender:</strong> <br>Male</div>
                             </div>
-                            <div class="mb-1 "><strong class="text-muted">Age:</strong> <br>2 Years</div>
-                            <div class="mb-1 "><strong class="text-muted">Gender:</strong> <br>Male</div>
-                        </div>
 
-                        <div class="col-md-7 ps-3">
-                            <strong class="text-muted small">About Buddy:</strong>
-                            <p class="text-muted small mt-1">
-                                A friendly dog who loves to play catch and is great with kids. He is very active and
-                                needs a home with a yard.
-                            </p>
+                            <div class="col-md-7 ps-3">
+                                <strong class="text-muted small">About Buddy:</strong>
+                                <p class="text-muted small mt-1">
+                                    A friendly dog who loves to play catch and is great with kids. He is very active and
+                                    needs a home with a yard.
+                                </p>
+                            </div>
                         </div>
                     </div>
-                </div>
 
-                <div class="col-md-3 d-flex flex-column justify-content-center bg-light p-3 border-start">
-                    <h6 class="fw-bold text-uppercase small text-muted mb-2">Contact Information</h6>
+                    <div class="col-md-3 d-flex flex-column justify-content-center bg-light p-3 border-start">
+                        <h6 class="fw-bold text-uppercase small text-muted mb-2">Contact Information</h6>
 
-                    <div class="mb-2">
-                        <p class="small mb-0 text-muted">Phone Number</p>
-                        <p class="fw-bold small mb-0"><i class="bi bi-telephone me-1"></i> 012-3456789</p>
-                    </div>
+                        <div class="mb-2">
+                            <p class="small mb-0 text-muted">Phone Number</p>
+                            <p class="fw-bold small mb-0"><i class="bi bi-telephone me-1"></i> 012-3456789</p>
+                        </div>
 
-                    <div class="mb-3">
-                        <p class="small mb-0 text-muted">Email Address</p>
-                        <p class="fw-bold small mb-0"><i class="bi bi-envelope me-1"></i> hello@pawpal.com</p>
-                    </div>
+                        <div class="mb-3">
+                            <p class="small mb-0 text-muted">Email Address</p>
+                            <p class="fw-bold small mb-0"><i class="bi bi-envelope me-1"></i> hello@pawpal.com</p>
+                        </div>
 
-                    <div class="d-flex justify-content-between align-items-center social-font text-muted fs-5">
-                        <i class="fa-brands fa-facebook cursor-pointer"></i>
-                        <i class="fa-brands fa-instagram cursor-pointer"></i>
-                        <i class="fa-brands fa-tiktok cursor-pointer"></i>
-                        <i class="fa-brands fa-whatsapp cursor-pointer"></i>
-                        <i class="fa-regular fa-map cursor-pointer" onclick="openMapModal('5.352468, 103.099591')"></i>
+                        <div class="d-flex justify-content-between align-items-center social-font text-muted fs-5">
+                            <i class="fa-brands fa-facebook cursor-pointer"></i>
+                            <i class="fa-brands fa-instagram cursor-pointer"></i>
+                            <i class="fa-brands fa-tiktok cursor-pointer"></i>
+                            <i class="fa-brands fa-whatsapp cursor-pointer"></i>
+                            <i class="fa-regular fa-map cursor-pointer"
+                                onclick="openMapModal('5.352468, 103.099591')"></i>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
 
 
-        <!--PET 2-->
-        <div class="card pet-card mb-5 shadow-sm border-0 rounded-4 overflow-hidden">
-            <div class="row g-0 align-items-stretch">
-                <div class="col-md-3">
-                    <img src="images/petFinder-dog1.jpg" class="img-fluid h-100 w-100"
-                        style="object-fit: cover; min-height: 180px;" alt="Dog">
-                </div>
-                <!--PET INFO-->
-                <div class="col-md-6 d-flex flex-column justify-content-center bg-white p-3">
-                    <h3 class="card-title fw-bold text-primary mb-2" style="font-size: 1.3rem;">Jojo</h3>
+            <!--PET 2-->
+            <div class="card pet-card mb-5 shadow-sm border-0 rounded-4 overflow-hidden">
+                <div class="row g-0 align-items-stretch">
+                    <div class="col-md-3">
+                        <img src="images/petFinder-dog1.jpg" class="img-fluid h-100 w-100"
+                            style="object-fit: cover; min-height: 180px;" alt="Dog">
+                    </div>
+                    <!--PET INFO-->
+                    <div class="col-md-6 d-flex flex-column justify-content-center bg-white p-3">
+                        <h3 class="card-title fw-bold text-primary mb-2" style="font-size: 1.3rem;">Jojo</h3>
 
-                    <div class="row">
-                        <div class="col-md-5 border-end">
-                            <div class="mb-1 "><strong class="text-muted">Species:</strong> <br>American Bulldog
+                        <div class="row">
+                            <div class="col-md-5 border-end">
+                                <div class="mb-1 "><strong class="text-muted">Species:</strong> <br>American Bulldog
+                                </div>
+                                <div class="mb-1 "><strong class="text-muted">Age:</strong> <br>1 Years</div>
+                                <div class="mb-1 "><strong class="text-muted">Gender:</strong> <br>Male</div>
                             </div>
-                            <div class="mb-1 "><strong class="text-muted">Age:</strong> <br>1 Years</div>
-                            <div class="mb-1 "><strong class="text-muted">Gender:</strong> <br>Male</div>
-                        </div>
 
-                        <div class="col-md-7 ps-3">
-                            <strong class="text-muted small">About Jojo:</strong>
-                            <p class="text-muted small mt-1">
-                                A friendly dog who loves to play catch and is great with kids. He is very active and
-                                needs a home with a yard.
-                            </p>
+                            <div class="col-md-7 ps-3">
+                                <strong class="text-muted small">About Jojo:</strong>
+                                <p class="text-muted small mt-1">
+                                    A friendly dog who loves to play catch and is great with kids. He is very active and
+                                    needs a home with a yard.
+                                </p>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <!--Contact-->
-                <div class="col-md-3 d-flex flex-column justify-content-center bg-light p-3 border-start">
-                    <h6 class="fw-bold text-uppercase small text-muted mb-2">Contact</h6>
-                    <div class="mb-2">
-                        <p class="small mb-0 text-muted">Phone Number</p>
-                        <p class="fw-bold small mb-0"><i class="bi bi-telephone me-1"></i> 012-3456789</p>
-                    </div>
-                    <div class="mb-3">
-                        <p class="small mb-0 text-muted">Email Address</p>
-                        <p class="fw-bold small mb-0"><i class="bi bi-envelope me-1"></i> hello@pawpal.com</p>
-                    </div>
-                    <!--Social media-->
-                    <div class="d-flex justify-content-between align-items-center social-font text-muted fs-5">
-                        <i class="fa-brands fa-facebook cursor-pointer"></i>
-                        <i class="fa-brands fa-instagram cursor-pointer"></i>
-                        <i class="fa-brands fa-tiktok cursor-pointer"></i>
-                        <i class="fa-brands fa-whatsapp cursor-pointer"></i>
-                        <i class="fa-regular fa-map cursor-pointer" onclick="openMapModal('5.352468, 103.099591')"></i>
+                    <!--Contact-->
+                    <div class="col-md-3 d-flex flex-column justify-content-center bg-light p-3 border-start">
+                        <h6 class="fw-bold text-uppercase small text-muted mb-2">Contact</h6>
+                        <div class="mb-2">
+                            <p class="small mb-0 text-muted">Phone Number</p>
+                            <p class="fw-bold small mb-0"><i class="bi bi-telephone me-1"></i> 012-3456789</p>
+                        </div>
+                        <div class="mb-3">
+                            <p class="small mb-0 text-muted">Email Address</p>
+                            <p class="fw-bold small mb-0"><i class="bi bi-envelope me-1"></i> hello@pawpal.com</p>
+                        </div>
+                        <!--Social media-->
+                        <div class="d-flex justify-content-between align-items-center social-font text-muted fs-5">
+                            <i class="fa-brands fa-facebook cursor-pointer"></i>
+                            <i class="fa-brands fa-instagram cursor-pointer"></i>
+                            <i class="fa-brands fa-tiktok cursor-pointer"></i>
+                            <i class="fa-brands fa-whatsapp cursor-pointer"></i>
+                            <i class="fa-regular fa-map cursor-pointer"
+                                onclick="openMapModal('5.352468, 103.099591')"></i>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
 
-        <!--PET 3-->
-        <div class="card pet-card mb-5 shadow-sm border-0 rounded-4 overflow-hidden">
-            <div class="row g-0 align-items-stretch">
-                <div class="col-md-3">
-                    <img src="images\cat-adopt-1.jpg" class="img-fluid h-100 w-100"
-                        style="object-fit: cover; min-height: 180px;" alt="Cat">
-                </div>
-                <!--PET INFO-->
-                <div class="col-md-6 d-flex flex-column justify-content-center bg-white p-3">
-                    <h3 class="card-title fw-bold text-primary mb-2" style="font-size: 1.3rem;">Luna</h3>
+            <!--PET 3-->
+            <div class="card pet-card mb-5 shadow-sm border-0 rounded-4 overflow-hidden">
+                <div class="row g-0 align-items-stretch">
+                    <div class="col-md-3">
+                        <img src="images\cat-adopt-1.jpg" class="img-fluid h-100 w-100"
+                            style="object-fit: cover; min-height: 180px;" alt="Cat">
+                    </div>
+                    <!--PET INFO-->
+                    <div class="col-md-6 d-flex flex-column justify-content-center bg-white p-3">
+                        <h3 class="card-title fw-bold text-primary mb-2" style="font-size: 1.3rem;">Luna</h3>
 
-                    <div class="row">
-                        <div class="col-md-5 border-end">
-                            <div class="mb-1 "><strong class="text-muted">Species:</strong> <br>Persian Cat
+                        <div class="row">
+                            <div class="col-md-5 border-end">
+                                <div class="mb-1 "><strong class="text-muted">Species:</strong> <br>Persian Cat
+                                </div>
+                                <div class="mb-1 "><strong class="text-muted">Age:</strong> <br>4 Months</div>
+                                <div class="mb-1 "><strong class="text-muted">Gender:</strong> <br>Female</div>
                             </div>
-                            <div class="mb-1 "><strong class="text-muted">Age:</strong> <br>4 Months</div>
-                            <div class="mb-1 "><strong class="text-muted">Gender:</strong> <br>Female</div>
-                        </div>
 
-                        <div class="col-md-7 ps-3">
-                            <strong class="text-muted small">About Luna:</strong>
-                            <p class="text-muted small mt-1">
-                                Luna masih bayi suka tangkap bola, main bola. Luna suka minum susu dan wet food, kalau
-                                ada treats lagila Luna suka!
-                            </p>
+                            <div class="col-md-7 ps-3">
+                                <strong class="text-muted small">About Luna:</strong>
+                                <p class="text-muted small mt-1">
+                                    Luna masih bayi suka tangkap bola, main bola. Luna suka minum susu dan wet food,
+                                    kalau
+                                    ada treats lagila Luna suka!
+                                </p>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <!--Contact-->
-                <div class="col-md-3 d-flex flex-column justify-content-center bg-light p-3 border-start">
-                    <h6 class="fw-bold text-uppercase small text-muted mb-2">Contact</h6>
-                    <div class="mb-2">
-                        <p class="small mb-0 text-muted">Phone Number</p>
-                        <p class="fw-bold small mb-0"><i class="bi bi-telephone me-1"></i> 012-3456789</p>
-                    </div>
-                    <div class="mb-3">
-                        <p class="small mb-0 text-muted">Email Address</p>
-                        <p class="fw-bold small mb-0"><i class="bi bi-envelope me-1"></i> hello@pawpal.com</p>
-                    </div>
-                    <!--Social media-->
-                    <div class="d-flex justify-content-between align-items-center social-font text-muted fs-5">
-                        <i class="fa-brands fa-facebook cursor-pointer"></i>
-                        <i class="fa-brands fa-instagram cursor-pointer"></i>
-                        <i class="fa-brands fa-tiktok cursor-pointer"></i>
-                        <i class="fa-brands fa-whatsapp cursor-pointer"></i>
-                        <i class="fa-regular fa-map cursor-pointer" onclick="openMapModal('5.352468, 103.099591')"></i>
+                    <!--Contact-->
+                    <div class="col-md-3 d-flex flex-column justify-content-center bg-light p-3 border-start">
+                        <h6 class="fw-bold text-uppercase small text-muted mb-2">Contact</h6>
+                        <div class="mb-2">
+                            <p class="small mb-0 text-muted">Phone Number</p>
+                            <p class="fw-bold small mb-0"><i class="bi bi-telephone me-1"></i> 012-3456789</p>
+                        </div>
+                        <div class="mb-3">
+                            <p class="small mb-0 text-muted">Email Address</p>
+                            <p class="fw-bold small mb-0"><i class="bi bi-envelope me-1"></i> hello@pawpal.com</p>
+                        </div>
+                        <!--Social media-->
+                        <div class="d-flex justify-content-between align-items-center social-font text-muted fs-5">
+                            <i class="fa-brands fa-facebook cursor-pointer"></i>
+                            <i class="fa-brands fa-instagram cursor-pointer"></i>
+                            <i class="fa-brands fa-tiktok cursor-pointer"></i>
+                            <i class="fa-brands fa-whatsapp cursor-pointer"></i>
+                            <i class="fa-regular fa-map cursor-pointer"
+                                onclick="openMapModal('5.352468, 103.099591')"></i>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
         </div>
 
         <!--Pop up message-->
