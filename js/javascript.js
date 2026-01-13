@@ -1303,9 +1303,9 @@ async function dashboard(page) {
     ["clickable-img-input-pet", "clickable-img-input-event", "clickable-img-input-lost-pet"].forEach(clickId => addClickableImageInput(clickId));
 
     // ===== MAP SETUP =====
-    addMapPicker("petModal", "pet-city","pet-latitude", "pet-longitude", "pet-city", "pet-state", "pet-country");
-    addMapPicker("eventModal", "event-city","event-latitude", "event-longitude", "event-city", "event-state", "event-country");
-    addMapPicker("lostPetModal", "lost-city","lost-latitude", "lost-longitude", "lost-city", "lost-state", "lost-country");
+    addMapPicker("petModal", "pet-city", "pet-latitude", "pet-longitude", "pet-city", "pet-state", "pet-country");
+    addMapPicker("eventModal", "event-city", "event-latitude", "event-longitude", "event-city", "event-state", "event-country");
+    addMapPicker("lostPetModal", "lost-city", "lost-latitude", "lost-longitude", "lost-city", "lost-state", "lost-country");
 
     const pageLinks = document.querySelectorAll(".a-link");
     const dashboardTitle = document.getElementById("dashboard-title");
@@ -1501,15 +1501,15 @@ async function dashboard(page) {
                     //Get address
                     console.log(item.addressId);
                     const address = await pawpalHavenDB.get("address", item.addressId);
-                                        console.log(address);
+                    console.log(address);
 
                     //Set map location
-                    modalData.inputs.longitude.value = address.longitude ||  101.6869;
+                    modalData.inputs.longitude.value = address.longitude || 101.6869;
                     modalData.inputs.latitude.value = address.latitude || 3.1390;
                     modalData.inputs.city.value = address.city || "";
                     modalData.inputs.state.value = address.state || "";
                     modalData.inputs.country.value = address.country || "";
-                    modalData.modalElement.addMarker(modalData.inputs.latitude.value,  modalData.inputs.longitude.value);
+                    modalData.modalElement.addMarker(modalData.inputs.latitude.value, modalData.inputs.longitude.value);
 
                     //Clear input file
                     document.getElementById(modalData.inputs.clickableImg.dataset.target).value = "";
@@ -1654,8 +1654,8 @@ async function dashboard(page) {
                     ...existing,
                     ...properties
                 };
-                updated.address= existing.addressId;
-                 console.log(updated);
+                updated.address = existing.addressId;
+                console.log(updated);
 
                 await pawpalHavenDB.update(storeName, updated);
             }
@@ -2318,24 +2318,24 @@ function openEvent(eventId) {
 
 
 //--------------------------------------------------- PET FINDER PART (Lynn)------------------------------------------------------------
-    // Function to handle the image upload click
-    function triggerFileInput() {
-        document.getElementById('imageInput').click();
-    }
+// Function to handle the image upload click
+function triggerFileInput() {
+    document.getElementById('imageInput').click();
+}
 
-    // Function to preview the image immediately
-    function previewImage(event) {
-        const reader = new FileReader();
-        const imageField = document.getElementById('profilePic');
-        reader.onload = function () {
-            if (reader.readyState === 2) {
-                imageField.src = reader.result;
-            }
-        }
-        if (event.target.files[0]) {
-            reader.readAsDataURL(event.target.files[0]);
+// Function to preview the image immediately
+function previewImage(event) {
+    const reader = new FileReader();
+    const imageField = document.getElementById('profilePic');
+    reader.onload = function () {
+        if (reader.readyState === 2) {
+            imageField.src = reader.result;
         }
     }
+    if (event.target.files[0]) {
+        reader.readAsDataURL(event.target.files[0]);
+    }
+}
 
 
 
@@ -2447,48 +2447,38 @@ function showPetDetails(name, species, age, gender, desc, imgPath) {
 
 /* report lost pet button */
 // 1. Handle Sign In (Stays on Pet Finder Page)
-document.getElementById('signInForm').addEventListener('submit', function(e) {
+document.getElementById('signInForm').addEventListener('submit', function (e) {
     e.preventDefault();
-    
+
     // Close the Modal
     const authModal = bootstrap.Modal.getInstance(document.getElementById('authModal'));
     authModal.hide();
 
     // Show a success alert (Optional)
     alert("Signed in successfully! Returning to Pet Finder.");
-    
+
     // Page doesn't change, just closes the modal so they can continue looking at pets
 });
 
 // 2. Handle Sign Up (Redirects to Profile Page)
-document.getElementById('signUpForm').addEventListener('submit', function(e) {
+document.getElementById('signUpForm').addEventListener('submit', function (e) {
     e.preventDefault();
 
     // Show a success alert
     alert("Account created! Redirecting to your Profile...");
 
     // Redirect to profile page (Make sure you have profile.html created)
-    window.location.href = "profile.html"; 
+    window.location.href = "profile.html";
 });
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
->>>>>>> 502ebd48f94df15b8c50d7431998304f5edb761b
 
 /** Search pet lynn */
- function searchPets() {
-            // 1. Get what the user typed in the search bar
-            const searchTerm = document.getElementById('petSearch').value.toLowerCase();
+function searchPets() {
+    // 1. Get what the user typed in the search bar
+    const searchTerm = document.getElementById('petSearch').value.toLowerCase();
 
-            // 2. Filter the allEvents array
-            const matchedEvents = allEvents.filter(event => {
-                return event.title.toLowerCase().includes(searchTerm) ||
-                    event.description.toLowerCase().includes(searchTerm);
-            });
-<<<<<<< HEAD
-        }
-=======
-        }
-=======
->>>>>>> 80ad6086055842f35e90f13ce5c4d4782f594394
->>>>>>> 502ebd48f94df15b8c50d7431998304f5edb761b
+    // 2. Filter the allEvents array
+    const matchedEvents = allEvents.filter(event => {
+        return event.title.toLowerCase().includes(searchTerm) ||
+            event.description.toLowerCase().includes(searchTerm);
+    });
+}
