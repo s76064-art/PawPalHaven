@@ -984,7 +984,7 @@ body {
 /* Remove Bootstrap's default input focus outline */
 #eventSearch:focus {
     box-shadow: none;
-    background-color: transparent;
+   
 }
 
 /* Optional: Make the underline turn dark when active */

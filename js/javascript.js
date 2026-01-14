@@ -787,161 +787,6 @@ async function homepage(page) {
 
 }
 
-
-
-//Structure class
-class SlideShow {
-    constructor(selector, interval) {
-        this.container = document.querySelector(selector);
-        this.slides = this.container.querySelector(".slides");
-        this.itemSlides = this.slides.querySelectorAll(".slide");
-        this.dotContainer = this.container.querySelector(".dots")
-        this.interval = interval || 5000; //Default 5 seconds
-
-        this.index = 0;
-        this.makeDots();
-        this.addSwipeSupport();
-        this.startAutoSlide();
-    }
-
-    updateSlide() {
-        this.slides = this.container.querySelector(".slides");
-        this.itemSlides = this.slides.querySelectorAll(".slide");
-        this.dotContainer = this.container.querySelector(".dots")
-        this.makeDots();
-    }
-
-    makeDots() {
-        this.dotContainer.innerHTML = "";
-        this.itemSlides.forEach((_, i) => {
-            const dot = document.createElement("span");
-            if (i === 0) { dot.classList.add("active"); }
-            dot.addEventListener("click", () => this.goToSlide(i));
-            this.dotContainer.appendChild(dot);
-        });
-    }
-
-    updateDots() {
-        this.dotContainer.querySelectorAll("span").forEach((dot, i) => {
-            dot.classList.toggle("active", i === this.index);
-        });
-    }
-
-    goToSlide(i) {
-        this.index = i;
-        this.slides.style.transform = `translateX(${-i * 100}%)`;
-        this.updateDots();
-    }
-
-    startAutoSlide() {
-        setInterval(() => {
-            this.index = (this.index + 1) % this.itemSlides.length;
-            this.goToSlide(this.index);
-        }, this.interval);
-    }
-
-    addSwipeSupport() {
-        let startX = 0;
-
-        this.slides.addEventListener('touchstart', e => {
-            startX = e.touches[0].clientX;
-        });
-
-        this.slides.addEventListener('touchend', e => {
-            let endX = e.changedTouches[0].clientX;
-
-            if (endX < startX - 50) this.next();
-            if (endX > startX + 50) this.prev();
-        });
-    }
-
-    next() {
-        this.index = (this.index + 1) % this.itemSlides.length;
-        this.goToSlide(this.index);
-    }
-
-    prev() {
-        this.index = (this.index - 1 + this.itemSlides.length) % this.itemSlides.length;
-        this.goToSlide(this.index);
-    }
-}
-
-
-class PetCard {
-    constructor(petInfo) {
-        this.petInfo = petInfo;
-        this.createElement();
-    }
-
-    createElement() {
-        const divElement = document.createElement("div");
-        divElement.className = "pet-card bg-light bevel-border-1 overflow-hidden";
-        divElement.innerHTML = `
-         <!--Pet Name-->
-        <h3 class="pet-name text-center bg-green-1 p-2 text-white">${this.petInfo.name}</h3>
-
-        <div class="jumbotron p-2 w-100">
-
-            <!--Pet Image-->
-            <div class="container-fluid d-flex justify-content-center mb-4">
-                <div class="pet-img">
-                    <img src="${this.petInfo.img}" class="img-fluid" alt="Snowy">
-                </div>
-            </div>
-
-            <!--Pet info-->
-            <div class="container-fluid text-start text-lg-center">
-                <div class="row mb-1">
-                    <div class="col-xl-6 col-md-12 pet-label"><strong>Species:</strong>
-                        ${this.petInfo.species}</div>
-                    <div class="col-xl-6  col-sm-12 pet-label"><strong>Age:</strong>
-                        ${this.petInfo.age}
-                    </div>
-                    <div class="col-xl-6  col-md-12 pet-label"><strong>Gender:</strong>
-                        ${this.petInfo.gender}</div>
-                    <div class="col-xl-6  col-md-12 pet-label"><strong>Color:</strong>
-                        ${this.petInfo.color}</div>
-                </div>
-            </div>
-
-        </div>
-
-        <!--Contact-->
-        <div class="container-fluid mt-3 bg-green-3 p-0">
-            <h5 class="p-2 bg-green-1 text-white text-center">Contact</h5>
-
-            <div class="text-center mb-1"><i class="fa-solid fa-phone"></i>: 000-0000000
-            </div>
-
-            <div
-                class="d-flex justify-content-center align-items-center p-3 social-font">
-                <i class="fa-brands fa-facebook fa-xl mx-2"></i>
-                <i class="fa-brands fa-youtube fa-xl mx-2"></i>
-                <i class="fa-brands fa-instagram fa-xl mx-2"></i>
-                <i class="fa-brands fa-tiktok fa-xl mx-2"></i>
-                <i class="fa-brands fa-twitter fa-xl mx-2"></i>
-                <i class="fa-regular fa-map fa-xl mx-2"
-                    onclick="openMapModal('5.352468, 103.099591')"></i>
-            </div>
-        </div>
-        `
-
-        return divElement;
-    }
-}
-
-
-class PetInfo {
-    constructor(name, species, age, gender, color, img) {
-        this.name = name;
-        this.species = species;
-        this.age = age;
-        this.gender = gender;
-        this.color = color;
-        this.img = img;
-    }
-}
-
 //Generate Id
 async function generateId(type) {
     let storeName = null;
@@ -985,33 +830,22 @@ async function requireLogin() {
 async function updateNavbar() {
     const navLoginProfile = document.getElementById("login-profile-nav");
     if (navLoginProfile === null) { return console.log("Missing id"); }
-
+    const page = window.location.pathname.split("/").pop();
     if (await User.getCurrentUser() === null) {
-        navLoginProfile.innerHTML = `<a class="nav-link" href="login-registration.html">Login</a>`;
+        
+
+        if (page === "login-registration.html"){
+             navLoginProfile.innerHTML = `<a class="nav-link fw-bold active" href="login-registration.html">Login</a>`;
+        }else{
+             navLoginProfile.innerHTML = `<a class="nav-link" href="login-registration.html">Login</a>`;
+        }
+       
     } else {
-        navLoginProfile.innerHTML = `<a class="nav-link" href="profile.html">Profile</a>`;
-    }
-}
-
-//Functions that should be run on homepage
-async function homepageEvent(page) {
-    if (page === "index.html") {
-        //showUpcomingPetEvent();
-
-        messageCycle(page);
-        addCloseMapEvent();
-
-        //Start slide show
-        new SlideShow(".event-slider", 10000);
-
-        let slideshowPet = new SlideShow(".pet-slider", 5000)
-        showSlideShowPet(slideshowPet);
-
-        //Change the size of partion of pets when screen changes
-        window.addEventListener("resize", () => {
-            showSlideShowPet(slideshowPet);
-        });
-
+        if(page === "profile.html"){
+            navLoginProfile.innerHTML = `<a class="nav-link fw-bold active" href="profile.html">Profile</a>`;
+        }else{
+            navLoginProfile.innerHTML = `<a class="nav-link" href="profile.html">Profile</a>`;
+        }
     }
 }
 
@@ -2466,9 +2300,12 @@ function openEvent(eventId) {
             </div>
         </div>
     </div>
-`;
+`;}
 
-        // search events (izani)
+       
+}
+
+ // search events (izani)
         function searchEvents() {
             // 1. Get what the user typed in the search bar
             const searchTerm = document.getElementById('eventSearch').value.toLowerCase();
@@ -2476,7 +2313,7 @@ function openEvent(eventId) {
             // 2. Filter the allEvents array
             const matchedEvents = allEvents.filter(event => {
                 return event.title.toLowerCase().includes(searchTerm) ||
-                    event.description.toLowerCase().includes(searchTerm);
+                    event.description.toLowerCase().includes(searchTerm); //HERE
             });
 
             // 3. Clear the current cards and show only matched ones
@@ -2503,13 +2340,6 @@ function openEvent(eventId) {
                 container.innerHTML = htmlContent;
             }
         }
-
-        // 4. Use Bootstrap's Modal command to show the popup
-        const myModal = new bootstrap.Modal(document.getElementById('eventModal'));
-        myModal.show();
-    }
-}
-
 
 
 
